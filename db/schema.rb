@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160930230909) do
+ActiveRecord::Schema.define(version: 20161004001013) do
 
   create_table "golf_course_organizers", force: :cascade do |t|
     t.integer  "person_id"
@@ -24,7 +24,6 @@ ActiveRecord::Schema.define(version: 20160930230909) do
 
   create_table "golf_courses", force: :cascade do |t|
     t.string   "name"
-    t.string   "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,7 +32,6 @@ ActiveRecord::Schema.define(version: 20160930230909) do
     t.string   "firstname"
     t.string   "lastname"
     t.string   "dob"
-    t.string   "address"
     t.string   "phone"
     t.string   "email"
     t.datetime "created_at", null: false
@@ -108,8 +106,10 @@ ActiveRecord::Schema.define(version: 20160930230909) do
     t.text     "description"
     t.boolean  "ispublic"
     t.text     "extrafeatures"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "golf_course_id"
+    t.index ["golf_course_id"], name: "index_tournaments_on_golf_course_id"
   end
 
   create_table "website_admins", force: :cascade do |t|
