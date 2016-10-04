@@ -421,3 +421,231 @@ Processing by HomePageController#index as HTML
 Completed 200 OK in 12998ms (Views: 12597.2ms | ActiveRecord: 0.0ms)
 
 
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName1"], ["lastname", "LastName1"], ["dob", "dob1"], ["address", "address1"], ["phone", "phone1"], ["email", "email1"], ["created_at", 2016-10-03 04:17:30 UTC], ["updated_at", 2016-10-03 04:17:30 UTC]]
+  [1m[35m (96.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName2"], ["lastname", "LastName2"], ["dob", "dob2"], ["address", "address2"], ["phone", "phone2"], ["email", "email2"], ["created_at", 2016-10-03 04:17:30 UTC], ["updated_at", 2016-10-03 04:17:30 UTC]]
+  [1m[35m (93.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName3"], ["lastname", "LastName3"], ["dob", "dob3"], ["address", "address3"], ["phone", "phone3"], ["email", "email3"], ["created_at", 2016-10-03 04:17:30 UTC], ["updated_at", 2016-10-03 04:17:30 UTC]]
+  [1m[35m (109.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN3"], ["lastname", "LN3"], ["dob", "dob3"], ["address", "address3"], ["phone", "phone3"], ["email", "email3"], ["created_at", 2016-10-03 04:17:30 UTC], ["updated_at", 2016-10-03 04:17:30 UTC]]
+  [1m[35m (169.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN4"], ["lastname", "LN4"], ["dob", "dob4"], ["address", "address4"], ["phone", "phone4"], ["email", "email4"], ["created_at", 2016-10-03 04:17:30 UTC], ["updated_at", 2016-10-03 04:17:30 UTC]]
+  [1m[35m (74.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN5"], ["lastname", "LN5"], ["dob", "d5"], ["address", "add5"], ["phone", "ph5"], ["email", "em5"], ["created_at", 2016-10-03 04:17:30 UTC], ["updated_at", 2016-10-03 04:17:30 UTC]]
+  [1m[35m (85.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (1.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_players_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_players_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_players_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_players_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_people_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_people_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_people_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_people_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_teams_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_teams_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_teams_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_teams_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.4ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_teams_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_teams_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (2.4ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tickets_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tickets_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournament_organizers_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournament_organizers_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.6ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournament_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournament_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.9ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_website_admins_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_website_admins_on_person_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName1"], ["lastname", "LastName1"], ["dob", "dob1"], ["address", "address1"], ["phone", "phone1"], ["email", "email1"], ["created_at", 2016-10-03 04:27:19 UTC], ["updated_at", 2016-10-03 04:27:19 UTC]]
+  [1m[35m (203.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName2"], ["lastname", "LastName2"], ["dob", "dob2"], ["address", "address2"], ["phone", "phone2"], ["email", "email2"], ["created_at", 2016-10-03 04:27:19 UTC], ["updated_at", 2016-10-03 04:27:19 UTC]]
+  [1m[35m (90.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName3"], ["lastname", "LastName3"], ["dob", "dob3"], ["address", "address3"], ["phone", "phone3"], ["email", "email3"], ["created_at", 2016-10-03 04:27:19 UTC], ["updated_at", 2016-10-03 04:27:19 UTC]]
+  [1m[35m (104.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN3"], ["lastname", "LN3"], ["dob", "dob3"], ["address", "address3"], ["phone", "phone3"], ["email", "email3"], ["created_at", 2016-10-03 04:27:19 UTC], ["updated_at", 2016-10-03 04:27:19 UTC]]
+  [1m[35m (199.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN4"], ["lastname", "LN4"], ["dob", "dob4"], ["address", "address4"], ["phone", "phone4"], ["email", "email4"], ["created_at", 2016-10-03 04:27:19 UTC], ["updated_at", 2016-10-03 04:27:19 UTC]]
+  [1m[35m (278.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.1ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN5"], ["lastname", "LN5"], ["dob", "d5"], ["address", "add5"], ["phone", "ph5"], ["email", "em5"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (156.3ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN6"], ["lastname", "LN6"], ["dob", "d6"], ["address", "add6"], ["phone", "ph6"], ["email", "em6"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (135.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name1"], ["description", "description1"], ["ispublic", true], ["extrafeatures", "extrafeatures1"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (93.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.6ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name2"], ["description", "description2"], ["ispublic", true], ["extrafeatures", "extrafeatures2"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (99.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name3"], ["description", "description3"], ["ispublic", true], ["extrafeatures", "extrafeatures3"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (97.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.2ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name4"], ["description", "description4"], ["ispublic", false], ["extrafeatures", "extrafeatures4"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (84.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name5"], ["description", "description5"], ["ispublic", false], ["extrafeatures", "extrafeatures5"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (132.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name6"], ["description", "desc6"], ["ispublic", false], ["extrafeatures", "extraf6"], ["created_at", 2016-10-03 04:27:20 UTC], ["updated_at", 2016-10-03 04:27:20 UTC]]
+  [1m[35m (178.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName1"], ["lastname", "LastName1"], ["dob", "dob1"], ["address", "address1"], ["phone", "phone1"], ["email", "email1"], ["created_at", 2016-10-03 04:32:07 UTC], ["updated_at", 2016-10-03 04:32:07 UTC]]
+  [1m[35m (133.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName2"], ["lastname", "LastName2"], ["dob", "dob2"], ["address", "address2"], ["phone", "phone2"], ["email", "email2"], ["created_at", 2016-10-03 04:32:07 UTC], ["updated_at", 2016-10-03 04:32:07 UTC]]
+  [1m[35m (108.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FirstName3"], ["lastname", "LastName3"], ["dob", "dob3"], ["address", "address3"], ["phone", "phone3"], ["email", "email3"], ["created_at", 2016-10-03 04:32:07 UTC], ["updated_at", 2016-10-03 04:32:07 UTC]]
+  [1m[35m (113.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (6.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN3"], ["lastname", "LN3"], ["dob", "dob3"], ["address", "address3"], ["phone", "phone3"], ["email", "email3"], ["created_at", 2016-10-03 04:32:07 UTC], ["updated_at", 2016-10-03 04:32:07 UTC]]
+  [1m[35m (104.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN4"], ["lastname", "LN4"], ["dob", "dob4"], ["address", "address4"], ["phone", "phone4"], ["email", "email4"], ["created_at", 2016-10-03 04:32:07 UTC], ["updated_at", 2016-10-03 04:32:07 UTC]]
+  [1m[35m (124.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN5"], ["lastname", "LN5"], ["dob", "d5"], ["address", "add5"], ["phone", "ph5"], ["email", "em5"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (119.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (7.0ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "address", "phone", "email", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "FN6"], ["lastname", "LN6"], ["dob", "d6"], ["address", "add6"], ["phone", "ph6"], ["email", "em6"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (150.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name1"], ["description", "description1"], ["ispublic", true], ["extrafeatures", "extrafeatures1"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (85.9ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name2"], ["description", "description2"], ["ispublic", true], ["extrafeatures", "extrafeatures2"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (93.6ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name3"], ["description", "description3"], ["ispublic", true], ["extrafeatures", "extrafeatures3"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (139.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name4"], ["description", "description4"], ["ispublic", false], ["extrafeatures", "extrafeatures4"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (92.4ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name5"], ["description", "description5"], ["ispublic", false], ["extrafeatures", "extrafeatures5"], ["created_at", 2016-10-03 04:32:08 UTC], ["updated_at", 2016-10-03 04:32:08 UTC]]
+  [1m[35m (98.7ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.5ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "name6"], ["description", "desc6"], ["ispublic", false], ["extrafeatures", "extraf6"], ["created_at", 2016-10-03 04:32:09 UTC], ["updated_at", 2016-10-03 04:32:09 UTC]]
+  [1m[35m (121.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (2.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mPerson Load (0.5ms)[0m  [1m[34mSELECT  "people".* FROM "people" ORDER BY "people"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1m[34mSELECT "people".* FROM "people"[0m
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT "tournaments".* FROM "tournaments"[0m
