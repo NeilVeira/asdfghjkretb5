@@ -1,0 +1,11 @@
+<%= link_to 'Home', controller: 'home_page' %>
+
+<h1>Profile | <%=@person.firstname%> <%=@person.lastname%></h1>
+<br>
+<h2>Personal Information</h2>
+<p>
+    <strong>Date of birth: </strong><%=@person.dob%><br>
+    <strong>Phone Number: </strong><%=@person.phone%><br>
+    <strong>Email: </strong><%=@person.email%><br>
+</p>
+
