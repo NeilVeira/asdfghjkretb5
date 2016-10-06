@@ -1,0 +1,17 @@
+<h1>Register a Golf Course</h1>
+<%= form_for :golf_course, url: golf_courses_path do |f| %>
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :Location %><br>
+    <%= f.text_field :location %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', controller: 'home_page' %>
