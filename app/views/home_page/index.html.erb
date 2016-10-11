@@ -1,3 +1,13 @@
 <h1>XXX Golf Tournaments</h1>
 <%=link_to 'Create an account', new_person_path%>
+<br>
+<p>
+<%=link_to 'View registered users' , people_path%> <-- only website admins will have this option
+</p>
+<br>
 <%=link_to 'Register a Golf Course', new_golf_course_path%>
+<br>
+<p>
+<%=link_to 'Team Details', teams_path%>
+<br>
+<%=link_to 'New Team', new_team_path%>

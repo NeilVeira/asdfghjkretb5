@@ -5,7 +5,9 @@
 <h2>Personal Information</h2>
 <p>
     <strong>Date of birth: </strong><%=@person.dob%><br>
+	<strong>Address: </strong><%=@person.location%><br>
     <strong>Phone Number: </strong><%=@person.phone%><br>
     <strong>Email: </strong><%=@person.email%><br>
 </p>
 
+<%= link_to 'Edit', edit_person_path(@person) %>

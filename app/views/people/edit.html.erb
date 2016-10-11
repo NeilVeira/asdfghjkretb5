@@ -1,5 +1,7 @@
-<h1>Create an account</h1>
-<%= form_for :person, url: people_path do |f| %>
+<h1>Edit your information</h1>
+
+<%= form_for :person, url: person_path(@person), method: :patch do |f| %>
+
   <p>
     <%= f.label :First_Name %><br>
     <%= f.text_field :firstname %>
@@ -35,4 +37,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', controller: 'home_page' %>
+<%= link_to 'Back', person_path(@person) %> 

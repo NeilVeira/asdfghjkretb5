@@ -1,0 +1,23 @@
+<h1>Registered Users</h1>
+
+<table>
+	<tr>
+		<th>First name</th>
+		<th>Last name</th>
+		<th>Email</th>
+	</tr>
+	
+	<% @people.each do |person| %>
+		<tr>
+			<td><%= person.firstname %></td>
+			<td><%= person.lastname %></td>
+			<td><%= person.email %></td>
+			<td><%= link_to 'Profile', person_path(person) %></td>
+			<td><%= link_to 'Delete', person_path(person),
+							method: :delete,
+							data: {confirm: 'Are you sure?'} %></td>
+		</tr>
+	<%end%>
+</table>
+<br>
+<%= link_to 'Home', controller: 'home_page' %>
