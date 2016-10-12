@@ -1,0 +1,13 @@
+<%=link_to 'Home', controller: 'home_page' %>
+
+<h1>Team</h1>
+<p>
+	<strong>Team Name:</strong>
+    <%=@team.name%>
+    <br>
+    <strong>Tournament ID:</strong>
+    <%=@team.tournament_id%>
+</p>
+
+<%= link_to 'Back to Teams', teams_path %><br>
+<%= link_to 'Edit', edit_team_path(@team) %>

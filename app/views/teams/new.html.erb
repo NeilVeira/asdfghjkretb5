@@ -1,0 +1,19 @@
+<h1>Add Team Information</h1>
+<br>
+<%=form_for :team, url: teams_path do |f| %>
+   <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %><br>
+   </p>
+   
+   <p>
+      <%= f.label :tournament_id %><br>
+      <%= f.text_field :tournament_id %><br>
+   </p>
+
+   <p>
+      <%= f.submit %>
+   </p>
+<% end %>
+
+<%= link_to 'Back', controller: 'home_page' %>

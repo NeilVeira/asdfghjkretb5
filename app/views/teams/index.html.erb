@@ -1,0 +1,21 @@
+<h1>Registered Teams</h1>
+
+<table>
+   <tr>
+      <th>Name</tr>
+      <th>Tournament_ID</tr>
+   </tr>
+
+   <% @teams.each do |team| %>
+      <tr>
+         <td><%= team.name %></td>
+         <td><%= team.tournament_id %></td>
+         <td><%= link_to 'Team', team_path(team) %></td>
+         <td><%= link_to 'Delete', team_path(team), method: :delete, data: {confirm: 'Delete team?'} %></td>
+
+      </tr>
+ 
+   <% end %>
+</table>
+<br>
+<%= link_to 'Home', controller:'home_page'%>
