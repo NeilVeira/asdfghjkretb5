@@ -1,4 +1,4 @@
 class GolfCourseOrganizer < ApplicationRecord
   belongs_to :person
-  belongs_to :tournament
+  belongs_to :golf_course
 end
