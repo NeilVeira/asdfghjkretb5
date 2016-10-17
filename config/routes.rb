@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :tournament_organizers
   resources :golf_course_organizers
+  resources :players
   root 'home_page#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

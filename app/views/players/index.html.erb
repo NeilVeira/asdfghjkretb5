@@ -1,0 +1,22 @@
+<%= link_to 'Home', controller: 'home_page' %>
+<table>
+  <tr>
+    <th>id</th>
+    <th>person_id</th>
+    <th>tournament_id</th>
+  </tr>
+
+  <% @players.each do |player| %>
+      <tr>
+        <td><%= player.id %></td>
+        <td><%= player.person_id %></td>
+        <td><%= player.tournament_id %></td>
+        <td><%= link_to 'Player Profile', player_path(player) %></td>
+        <td><%= link_to 'Person Profile', person_path(player.person_id) %></td>
+        <td><%= link_to 'Delete', player_path(player),
+                        method: :delete,
+                        data: {confirm: 'Are you sure?'} %></td>
+      </tr>
+  <%end%>
+</table>
+<%= link_to 'Create Player', new_player_path %>

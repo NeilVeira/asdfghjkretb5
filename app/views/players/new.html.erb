@@ -1,0 +1,21 @@
+<%= link_to 'Home', controller: 'home_page' %>
+
+<h1>Make new player</h1>
+
+<%=form_for :player, url: players_path do |f| %>
+
+    <p>
+      <%= f.label :person_id %><br>
+      <%= f.text_field :person_id %><br>
+    </p>
+
+    <p>
+      <%= f.label :tournament_id %><br>
+      <%= f.text_field :tournament_id %><br>
+    </p>
+
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>
