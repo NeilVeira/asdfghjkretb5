@@ -1,0 +1,21 @@
+<h1>Website Admins</h1>
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Admin Rights</th>
+	</tr>
+	
+	<% @website_admins.each do |website_admin| %>
+		<tr>
+			<td><%= website_admin.person.firstname %> <%=website_admin.person.lastname%></td>
+			<td><%= website_admin.adminrights %></td>
+			<td><%= link_to 'Profile', person_path(website_admin.person) %></td>
+			<td><%= link_to 'Delete', website_admin_path(website_admin),
+							method: :delete,
+							data: {confirm: 'Are you sure?'} %></td>
+		</tr>
+	<%end%>
+</table>
+<br>
+<%= link_to 'Home', controller: 'home_page' %>

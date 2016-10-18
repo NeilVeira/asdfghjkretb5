@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
   get 'home_page/index'
   
-  resources :people
-  resources :tournaments  
+  resources :people 
+  resources :tournaments
   resources :golf_courses
   resources :teams
   resources :tournament_organizers
   resources :golf_course_organizers
+  resources :website_admins
   resources :players
+  
   root 'home_page#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 

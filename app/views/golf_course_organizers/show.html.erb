@@ -1,0 +1,10 @@
+<h1>Profile | pid: <%=@golf_course_organizer.person%> tid: <%=@golf_course_organizer.tournament%></h1>
+<br>
+<h2>Personal Information</h2>
+<p>
+    <strong>Person ID: </strong><%=@golf_course_organizer.person%><br>
+	<strong>Tournament ID: </strong><%=@golf_course_organizer.tournament%><br>
+    <strong>Admin Rights: </strong><%=@golf_course_organizer.adminrights%><br>
+</p>
+
+<%= link_to 'Home', controller: 'home_page' %>
