@@ -6,12 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 people_list = [
-	["FirstName1", "LastName1", "dob1", "phone1","email1","loc1"],["FirstName2", "LastName2", "dob2",  "phone2","email2","loc2"],["FirstName3", "LastName3", "dob3", "address3", "phone3","email3","loc3"],
-["FN3", "LN3", "dob3",  "phone3","email3","loc4"],["FN4", "LN4", "dob4",  "phone4","email4","loc5"],["FN5", "LN5", "d5",  "ph5","em5","loc7"],["FN6", "LN6", "d6",  "ph6","em6","loc8"]
+	["FirstName1", "LastName1", "dob1", "phone1", "loc1"],["FirstName2", "LastName2", "dob2",  "phone2", "loc2"],["FirstName3", "LastName3", "dob3", "address3", "phone3", "loc3"],
+["FN3", "LN3", "dob3",  "phone3", "loc4"],["FN4", "LN4", "dob4",  "phone4","loc5"],["FN5", "LN5", "d5",  "ph5","loc7"],["FN6", "LN6", "d6",  "ph6","loc8"]
 ]
 
 people_list.each do |firstname,lastname,dob,phone,email,location|
-	Person.create(firstname: firstname, lastname: lastname, dob: dob, phone: phone, email: email, location: location)
+	Person.create(firstname: firstname, lastname: lastname, dob: dob, phone: phone, location: location)
 end
 
 golfcourse_list = [

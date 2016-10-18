@@ -5,7 +5,11 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version: v2.3.x
+
+* Rails version: v4.2.6?
+
+* Database schema (in Documentation folder)
 
 * System dependencies
 
