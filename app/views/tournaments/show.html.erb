@@ -1,0 +1,13 @@
+<%= link_to 'Home', controller: 'home_page' %>
+
+<h1> <%=@tournament.name%> </h1>
+<br>
+<h2>Tournament Information</h2>
+<p>
+    <strong>Name: </strong><%=@tournament.name%><br>
+	<strong>Description: </strong><%=@tournament.description%><br>
+    <strong>Public_or_private: </strong><%=@tournament.ispublic%><br>
+    <strong>Extra_Features: </strong><%=@tournament.extrafeatures%><br>
+</p>
+
+<%= link_to 'Edit', edit_tournament_path(@tournament) %>

@@ -1,0 +1,28 @@
+<h1>Edit this Tournament</h1>
+
+<%= form_for :tournament, url: tournament_path(@tournament), method: :patch do |f| %>
+  <p>
+    <%= f.label :Name %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label :Description %><br>
+    <%= f.text_area :description %>
+  </p>
+  
+  <p>
+    <%= f.label :Is_it_a_public_tournament? %><br>
+    <%= f.text_area :ispublic%>
+  </p>
+  
+  <p>
+    <%= f.label :Extra_Features %><br>
+    <%= f.text_area :extrafeatures %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to 'Back', tournament_path(@tournament) %>
