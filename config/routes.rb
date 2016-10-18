@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   get 'home_page/index'
   
-  resources :people 
+  resources :people
+  resources :tournaments  
   resources :golf_courses
   resources :teams
   resources :tournament_organizers
