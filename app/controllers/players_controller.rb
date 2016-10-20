@@ -12,12 +12,13 @@ class PlayersController < ApplicationController
   end
 
   def edit
-
+    # shouldn't exists.. because can only really register / leave a tournament
   end
 
   def create
     @player = Player.new(player_params)
 
+    # TODO: should double check both tournament id exists and people id exists
     @success = @player.save
 
     if @success
@@ -33,7 +34,8 @@ class PlayersController < ApplicationController
 
   end
 
-  def delete
+  def destroy
+    # TODO: should only be allowed by player, current user IS player & tournament organizer?
     @player = Player.find(params[:id])
     @player.destroy
     redirect_to players_path
