@@ -45,8 +45,11 @@ class PeopleController < ApplicationController
 		#@person = Person.find(params[:id])
         @user = current_user
         @person = Person.find_by user_id: @user.id
-		@person.update(person_params)
-		redirect_to '/people/profile'
+		if @person.update(person_params)
+			redirect_to '/people/profile'
+		else
+			render 'edit'
+		end
 	end
 	
 	def destroy

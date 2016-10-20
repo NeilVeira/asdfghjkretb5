@@ -24239,6 +24239,7 @@ Processing by HomePageController#index as HTML
 Completed 200 OK in 590ms (Views: 585.7ms | ActiveRecord: 0.8ms)
 
 
+<<<<<<< HEAD
 Started GET "/" for 99.230.35.175 at 2016-10-20 01:23:26 +0000
 Cannot render console from 99.230.35.175! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -24262,5 +24263,814 @@ Processing by TicketsController#new as HTML
   Rendering tickets/new.html.erb within layouts/application
   Rendered tickets/new.html.erb within layouts/application (25.3ms)
 Completed 200 OK in 62ms (Views: 60.6ms | ActiveRecord: 0.0ms)
+=======
+Started GET "/" for ::1 at 2016-10-19 21:12:39 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (9.5ms)
+Started GET "/" for ::1 at 2016-10-19 21:12:39 -0400
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (1.0ms)
+Completed 500 Internal Server Error in 1095ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Permission denied @ utime_failed - D:/Web_Dev/GitHub/asdfghjkretb5/tmp/cache/assets/sprockets/v3.0/n_/n_xYqQYhwEMQknb3jFQnjlxxBE9TzMNHCdJ-bEyZFIw.cache):
+    4:     <title>Xxx</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__609844486_92008320'
+Completed 200 OK in 2120ms (Views: 2097.3ms | ActiveRecord: 0.0ms)
+
+
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (7.5ms)
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.0ms)
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (992.0ms)
+Started GET "/" for ::1 at 2016-10-19 21:13:34 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 335ms (Views: 311.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-10-19 21:19:08 -0400
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 104ms (Views: 91.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/players" for ::1 at 2016-10-19 21:19:10 -0400
+Processing by PlayersController#index as HTML
+  Rendering players/index.html.erb within layouts/application
+  [1m[36mPlayer Load (0.0ms)[0m  [1m[34mSELECT "players".* FROM "players"[0m
+  Rendered players/index.html.erb within layouts/application (6.7ms)
+Completed 200 OK in 132ms (Views: 112.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/players/new" for ::1 at 2016-10-19 21:19:12 -0400
+Processing by PlayersController#new as HTML
+  Rendering players/new.html.erb within layouts/application
+  Rendered players/new.html.erb within layouts/application (18.0ms)
+Completed 200 OK in 140ms (Views: 126.2ms | ActiveRecord: 0.0ms)
+
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to RemoveTournamentFromGolfCourseOrganizers (20161020013754)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TEMPORARY TABLE "agolf_course_organizers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "person_id" integer, "tournament_id" integer, "adminrights" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_agolf_course_organizers_on_tournament_id" ON "agolf_course_organizers" ("tournament_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE  INDEX "tindex_agolf_course_organizers_on_person_id" ON "agolf_course_organizers" ("person_id")[0m
+  [1m[35m (3.1ms)[0m  [1m[32mINSERT INTO "agolf_course_organizers" ("id","person_id","tournament_id","adminrights","created_at","updated_at")
+                     SELECT "id","person_id","tournament_id","adminrights","created_at","updated_at" FROM "golf_course_organizers"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mDROP TABLE "golf_course_organizers"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE TABLE "golf_course_organizers" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "person_id" integer, "adminrights" integer, "created_at" datetime NOT NULL, "updated_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_agolf_course_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_agolf_course_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='tindex_agolf_course_organizers_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='tindex_agolf_course_organizers_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_golf_course_organizers_on_person_id" ON "golf_course_organizers" ("person_id")[0m
+  [1m[35m (0.5ms)[0m  [1m[32mINSERT INTO "golf_course_organizers" ("id","person_id","adminrights","created_at","updated_at")
+                     SELECT "id","person_id","adminrights","created_at","updated_at" FROM "agolf_course_organizers"[0m
+  [1m[35m (0.0ms)[0m  [1m[35mDROP TABLE "agolf_course_organizers"[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161020013754"]]
+  [1m[35m (108.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_people_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_people_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_players_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_players_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_players_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_players_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_teams_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_teams_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_teams_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_teams_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_teams_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_teams_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tickets_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tickets_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournament_organizers_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournament_organizers_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournament_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournament_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournaments_on_golf_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournaments_on_golf_course_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_website_admins_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_website_admins_on_person_id' AND type='index'
+[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddGolfCourseToGolfCourseOrganizers (20161020013950)
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (19.8ms)[0m  [1m[35mALTER TABLE "golf_course_organizers" ADD "golf_course_id" integer[0m
+  [1m[35m (0.0ms)[0m  [1m[34mselect sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE  INDEX "index_golf_course_organizers_on_golf_course_id" ON "golf_course_organizers" ("golf_course_id")[0m
+  [1m[35mSQL (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20161020013950"]]
+  [1m[35m (100.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (1.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_golf_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_golf_course_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_golf_course_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_people_on_user_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_people_on_user_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_players_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_players_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_players_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_players_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_teams_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_teams_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_registered_teams_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_registered_teams_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_sponsors_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_sponsors_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_teams_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_teams_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tickets_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tickets_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournament_organizers_on_tournament_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournament_organizers_on_tournament_id' AND type='index'
+[0m
+  [1m[35m (0.5ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournament_organizers_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournament_organizers_on_person_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_tournaments_on_golf_course_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_tournaments_on_golf_course_id' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_reset_password_token' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_users_on_email' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_users_on_email' AND type='index'
+[0m
+  [1m[35m (0.0ms)[0m  [1m[34m            SELECT sql
+            FROM sqlite_master
+            WHERE name='index_website_admins_on_person_id' AND type='index'
+            UNION ALL
+            SELECT sql
+            FROM sqlite_temp_master
+            WHERE name='index_website_admins_on_person_id' AND type='index'
+[0m
+Started GET "/" for ::1 at 2016-10-19 21:47:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+Started GET "/" for ::1 at 2016-10-19 21:47:07 -0400
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (16.5ms)
+  Rendered home_page/index.html.erb within layouts/application (15.0ms)
+Completed 500 Internal Server Error in 521ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (Permission denied @ utime_failed - D:/Web_Dev/GitHub/asdfghjkretb5/tmp/cache/assets/sprockets/v3.0/qU/qUC0QbEyKsEzUviyxv1Ibie2PTzi0LlZ0bkSvjGY7Xo.cache):
+    4:     <title>Xxx</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__277149201_47085084'
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (1002.4ms)
+Completed 200 OK in 4559ms (Views: 4501.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-10-19 21:47:40 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (9.5ms)
+Completed 200 OK in 324ms (Views: 301.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/golf_courses/new" for 127.0.0.1 at 2016-10-19 21:47:43 -0400
+Processing by GolfCoursesController#new as HTML
+  Rendering golf_courses/new.html.erb within layouts/application
+  Rendered golf_courses/new.html.erb within layouts/application (30.3ms)
+Completed 200 OK in 138ms (Views: 120.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/golf_course_organizers" for 127.0.0.1 at 2016-10-19 21:47:46 -0400
+Processing by GolfCourseOrganizersController#index as HTML
+  Rendering golf_course_organizers/index.html.erb within layouts/application
+  [1m[36mGolfCourseOrganizer Load (0.0ms)[0m  [1m[34mSELECT "golf_course_organizers".* FROM "golf_course_organizers"[0m
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.5ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered golf_course_organizers/index.html.erb within layouts/application (70.6ms)
+Completed 200 OK in 185ms (Views: 159.5ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/golf_course_organizers" for 127.0.0.1 at 2016-10-19 21:47:52 -0400
+Processing by GolfCourseOrganizersController#index as HTML
+  Rendering golf_course_organizers/index.html.erb within layouts/application
+  [1m[36mGolfCourseOrganizer Load (0.0ms)[0m  [1m[34mSELECT "golf_course_organizers".* FROM "golf_course_organizers"[0m
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  Rendered golf_course_organizers/index.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 112ms (Views: 98.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-10-19 22:06:42 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.0ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 314ms (Views: 292.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-10-19 22:06:58 -0400
+Processing by Users::SessionsController#new as HTML
+  Rendering users/sessions/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (1.0ms)
+  Rendered users/sessions/new.html.erb within layouts/application (86.0ms)
+Completed 200 OK in 261ms (Views: 246.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/sign_up" for ::1 at 2016-10-19 22:07:01 -0400
+Processing by Users::RegistrationsController#new as HTML
+  Rendering users/registrations/new.html.erb within layouts/application
+  Rendered users/shared/_links.html.erb (0.5ms)
+  Rendered users/registrations/new.html.erb within layouts/application (25.1ms)
+Completed 200 OK in 191ms (Views: 190.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-10-19 22:07:12 -0400
+Processing by Users::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2Btg82sBtDAZ1bF9ZyxfW+zjR7deuS7yl4aVXJLx3S3s7VaY3TjV/7leGftG4jqMqra2f9CC1L2XmPdIDl6oZA==", "user"=>{"email"=>"testing@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "testing@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["email", "testing@test.com"], ["encrypted_password", "$2a$11$IdGewXRiiq/8uuN1Rpw23O7t/hexVrv1xsdeI6flLJcLMVlfEu3Te"], ["created_at", 2016-10-20 02:07:12 UTC], ["updated_at", 2016-10-20 02:07:12 UTC]]
+  [1m[35m (96.1ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = ?, "current_sign_in_at" = ?, "last_sign_in_at" = ?, "current_sign_in_ip" = ?, "last_sign_in_ip" = ?, "updated_at" = ? WHERE "users"."id" = ?[0m  [["sign_in_count", 1], ["current_sign_in_at", 2016-10-20 02:07:12 UTC], ["last_sign_in_at", 2016-10-20 02:07:12 UTC], ["current_sign_in_ip", "::1"], ["last_sign_in_ip", "::1"], ["updated_at", 2016-10-20 02:07:12 UTC], ["id", 5]]
+  [1m[35m (73.7ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/people/new
+Completed 302 Found in 664ms (ActiveRecord: 172.8ms)
+
+
+Started GET "/people/new" for ::1 at 2016-10-19 22:07:12 -0400
+Processing by PeopleController#new as HTML
+  Rendering people/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered people/new.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 121ms (Views: 97.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/people" for ::1 at 2016-10-19 22:07:14 -0400
+Processing by PeopleController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mqZjTTz65mbq/beKa2b940t9a3eCtOYL6W0J5J91/OLnV7pxRrIijETymRJOMxq1EQzYrBOjgdCl4ZPjB4/riw==", "person"=>{"firstname"=>"", "lastname"=>"", "dob"=>"", "location"=>"", "phone"=>""}, "commit"=>"Save"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering people/new.html.erb within layouts/application
+  Rendered people/new.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 116ms (Views: 101.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/people" for ::1 at 2016-10-19 22:07:38 -0400
+Processing by PeopleController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"526FqbzJX7k1wMahAhbx4msU6nJSA64Pt43G1xWT652an1yVxoGbU5vP6DknQxa0MWVZqcMUydT7AVzQjWn89A==", "person"=>{"firstname"=>" joe    ", "lastname"=>"aa     ", "dob"=>"12-31-1999", "location"=>"asd", "phone"=>"123-000-1200"}, "commit"=>"Save"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "people" ("firstname", "lastname", "dob", "phone", "created_at", "updated_at", "location", "user_id") VALUES (?, ?, ?, ?, ?, ?, ?, ?)[0m  [["firstname", "joe"], ["lastname", "aa"], ["dob", "12-31-1999"], ["phone", "123-000-1200"], ["created_at", 2016-10-20 02:07:38 UTC], ["updated_at", 2016-10-20 02:07:38 UTC], ["location", "asd"], ["user_id", 5]]
+  [1m[35m (75.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/people/profile
+Completed 302 Found in 82ms (ActiveRecord: 76.0ms)
+
+
+Started GET "/people/profile" for ::1 at 2016-10-19 22:07:38 -0400
+Processing by PeopleController#profile as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  Rendering people/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered people/profile.html.erb within layouts/application (7.0ms)
+Completed 200 OK in 108ms (Views: 103.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/people/12/edit" for ::1 at 2016-10-19 22:07:40 -0400
+Processing by PeopleController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  Rendering people/edit.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered people/edit.html.erb within layouts/application (4.5ms)
+Completed 200 OK in 112ms (Views: 96.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/people/12" for ::1 at 2016-10-19 22:07:42 -0400
+Processing by PeopleController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+8OkT/71m96v7yTeIG+hVYKTEfvp4JbxytDdVMPbmiIOmTdFetSwd5MK7R7wNQGg6J3xRgaBYzTyVydmvdD2HA==", "person"=>{"firstname"=>"joe", "lastname"=>"aa", "dob"=>"12-31-1999", "location"=>"asd", "phone"=>""}, "commit"=>"Save Person", "id"=>"12"}
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering people/edit.html.erb within layouts/application
+  Rendered people/edit.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 110ms (Views: 104.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/people/profile" for ::1 at 2016-10-19 22:07:50 -0400
+Processing by PeopleController#profile as HTML
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  [1m[36mPerson Load (0.0ms)[0m  [1m[34mSELECT  "people".* FROM "people" WHERE "people"."user_id" = ? LIMIT ?[0m  [["user_id", 5], ["LIMIT", 1]]
+  Rendering people/profile.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered people/profile.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 92ms (Views: 89.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-10-19 22:17:41 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  [1m[36mUser Load (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+Started GET "/" for ::1 at 2016-10-19 22:17:42 -0400
+Processing by HomePageController#index as HTML
+  Rendered home_page/index.html.erb within layouts/application (37.1ms)
+  Rendering home_page/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered home_page/index.html.erb within layouts/application (3.0ms)
+Completed 500 Internal Server Error in 356ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (Permission denied @ utime_failed - D:/Web_Dev/GitHub/asdfghjkretb5/tmp/cache/assets/sprockets/v3.0/qP/qPmv5snMrDw830S6hSICDcnIy7kVEWoFKXhGKT38lG4.cache):
+    4:     <title>Xxx</title>
+    5:     <%= csrf_meta_tags %>
+    6: 
+    7:     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    8:     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    9:   </head>
+   10: 
+  
+app/views/layouts/application.html.erb:7:in `_app_views_layouts_application_html_erb__747872248_46749960'
+Completed 200 OK in 456ms (Views: 407.9ms | ActiveRecord: 0.5ms)
+
+
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.0ms)
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendering D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.5ms)
+  Rendered D:/RailsInstaller/Ruby2.2.0/lib/ruby/gems/2.2.0/gems/actionpack-5.0.0.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (941.6ms)
+Started GET "/tournaments/new" for ::1 at 2016-10-19 22:17:46 -0400
+Processing by TournamentsController#new as HTML
+  Rendering tournaments/new.html.erb within layouts/application
+  Rendered tournaments/new.html.erb within layouts/application (22.1ms)
+Completed 200 OK in 132ms (Views: 112.3ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/tournaments" for ::1 at 2016-10-19 22:17:47 -0400
+Processing by TournamentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+saT5vyfpZzkTluOwJrjnzbmUeJY9ruEoMvjwWBUsh5ZXLvY40aiWmlPkc2A5CDA7fgMx9gVVqj7yTHuj4arMQ==", "tournament"=>{"name"=>"", "description"=>"", "ispublic"=>"0", "extrafeatures"=>""}, "commit"=>"Save Tournament"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering tournaments/new.html.erb within layouts/application
+  Rendered tournaments/new.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 106ms (Views: 102.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/tournaments" for ::1 at 2016-10-19 22:17:54 -0400
+Processing by TournamentsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"/BH1RTDoc/IivCWthJv78/bERdCywlXcdiUxgXfaMjqB4Cx5SqC3GIyzCzWhzhylrLX2CyPVMgc6qauG7yAlUw==", "tournament"=>{"name"=>"asd", "description"=>"q", "ispublic"=>"0", "extrafeatures"=>""}, "commit"=>"Save Tournament"}
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tournaments" ("name", "description", "ispublic", "extrafeatures", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?)[0m  [["name", "asd"], ["description", "q"], ["ispublic", false], ["extrafeatures", ""], ["created_at", 2016-10-20 02:17:54 UTC], ["updated_at", 2016-10-20 02:17:54 UTC]]
+  [1m[35m (92.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tournaments/7
+Completed 302 Found in 101ms (ActiveRecord: 93.3ms)
+
+
+Started GET "/tournaments/7" for ::1 at 2016-10-19 22:17:54 -0400
+Processing by TournamentsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/show.html.erb within layouts/application
+  Rendered tournaments/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 128ms (Views: 94.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tournaments/7/edit" for ::1 at 2016-10-19 22:17:55 -0400
+Processing by TournamentsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/edit.html.erb within layouts/application
+  Rendered tournaments/edit.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 109ms (Views: 95.4ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/tournaments/7" for ::1 at 2016-10-19 22:17:56 -0400
+Processing by TournamentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"L3azDDVf4vRhyXxKvL6NHw/3SUDLY0gCMOz+IYDG/Ak2D4nGPD0NMcOl8ZTj9DarVMEvO44Y8NYO1T+H3IxEEQ==", "tournament"=>{"name"=>"asd", "description"=>"q", "ispublic"=>"1", "extrafeatures"=>""}, "commit"=>"Save Tournament", "id"=>"7"}
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "tournaments" SET "ispublic" = ?, "updated_at" = ? WHERE "tournaments"."id" = ?[0m  [["ispublic", true], ["updated_at", 2016-10-20 02:17:56 UTC], ["id", 7]]
+  [1m[35m (89.8ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tournaments/7
+Completed 302 Found in 98ms (ActiveRecord: 91.8ms)
+
+
+Started GET "/tournaments/7" for ::1 at 2016-10-19 22:17:57 -0400
+Processing by TournamentsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/show.html.erb within layouts/application
+  Rendered tournaments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 131ms (Views: 98.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tournaments/7/edit" for ::1 at 2016-10-19 22:17:57 -0400
+Processing by TournamentsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/edit.html.erb within layouts/application
+  Rendered tournaments/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 107ms (Views: 93.4ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/tournaments/7" for ::1 at 2016-10-19 22:18:00 -0400
+Processing by TournamentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Yo5H/pGrTO9C4VnYu4IilYCjB+kLflWGQp/I7/AXEOJ79300mMmjKuCN1AbkyJkh25Vhkk4F7VJ8pglJrF2o+g==", "tournament"=>{"name"=>"asd", "description"=>"q", "ispublic"=>"1", "extrafeatures"=>""}, "commit"=>"Save Tournament", "id"=>"7"}
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tournaments/7
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/tournaments/7" for ::1 at 2016-10-19 22:18:00 -0400
+Processing by TournamentsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/show.html.erb within layouts/application
+  Rendered tournaments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 102ms (Views: 90.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/home_page/index" for ::1 at 2016-10-19 22:18:01 -0400
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  Rendered home_page/index.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 116ms (Views: 103.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tournaments" for ::1 at 2016-10-19 22:18:12 -0400
+Processing by TournamentsController#index as HTML
+  Rendering tournaments/index.html.erb within layouts/application
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT "tournaments".* FROM "tournaments"[0m
+  Rendered tournaments/index.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 113ms (Views: 93.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/tournaments/7" for ::1 at 2016-10-19 22:18:13 -0400
+Processing by TournamentsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/show.html.erb within layouts/application
+  Rendered tournaments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 102ms (Views: 89.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tournaments/7/edit" for ::1 at 2016-10-19 22:18:14 -0400
+Processing by TournamentsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/edit.html.erb within layouts/application
+  Rendered tournaments/edit.html.erb within layouts/application (3.0ms)
+Completed 200 OK in 112ms (Views: 99.2ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/tournaments/7" for ::1 at 2016-10-19 22:18:16 -0400
+Processing by TournamentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rubtYCtbXCinnGPT2wHZhBTMVMzedSJON7OWPIj59bC3n9eqIjmz7QXw7g2ES2IwT/oyt5sOmpoJilea1LNNqA==", "tournament"=>{"name"=>"", "description"=>"q", "ispublic"=>"1", "extrafeatures"=>""}, "commit"=>"Save Tournament", "id"=>"7"}
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  Rendering tournaments/edit.html.erb within layouts/application
+  Rendered tournaments/edit.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 100ms (Views: 97.3ms | ActiveRecord: 0.5ms)
+
+
+Started PATCH "/tournaments/7" for ::1 at 2016-10-19 22:18:18 -0400
+Processing by TournamentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"YlmO1NIqIfU32xYglLjd1I6t6Lacd9yAs55Sp2+K2QUfqFfoqGLlH5nUOLix7TqC1NxbbQ1gu1v/Esig93DObA==", "tournament"=>{"name"=>"fd", "description"=>"q", "ispublic"=>"1", "extrafeatures"=>""}, "commit"=>"Save Tournament", "id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[33mUPDATE "tournaments" SET "name" = ?, "updated_at" = ? WHERE "tournaments"."id" = ?[0m  [["name", "fd"], ["updated_at", 2016-10-20 02:18:18 UTC], ["id", 7]]
+  [1m[35m (110.5ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tournaments/7
+Completed 302 Found in 123ms (ActiveRecord: 112.5ms)
+
+
+Started GET "/tournaments/7" for ::1 at 2016-10-19 22:18:18 -0400
+Processing by TournamentsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/show.html.erb within layouts/application
+  Rendered tournaments/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 133ms (Views: 105.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tournaments/7/edit" for ::1 at 2016-10-19 22:18:20 -0400
+Processing by TournamentsController#edit as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.0ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/edit.html.erb within layouts/application
+  Rendered tournaments/edit.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 113ms (Views: 99.7ms | ActiveRecord: 0.0ms)
+
+
+Started PATCH "/tournaments/7" for ::1 at 2016-10-19 22:18:21 -0400
+Processing by TournamentsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"nvgzEBPwfOJBtjVcXrLbkHiqSakESZVhN2yt3RzpJSyHgQnaGpKTJ+PauIIB+GAkI5wv0kEyLbUJVWx7QKOdNA==", "tournament"=>{"name"=>"fd", "description"=>"q", "ispublic"=>"0", "extrafeatures"=>""}, "commit"=>"Save Tournament", "id"=>"7"}
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "tournaments" SET "ispublic" = ?, "updated_at" = ? WHERE "tournaments"."id" = ?[0m  [["ispublic", false], ["updated_at", 2016-10-20 02:18:22 UTC], ["id", 7]]
+  [1m[35m (92.1ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/tournaments/7
+Completed 302 Found in 100ms (ActiveRecord: 93.1ms)
+
+
+Started GET "/tournaments/7" for ::1 at 2016-10-19 22:18:22 -0400
+Processing by TournamentsController#show as HTML
+  Parameters: {"id"=>"7"}
+  [1m[36mTournament Load (0.5ms)[0m  [1m[34mSELECT  "tournaments".* FROM "tournaments" WHERE "tournaments"."id" = ? LIMIT ?[0m  [["id", 7], ["LIMIT", 1]]
+  Rendering tournaments/show.html.erb within layouts/application
+  Rendered tournaments/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 146ms (Views: 104.8ms | ActiveRecord: 0.5ms)
+>>>>>>> 3beb1d38fb07071cad95e2493a22cffd7b7b664b
 
 

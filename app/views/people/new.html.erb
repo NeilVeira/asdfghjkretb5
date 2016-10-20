@@ -1,6 +1,21 @@
 <h1>Personal Information</h1>
 <strong>User: <%= current_user.email %></strong>
 <%= form_for :person, url: people_path do |f| %>
+  
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@person.errors.count, "error") %> prohibited
+        this person from being saved:
+      </h2>
+      <ul>
+        <% @person.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
   <p>
     <%= f.label :First_Name %><br>
     <%= f.text_field :firstname %>
@@ -12,7 +27,7 @@
   </p>
   
   <p>
-    <%= f.label :Date_of_birth %><br>
+    <%= f.label :Date_of_birth, "Date of Birth (MM-DD-YYYY)"%><br>
     <%= f.text_field :dob %>
   </p>
   
@@ -22,7 +37,7 @@
   </p>
   
   <p>
-    <%= f.label :phone_number %><br>
+    <%= f.label :phone_number, "Phone Number (XXX-XXX-XXXX)"%><br>
     <%= f.text_field :phone %>
   </p>
  

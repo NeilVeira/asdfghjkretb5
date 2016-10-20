@@ -4,12 +4,16 @@ class TournamentsController < ApplicationController
 	end
   
 	def new
+		@tournament = Tournament.new
 	end
   
 	def create
 		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures))
-		@tournament.save
-		redirect_to @tournament
+		if @tournament.save
+			redirect_to @tournament
+		else
+			render 'new'
+		end
 	end
   
 	def show
@@ -22,8 +26,11 @@ class TournamentsController < ApplicationController
   
 	def update
 		@tournament = Tournament.find(params[:id])
-		@tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures))
-		redirect_to @tournament
+		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures))
+			redirect_to @tournament
+		else
+			render 'edit'
+		end
 	end
 	
 	def destroy

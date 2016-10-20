@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016235848) do
+ActiveRecord::Schema.define(version: 20161020013950) do
 
   create_table "golf_course_organizers", force: :cascade do |t|
     t.integer  "person_id"
-    t.integer  "tournament_id"
     t.integer  "adminrights"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "golf_course_id"
+    t.index ["golf_course_id"], name: "index_golf_course_organizers_on_golf_course_id"
     t.index ["person_id"], name: "index_golf_course_organizers_on_person_id"
-    t.index ["tournament_id"], name: "index_golf_course_organizers_on_tournament_id"
   end
 
   create_table "golf_courses", force: :cascade do |t|
