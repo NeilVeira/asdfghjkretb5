@@ -24239,3 +24239,28 @@ Processing by HomePageController#index as HTML
 Completed 200 OK in 590ms (Views: 585.7ms | ActiveRecord: 0.8ms)
 
 
+Started GET "/" for 99.230.35.175 at 2016-10-20 01:23:26 +0000
+Cannot render console from 99.230.35.175! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (21.8ms)
+Completed 200 OK in 740ms (Views: 723.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 99.230.35.175 at 2016-10-20 01:28:23 +0000
+Cannot render console from 99.230.35.175! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by HomePageController#index as HTML
+  Rendering home_page/index.html.erb within layouts/application
+  Rendered home_page/index.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 50ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/tickets/new" for 99.230.35.175 at 2016-10-20 01:28:29 +0000
+Cannot render console from 99.230.35.175! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+Processing by TicketsController#new as HTML
+  Rendering tickets/new.html.erb within layouts/application
+  Rendered tickets/new.html.erb within layouts/application (25.3ms)
+Completed 200 OK in 62ms (Views: 60.6ms | ActiveRecord: 0.0ms)
+
+

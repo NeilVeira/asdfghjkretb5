@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
     devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     get 'home_page/index'
     get 'people/profile', to: 'people#profile'
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
     resources :people 
     resources :tournaments
     resources :golf_courses
+    resources :tickets
     resources :teams
     resources :tournament_organizers
     resources :golf_course_organizers
