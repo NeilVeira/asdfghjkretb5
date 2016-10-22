@@ -29,8 +29,7 @@ class PeopleController < ApplicationController
     
     def profile
         #shows the profile for the current user
-        @user = current_user
-        @person = Person.find_by user_id: @user.id
+		@person = current_person
         #Different view for the current user.
         render 'profile'
     end
@@ -42,9 +41,7 @@ class PeopleController < ApplicationController
 	end
 	
 	def update
-		#@person = Person.find(params[:id])
-        @user = current_user
-        @person = Person.find_by user_id: @user.id
+		@person = current_person
 		if @person.update(person_params)
 			redirect_to '/people/profile'
 		else
@@ -61,7 +58,7 @@ class PeopleController < ApplicationController
 	
 	private
 		def person_params
-			params.require(:person).permit(:firstname, :lastname, :dob, :phone, :location, :email)
+			params.require(:person).permit(:firstname, :lastname, :dob, :phone, :location, :user_id)
 		end
 	
 end
