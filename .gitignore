@@ -1,5 +1,6 @@
 tmp/*
 *.log
+<<<<<<< HEAD
 *.rbc
 capybara-*.html
 .rspec
@@ -13,3 +14,4 @@ rerun.txt
 pickle-email-*.html
 .byebug_history
 .idea/*
+
