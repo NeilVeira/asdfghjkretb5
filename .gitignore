@@ -1,6 +1,5 @@
 tmp/*
 *.log
-<<<<<<< HEAD
 *.rbc
 capybara-*.html
 .rspec
