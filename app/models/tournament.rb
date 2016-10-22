@@ -1,4 +1,7 @@
 class Tournament < ApplicationRecord
+
+	belongs_to :golf_course
+
 	validates :name, presence: true 
 	validates :description, presence: true
 	

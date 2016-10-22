@@ -1,25 +1,62 @@
-<h1>Tournaments</h1>
-
-<table>
-	<tr>
-		<th>Tournament Name</th>
-		<th>Description</th>
-		<th>IsPublic</th>
-		<th>Extra_features</th>
-	</tr>
+<html>
+	<head>
+		<% c_date = Time.now.to_date %>
+	</head>
 	
-	<% @tournaments.each do |tournament| %>
-		<tr>
-			<td><%= tournament.name %></td>
-			<td><%= tournament.description %></td>
-			<td><%= tournament.ispublic %></td>
-			<td><%= tournament.extrafeatures %></td>
-			<td><%= link_to 'Show', tournament_path(tournament) %></td>
-			<td><%= link_to 'Delete', tournament_path(tournament),
-							method: :delete,
-							data: {confirm: 'Are you sure?'} %></td>
-		</tr>
-	<%end%>
-</table>
-<br>
-<%= link_to 'Home', controller: 'home_page' %>
+	<body>
+		<section>
+			<h1>
+				Current Tournaments
+			</h1>
+		 
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Link</th>
+					<th colspan="3"></th>
+				</tr>
+
+				<% @tournaments.each do |t| %>
+					<% t_date = t.date %>
+					<% days_away = (t_date.to_date - c_date).to_i %>
+					
+					<% if (days_away > 0) %>
+						<tr>
+							<td><%= t.name %></td>
+							<td><%= t.description %></td>
+							<td><%= link_to 'Show', tournament_path(t) %></td>
+						</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</section>
+		
+		<section>
+			<h1>
+				Today's Tournaments
+			</h1>
+			 
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Link</th>
+					<th colspan="3"></th>
+				</tr>
+
+				<% @tournaments.each do |t| %>
+					<% t_date = t.date %>
+					<% days_away = (t_date.to_date - c_date).to_i %>
+					
+					<% if (days_away == 0) %>
+						<tr>
+							<td><%= t.name %></td>
+							<td><%= t.description %></td>
+							<td><%= link_to 'Show', tournaments_path(t) %></td>
+						</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</section>  
+</html>

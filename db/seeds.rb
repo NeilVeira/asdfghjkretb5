@@ -46,12 +46,12 @@ golfcourse_list.each do |name,location|
 end
 
 tournaments_list = [
-	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id],["tourname3","description3", true, "extrafeatures3",GolfCourse.second.id],["tourname4","description4", false, "extrafeatures4",GolfCourse.second.id],
-	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id],["tourname6","desc6", false, "extraf6",GolfCourse.first.id]
+	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2017,9,1) ],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],["tourname3","description3", true, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],["tourname4","description4", false, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
+	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
 ]
 
 tournaments_list.each do |name, description, ispublic, extrafeatures, golfid|
-	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid)
+	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid, date: date)
 end
 
 teams_list = [
