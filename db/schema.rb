@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161020013950) do
+ActiveRecord::Schema.define(version: 20161021021801) do
 
   create_table "golf_course_organizers", force: :cascade do |t|
     t.integer  "person_id"
@@ -80,9 +80,11 @@ ActiveRecord::Schema.define(version: 20161020013950) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "tickettype"
     t.integer  "person_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "tournament_id"
     t.index ["person_id"], name: "index_tickets_on_person_id"
+    t.index ["tournament_id"], name: "index_tickets_on_tournament_id"
   end
 
   create_table "tournament_organizers", force: :cascade do |t|
@@ -103,6 +105,7 @@ ActiveRecord::Schema.define(version: 20161020013950) do
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
     t.integer  "golf_course_id"
+    t.datetime "date"
     t.index ["golf_course_id"], name: "index_tournaments_on_golf_course_id"
   end
 
