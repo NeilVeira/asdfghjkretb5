@@ -8,6 +8,7 @@ class TeamsController < ApplicationController
    end
 
    def new 
+      @team = Team.new
    end
  
    def edit
@@ -15,7 +16,7 @@ class TeamsController < ApplicationController
 
    end
   
-   def create
+   def create()
       @team = Team.new(team_params)
       @team.save
       redirect_to @team
@@ -36,6 +37,6 @@ class TeamsController < ApplicationController
 
    private 
       def team_params
-         params.require(:team).permit(:name, :tournament_id)
+         params.require(:team).permit(:name, :tournament, :tournament_id)
       end 
 end
