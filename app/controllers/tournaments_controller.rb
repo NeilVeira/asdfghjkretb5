@@ -1,9 +1,9 @@
 class TournamentsController < ApplicationController
 	def index
 		@tournaments = Tournament.all
-		@tournaments.each do |t|
-			t.date = Date.new(2017,2,3) #Note: this line should be destroyed later, but I need it for testing. - Anthony
-		end
+	#	@tournaments.each do |t|
+	#		t.date = Date.new(2017,2,3) #Note: this line should be destroyed later, but I need it for testing. - Anthony
+	#	end
 	end
   
 	def new
@@ -21,7 +21,7 @@ class TournamentsController < ApplicationController
   
 	def show
 		@tournament = Tournament.find(params[:id])
-		@tournament.date = Date.new(2017,2,3)  # Note: this line should be destroyed later, but I need it for testing. - Anthony
+		#@tournament.date = Date.new(2017,2,3)  # Note: this line should be destroyed later, but I need it for testing. - Anthony
 	end
 	
 	def edit

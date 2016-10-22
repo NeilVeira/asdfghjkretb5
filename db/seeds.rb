@@ -50,7 +50,7 @@ tournaments_list = [
 	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
 ]
 
-tournaments_list.each do |name, description, ispublic, extrafeatures, golfid|
+tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date|
 	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid, date: date)
 end
 
