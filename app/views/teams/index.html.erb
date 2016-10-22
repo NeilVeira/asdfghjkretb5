@@ -9,7 +9,7 @@
    <% @teams.each do |team| %>
       <tr>
          <td><%= team.name %></td>
-         <td><%= team.tournament_id %></td>
+         <td><%= team.tournament %></td>
          <td><%= link_to 'Team', team_path(team) %></td>
          <td><%= link_to 'Delete', team_path(team), method: :delete, data: {confirm: 'Delete team?'} %></td>
 

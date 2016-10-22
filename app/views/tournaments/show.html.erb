@@ -1,13 +1,41 @@
-<%= link_to 'Home', controller: 'home_page' %>
-
-<h1> <%=@tournament.name%> </h1>
-<br>
-<h2>Tournament Information</h2>
-<p>
-    <strong>Name: </strong><%=@tournament.name%><br>
-	<strong>Description: </strong><%=@tournament.description%><br>
-    <strong>Public_or_private: </strong><%=@tournament.ispublic%><br>
-    <strong>Extra_Features: </strong><%=@tournament.extrafeatures%><br>
-</p>
-
-<%= link_to 'Edit', edit_tournament_path(@tournament) %>
+<html>	 
+	<body>
+		<section>
+			<h1>
+				<%= @tournament.name %>
+			</h1>
+			<p>
+				<%= @tournament.description %>
+			</p>
+		</section>
+		
+		<section>
+			<h2>
+				<strong>Where?</strong>
+			</h2>
+			<p>
+				<%= @tournament.golf_course.name %>
+				<%= @tournament.golf_course.location %>
+			</p>
+			
+			<h2>
+				<strong>When?</strong>
+			</h2>
+			<p>
+				<%= t_date = @tournament.date.to_date %>
+			</p>
+			<p>
+				<% c_date = Time.now.to_date %>
+				<% days_away = (t_date - c_date).to_i %>
+				
+				<% if (days_away > 0) %>
+					That's in <%= days_away %> days!
+				<% elsif (days_away == 0) %>
+					That's today!
+				<% else %>
+					This tounrament is over!
+				<% end %>
+			</p>
+		</section>
+	</body>
+</html>

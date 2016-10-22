@@ -5,13 +5,36 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+users_list = [
+    ["1@email.com","password","password"],
+    ["2@email.com","password","password"],
+    ["3@email.com","password","password"],
+    ["4@email.com","password","password"],
+    ["5@email.com","password","password"],
+    ["6@email.com","password","password"],
+    ["7@email.com","password","password"],
+]
+users_list.each do |email, password, valid_password|
+    user = User.new
+    user.email = email
+    user.password = password
+    user.password_confirmation = valid_password
+    user.save!
+end
+
 people_list = [
-	["FirstName1", "LastName1", "dob1", "phone1", "loc1"],["FirstName2", "LastName2", "dob2",  "phone2", "loc2"],["FirstName3", "LastName3", "dob3", "address3", "phone3", "loc3"],
-["FN3", "LN3", "dob3",  "phone3", "loc4"],["FN4", "LN4", "dob4",  "phone4","loc5"],["FN5", "LN5", "d5",  "ph5","loc7"],["FN6", "LN6", "d6",  "ph6","loc8"]
+	["FirstName1", "LastName1", "01-01-1991", "111-111-1111", "loc1",User.first.id],
+    ["FirstName2", "LastName2", "02-02-1992", "222-222-2222", "loc2",User.second.id],
+    ["FirstName3", "LastName3", "03-03-1993", "333-333-3333", "loc3",User.third.id],
+    ["FN3", "LN3", "04-14-1994", "444-444-4444", "loc4",User.fourth.id],
+    ["FN4", "LN4", "05-15-1995", "555-555-5555", "loc5",User.fifth.id],
+    ["FN5", "LN5", "06-26-1996", "666-666-6666", "loc6",User.where(id: 6)],
+    ["FN6", "LN6", "10-30-1950", "777-777-7777", "loc7",User.where(id: 7)]
 ]
 
-people_list.each do |firstname,lastname,dob,phone,email,location|
-	Person.create(firstname: firstname, lastname: lastname, dob: dob, phone: phone, location: location)
+people_list.each do |firstname,lastname,dob,phone,location,user_id|
+	Person.create(firstname: firstname, lastname: lastname, dob: dob, phone: phone, location: location, user_id: user_id)
 end
 
 golfcourse_list = [
@@ -23,12 +46,12 @@ golfcourse_list.each do |name,location|
 end
 
 tournaments_list = [
-	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id],["tourname3","description3", true, "extrafeatures3",GolfCourse.second.id],["tourname4","description4", false, "extrafeatures4",GolfCourse.second.id],
-	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id],["tourname6","desc6", false, "extraf6",GolfCourse.first.id]
+	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2017,9,1) ],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],["tourname3","description3", true, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],["tourname4","description4", false, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
+	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
 ]
 
-tournaments_list.each do |name, description, ispublic, extrafeatures, golfid|
-	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid)
+tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date|
+	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid, date: date)
 end
 
 teams_list = [
@@ -40,7 +63,11 @@ teams_list.each do |name, tournamentid|
 end
 
 tickets_list = [
-	[1,Person.first.id],[2,Person.second.id],[3,Person.third.id],[2,Person.fourth.id],[1,Person.fifth.id]
+	[1,Person.first.id],
+    [2,Person.second.id],
+    [3,Person.third.id],
+    [2,Person.fourth.id],
+    [1,Person.fifth.id]
 ]
 
 tickets_list.each do |tickettype, person_id|
@@ -72,11 +99,11 @@ tournament_organizers_list.each do | person_id, tournament_id, adminrights|
 end
 
 golf_course_organizers_list = [
-	[Person.first.id,Tournament.first.id, 0],[Person.second.id,Tournament.first.id, 1],[Person.third.id,Tournament.third.id, 1],[Person.fourth.id,Tournament.first.id, 0]
+	[Person.first.id,GolfCourse.first.id, 0],[Person.second.id,GolfCourse.first.id, 1],[Person.third.id,GolfCourse.third.id, 1],[Person.fourth.id,GolfCourse.first.id, 0]
 ]
 
-golf_course_organizers_list.each do | person_id, tournament_id, adminrights|
-	GolfCourseOrganizer.create(person_id: person_id, tournament_id: tournament_id, adminrights: adminrights)
+golf_course_organizers_list.each do | person_id, golf_course_id, adminrights|
+	GolfCourseOrganizer.create(person_id: person_id, golf_course_id: golf_course_id, adminrights: adminrights)
 end
 
 sponsors_list = [

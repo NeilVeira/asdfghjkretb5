@@ -1,12 +1,9 @@
 tmp/*
 *.log
-development.sqlite3
-test.sqlite3
 *.rbc
 capybara-*.html
 .rspec
 /log
-/db/*.sqlite3
 /db/*.sqlite3-journal
 /public/system
 /coverage/
@@ -16,3 +13,4 @@ rerun.txt
 pickle-email-*.html
 .byebug_history
 .idea/*
+
