@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161021021801) do
+ActiveRecord::Schema.define(version: 20161023231949) do
+
+  create_table "addresses", force: :cascade do |t|
+    t.string   "type"
+    t.integer  "apartmentNumber"
+    t.integer  "streetNumber"
+    t.string   "streetName"
+    t.string   "city"
+    t.string   "province"
+    t.string   "country"
+    t.string   "postalCode"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "golf_course_organizers", force: :cascade do |t|
     t.integer  "person_id"
