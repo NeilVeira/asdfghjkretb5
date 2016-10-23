@@ -7,30 +7,38 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 users_list = [
-    ["1@email.com","password","password"],
-    ["2@email.com","password","password"],
-    ["3@email.com","password","password"],
-    ["4@email.com","password","password"],
-    ["5@email.com","password","password"],
-    ["6@email.com","password","password"],
-    ["7@email.com","password","password"],
+    ["1@email.com","password"],
+    ["2@email.com","password"],
+    ["3@email.com","password"],
+    ["4@email.com","password"],
+    ["5@email.com","password"],
+    ["6@email.com","password"],
+    ["7@email.com","password"],
+    ["admin1@email.com","password"],
+    ["admin2@email.com","password"],
+    ["admin3@email.com","password"],
 ]
-users_list.each do |email, password, valid_password|
+users_list.each do |email, password|
     user = User.new
     user.email = email
     user.password = password
-    user.password_confirmation = valid_password
+    user.password_confirmation = password
     user.save!
 end
 
+
+#IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
 people_list = [
 	["FirstName1", "LastName1", "01-01-1991", "111-111-1111", "loc1",User.first.id],
     ["FirstName2", "LastName2", "02-02-1992", "222-222-2222", "loc2",User.second.id],
     ["FirstName3", "LastName3", "03-03-1993", "333-333-3333", "loc3",User.third.id],
     ["FN3", "LN3", "04-14-1994", "444-444-4444", "loc4",User.fourth.id],
     ["FN4", "LN4", "05-15-1995", "555-555-5555", "loc5",User.fifth.id],
-    ["FN5", "LN5", "06-26-1996", "666-666-6666", "loc6",User.where(id: 6)],
-    ["FN6", "LN6", "10-30-1950", "777-777-7777", "loc7",User.where(id: 7)]
+    ["FN5", "LN5", "06-26-1996", "666-666-6666", "loc6",6],
+    ["FN6", "LN6", "10-30-1950", "777-777-7777", "loc7",7],
+    ["Admin1", "XXX", "01-01-2000", "012-345-6789", "XXX HQ",8],
+    ["Admin2", "XXX", "01-01-2000", "012-345-6789", "XXX HQ",9],
+    ["Admin3", "XXX", "01-01-2000", "012-345-6789", "XXX HQ",10],
 ]
 
 people_list.each do |firstname,lastname,dob,phone,location,user_id|
@@ -82,9 +90,7 @@ registered_team_list.each do |name,  person_id, tournament_id|
 	RegisteredTeam.create(name: name, person_id: person_id, tournament_id: tournament_id)
 end
 
-website_admins_list = [
-	[ Person.first.id,1], [Person.second.id,0],[Person.third.id,2],[Person.fourth.id,0],[Person.fifth.id,2]
-]
+website_admins_list = [[8, 0], [9, 1], [10, 2]]
 
 website_admins_list.each do |person_id, adminrights|
 	WebsiteAdmin.create(person_id: person_id, adminrights: adminrights)

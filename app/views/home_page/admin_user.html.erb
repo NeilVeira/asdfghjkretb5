@@ -1,0 +1,34 @@
+<h1>XXX Golf Tournaments</h1>
+<br>
+<strong>Viewing as administrator</strong>
+<br>
+<strong><%= current_user.email %></strong><br>
+<%= link_to 'Profile', controller: "people", action: "profile" %><br> 
+<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<br>
+<p>
+  <%=link_to 'View registered users' , people_path%> 
+</p>
+<p>
+  <%=link_to 'View Tournaments', tournaments_path%>
+<br>
+<p>
+  <%=link_to 'tournament_organizers', tournament_organizers_path%>
+<br>
+<p>
+  <%=link_to 'golf_course_organizers', golf_course_organizers_path%>
+<br>
+<p>
+  <%=link_to 'Team Details', teams_path%>
+<br>
+<p>
+  <%=link_to 'New Team', new_team_path%>
+<br>
+<p>
+  <%=link_to 'Website Admins', website_admins_path%>
+<br>
+<p>
+  <%=link_to 'Players Page', players_path%>
+<br>
+<p>
+  <%=link_to 'Sponsors Page', sponsors_path%>

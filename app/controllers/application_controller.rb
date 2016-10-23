@@ -8,9 +8,22 @@ class ApplicationController < ActionController::Base
 		return Person.find_by user_id: @user.id
 	end
 	
-	def current_admin
+	def current_website_admin
 		@person = current_person
 		return WebsiteAdmin.find_by person_id: @person.id
-	return
+	end
   
+	def user_is_admin?
+		if user_signed_in?
+			@website_admin = current_website_admin
+			if @website_admin
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
+	
 end
