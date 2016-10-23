@@ -1,4 +1,8 @@
 class TournamentsController < ApplicationController
+	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+	#TODO: edit, update, and destroy actions should require more than logging in - user
+	#should be the organizer for the current tournament
+
 	def index
 		@tournaments = Tournament.all
 	#	@tournaments.each do |t|

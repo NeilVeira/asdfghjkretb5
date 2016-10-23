@@ -1,7 +1,6 @@
 class PeopleController < ApplicationController
-    before_action :authenticate_user!
-    skip_before_action :authenticate_user!, only: [:new, :create]
-    #TODO: Only allow website_admins to access index and destroy (and show?)
+    before_action :authenticate_user!, only: [:profile, :edit, :update]
+	before_action :authenticate_admin!, only: [:index, :show, :destroy]
 
 	def index
 		@people = Person.all

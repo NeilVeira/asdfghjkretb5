@@ -26,4 +26,13 @@ class ApplicationController < ActionController::Base
 		end
 	end
 	
+	def authenticate_admin!
+		if user_is_admin?
+			return true
+		else
+			render 'auth_admin'
+			return false
+		end
+	end
+	
 end

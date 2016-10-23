@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+	before_action :authenticate_user!
+	#TODO: require that user is organizer for current tournament
+
    def index
       @teams = Team.all
    end
