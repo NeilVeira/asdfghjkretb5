@@ -18,14 +18,14 @@ users_list = [
     ["admin2@email.com","password"],
     ["admin3@email.com","password"],
 ]
-"""users_list.each do |email, password|
+users_list.each do |email, password|
     user = User.new
     user.email = email
     user.password = password
     user.password_confirmation = password
     user.save!
 end
-"""
+
 
 #IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
 people_list = [
@@ -60,7 +60,7 @@ address_list.each do |addressType, apartmentNumber, streetNumber, streetName, ci
 end
 
 tournaments_list = [
-	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2017,9,1) ],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],["tourname3","description3", true, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],["tourname4","description4", false, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
+	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2016,10,24) ],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
 	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
 ]
 

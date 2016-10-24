@@ -6,34 +6,6 @@
 	<body>
 		<section>
 			<h1>
-				Current Tournaments
-			</h1>
-		 
-			<table>
-				<tr>
-					<th>Name</th>
-					<th>Description</th>
-					<th>Link</th>
-					<th colspan="3"></th>
-				</tr>
-
-				<% @tournaments.each do |t| %>
-					<% t_date = t.date %>
-					<% days_away = (t_date.to_date - c_date).to_i %>
-					
-					<% if (days_away > 0) %>
-						<tr>
-							<td><%= t.name %></td>
-							<td><%= t.description %></td>
-							<td><%= link_to 'Show', tournament_path(t) %></td>
-						</tr>
-					<% end %>
-				<% end %>
-			</table>
-		</section>
-		
-		<section>
-			<h1>
 				Today's Tournaments
 			</h1>
 			 
@@ -49,7 +21,7 @@
 					<% t_date = t.date %>
 					<% days_away = (t_date.to_date - c_date).to_i %>
 					
-					<% if (days_away == 0) %>
+					<% if (days_away == 0 && (t.ispublic == true) ) %>
 						<tr>
 							<td><%= t.name %></td>
 							<td><%= t.description %></td>
@@ -58,5 +30,34 @@
 					<% end %>
 				<% end %>
 			</table>
-		</section>  
+		</section> 
+
+		<section>
+			<h1>
+				Upcoming Tournaments
+			</h1>
+		 
+			<table>
+				<tr>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Link</th>
+					<th colspan="3"></th>
+				</tr>
+
+				<% @tournaments.each do |t| %>
+					<% t_date = t.date %>
+					<% days_away = (t_date.to_date - c_date).to_i %>
+					
+					<% if (days_away > 0 && (t.ispublic == true) ) %>
+						<tr>
+							<td><%= t.name %></td>
+							<td><%= t.description %></td>
+							<td><%= link_to 'Show', tournament_path(t) %></td>
+						</tr>
+					<% end %>
+				<% end %>
+			</table>
+		</section>	
+	</body>
 </html>
