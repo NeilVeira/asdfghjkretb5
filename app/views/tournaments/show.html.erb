@@ -15,9 +15,13 @@
 			</h2>
 			<p>
 				<%= @tournament.golf_course.name %>
-				
 			</p>
+			<p>
+				<%= @tournament.golf_course.location %>
+			</p>
+		</section>
 			
+		<section>
 			<h2>
 				<strong>When?</strong>
 			</h2>
@@ -37,5 +41,9 @@
 				<% end %>
 			</p>
 		</section>
+		
+		<p>
+			<td><%= link_to 'Back', tournaments_path %></td>
+		</p>
 	</body>
 </html>
