@@ -41,6 +41,7 @@ class PeopleController < ApplicationController
 		#@person = Person.find(params[:id])
         @user = current_user
         @person = Person.find_by user_id: @user.id
+		@person.build_address if @person.address.nil?
 	end
 	
 	def update

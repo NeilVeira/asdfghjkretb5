@@ -8,7 +8,7 @@ class Person < ApplicationRecord
 		message: "Invalid date of birth"}
 	validates :phone, presence: true, format: { with: /\A\d\d\d-\d\d\d-\d\d\d\d\z/,
 		message: "Invalid phone number"}
-	validates :location, presence: true
+	
 	validates :user, presence: true
 	
 	after_validation :cleanup

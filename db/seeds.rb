@@ -26,37 +26,58 @@ users_list.each do |email, password|
     user.save!
 end
 
-
-#IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
-people_list = [
-	["FirstName1", "LastName1", "01-01-1991", "111-111-1111", "loc1",User.first.id],
-    ["FirstName2", "LastName2", "02-02-1992", "222-222-2222", "loc2",User.second.id],
-    ["FirstName3", "LastName3", "03-03-1993", "333-333-3333", "loc3",User.third.id],
-    ["FN3", "LN3", "04-14-1994", "444-444-4444", "loc4",User.fourth.id],
-    ["FN4", "LN4", "05-15-1995", "555-555-5555", "loc5",User.fifth.id],
-    ["FN5", "LN5", "06-26-1996", "666-666-6666", "loc6",6],
-    ["FN6", "LN6", "10-30-1950", "777-777-7777", "loc7",7],
-    ["Admin1", "XXX", "01-01-2000", "012-345-6789", "XXX HQ",8],
-    ["Admin2", "XXX", "01-01-2000", "012-345-6789", "XXX HQ",9],
-    ["Admin3", "XXX", "01-01-2000", "012-345-6789", "XXX HQ",10],
-]
-
-people_list.each do |firstname,lastname,dob,phone,location,user_id|
-	Person.create(firstname: firstname, lastname: lastname, dob: dob, phone: phone, location: location, user_id: user_id)
-end
-
-golfcourse_list = [ ["Scarlett Woods Golf Course","1000 Jane St, York, ON M6N 4E2"],["Don Valley Golf Course","4200 Yonge St, North York, ON M2P 1N9"],["Flemingdon Park Golf Club","155 St Dennis Dr, North York, ON M3C 2S2"],["Chambers Bay","6320 Grandview Dr W, University Place, WA 98467, USA"],["Pebble Beach Golf Links","1700 17-Mile Drive, Pebble Beach, CA 93953, USA"],["Bethpage Black Course","99 Quaker Meeting House Rd, Farmingdale, NY 11735, USA"],["Normandy Shores Golf Course","2401 Biarritz Dr, Miami Beach, FL 33141, USA"] ]
-
-
-golfcourse_list.each do |name,location|
-	GolfCourse.create(name: name, location: location)
-end
-
-
-address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"],["p",5,435,"Bloor Street","Toronto","Ontario","Canada","M3H 2V6"],["p",7,6342,"Lawrence Avenue","Calgary","Alberta","Canada","H5J 7B2"],["g",24,43,"Fleming Road","Farmingdale","New York","USA","43353533"],["g",244,1565,"Carry Road","Scottsdale","Ontario","Canada","R6J 2F6"],["g",65,112,"Phone Avenue","RedClock","Utah","USA","94868220"]]
+address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"],
+				["p",5,435,"Bloor Street","Toronto","Ontario","Canada","M3H 2V6"],
+				["p",7,6342,"Lawrence Avenue","Calgary","Alberta","Canada","H5J 7B2"],
+				["p",0,1234,"Lawrence Avenue East","Toronto","Ontario","Canada","M1P 2L9"],
+				["p",0,10,"Hogarth Ave","Toronto","Ontario","Canada","M4K 2P3"],
+				["p",0,40,"College Street","Toronto","Ontario","Canada","M5G 2J3"],
+				["p",0,21,"Calista Street","Woodbridge","Ontario","Canada","L4H 3H8"],
+				["p",0,10,"King's College Rd","Toronto","Ontario","Canada","M5S 3G8"],
+				["g",24,43,"Fleming Road","Farmingdale","New York","USA","43353533"],
+				["g",244,1565,"Carry Road","Scottsdale","Ontario","Canada","R6J 2F6"],
+				["g",65,112,"Phone Avenue","RedClock","Utah","USA","94868220"],
+				["g", 0, 1000, "Jane Street", "Toronto", "Ontario", "Canada", "M6N 4E2"],
+				["g", 0, 4200, "Yonge Street", "Toronto", "Ontario", "Canada", "M2P 1N9"],
+				["g", 0, 155, "Saint Dennis Drive", "Toronto", "Ontario", "Canada", "M3C 2S2"],
+				["g", 0, 6320, "Grandview Drive West", "University Place", "Washington", "USA", "98467"],
+				["g", 0, 1700, "17-Mile Drive", "Pebble Beach", "California", "USA", "93953"],
+				["g", 0, 99, "Quaker Meeting House Road", "Farmingdale", "New York", "USA", "11735"],
+				["g", 0, 2401, "Biarritz Drive", "Miami Beach", "Florida", "USA", "33141"],]
 
 address_list.each do |addressType, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
     Address.create(addressType: addressType, apartmentNumber: apartmentNumber, streetNumber: streetNumber, streetName: streetName,city: city, province: province, country: country, postalCode: postalCode)
+end
+
+golfcourse_list = [ ["Scarlett Woods Golf Course", 6],
+					["Don Valley Golf Course", 7],
+					["Flemingdon Park Golf Club", 8],
+					["Chambers Bay", 9],
+					["Pebble Beach Golf Links", 10],
+					["Bethpage Black Course", 11],
+					["Normandy Shores Golf Course", 12] ]
+
+
+golfcourse_list.each do |name,address_id|
+	GolfCourse.create(name: name, address_id: address_id)
+end
+
+#IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
+people_list = [
+	["FirstName1", "LastName1", "01-01-1991", "111-111-1111", Address.first.id, User.first.id],
+    ["FirstName2", "LastName2", "02-02-1992", "222-222-2222", Address.second.id, User.second.id],
+    ["FirstName3", "LastName3", "03-03-1993", "333-333-3333", Address.third.id, User.third.id],
+    ["FN3", "LN3", "04-14-1994", "444-444-4444", Address.fourth.id, User.fourth.id],
+    ["FN4", "LN4", "05-15-1995", "555-555-5555", Address.fifth.id, User.fifth.id],
+    ["FN5", "LN5", "06-26-1996", "666-666-6666", 6, 6],
+    ["FN6", "LN6", "10-30-1950", "777-777-7777", 7, 7],
+    ["Admin1", "XXX", "01-01-2000", "012-345-6789", 8, 8],
+    ["Admin2", "XXX", "01-01-2000", "012-345-6789", 9, 9],
+    ["Admin3", "XXX", "01-01-2000", "012-345-6789", 10, 10],
+]
+
+people_list.each do |firstname,lastname,dob,phone,address_id,user_id|
+	Person.create(firstname: firstname, lastname: lastname, dob: dob, phone: phone, address_id: address_id, user_id: user_id)
 end
 
 tournaments_list = [
