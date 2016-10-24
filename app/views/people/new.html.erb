@@ -1,6 +1,6 @@
 <h1>Personal Information</h1>
 <strong>User: <%= current_user.email %></strong>
-<%= form_for :person, url: people_path do |f| %>
+<%= form_for @person, url: people_path do |f| %>
   
   <% if @person.errors.any? %>
     <div id="error_explanation">
@@ -40,6 +40,45 @@
     <%= f.label :phone_number, "Phone Number (XXX-XXX-XXXX)"%><br>
     <%= f.text_field :phone %>
   </p>
+ 
+  <%= f.fields_for :address do |address| %>
+		
+		<p>
+		<%= address.label :apartmentNumber %>
+		<%= address.text_field :apartmentNumber %>
+		</p>
+		
+		<p>
+		<%= address.label :streetNumber %>
+		<%= address.text_field :streetNumber %>
+		</p>
+		
+		<p>
+		<%= address.label :streetName %>
+		<%= address.text_field :streetName %>
+		</p>
+		
+		<p>
+		<%= address.label :city %>
+		<%= address.text_field :city %>
+		</p>
+		
+		<p>
+		<%= address.label :province %>
+		<%= address.text_field :province %>
+		</p>
+		
+		<p>
+		<%= address.label :country %>
+		<%= address.text_field :country %>
+		</p>
+		
+		<p>
+		<%= address.label :postalCode %>
+		<%= address.text_field :postalCode %>
+		</p>
+		
+	<% end %>
  
   <p>
     <%= f.submit "Save" %>
