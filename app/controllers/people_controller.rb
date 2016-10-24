@@ -29,7 +29,10 @@ class PeopleController < ApplicationController
     def profile
         #shows the profile for the current user
 		@person = current_person
-        #Different view for the current user.
+		@players = Player.where("person_id = ?", @person.id)
+		@tournament_organizers = TournamentOrganizer.where("person_id = ?", @person.id)
+		@sponsors = Sponsor.where("person_id = ?", @person.id)
+		#TODO: may want to sort these lists
         render 'profile'
     end
 	

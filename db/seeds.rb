@@ -60,8 +60,12 @@ address_list.each do |addressType, apartmentNumber, streetNumber, streetName, ci
 end
 
 tournaments_list = [
-	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2016,10,24) ],["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
-	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
+	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2016,10,24) ],
+	["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],
+	["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],
+	["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
+	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],
+	["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
 ]
 
 tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date|
@@ -103,7 +107,10 @@ website_admins_list.each do |person_id, adminrights|
 end
 
 tournament_organizers_list = [
-	[Person.first.id,Tournament.first.id, 0],[Person.second.id,Tournament.first.id, 1],[Person.third.id,Tournament.third.id, 1],[Person.fourth.id,Tournament.first.id, 0]
+	[Person.first.id,Tournament.first.id, 0],
+	[Person.second.id,Tournament.second.id, 1],
+	[Person.third.id,Tournament.third.id, 1],
+	[Person.fourth.id,Tournament.fourth.id, 0]
 ]
 
 tournament_organizers_list.each do | person_id, tournament_id, adminrights|
@@ -119,7 +126,11 @@ golf_course_organizers_list.each do | person_id, golf_course_id, adminrights|
 end
 
 sponsors_list = [
-	[Person.third.id,Tournament.first.id],[Person.fifth.id,Tournament.first.id],[Person.third.id,Tournament.third.id],[Person.fourth.id,Tournament.first.id]
+	[Person.first.id,Tournament.fifth.id],
+	[Person.third.id,Tournament.first.id],
+	[Person.third.id,Tournament.second.id],
+	[Person.fourth.id,Tournament.second.id],
+	[Person.fifth.id,Tournament.first.id],
 ]
 
 sponsors_list.each do |person_id, tournament_id|
@@ -127,7 +138,18 @@ sponsors_list.each do |person_id, tournament_id|
 end
 
 players_list = [
-	[Person.third.id,Tournament.first.id],[Person.fifth.id,Tournament.first.id],[Person.third.id,Tournament.third.id],[Person.fourth.id,Tournament.first.id]
+	[Person.first.id,Tournament.second.id],
+	[Person.first.id,Tournament.third.id],
+	[Person.first.id,Tournament.fourth.id],
+	[Person.second.id,Tournament.first.id],
+	[Person.second.id,Tournament.fourth.id],
+	[Person.third.id,Tournament.fourth.id],
+	[Person.third.id,Tournament.fifth.id],
+	[Person.third.id,6],
+	[Person.fourth.id,Tournament.first.id],
+	[Person.fourth.id,Tournament.third.id],
+	[Person.fifth.id,Tournament.third.id],
+	[Person.fifth.id,Tournament.fourth.id],
 ]
 
 players_list.each do |person_id, tournament_id|
