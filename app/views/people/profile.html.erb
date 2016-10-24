@@ -19,4 +19,32 @@
 ...
 <h3>Tournaments Sponsored</h3>
 ...
+<%
+  # templates: functions in people_helper.rb
+
+  @sponsorIn = get_all_sponsors # sponsor objects
+
+  @sponsorIn.each do |sponsor|%>
+    <b> person_id: </b> </b><%= sponsor.person_id %>
+    <b> tournament_id: </b> </b><%= sponsor.tournament_id %>
+    <%
+  end
+%>
+
+<br>
+
+<%= @tournamentsSponsorIn = get_all_tournaments_as "sponsor" # tournament objects
+
+    @tournamentsSponsorIn.each do |tournament|
+      puts tournament
+    end
+%>
 </p>
+
+
+<%= @golfCoursesOrganizerIn = get_all_golf_courses_as "organizer" # golf course objects
+
+    @golfCoursesOrganizerIn.each do |golfCourse|
+      puts golfCourse
+    end
+%>
