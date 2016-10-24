@@ -3,8 +3,10 @@ class TournamentsController < ApplicationController
 	#TODO: edit, update, and destroy actions should require more than logging in - user
 	#should be the organizer for the current tournament
 
+	helper_method :sort_column, :sort_direction
+	
 	def index
-		@tournaments = Tournament.all
+		@tournaments = Tournament.order(sort_column + " " + sort_direction)
 	#	@tournaments.each do |t|
 	#		t.date = Date.new(2017,2,3) #Note: this line should be destroyed later, but I need it for testing. - Anthony
 	#	end
@@ -45,5 +47,15 @@ class TournamentsController < ApplicationController
 		@tournament = Tournament.find(params[:id])
 		@tournament.destroy
 		redirect_to tournaments_path
+	end
+	
+	private
+	
+	def sort_column
+		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
+	end
+	
+	def sort_direction
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
 end
