@@ -8,4 +8,44 @@
   <%= @golf_course.location %>
 </p>
 
+<p>
+  <strong>Golf Course AddressType:</strong>
+  <%= @golf_course.address.addressType %>
+</p>
+
+<p>
+  <strong>Golf Course ApartmentNumber:</strong>
+  <%= @golf_course.address.apartmentNumber %>
+</p>
+
+<p>
+  <strong>Golf Course StreetNumber:</strong>
+  <%= @golf_course.address.streetNumber %>
+</p>
+
+<p>
+  <strong>Golf Course StreetName:</strong>
+  <%= @golf_course.address.streetName %>
+</p>
+
+<p>
+  <strong>Golf Course City:</strong>
+  <%= @golf_course.address.city %>
+</p>
+
+<p>
+  <strong>Golf Course Province:</strong>
+  <%= @golf_course.address.province %>
+</p>
+
+<p>
+  <strong>Golf Course Country:</strong>
+  <%= @golf_course.address.country %>
+</p>
+
+<p>
+  <strong>Golf Course PostalCode:</strong>
+  <%= @golf_course.address.postalCode %>
+</p>
+
 <%= link_to 'Home', controller: 'home_page' %>
