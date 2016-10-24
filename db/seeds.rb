@@ -55,8 +55,8 @@ end
 
 address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"],["p",5,435,"Bloor Street","Toronto","Ontario","Canada","M3H 2V6"],["p",7,6342,"Lawrence Avenue","Calgary","Alberta","Canada","H5J 7B2"],["g",24,43,"Fleming Road","Farmingdale","New York","USA","43353533"],["g",244,1565,"Carry Road","Scottsdale","Ontario","Canada","R6J 2F6"],["g",65,112,"Phone Avenue","RedClock","Utah","USA","94868220"]]
 
-address_list.each do |type, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
-    Address.create(type: type, apartmentNumber: apartmentNumber, streetNumber: streetNumber, streetName: streetName,city: city, province: province, country: country, postalCode: postalCode)
+address_list.each do |addressType, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
+    Address.create(addressType: addressType, apartmentNumber: apartmentNumber, streetNumber: streetNumber, streetName: streetName,city: city, province: province, country: country, postalCode: postalCode)
 end
 
 tournaments_list = [
