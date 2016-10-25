@@ -21,24 +21,23 @@ module PeopleHelper
   end
 
   def find_tournaments_for (listOfPeople)
-    tournamentList = []
+    tournamentIds = []
 
     listOfPeople.each do |person|
-      tournamentList << person.tournament
+      tournamentIds << person.tournament.id
     end
 
-    return tournamentList
+    TournamentList = Tournament.where(id: @tournamentIds) #.order(sort_column + " " + sort_direction)
   end
 
   def find_golf_courses_for (listOfPeople)
-    golfCourseList = []
+    golfCourseIds = []
 
     listOfPeople.each do |person|
-      golfCourseList << person.golf_course
+      golfCourseIds << person.golf_course.id
     end
 
-    return golfCourseList
-
+    return GolfCourse.where(id: @golfCourseIds).order(sort_column + " " + sort_direction)
   end
 
   public
@@ -46,7 +45,6 @@ module PeopleHelper
   def get_all_tournaments_as (peopleType)
     case peopleType
       when "sponsor"
-          puts "here"
           return find_tournaments_for (get_all_sponsors)
       when "player"
           return find_tournaments_for (get_all_players)

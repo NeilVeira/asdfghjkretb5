@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person
+	helper_method :current_person, :sort_column, :sort_direction
 	
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in

@@ -3,8 +3,6 @@ class TournamentsController < ApplicationController
 	#TODO: edit, update, and destroy actions should require more than logging in - user
 	#should be the organizer for the current tournament
 
-	helper_method :sort_column, :sort_direction
-	
 	def index
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
 	#	@tournaments.each do |t|
