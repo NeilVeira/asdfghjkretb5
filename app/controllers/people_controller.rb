@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
 	
 	def new
         @person = Person.new
+		@person.build_address
 	end
 	
 	def create
@@ -62,6 +63,7 @@ class PeopleController < ApplicationController
 		#@person = Person.find(params[:id])
         @user = current_user
         @person = Person.find_by user_id: @user.id
+		@person.build_address if @person.address.nil?
 	end
 	
 	def update
@@ -82,7 +84,8 @@ class PeopleController < ApplicationController
 	
 	private
 		def person_params
-			params.require(:person).permit(:firstname, :lastname, :dob, :phone, :location, :user_id)
+			params.require(:person).permit(:firstname, :lastname, :dob, :phone, :location, :user_id,
+				address_attributes: [:id, :apartmentNumber, :streetNumber, :streetName, :city, :province, :country, :postalCode])
 		end
 	
 end
