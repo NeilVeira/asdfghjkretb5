@@ -1,0 +1,25 @@
+<% c_date = Time.now.to_date %>
+
+<table>
+	<tr>
+		<th><%= sort("name") %> </th>
+		<th>Description</th>
+		<th><%= sort("date") %></th>
+		<th>Link</th>
+		<th colspan="4"></th>
+	</tr>
+
+	<% tournaments.each do |t| %>
+		<% t_date = t.date %>
+		<% days_away = (t_date.to_date - c_date).to_i %>
+		
+		<% if eval(include_cond) %>
+			<tr>
+				<td><%= t.name %></td>
+				<td><%= t.description %></td>
+				<td><%= t_date.to_date %></td>
+				<td><%= link_to "Show", tournament_path(t) %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>

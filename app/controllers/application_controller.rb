@@ -4,6 +4,17 @@ class ApplicationController < ActionController::Base
 	
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
+	
+	def user_exists?			
+		@user = current_user
+		if (Person.exists?(user_id: @user))
+			return true
+		else
+			@user.destroy
+			return false
+		end
+	end
+	
 	def current_person
 		@user = current_user
 		return Person.find_by user_id: @user.id
@@ -34,6 +45,14 @@ class ApplicationController < ActionController::Base
 			render 'auth_admin'
 			return false
 		end
+	end
+	
+	def sort_column
+		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
+	end
+	
+	def sort_direction
+		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
 
 end

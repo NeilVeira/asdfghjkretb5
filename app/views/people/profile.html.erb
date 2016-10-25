@@ -6,17 +6,17 @@
 <p>
     <strong>Email: </strong><%=@person.user.email%><br>
     <strong>Date of birth: </strong><%=@person.dob%><br>
-	<strong>Address: </strong><%=@person.location%><br>
     <strong>Phone Number: </strong><%=@person.phone%><br>
 </p>
 
 <%= link_to 'Edit', edit_person_path(@person) %>
 
-<p>
-<h3>Tournaments Registered (player)</h3>
-...
+<h3>Tournaments Registered (as player)</h3>
+<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments_as_player, include_cond: "days_away >= 0"} %>
+
 <h3>Tournaments Organized</h3>
-...
+<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments_as_organizer, include_cond: "days_away >= 0"} %>
+
 <h3>Tournaments Sponsored</h3>
 ...
 <%
@@ -48,3 +48,5 @@
       puts golfCourse
     end
 %>
+<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments_as_sponsor, include_cond: "days_away >= 0"} %>
+

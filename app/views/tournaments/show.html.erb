@@ -15,9 +15,17 @@
 			</h2>
 			<p>
 				<%= @tournament.golf_course.name %>
-				<%= @tournament.golf_course.location %>
 			</p>
+			<p>
+				<%= @tournament.golf_course.address.streetNumber %> <%= @tournament.golf_course.address.streetName %>
+				</br>
+				<%= @tournament.golf_course.address.city %>, <%= @tournament.golf_course.address.province %>, <%= @tournament.golf_course.address.country %>
+				</br>
+				<%= @tournament.golf_course.address.postalCode %>
+			</p>
+		</section>
 			
+		<section>
 			<h2>
 				<strong>When?</strong>
 			</h2>
@@ -37,5 +45,9 @@
 				<% end %>
 			</p>
 		</section>
+		
+		<p>
+			<td><%= link_to 'All Tournaments', tournaments_path %></td>
+		</p>
 	</body>
 </html>
