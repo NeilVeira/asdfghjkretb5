@@ -2,32 +2,32 @@ module PeopleHelper
   private
   def get_all_sponsors
     @person = current_person
-    return Sponsor.where(person_id: @person.id)
+    Sponsor.where(person_id: @person.id)
   end
 
   def get_all_players
     @person = current_person
-    return Player.where(person_id: @person.id)
+    Player.where(person_id: @person.id)
   end
 
   def get_all_tournament_organizers
     @person = current_person
-    return TournamentOrganizer.where(person_id: @person.id)
+    TournamentOrganizer.where(person_id: @person.id)
   end
 
   def get_all_golf_course_organizers
     @person = current_person
-    return GolfCourseOrganizer.where(person_id: @person.id)
+    GolfCourseOrganizer.where(person_id: @person.id)
   end
 
   def find_tournaments_for (listOfPeople)
-    tournamentIds = []
+    @tournamentIds = []
 
     listOfPeople.each do |person|
-      tournamentIds << person.tournament.id
+      @tournamentIds << person.tournament.id
     end
 
-    TournamentList = Tournament.where(id: @tournamentIds) #.order(sort_column + " " + sort_direction)
+    return Tournament.where(id: @tournamentIds).order(sort_column + " " + sort_direction)
   end
 
   def find_golf_courses_for (listOfPeople)

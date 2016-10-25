@@ -33,32 +33,9 @@ class PeopleController < ApplicationController
     #shows the profile for the current user
 		@person = current_person
 
-		#create list of all tournament_ids which the current person is registered for as player
-		@players = Player.where("person_id = ?", @person.id)
-		@tournament_ids = []
-		@players.each do |p|
-			@tournament_ids.push(p.tournament.id)
-		end
-		#get list of tournaments with matching ids and sorted
-		@tournaments_as_player = Tournament.where(id: @tournament_ids).order(sort_column + " " + sort_direction)
+		render 'profile'
 
-		#do the same for sponsors and organizers
-		@tournament_organizers = TournamentOrganizer.where("person_id = ?", @person.id)
-		@tournament_ids = []
-		@tournament_organizers.each do |to|
-			@tournament_ids.push(to.tournament.id)
-		end
-		@tournaments_as_organizer = Tournament.where(id: @tournament_ids).order(sort_column + " " + sort_direction)
-
-		@sponsors = Sponsor.where("person_id = ?", @person.id)
-		@tournament_ids = []
-		@sponsors.each do |s|
-			@tournament_ids.push(s.tournament.id)
-		end
-		@tournaments_as_sponsor = Tournament.where(id: @tournament_ids).order(sort_column + " " + sort_direction)
-
-        render 'profile'
-    end
+  end
 	
 	def edit
 		#@person = Person.find(params[:id])
