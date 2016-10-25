@@ -1,4 +1,5 @@
 module ApplicationHelper
+	
 	def sort(column)
 		title = column.titleize
 		direction = column == sort_column && sort_direction == "asc" ? "desc" : "asc"

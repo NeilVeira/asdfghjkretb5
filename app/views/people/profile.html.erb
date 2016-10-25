@@ -12,21 +12,11 @@
 
 <%= link_to 'Edit', edit_person_path(@person) %>
 
-<h3>Tournaments Registered (player)</h3>
-<% @players.each do |p| %>
-	<%= link_to p.tournament.name, tournament_path(p.tournament) %><br>
-<% end %>
+<h3>Tournaments Registered (as player)</h3>
+<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments_as_player, include_cond: "days_away >= 0"} %>
 
 <h3>Tournaments Organized</h3>
-<% @tournament_organizers.each do |to| %>
-	<! TODO: should this link to the tournament organizer dashboard instead?
-	Or maybe the show action will automatically load the dashboard if the current
-	user is the organizer? >
-	<%= link_to to.tournament.name, tournament_path(to.tournament) %><br>
-<% end %>
+<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments_as_organizer, include_cond: "days_away >= 0"} %>
 
 <h3>Tournaments Sponsored</h3>
-<% @sponsors.each do |s| %>
-	<%= link_to s.tournament.name, tournament_path(s.tournament) %><br>
-<% end %>
-
+<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments_as_sponsor, include_cond: "days_away >= 0"} %>
