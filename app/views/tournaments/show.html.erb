@@ -42,10 +42,14 @@
 				<% elsif (days_away == 0) %>
 					That's today!
 				<% else %>
-					This tounrament is over!
+					This tournament is over!
 				<% end %>
 			</p>
 		</section>
+		
+		<% if not user_is_registered?(params[:id])%>
+			<%= link_to 'Register for this tournament', new_ticket_path %><br>
+		<% end %>
 		
 		<p>
 			<td><%= link_to 'All Tournaments', tournaments_path %></td>
