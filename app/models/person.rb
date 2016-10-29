@@ -10,6 +10,7 @@ class Person < ApplicationRecord
 		message: "Invalid phone number"}
 	
 	validates :user, presence: true
+	validates :address, presence: true
 	
 	after_validation :cleanup
 	
