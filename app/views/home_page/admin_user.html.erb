@@ -2,9 +2,7 @@
 <br>
 <strong>Viewing as administrator</strong>
 <br>
-<strong><%= current_user.email %></strong><br>
-<%= link_to 'Profile', controller: "people", action: "profile" %><br> 
-<%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+<%= render partial: "application/user_header" %>
 <br>
 <p>
   <%=link_to 'View registered users' , people_path%> 

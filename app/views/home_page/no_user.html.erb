@@ -1,7 +1,6 @@
 <h1>XXX Golf Tournaments</h1>
 <br>
-<%= link_to 'Log In', new_user_session_path %><br>
-<%=link_to 'Sign Up', new_user_registration_path %>
+<%= render partial: "application/user_header" %>
 
 <p>
   <%=link_to 'View Tournaments', tournaments_path%>

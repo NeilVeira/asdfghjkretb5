@@ -1,12 +1,5 @@
+<%= render partial: "application/user_header" %>
 <h1>Access Denied</h1>
-<h2>You must log in as a website administrator to access this page</h2>
-<% if user_signed_in? %>
-	<!TODO: Make a single "Log in as admin" button which automatically signs
-	out the user and redirects to new_user_session_path.
-	But how to implement this??? >
-	<%= link_to 'Log Out', destroy_user_session_path, method: :delete %><br>
-<% else %>
-	<%= link_to 'Log In', new_user_session_path %><br>
-<% end %> 
+<h2>Access to this page is denied due to invalid user credentials</h2>
 <br>
 <%= link_to 'Home', controller: 'home_page' %>
