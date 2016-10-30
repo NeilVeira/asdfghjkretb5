@@ -1,27 +1,23 @@
-<%= render partial: "application/user_header" %>
-<%= link_to 'Home', controller: 'home_page' %>
-
-<h1>Profile | <%=@person.firstname%> <%=@person.lastname%></h1>
+<h1>Profile</h1>
+<br>
+<%= link_to 'Edit', edit_person_path(@person) %>
 <br>
 <h2>Personal Information</h2>
 <p>
+	<strong>First Name:</strong><%=@person.firstname%><br>
+	<strong>Last Name:</strong><%=@person.lastname%><br>
+
     <strong>Email: </strong><%=@person.user.email%><br>
     <strong>Date of birth: </strong><%=@person.dob%><br>
     <strong>Phone Number: </strong><%=@person.phone%><br>
+
 </p>
 
-<%= link_to 'Edit', edit_person_path(@person) %>
+<h3>Address</h3>
+<p>
+	<%=@person.address_id%><br>
+</p>
 
-<% tournamentsSponsorIn = get_all_tournaments_as "sponsor" %>
-<% tournamentsPlayerIn = get_all_tournaments_as "player" %>
-<% tournamentsOrganizerIn = get_all_tournaments_as "organizer" %>
+<%=link_to 'Back', controller: "people", action: "portal" %>
 
 
-<h3>Tournaments Registered (as player)</h3>
-<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsPlayerIn, include_cond: "days_away >= 0"} %>
-
-<h3>Tournaments Organized</h3>
-<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsOrganizerIn, include_cond: "days_away >= 0"} %>
-
-<h3>Tournaments Sponsored</h3>
-<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsSponsorIn, include_cond: "days_away >= 0"} %>

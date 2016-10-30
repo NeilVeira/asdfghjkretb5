@@ -3,7 +3,7 @@
 <% if user_signed_in? %>
 	<p> Welcome: </p>
 	<strong><%= current_user.email %> !</strong>
-	<%= link_to 'My Account', controller: "people", action: "profile" %>
+	<%= link_to 'My Account', controller: "people", action: "portal" %>
     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <%  else %>
 	<%= link_to 'Login', new_user_session_path %>

@@ -28,14 +28,30 @@ class PeopleController < ApplicationController
     #shows the profile for person with the given id
 		@person = Person.find(params[:id])
 	end
+
+	def portal
+	#Portal holds links to all user actions they can do once they sign in 
+		@person = current_person
+		render 'people/portal/portal'
+	end 
     
-  def profile
+    def profile
     #shows the profile for the current user
 		@person = current_person
 
 		render 'profile'
+    end
 
-  end
+    def user_tourney
+    #Show tournaments that the user is participating in
+    	@person = current_person
+    	render 'people/portal/user_tourney'
+    end
+
+    def user_ticket
+    	@person = current_person
+    	render 'people/portal/user_ticket'
+    end
 	
 	def edit
 		#@person = Person.find(params[:id])

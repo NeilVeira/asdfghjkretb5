@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     get 'home_page/index'
     get 'people/profile', to: 'people#profile'
+    get 'people/portal', to: 'people#portal'
+    get 'people/user_tourney', to: 'people#user_tourney'
+    get 'people/user_ticket', to: 'people#user_ticket'
 
     resources :people 
     resources :tournaments
