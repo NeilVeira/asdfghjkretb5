@@ -1,9 +1,18 @@
+<br>
+<%= link_to 'Home', controller: "/home_page", action: "index" %>
 <% if user_signed_in? %>
-	<strong><%= current_user.email %></strong><br>
-    <%= link_to 'Profile', controller: "people", action: "profile" %><br> 
+	<p> Welcome: </p>
+	<strong><%= current_user.email %> !</strong>
+	<%= link_to 'My Account', controller: "people", action: "profile" %>
     <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-<% else %>
-	<%= link_to 'Log In', new_user_session_path %><br>
+<%  else %>
+	<%= link_to 'Login', new_user_session_path %>
 	<%=link_to 'Sign Up', new_user_registration_path %>
 <% end %>
+<%= link_to 'Tournaments', tournaments_path%>
+<%= link_to 'Features', controller: "/feature", action: "index" %>
+<%= link_to 'FAQ', controller: "/faq", action: "index" %>
+<%= link_to 'Our Story', controller: "/story", action: "index" %>
+<%= link_to 'Partners', controller: "/partner", action: "index" %>
+<%= link_to 'Contact Us', controller: "/contact_us", action: "index" %>
 <br>

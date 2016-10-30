@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'contact_us/index'
+
+  get 'partner/index'
+
+  get 'story/index'
+
+  get 'faq/index'
+
+  get 'feature/index'
+
   get 'site_map/index'
 
   get 'privacy/index'
