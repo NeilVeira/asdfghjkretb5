@@ -2,7 +2,8 @@ class GolfCourse < ApplicationRecord
 	belongs_to :address
     accepts_nested_attributes_for :address
 	
-	validates :address, presence: true
+	validates :name, presence: true
+	validates :address, presence: true	
 	
 	after_validation :cleanup
 	
