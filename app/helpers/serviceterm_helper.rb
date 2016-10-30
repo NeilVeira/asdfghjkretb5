@@ -1,0 +1,2 @@
+module ServicetermHelper
+end

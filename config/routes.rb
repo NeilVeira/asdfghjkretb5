@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'site_map/index'
+
+  get 'privacy/index'
+
+  get 'serviceterm/index'
+
     devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations' }
     get 'home_page/index'
     get 'people/profile', to: 'people#profile'
