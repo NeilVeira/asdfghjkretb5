@@ -54,5 +54,18 @@ class ApplicationController < ActionController::Base
 	def sort_direction
 		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
+	
+	def create_player
+		@player = Player.new()
+		@player.person = current_person
+		@player.tournament = Tournament.find(session[:tournament_id])
+		if @player.save
+			logger.debug "Player created successfully"
+			return true
+		else
+			logger.error "Player was not added to database"
+			return false
+		end
+	end
 
 end

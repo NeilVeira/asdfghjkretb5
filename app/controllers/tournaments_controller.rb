@@ -25,6 +25,7 @@ class TournamentsController < ApplicationController
   
 	def show
 		@tournament = Tournament.find(params[:id])
+		session[:tournament_id] = @tournament.id
 		#@tournament.date = Date.new(2017,2,3)  # Note: this line should be destroyed later, but I need it for testing. - Anthony
 	end
 	

@@ -46,8 +46,8 @@
 			</p>
 		</section>
 		
-		<% if not user_is_registered?(params[:id])%>
-			<%= link_to 'Register for this tournament', new_ticket_path %><br>
+		<% if not user_is_registered?(@tournament.id)%>
+			<%= link_to "Register for this tournament", new_ticket_path %><br>
 			<%= link_to "Sponsor this tournament", sponsors_path(sponsors: {tournament_id: @tournament.id}), method: :post %>
 		<% end %>
 		

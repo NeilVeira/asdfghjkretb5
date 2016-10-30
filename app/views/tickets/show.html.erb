@@ -1,3 +1,9 @@
 <h1>Purchase Successful</h1>
-
+<h3>Here is your confirmation</h3>
+<p>
+	<strong>Tournament: </strong><%= @ticket.tournament.name %><br>
+	<strong>Player name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
+	<strong>Ticket type: </strong><%= @ticket.tickettype %><br>
+	<strong>Ticket id: </strong><%= @ticket.id %><br>
+</p>
 <%= link_to 'Home', controller: 'home_page' %>

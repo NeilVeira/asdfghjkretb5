@@ -1,6 +1,7 @@
-<h1>Select Ticketing Options</h1>
+<h1>Register for tournament <%= @tournament.name %></h1>
+<h2>Select Ticketing Options</h2>
 
-<h2>Ticket Type</h2>
+<h3>Ticket Type</h3>
 <html>
 <body>
 <select>
@@ -19,6 +20,7 @@ Total: ???
 	<%= f.label :Credit_card_number %><br>
 	<%= f.text_field :credit_card_number %>
   </p>
+  
  
   <p>
 	<input type="submit" value="Continue">
