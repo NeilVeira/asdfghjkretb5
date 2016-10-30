@@ -19,6 +19,7 @@
 				<td><%= t.description %></td>
 				<td><%= t_date.to_date %></td>
 				<td><%= link_to "Show", tournament_path(t) %></td>
+				<td><%= link_to "Sponsor this tournament", sponsors_path(sponsors: {person_id: current_person, tournament_id: t.id}), method: :post %>
 			</tr>
 		<% end %>
 	<% end %>

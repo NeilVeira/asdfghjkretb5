@@ -1,6 +1,6 @@
 class SponsorsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :authenticate_admin!, only: [:index]
+	#before_action :authenticate_admin!, only: [:index]
 
   def index
     @sponsors = Sponsor.all
@@ -12,6 +12,14 @@ class SponsorsController < ApplicationController
 
   def new
     @sponsor = Sponsor.new
+	
+	@person = current_person
+	@sponsor.person_id = @person.id
+	@sponsor.tournament_id = params[:tournament]
+	
+	@sponsor.save
+	
+	redirect_to @sponsor
   end
 
   def edit
@@ -21,9 +29,14 @@ class SponsorsController < ApplicationController
   def create
     @sponsor = Sponsor.new(sponsor_params)
 
-    @success = @sponsor.save
+	#@sponsor = Sponsor.new()
+	
+	#@person = current_person
+	#@sponsor.person = current_person
+	#@tournament = params[:tournament]
+	#@sponsor.tournament = Tournament.find_by id: @tournament
 
-    if @success
+    if @sponsor.save
       redirect_to @sponsor
     else
       render action: "new"

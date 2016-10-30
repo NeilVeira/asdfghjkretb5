@@ -1,6 +1,24 @@
 <%= render partial: "application/user_header" %>
 <%= link_to 'Home', controller: 'home_page' %>
 
-<h1>Sponsor | person_id: <%=@sponsor.person_id%> tournament_id: <%=@sponsor.tournament_id%></h1>
+<h1>Sponsor | person_id: <%=@sponsor.person.id%> tournament_id: <%=@sponsor.tournament.id%></h1>
+
+
+<h2>Tournament Details</h2>
+<section>
+			<h2>
+				<strong>Where?</strong>
+			</h2>
+			<p>
+				<%= @sponsor.tournament.golf_course.name %>
+			</p>
+			<p>
+				<%= @sponsor.tournament.golf_course.address.streetNumber %> <%= @sponsor.tournament.golf_course.address.streetName %>
+				</br>
+				<%= @sponsor.tournament.golf_course.address.city %>, <%= @sponsor.tournament.golf_course.address.province %>, <%= @sponsor.tournament.golf_course.address.country %>
+				</br>
+				<%= @sponsor.tournament.golf_course.address.postalCode %>
+			</p>
+</section>
 
 <!-- <%= link_to 'Edit', edit_sponsor_path(@sponsor.person_id) %> later -->
