@@ -1,5 +1,4 @@
 <html>	
-	<%= render partial: "application/user_header" %>
 	<body>
 		<section>
 			<h1>
@@ -49,6 +48,7 @@
 		
 		<% if not user_is_registered?(params[:id])%>
 			<%= link_to 'Register for this tournament', new_ticket_path %><br>
+			<%= link_to "Sponsor this tournament", sponsors_path(sponsors: {tournament_id: @tournament.id}), method: :post %>
 		<% end %>
 		
 		<p>
