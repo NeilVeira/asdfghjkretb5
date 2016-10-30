@@ -21,6 +21,7 @@ class SponsorsController < ApplicationController
 
   def create
     @sponsor = Sponsor.new(sponsor_params)
+	@sponsor.person = current_person
 
     if @sponsor.save
       redirect_to @sponsor
@@ -43,7 +44,7 @@ class SponsorsController < ApplicationController
 
   private
   def sponsor_params
-    params.require(:sponsors).permit(:person_id,:tournament_id)
+    params.require(:sponsors).permit(:tournament_id)
   end
 
 end
