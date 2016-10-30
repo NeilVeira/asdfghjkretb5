@@ -21,7 +21,7 @@ class GolfCoursesController < ApplicationController
   
   private
 	def golf_course_params
-		params.require(:golf_course).permit(:name, :location, address_id,
+		params.require(:golf_course).permit(:name, :location,
 			address_attributes: [:id, :apartmentNumber, :streetNumber, :streetName, :city, :province, :country, :postalCode])
 	end
   
