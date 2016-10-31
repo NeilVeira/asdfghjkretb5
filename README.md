@@ -7,6 +7,8 @@
 * Rails version: v4.2.6?
 
 ###Running on Heroku
+site: https://test-rubyonrails-app.herokuapp.com/ (temp can change name later.. but make sure it's available)
+
 To push to the remoke heroku server, you need a heroku account
 Then install: https://devcenter.heroku.com/articles/heroku-command-line (heroku cli)
 
