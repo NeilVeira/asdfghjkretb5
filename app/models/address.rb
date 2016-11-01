@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-    validates :apartmentNumber, presence: true, numericality: { only_integer: true } 
+    validates :apartmentNumber, allow_blank: true, numericality: { only_integer: true }
     validates :streetNumber, presence: true, numericality: { only_integer: true } 
     validates :streetName, presence: true 
     validates :city, presence: true 
