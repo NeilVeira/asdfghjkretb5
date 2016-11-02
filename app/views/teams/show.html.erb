@@ -1,13 +1,24 @@
-<%=link_to 'Home', controller: 'home_page' %>
+<html>
+	<table>
+		<tr>
+			<th>Team Name</th>
+			<th>Player 1</th>
+			<th>Player 2</th>
+			<th>Player 3</th>
+			<th>Player 4</th>
+			<th colspan="5"></th>
+		</tr>
+		
+		<tr>
+			<td><%= @team.name %></td>
+			<td><%= @team.p1.person.firstname %>, <%= @team.p1.person.lastname %></td>
+			<td><%= @team.p2.person.firstname %>, <%= @team.p2.person.lastname %></td>
+			<td><%= @team.p3.person.firstname %>, <%= @team.p3.person.lastname %></td>
+			<td><%= @team.p4.person.firstname %>, <%= @team.p4.person.lastname %></td>
+		</tr>
+	</table>
 
-<h1>Team</h1>
-<p>
-	<strong>Team Name:</strong>
-    <%=@team.name%>
-    <br>
-    <strong>Tournament ID:</strong>
-    <%=@team.tournament%>
-</p>
-
-<%= link_to 'Back to Teams', teams_path %><br>
-<%= link_to 'Edit', edit_team_path(@team) %>
+	<%= link_to "Back to Teams", teams_path %>
+	</br>
+	<%= link_to "Edit", edit_team_path(@team) %>
+</html>

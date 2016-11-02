@@ -41,8 +41,17 @@
 				<% elsif (days_away == 0) %>
 					That's today!
 				<% else %>
-					This tournament is over!
+					This tounrament is over.
 				<% end %>
+			</p>
+		</section>
+
+		<section>
+			<h2>
+				<strong>Current Teams</strong>
+			</h2>
+			<p>
+				<%= link_to "Show All Teams", controller: "teams" %>
 			</p>
 		</section>
 		
@@ -52,7 +61,7 @@
 		<% end %>
 		
 		<p>
-			<td><%= link_to 'All Tournaments', tournaments_path %></td>
+			<td><%= link_to "Back to all Tournaments", tournaments_path %></td>
 		</p>
 	</body>
 </html>

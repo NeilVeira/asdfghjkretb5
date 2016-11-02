@@ -5,9 +5,6 @@ class TournamentsController < ApplicationController
 
 	def index
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
-	#	@tournaments.each do |t|
-	#		t.date = Date.new(2017,2,3) #Note: this line should be destroyed later, but I need it for testing. - Anthony
-	#	end
 	end
   
 	def new
@@ -15,7 +12,7 @@ class TournamentsController < ApplicationController
 	end
   
 	def create
-		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date))
+		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course))
 		if @tournament.save
 			redirect_to @tournament
 		else
@@ -50,4 +47,7 @@ class TournamentsController < ApplicationController
 	
 	private
 	
+	def sort_column
+		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
+	end
 end
