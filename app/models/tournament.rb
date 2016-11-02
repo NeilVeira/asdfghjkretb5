@@ -6,6 +6,7 @@ class Tournament < ApplicationRecord
 	validates :description, presence: true
 	
 	validates_inclusion_of :ispublic, :in => [true, false]
+	
 	after_validation :cleanup
 	
 	protected
