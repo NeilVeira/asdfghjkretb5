@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :sort_column, :sort_direction
+	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?
 	
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -45,10 +45,6 @@ class ApplicationController < ActionController::Base
 			render 'auth_admin'
 			return false
 		end
-	end
-	
-	def sort_column
-		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
 	end
 	
 	def sort_direction

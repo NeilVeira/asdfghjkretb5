@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -60,3 +60,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
+
+#gem 'coffee-script-source', '1.9.0'
+
+# Pictures Handling Gem
+gem 'paperclip', '~> 4.3', '>= 4.3.6'
