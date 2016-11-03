@@ -1,16 +1,17 @@
 <br>
 <%= link_to 'Home', controller: "/home_page", action: "index" %>
-
+(can we replace this with a picture maybe?)
+<p>
 <% if user_signed_in? %>
-	<p> Welcome:
+	 Welcome:
 	<strong><%= current_user.email %> !</strong>
-  </p>
 	<%= link_to 'My Account', controller: "people", action: "portal" %>
-    <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
+  <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
 <%  else %>
 	<%= link_to 'Login', new_user_session_path %>
 	<%=link_to 'Sign Up', new_user_registration_path %>
 <% end %>
+</p>
 
 <%= link_to 'Tournaments', tournaments_path%>
 <%= link_to 'Features', controller: "/feature", action: "index" %>
