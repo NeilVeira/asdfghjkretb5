@@ -39,11 +39,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	def authenticate_admin!
-		if user_is_admin?
-			return true
-		else
-			render 'auth_admin'
-			return false
+		unless user_is_admin?
+			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
+			redirect_to root_url
 		end
 	end
 	
