@@ -19,6 +19,7 @@
 				<td><%= t.description %></td>
 				<td><%= t_date.to_date %></td>
 				<td><%= link_to "Show", tournament_path(t) %></td>
+				<td><%= link_to "Register", setup_path(t.id) %></td>
 			</tr>
 		<% end %>
 	<% end %>

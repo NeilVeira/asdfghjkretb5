@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
 	before_action :authenticate_user!
 	
     def index
+		
     end
     
     def show
@@ -9,6 +10,7 @@ class TicketsController < ApplicationController
     end
     
     def new
+		@ticket = Ticket.new()
 		@tournament = Tournament.find(session[:tournament_id])
     end
     
@@ -42,6 +44,11 @@ class TicketsController < ApplicationController
     
     def destroy
     end
+	
+	def setup
+		session[:tournament_id] = params[:id]		
+		redirect_to new_ticket_path
+	end
 	
 	private 
 	def ticket_params

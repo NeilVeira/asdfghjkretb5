@@ -15,16 +15,5 @@ Total: ???
 </html>
 
 <h2>Account Info</h2>
-<%= form_for :ticket, url: tickets_path do |f| %>
-  <p>
-	<%= f.label :Credit_card_number %><br>
-	<%= f.text_field :credit_card_number %>
-  </p>
-  
- 
-  <p>
-	<input type="submit" value="Continue">
-  </p>
-<% end %>
 
 <%= link_to 'Back', controller: 'home_page' %>
