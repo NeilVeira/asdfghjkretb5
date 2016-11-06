@@ -35,6 +35,12 @@
       <%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
     </p>
 
+	<p>Golf Course:</p>
+	<%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
+	
+	<p>Date:</p>
+	<%= f.datetime_select(:date, start_year: 2018) %>
+	
     <p>
       <%= f.label :Extra_Features %><br>
       <%= f.text_area :extrafeatures %>

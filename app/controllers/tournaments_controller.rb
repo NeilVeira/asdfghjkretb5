@@ -10,10 +10,11 @@ class TournamentsController < ApplicationController
   
 	def new
 		@tournament = Tournament.new
+		@golfcourses = GolfCourse.all
 	end
   
 	def create
-		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course))
+		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id))
 		if @tournament.save
 			redirect_to @tournament
 		else
@@ -33,7 +34,7 @@ class TournamentsController < ApplicationController
   
 	def update
 		@tournament = Tournament.find(params[:id])		
-		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date))		
+		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id))		
 			redirect_to @tournament
 		else
 			render 'edit'
