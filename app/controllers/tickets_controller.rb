@@ -23,9 +23,10 @@ class TicketsController < ApplicationController
 		@tournament = Tournament.find(session[:tournament_id])
 		@ticket.tournament = @tournament
 		logger.debug "params[:tickettype] = #{params[:tickettype]}"
-
+		logger.debug "ticket = #{@ticket}" 
+		
 		if @ticket.save
-			create_player()
+			#create_player()
 			#if params[:tickettype] == 1 
 			#	redirect_to :controller => "players", :action => "create"
 			#elsif params[:tickettype] == 2 
@@ -34,8 +35,8 @@ class TicketsController < ApplicationController
 			
 			redirect_to @ticket
 		else
-			render action: "new"
 			logger.error "Ticket was not added to database"
+			render 'new'			
 		end
     end
     
