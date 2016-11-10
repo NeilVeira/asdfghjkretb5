@@ -1,4 +1,8 @@
-<% c_date = Time.now.to_date %>
+<% # variable declaration
+  c_date = Time.now.to_date
+  tournaments_previous = Tournament.where("date<=?",c_date)
+  tournaments_future = Tournament.where("date<=?",c_date)
+%>
 
 <table>
   <tr>
@@ -14,8 +18,8 @@
       <tr>
         <td><%= gc.name %></td>
         <td><%= gc.address_id %></td>
-        <td><%= Tournaments.where(golf_course_id: gc.id, date: date<=c_date).count() %></td>
-        <td><%= Tournaments.where(golf_course_id: gc.id, date: date>c_date).count() %></td>
+        <td><%= (tournaments_previous.where("golf_course_id == ?", gc.id)).count %></td>
+        <td><%= (tournaments_future.where("golf_course_id == ?", gc.id)).count %></td>
         <td><%= link_to "Show", golf_course_path(gc) %></td>
       </tr>
   <% end %>
