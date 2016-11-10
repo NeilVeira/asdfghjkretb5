@@ -37,4 +37,7 @@ Rails.application.routes.draw do
   root 'home_page#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+	# setup is used to pass the tournament_id to the tickets#new action when registering
+	get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
+	
 end

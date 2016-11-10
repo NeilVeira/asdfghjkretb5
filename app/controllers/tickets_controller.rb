@@ -2,6 +2,7 @@ class TicketsController < ApplicationController
 	before_action :authenticate_user!
 	
     def index
+		
     end
     
     def show
@@ -9,6 +10,7 @@ class TicketsController < ApplicationController
     end
     
     def new
+		@ticket = Ticket.new()
 		@tournament = Tournament.find(session[:tournament_id])
     end
     
@@ -21,9 +23,10 @@ class TicketsController < ApplicationController
 		@tournament = Tournament.find(session[:tournament_id])
 		@ticket.tournament = @tournament
 		logger.debug "params[:tickettype] = #{params[:tickettype]}"
-
+		logger.debug "ticket = #{@ticket}" 
+		
 		if @ticket.save
-			create_player()
+			#create_player()
 			#if params[:tickettype] == 1 
 			#	redirect_to :controller => "players", :action => "create"
 			#elsif params[:tickettype] == 2 
@@ -32,8 +35,8 @@ class TicketsController < ApplicationController
 			
 			redirect_to @ticket
 		else
-			render action: "new"
 			logger.error "Ticket was not added to database"
+			render 'new'			
 		end
     end
     
@@ -42,6 +45,11 @@ class TicketsController < ApplicationController
     
     def destroy
     end
+	
+	def setup
+		session[:tournament_id] = params[:id]		
+		redirect_to new_ticket_path
+	end
 	
 	private 
 	def ticket_params

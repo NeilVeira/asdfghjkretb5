@@ -15,8 +15,16 @@
 
 <h3>Address</h3>
 <p>
-	<%=@person.address_id%><br>
+	<strong>Address Type: </strong><%=@person.address.addressType%><br>
+	<strong>Apartment Number: </strong><%=@person.address.apartmentNumber%><br>
+	<strong>Street Number: </strong><%=@person.address.streetNumber%><br>
+	<strong>Street Name: </strong><%=@person.address.streetName%><br>
+	<strong>City: </strong><%=@person.address.city%><br>
+	<strong>Province: </strong><%=@person.address.province%><br>
+	<strong>Country: </strong><%=@person.address.country%><br>
+	<strong>Postal Code: </strong><%@person.address.postalCode%><br>
 </p>
+
 
 <%=link_to 'Back', controller: "people", action: "portal" %>
 

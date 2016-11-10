@@ -1,30 +1,32 @@
 <h1>Register for tournament <%= @tournament.name %></h1>
 <h2>Select Ticketing Options</h2>
 
-<h3>Ticket Type</h3>
-<html>
-<body>
-<select>
-  <option value="1">Player</option>
-  <option value="2">Sponser</option>
-  <option value="3">General Admission</option>
-</select>
-<br>
-Total: ???
-</body>
-</html>
-
-<h2>Account Info</h2>
-<%= form_for :ticket, url: tickets_path do |f| %>
+<%= form_for @ticket, url: tickets_path do |f| %>
+ 
+ 
+ <% if @ticket.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@ticket.errors.count, "error") %> prohibited
+        this ticket from being saved:
+      </h2>
+      <ul>
+        <% @ticket.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <h3>Ticket Type</h3>
   <p>
-	<%= f.label :Credit_card_number %><br>
-	<%= f.text_field :credit_card_number %>
+	<%= f.select(:tickettype, [['Player', 1], ['Sponsor', 2], ['General Admission', 3]]) %>
   </p>
   
- 
   <p>
 	<input type="submit" value="Continue">
   </p>
+  
 <% end %>
 
 <%= link_to 'Back', controller: 'home_page' %>

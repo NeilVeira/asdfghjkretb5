@@ -6,7 +6,7 @@
 		<th>Description</th>
 		<th><%= sort("date") %></th>
 		<th>Link</th>
-		<th colspan="4"></th>
+		<th>Register Status</th>
 	</tr>
 
 	<% tournaments.each do |t| %>
@@ -19,6 +19,11 @@
 				<td><%= t.description %></td>
 				<td><%= t_date.to_date %></td>
 				<td><%= link_to "Show", tournament_path(t) %></td>
+				<% if @status[t.id] %>
+					<td>Already Registered</td>					
+				<% else %>				
+					<td><%= link_to "Register", setup_path(t.id) %></td>
+				<% end %>
 			</tr>
 		<% end %>
 	<% end %>
