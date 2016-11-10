@@ -1,0 +1,23 @@
+<% c_date = Time.now.to_date %>
+
+<table>
+  <tr>
+    <th><%= sort("name") %> </th>
+    <th>Address</th>
+    <th><%= sort("number of hosted tournaments") %></th>
+    <th><%= sort("number of upcoming tournaments") %></th>
+    <th>Link</th>
+    <th colspan="4"></th>
+  </tr>
+
+  <% golf_course.each do |gc| %>
+      <tr>
+        <td><%= gc.name %></td>
+        <td><%= gc.address_id %></td>
+        <td><%= Tournaments.where(golf_course_id: gc.id, date: date<=c_date).count() %></td>
+        <td><%= Tournaments.where(golf_course_id: gc.id, date: date>c_date).count() %></td>
+        <td><%= link_to "Show", golf_course_path(gc) %></td>
+      </tr>
+  <% end %>
+</table>
+

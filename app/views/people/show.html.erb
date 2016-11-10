@@ -103,6 +103,8 @@
 
         organizers.each do |p|
           golf_courses << p.golf_course
+
+          render partial: "golf_courses/golf_course_table", locals: {golf_course: golf_courses}
         end
 
       end
