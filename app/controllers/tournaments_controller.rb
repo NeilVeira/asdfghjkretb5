@@ -58,11 +58,10 @@ class TournamentsController < ApplicationController
 		@p = current_person
 		tournaments.each do |t|
 			logger.debug "tournament: #{t.id}"
-			if Ticket.find_by_tournament_id_and_person_id(t.id, @p.id)
+			if @p and Ticket.find_by_tournament_id_and_person_id(t.id, @p.id)
 				status[t.id] = 1
 			end		
 		end
-		
 		return status
 	end
 end

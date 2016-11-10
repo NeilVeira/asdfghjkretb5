@@ -16,8 +16,12 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def current_person
-		@user = current_user
-		return Person.find_by user_id: @user.id
+		if user_signed_in?
+			@user = current_user
+			return Person.find_by user_id: @user.id
+		else
+			return NIL
+		end
 	end
 
 	def current_website_admin
