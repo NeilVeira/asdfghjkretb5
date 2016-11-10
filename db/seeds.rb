@@ -17,6 +17,9 @@ users_list = [
     ["admin1@email.com","password"],
     ["admin2@email.com","password"],
     ["admin3@email.com","password"],
+    ["11@email.com","password"],
+    ["12@email.com","password"],
+    ["13@email.com","password"],
 ]
 users_list.each do |email, password|
     user = User.new
@@ -43,7 +46,10 @@ address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"]
 				["g", 0, 6320, "Grandview Drive West", "University Place", "Washington", "USA", "98467"],
 				["g", 0, 1700, "17-Mile Drive", "Pebble Beach", "California", "USA", "93953"],
 				["g", 0, 99, "Quaker Meeting House Road", "Farmingdale", "New York", "USA", "11735"],
-				["g", 0, 2401, "Biarritz Drive", "Miami Beach", "Florida", "USA", "33141"],]
+				["g", 0, 2401, "Biarritz Drive", "Miami Beach", "Florida", "USA", "33141"],
+				["g", 0, 1904, "rue Garneau", "Quebec", "Quebec", "Canada", "G1V 3V5"],
+				["g", 0, 320, "Front Street West", "Toronto", "Ontario", "Canada", "M5V"],
+				]
 
 address_list.each do |addressType, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
     Address.create(addressType: addressType, apartmentNumber: apartmentNumber, streetNumber: streetNumber, streetName: streetName, city: city, province: province, country: country, postalCode: postalCode)
@@ -75,6 +81,8 @@ people_list = [
     ["Admin2", "XXX", "01-01-2000", "012-345-6789", 9, 9],
     ["Admin3", "XXX", "01-01-2000", "012-345-6789", 10, 10],
 	["FN11", "LN11", "03-13-1953", "555-783-1822", 11, 11],
+	["FN12", "LN12", "02-16-1960", "123-321-1232", 19, 12],
+	["FN13", "LN13", "03-30-1980", "416-342-1010", 20, 13],
 ]
 
 people_list.each do |firstname,lastname,dob,phone,address_id,user_id|
@@ -87,24 +95,14 @@ tournaments_list = [
 	["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8), "4.00", "5.00"],
 	["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12), "32.00", "60.00"],
 	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1), "0.00", "0.00"],
-	["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1), "0.00", "5.00"]
+	["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1), "0.00", "5.00"],
+	["tourname7","desc7", false, "extraf7",GolfCourse.fourth.id,  DateTime.new(2016,11,30), "0.00", "6.00"]
 ]
 
 tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date, price_player, price_spectator|
 	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid, date: date, price_player: price_player, price_spectator: price_spectator)
 end
 
-tickets_list = [
-	[1,Person.first.id],
-    [2,Person.second.id],
-    [3,Person.third.id],
-    [2,Person.fourth.id],
-    [1,Person.fifth.id]
-]
-
-tickets_list.each do |tickettype, person_id|
-	Ticket.create(tickettype: tickettype,person_id: person_id )
-end
 
 registered_team_list = [
 	["rtname1",Person.first.id,Tournament.first.id],
@@ -127,7 +125,10 @@ tournament_organizers_list = [
 	[Person.first.id,Tournament.first.id, 0],
 	[Person.second.id,Tournament.second.id, 1],
 	[Person.third.id,Tournament.third.id, 1],
-	[Person.fourth.id,Tournament.fourth.id, 0]
+	[Person.fourth.id,Tournament.fourth.id, 0],
+	[Person.fifth.id,Tournament.fifth.id, 0],
+	[6,6, 0],
+	[7,7, 0],
 ]
 
 tournament_organizers_list.each do | person_id, tournament_id, adminrights|
@@ -138,7 +139,10 @@ golf_course_organizers_list = [
 	[Person.first.id,GolfCourse.first.id, 0],
 	[Person.second.id,GolfCourse.first.id, 1],
 	[Person.third.id,GolfCourse.third.id, 1],
-	[Person.fourth.id,GolfCourse.first.id, 0]
+	[Person.fourth.id,GolfCourse.first.id, 0],
+	[Person.fifth.id,GolfCourse.fifth.id, 0],
+	[6, 6, 2],
+	[7, 7, 1],
 ]
 
 golf_course_organizers_list.each do | person_id, golf_course_id, adminrights|
@@ -194,6 +198,42 @@ players_list = [
 
 players_list.each do |person_id, tournament_id|
 	Player.create(person_id: person_id, tournament_id: tournament_id)
+end
+
+#Create a ticket for each player, sponsor, and tournament_organizer 
+#ticket types:
+#1 - Player
+#2 - Sponsor
+#3 - Spectator
+#4 - Tournament organizer
+tickets_list = [[3, 12, Tournament.first.id],
+                [3, 13, Tournament.first.id],
+				[3, 12, Tournament.second.id],
+				[3, 13, Tournament.second.id],
+				[3, 6, Tournament.third.id],
+				[3, 7, Tournament.third.id],
+				[3, 12, Tournament.third.id],
+				[3, 13, Tournament.third.id],
+				[3, 6, Tournament.fifth.id],
+				[3, 7, Tournament.fifth.id],
+				[3, 11, Tournament.fifth.id],
+				[3, 2, 7],
+				[3, 5, 7],
+				]
+players_list.each do |person_id, tournament_id|
+	tickets_list.push([1,person_id,tournament_id])
+end
+sponsors_list.each do |person_id, tournament_id|
+	tickets_list.push([2,person_id,tournament_id])
+end
+tournament_organizers_list.each do |person_id, tournament_id|
+	tickets_list.push([4,person_id,tournament_id])
+end
+#spectators
+tickets_list.push([3])
+
+tickets_list.each do |tickettype, person_id, tournament_id|
+	Ticket.create(tickettype: tickettype, person_id: person_id, tournament_id: tournament_id)
 end
 
 teams_list = [

@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-	before_action :authenticate_user!, only: [:profile, :edit, :update]
+	before_action :authenticate_user!, only: [:profile, :edit, :update, :user_tourney, :user_ticket]
 	before_action :authenticate_admin!, only: [:index, :show, :destroy]
 	
 	helper_method :sort_column, :sort_direction
