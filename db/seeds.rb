@@ -82,16 +82,16 @@ people_list.each do |firstname,lastname,dob,phone,address_id,user_id|
 end
 
 tournaments_list = [
-	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2016,10,30) ],
-	["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1) ],
-	["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8)],
-	["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12)],
-	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1)],
-	["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1)]
+	["tourname1","description1", true, "extrafeatures1",GolfCourse.first.id, DateTime.new(2016,10,30), "10.00", "20.00" ],
+	["tourname2","description2", true, "extrafeatures2",GolfCourse.first.id, DateTime.new(2019,1,1), "0.00", "30.00" ],
+	["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8), "4.00", "5.00"],
+	["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12), "32.00", "60.00"],
+	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1), "0.00", "0.00"],
+	["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1), "0.00", "5.00"]
 ]
 
-tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date|
-	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid, date: date)
+tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date, price_player, price_spectator|
+	Tournament.create(name: name, description: description, ispublic: ispublic, extrafeatures: extrafeatures, golf_course_id: golfid, date: date, price_player: price_player, price_spectator: price_spectator)
 end
 
 tickets_list = [
