@@ -13,9 +13,16 @@ class TournamentsController < ApplicationController
 	end
   
 	def create
-		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :pricePlayer, :priceSpectator))
+		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :price_player, :price_spectator))
 		if @tournament.save
-			redirect_to @tournament
+			session[:tournament_id] = @tournament.id
+			#create ticket for current user as organizer
+			@ticket = create_ticket(4)
+			if @ticket
+				redirect_to ticket_path(@ticket)
+			else
+				render 'new'
+			end
 		else
 			render 'new'
 		end

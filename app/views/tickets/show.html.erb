@@ -1,4 +1,4 @@
-<h1>Purchase Successful</h1>
+<h1>Transaction Successful</h1>
 <h3>Here is your ticket</h3>
 <p>
 	<strong>Ticket type: </strong><%= get_tickettype_name(@ticket.tickettype) %><br>
@@ -6,4 +6,4 @@
 	<strong>Player name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
 	<strong>Ticket id: </strong><%= @ticket.id %><br>
 </p>
-<%= link_to 'Home', controller: 'home_page' %>
+<%= link_to 'Continue to tournament', tournament_path(@ticket.tournament) %>

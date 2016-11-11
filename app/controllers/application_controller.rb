@@ -57,6 +57,9 @@ class ApplicationController < ActionController::Base
 		%w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
 	end
 	
+	#helper methods to create objects. These are called from other controller
+	#methods because Rails doesn't allow you to redirect_to post method
+	
 	def create_player
 		@player = Player.new()
 		@player.person = current_person
@@ -85,6 +88,7 @@ class ApplicationController < ActionController::Base
 		@organizer = TournamentOrganizer.new()
 		@organizer.person = current_person
 		@organizer.tournament = Tournament.find(session[:tournament_id])
+		@organizer.adminrights = 1 #TODO: set this to whatever represents full privileges
 		if @organizer.save
 			logger.debug "Organizer created successfully"
 			return @organizer
@@ -92,5 +96,31 @@ class ApplicationController < ActionController::Base
 			logger.error "Organizer was not added to database"
 		end
 	end
-
-end
+	
+	def create_ticket(tickettype)
+		@ticket = Ticket.new()
+		@ticket.person = current_person
+		@tournament = Tournament.find(session[:tournament_id])
+		@ticket.tournament = @tournament
+		@ticket.tickettype = tickettype
+		logger.debug "@ticket.tickettype = #{@ticket.tickettype}" 
+		
+		if @ticket.save
+			logger.debug "Ticket created successfully"
+			#create player, sponsor, or organizer depending on tickettype
+			if @ticket.tickettype == 1 
+				logger.debug "creating player object"
+				@player = create_player()
+			elsif @ticket.tickettype == 2 
+				logger.debug "creating sponsor object"
+				@sponsor = create_sponsor()
+			elsif @ticket.tickettype == 4
+				logger.debug "creating organizer object"
+				@organizer = create_organizer()
+			end
+			return @ticket
+		else
+			logger.error "Ticket was not added to database"		
+		end
+	end
+end	

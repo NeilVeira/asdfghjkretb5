@@ -18,27 +18,11 @@ class TicketsController < ApplicationController
     end
     
     def create
-		@ticket = Ticket.new(ticket_params)
-		@ticket.person = current_person
-		@tournament = Tournament.find(session[:tournament_id])
-		@ticket.tournament = @tournament
-		logger.debug "params[:tickettype] = #{params[:tickettype]}"
-		logger.debug "@ticket.tickettype = #{@ticket.tickettype}" 
-		
-		if @ticket.save
-			#redirect_to controller create action doesn't work so use helper method to create objects
-			if @ticket.tickettype == 1 
-				logger.debug "creating player object"
-				@player = create_player()
-			elsif params[:tickettype] == 2 
-				logger.debug "creating sponsor object"
-				@sponsor = create_sponsor()
-			end
-			
-			redirect_to @ticket
+		@ticket = create_ticket(ticket_params[:tickettype])
+		if @ticket
+			redirect_to ticket_path(@ticket)
 		else
-			logger.error "Ticket was not added to database"
-			render 'new'			
+			render 'new'
 		end
     end
     
