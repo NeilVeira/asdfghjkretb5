@@ -13,7 +13,7 @@ class TournamentsController < ApplicationController
 	end
   
 	def create
-		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id))
+		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :pricePlayer, :priceSpectator))
 		if @tournament.save
 			redirect_to @tournament
 		else

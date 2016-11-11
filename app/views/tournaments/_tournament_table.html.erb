@@ -13,17 +13,17 @@
 	</tr>
 
 	<% tournaments.each do |t| %>
-		<% t_date = t.date %>
-		<% days_away = (t_date.to_date - c_date).to_i %>
+		<% t_date = t.date.to_date %>
+		<% days_away = (t_date - c_date).to_i %>
 		
 		<% if eval(include_cond) %>
 			<tr>
 				<td><%= t.name %></td>
 				<td><%= t.description %></td>
-				<td><%= t_date.to_date %></td>
+				<td><%= t_date %></td>
 				<td><%= link_to "Show", tournament_path(t) %></td>
 				<% if status[t.id] %>
-					<td>Already Registered</td>					
+					<td>Already Registered</td>
 				<% else %>				
 					<td><%= link_to "Register", setup_path(t.id) %></td>
 				<% end %>

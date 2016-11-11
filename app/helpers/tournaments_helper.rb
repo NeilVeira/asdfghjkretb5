@@ -9,6 +9,26 @@ module TournamentsHelper
 		end
 	end
 
+	def user_is_sponsor?(tournament)
+		person = current_person
+		sponsor = Sponsor.where(person_id: person.id, tournament_id: tournament.id)
+		if sponsor
+			true
+		else
+			false
+		end
+	end
+
+	def user_is_tournament_organizer?(tournament)
+		person = current_person
+		tournament_organizer = TournamentOrganizer.where(person_id: person.id, tournament_id: tournament.id)
+		if tournament_organizer
+			true
+		else
+			false
+		end
+	end
+
 	def check_status(tournaments)
 		status = Hash.new
 		@p = current_person
