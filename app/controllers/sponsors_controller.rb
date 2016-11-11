@@ -20,14 +20,11 @@ class SponsorsController < ApplicationController
   end
 
   def create
-    @sponsor = Sponsor.new(sponsor_params)
-	@sponsor.person = current_person
-
-    if @sponsor.save
+    @sponsor = create_sponsor()
+    if @sponsor
       redirect_to @sponsor
     else
       render action: "new"
-      logger.error "Sponsor was not added to database"
     end
 
   end
