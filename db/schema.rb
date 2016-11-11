@@ -125,12 +125,12 @@ ActiveRecord::Schema.define(version: 20161103035614) do
     t.text     "description"
     t.boolean  "ispublic"
     t.text     "extrafeatures"
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.integer  "golf_course_id"
     t.datetime "date"
-    t.decimal  "price_player",    precision: 6, scale: 2
-    t.decimal  "price_spectator", precision: 6, scale: 2
+    t.decimal  "pricePlayer",    precision: 6, scale: 2
+    t.decimal  "priceSpectator", precision: 6, scale: 2
     t.index ["golf_course_id"], name: "index_tournaments_on_golf_course_id"
   end
 
