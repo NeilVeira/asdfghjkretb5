@@ -23,15 +23,17 @@ class TicketsController < ApplicationController
 		@tournament = Tournament.find(session[:tournament_id])
 		@ticket.tournament = @tournament
 		logger.debug "params[:tickettype] = #{params[:tickettype]}"
-		logger.debug "ticket = #{@ticket}" 
+		logger.debug "@ticket.tickettype = #{@ticket.tickettype}" 
 		
 		if @ticket.save
-			#create_player()
-			#if params[:tickettype] == 1 
-			#	redirect_to :controller => "players", :action => "create"
-			#elsif params[:tickettype] == 2 
-			#	redirect_to :controller => "sponsor", :action => "create"
-			#end
+			#redirect_to controller create action doesn't work so use helper method to create objects
+			if @ticket.tickettype == 1 
+				logger.debug "creating player object"
+				@player = create_player()
+			elsif params[:tickettype] == 2 
+				logger.debug "creating sponsor object"
+				@sponsor = create_sponsor()
+			end
 			
 			redirect_to @ticket
 		else

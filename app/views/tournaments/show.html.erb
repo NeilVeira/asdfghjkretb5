@@ -55,9 +55,11 @@
 			</p>
 		</section>
 		
-		<% if not user_is_registered?(@tournament)%>
-			<%= link_to "Register for this tournament", new_ticket_path %><br>
-			<%= link_to "Sponsor this tournament", sponsors_path(sponsors: {tournament_id: @tournament.id}), method: :post %>
+		<% status = tournament_status(@tournament) %>
+		<% if not status%>
+			<%= link_to "Sponsor/Register for this tournament", new_ticket_path %><br>
+		<% else %>
+			<p>You are currently registered for this tournament as <%= get_tickettype_name(status) %></p>
 		<% end %>
 		
 		<p>
