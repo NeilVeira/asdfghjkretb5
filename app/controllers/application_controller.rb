@@ -63,10 +63,33 @@ class ApplicationController < ActionController::Base
 		@player.tournament = Tournament.find(session[:tournament_id])
 		if @player.save
 			logger.debug "Player created successfully"
-			return true
+			return @player
 		else
 			logger.error "Player was not added to database"
-			return false
+		end
+	end
+	
+	def create_sponsor
+		@sponsor = Sponsor.new()
+		@sponsor.person = current_person
+		@sponsor.tournament = Tournament.find(session[:tournament_id])
+		if @sponsor.save
+			logger.debug "Sponsor created successfully"
+			return @sponsor
+		else
+			logger.error "Sponsor was not added to database"
+		end
+	end
+	
+	def create_organizer
+		@organizer = TournamentOrganizer.new()
+		@organizer.person = current_person
+		@organizer.tournament = Tournament.find(session[:tournament_id])
+		if @organizer.save
+			logger.debug "Organizer created successfully"
+			return @organizer
+		else
+			logger.error "Organizer was not added to database"
 		end
 	end
 
