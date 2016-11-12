@@ -42,6 +42,11 @@
   <p>Date:</p>
 	<%= f.datetime_select(:date, start_year: 2018) %>
   
+  <p>Tournament Picture:</p>
+	<%= f.file_field :image %>
+	
+	<br>
+  
   <p>
     <%= f.label :Extra_Features %><br>
     <%= f.text_area :extrafeatures %>

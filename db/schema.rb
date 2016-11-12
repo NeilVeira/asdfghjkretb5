@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161103035614) do
+ActiveRecord::Schema.define(version: 20161112003208) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressType"
@@ -125,12 +125,16 @@ ActiveRecord::Schema.define(version: 20161103035614) do
     t.text     "description"
     t.boolean  "ispublic"
     t.text     "extrafeatures"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "golf_course_id"
     t.datetime "date"
-    t.decimal  "pricePlayer",    precision: 6, scale: 2
-    t.decimal  "priceSpectator", precision: 6, scale: 2
+    t.decimal  "pricePlayer",        precision: 6, scale: 2
+    t.decimal  "priceSpectator",     precision: 6, scale: 2
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
     t.index ["golf_course_id"], name: "index_tournaments_on_golf_course_id"
   end
 

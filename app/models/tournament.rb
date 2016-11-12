@@ -12,6 +12,12 @@ class Tournament < ApplicationRecord
 	
 	validates_inclusion_of :ispublic, :in => [true, false]
 	
+	# Used for uploading images
+	has_attached_file :image, default_url: "/images/default_image.jpg"
+	validates_attachment :image,
+		content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] }
+	
+	
 	after_validation :cleanup
 	
 	protected
