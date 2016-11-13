@@ -65,3 +65,9 @@ gem 'devise'
 
 # Pictures Handling Gem
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
+
+#bootstrap gem
+gem 'bootstrap', '~> 4.0.0.alpha5'
+
+gem 'rails-assets-tether', '>= 1.1.0'
+
