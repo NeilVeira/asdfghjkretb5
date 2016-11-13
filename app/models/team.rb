@@ -1,5 +1,5 @@
 class Team < ApplicationRecord
-	belongs_to :tournament
+	belongs_to :tournament, inverse_of: :teams
 
 	belongs_to :p1, :class_name => "Player"
 	belongs_to :p2, :class_name => "Player"

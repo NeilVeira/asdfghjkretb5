@@ -2,6 +2,7 @@ class Tournament < ApplicationRecord
 
 	belongs_to :golf_course
 	has_many :players
+	has_many :teams, dependent: :destroy, inverse_of: :tournament
 	has_many :tournament_organizers
 	has_many :sponsors
 
