@@ -19,7 +19,7 @@ class TeamsController < ApplicationController
 
 	end
 
-	def create()
+	def create
 		@team = Team.new(team_params)
 		@team.save
 		redirect_to @team

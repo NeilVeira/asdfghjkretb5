@@ -98,27 +98,28 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def create_ticket(tickettype)
-		@ticket = Ticket.new()
-		@ticket.person = current_person
-		@tournament = Tournament.find(session[:tournament_id])
-		@ticket.tournament = @tournament
-		@ticket.tickettype = tickettype
+		ticket = Ticket.new()
+		ticket.person = current_person
+		tournament = Tournament.find(session[:tournament_id])
+		ticket.tournament = tournament
+		ticket.tickettype = tickettype
 		logger.debug "@ticket.tickettype = #{@ticket.tickettype}" 
 		
-		if @ticket.save
+		if ticket.save
 			logger.debug "Ticket created successfully"
 			#create player, sponsor, or organizer depending on tickettype
-			if @ticket.tickettype == 1 
-				logger.debug "creating player object"
-				@player = create_player()
-			elsif @ticket.tickettype == 2 
-				logger.debug "creating sponsor object"
-				@sponsor = create_sponsor()
-			elsif @ticket.tickettype == 4
-				logger.debug "creating organizer object"
-				@organizer = create_organizer()
+			case ticket.tickettype
+				when 1
+					logger.debug "creating player object"
+					@player = create_player()
+				when 2
+					logger.debug "creating sponsor object"
+					@sponsor = create_sponsor()
+				when 4
+					logger.debug "creating organizer object"
+					@organizer = create_organizer()
 			end
-			return @ticket
+			return ticket
 		else
 			logger.error "Ticket was not added to database"		
 		end
