@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
 		@organizer = TournamentOrganizer.new()
 		@organizer.person = current_person
 		@organizer.tournament = Tournament.find(session[:tournament_id])
-		@organizer.adminrights = 1 #TODO: set this to whatever represents full privileges
+		@organizer.adminrights = 1023 #represents full privileges
 		if @organizer.save
 			logger.debug "Organizer created successfully"
 			return @organizer

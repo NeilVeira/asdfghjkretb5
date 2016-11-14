@@ -20,6 +20,7 @@ users_list = [
     ["11@email.com","password"],
     ["12@email.com","password"],
     ["13@email.com","password"],
+    ["14@email.com","password"],
 ]
 users_list.each do |email, password|
     user = User.new
@@ -49,6 +50,7 @@ address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"]
 				["g", 0, 2401, "Biarritz Drive", "Miami Beach", "Florida", "USA", "33141"],
 				["g", 0, 1904, "rue Garneau", "Quebec", "Quebec", "Canada", "G1V 3V5"],
 				["g", 0, 320, "Front Street West", "Toronto", "Ontario", "Canada", "M5V"],
+				["g", 0, 2861, "Weston rd", "Toronto", "Ontario", "Canada", "M9N 1G4"],
 				]
 
 address_list.each do |addressType, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
@@ -83,6 +85,7 @@ people_list = [
 	["FN11", "LN11", "03-13-1953", "555-783-1822", 11, 11],
 	["FN12", "LN12", "02-16-1960", "123-321-1232", 19, 12],
 	["FN13", "LN13", "03-30-1980", "416-342-1010", 20, 13],
+	["FN14", "LN14", "12-01-1990", "416-000-1111", 21, 14],
 ]
 
 people_list.each do |firstname,lastname,dob,phone,address_id,user_id|
@@ -121,14 +124,28 @@ website_admins_list.each do |person_id, adminrights|
 	WebsiteAdmin.create(person_id: person_id, adminrights: adminrights)
 end
 
+#each bit of adminrights column represents a privilege
+#bit 0 - edit tournament info
+#bit 1 - manage tee sheets (including teams)
+#bit 2 - add other people as admins to tournament
+#etc. 
 tournament_organizers_list = [
-	[Person.first.id,Tournament.first.id, 0],
-	[Person.second.id,Tournament.second.id, 1],
-	[Person.third.id,Tournament.third.id, 1],
-	[Person.fourth.id,Tournament.fourth.id, 0],
-	[Person.fifth.id,Tournament.fifth.id, 0],
-	[6,6, 0],
-	[7,7, 0],
+	#these are the primary organizers who have full privileges 
+	#(not sure how many bits we'll need - 10 should be plenty)
+	[Person.first.id,Tournament.first.id, 1023],
+	[Person.second.id,Tournament.second.id, 1023],
+	[Person.third.id,Tournament.third.id, 1023],
+	[Person.fourth.id,Tournament.fourth.id, 1023],
+	[Person.fifth.id,Tournament.fifth.id, 1023],
+	[6, 6, 1023],
+	[7, 7, 1023],
+	#other tournament admins with restricted set of privileges
+	[14, 1, 3],
+	[14, 2, 2],
+	[14, 3, 2],
+	[14, 4, 4],
+	[14, 5, 6],
+	[14, 6, 0],
 ]
 
 tournament_organizers_list.each do | person_id, tournament_id, adminrights|

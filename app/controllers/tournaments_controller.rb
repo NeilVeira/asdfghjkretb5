@@ -39,7 +39,8 @@ class TournamentsController < ApplicationController
 	def update
 		@tournament = Tournament.find(params[:id])		
 		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :image))		
-			redirect_to @tournament
+			#redirect_to @tournament
+			redirect_to "/tournaments/#{@tournament.id}/dashboard"
 		else
 			render 'edit'
 		end
@@ -53,6 +54,8 @@ class TournamentsController < ApplicationController
 	
 	def dashboard
 		@tournament = Tournament.find(params[:id])
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
 		render 'dashboard'
 	end
 	
@@ -66,13 +69,10 @@ class TournamentsController < ApplicationController
 		#check if the current user is an organizer for this tournament
 		if user_signed_in?
 			@person = current_person
-			logger.debug "checking if user is organizer for tournament #{params[:id]}, person #{@person.id}"
 			@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
 			if @organizer
-				logger.debug "returning true"
 				return true
 			else
-				logger.debug "returning false"
 				return false
 			end
 		else
