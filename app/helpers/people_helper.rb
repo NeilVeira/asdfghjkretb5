@@ -17,6 +17,10 @@ module PeopleHelper
     GolfCourseOrganizer.where(person_id: person.id)
   end
 
+  def get_all_tickets (person)
+    Ticket.where(person_id: person.id)
+  end
+
   def find_tournaments_for (listOfPeople)
     @tournamentIds = []
 
@@ -56,5 +60,9 @@ module PeopleHelper
       when "organizer", "golf_course_organizer"
         return find_golf_courses_for (get_all_golf_course_organizers personToFind)
     end
+  end
+
+  def get_user_tickets (personToFind = current_person)
+    return get_all_tickets(current_person)
   end
 end

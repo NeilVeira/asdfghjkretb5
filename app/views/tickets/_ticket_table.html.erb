@@ -1,0 +1,16 @@
+<table> 
+	<tr>
+		<th>Ticket Type</th>
+		<th>Tournament</th> 
+		<th>Link</th>
+	</tr>
+
+	<% tickets.each do |t| %>
+		<% tournament = Tournament.find_by(id: t.tournament_id) %>
+		<tr>
+			<th><%= t.tickettype %></th>
+			<th><%= tournament.name %></th>
+			<th><%= link_to "Link", tournament_path(tournament) %></th>
+		</tr>	
+	<% end %>
+</table>

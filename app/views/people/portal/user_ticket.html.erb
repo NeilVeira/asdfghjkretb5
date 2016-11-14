@@ -1,2 +1,7 @@
+<% my_tickets = get_user_tickets %>
 <p>To add in user tickets here </p>
-<%=link_to 'Back', controller: "people", action: "portal" %>
+
+<h2>Tickets Owned</h2>
+<%= render partial: "tickets/ticket_table", locals: {tickets: my_tickets} %>
+
+<%= link_to 'Back', controller: "people", action: "portal" %>
