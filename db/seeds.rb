@@ -95,8 +95,8 @@ tournaments_list = [
 	["tourname3","description3", false, "extrafeatures3",GolfCourse.second.id,  DateTime.new(2019,6,8), "4.00", "5.00"],
 	["tourname4","description4", true, "extrafeatures4",GolfCourse.second.id,  DateTime.new(2020,12,12), "32.00", "60.00"],
 	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1), "0.00", "0.00"],
-	["tourname6","desc6", false, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1), "0.00", "5.00"],
-	["tourname7","desc7", false, "extraf7",GolfCourse.fourth.id,  DateTime.new(2016,11,30), "0.00", "6.00"]
+	["tourname6","desc6", true, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1), "0.00", "5.00"],
+	["tourname7","desc7", true, "extraf7",GolfCourse.fourth.id,  DateTime.new(2016,11,30), "0.00", "6.00"]
 ]
 
 tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date, pricePlayer, priceSpectator|
@@ -162,13 +162,13 @@ sponsors_list.each do |person_id, tournament_id|
 end
 
 players_list = [
-	[Person.first.id,Tournament.first.id],
+	[Person.first.id,Tournament.fifth.id],
 	[Person.first.id,Tournament.second.id],
 	[Person.first.id,Tournament.third.id],
 	[Person.first.id,Tournament.fourth.id],
 	
 	[Person.second.id,Tournament.first.id],
-	[Person.second.id,Tournament.second.id],
+	[Person.second.id,Tournament.third.id],
 	[Person.second.id,Tournament.fourth.id],
 	
 	[Person.third.id,Tournament.first.id],

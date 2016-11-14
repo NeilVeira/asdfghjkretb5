@@ -1,7 +1,6 @@
 class TournamentsController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-	#TODO: edit, update, and destroy actions should require more than logging in - user
-	#should be the organizer for the current tournament
+	before_action :authenticate_user!, only: [:new, :create]
+	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard]
 
 	def index
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
@@ -52,10 +51,41 @@ class TournamentsController < ApplicationController
 		redirect_to tournaments_path
 	end
 	
+	def dashboard
+		@tournament = Tournament.find(params[:id])
+		render 'dashboard'
+	end
+	
 	private
 	
 	def sort_column
 		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
 	end
-
+	
+	def user_is_organizer?
+		#check if the current user is an organizer for this tournament
+		if user_signed_in?
+			@person = current_person
+			logger.debug "checking if user is organizer for tournament #{params[:id]}, person #{@person.id}"
+			@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+			if @organizer
+				logger.debug "returning true"
+				return true
+			else
+				logger.debug "returning false"
+				return false
+			end
+		else
+			return false
+		end
+	end
+	
+	def authenticate_organizer!
+		#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
+		unless user_is_organizer?
+			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
+			redirect_to root_url
+		end
+	end
+	
 end

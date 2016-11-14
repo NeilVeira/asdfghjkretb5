@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'people/portal', to: 'people#portal'
   get 'people/user_tourney', to: 'people#user_tourney'
   get 'people/user_ticket', to: 'people#user_ticket'
+  get 'tournaments/:id/dashboard', to: 'tournaments#dashboard'
 
   resources :people
   resources :tournaments
