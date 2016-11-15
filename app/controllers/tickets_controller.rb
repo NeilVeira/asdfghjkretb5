@@ -1,12 +1,14 @@
 class TicketsController < ApplicationController
 	before_action :authenticate_user!
-	
+	require 'rqrcode'
+
     def index
 		
     end
     
     def show
         @ticket = Ticket.find(params[:id])
+				@qrcode = RQRCode::QRCode.new(@ticket.tournament_id.to_s + "-" + @ticket.id.to_s)
     end
     
     def new
