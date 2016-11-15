@@ -1,20 +1,18 @@
 Rails.application.routes.draw do
 
   get 'contact_us/index'
-
   get 'partner/index'
-
   get 'story/index'
-
   get 'faq/index'
-
   get 'feature/index'
-
   get 'site_map/index'
-
   get 'privacy/index'
-
   get 'serviceterm/index'
+
+  get 'tickets/payment/:id', to: 'tickets#payment', as: :payment
+
+  # setup is used to pass the tournament_id to the tickets#new action when registering
+  get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
 
   devise_for :users, controllers: { sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'
@@ -37,8 +35,5 @@ Rails.application.routes.draw do
 
   root 'home_page#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-	# setup is used to pass the tournament_id to the tickets#new action when registering
-	get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
 	
 end

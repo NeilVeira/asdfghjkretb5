@@ -103,7 +103,7 @@ class ApplicationController < ActionController::Base
 		tournament = Tournament.find(session[:tournament_id])
 		ticket.tournament = tournament
 		ticket.tickettype = tickettype
-		logger.debug "@ticket.tickettype = #{@ticket.tickettype}" 
+		logger.debug "ticket.tickettype = #{ticket.tickettype}"
 		
 		if ticket.save
 			logger.debug "Ticket created successfully"
@@ -121,7 +121,11 @@ class ApplicationController < ActionController::Base
 			end
 			return ticket
 		else
-			logger.error "Ticket was not added to database"		
+			ticket_exists = Ticket.where(person_id: current_person.id, tournament_id: tournament.id)
+			logger.error "Ticket was not added to database"
+			if ticket_exists.any?
+				logger.error "Ticket: #{ticket_exists.id}"
+			end
 		end
 	end
 end	

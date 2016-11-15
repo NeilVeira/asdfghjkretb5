@@ -1,0 +1,11 @@
+<%
+  @ticket = Ticket.where(id: params[:id]).first
+  price = get_price(@ticket)
+  %>
+<h1>Payment for tournament <%= @ticket.tournament.name %></h1>
+    Price: <%= price %>
+<br>
+
+
+
+<%= link_to 'Back', controller: 'home_page' %>

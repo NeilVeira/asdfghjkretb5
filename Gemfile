@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-
+# ===== DEFAULT =====
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use sqlite3 as the database for Active Record
@@ -26,7 +26,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -44,7 +43,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# ====== heroku specific ======
+# ====== Heroku specific ======
 group :production do
   gem 'pg'
   gem 'rails_12factor'
@@ -52,22 +51,21 @@ end
 
 # ruby "2.2.4" #must be same local version
 
-# ===============================
-
+# ====== Additional gems ======
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'devise'
 
-#gem 'coffee-script-source', '1.9.0'
-
 # Pictures Handling Gem
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 
-#bootstrap gem
+# Bootstrap gem
 gem 'bootstrap', '~> 4.0.0.alpha5'
 
 gem 'rails-assets-tether', '>= 1.1.0'
+
+# Qrcode
+gem 'rqrcode'
 

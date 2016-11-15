@@ -19,9 +19,10 @@ class TicketsController < ApplicationController
     
     def create
 			@ticket = create_ticket(ticket_params[:tickettype])
-			if @ticket
-				redirect_to paymentTicket_path
-				# redirect_to ticket_path(@ticket)
+			if @ticket and @ticket.tickettype == 1
+				redirect_to payment_path(@ticket.id)
+			elsif @ticket
+				redirect_to ticket_path(@ticket)
 			else
 				render 'new'
 			end
@@ -38,7 +39,7 @@ class TicketsController < ApplicationController
 			redirect_to new_ticket_path
 		end
 
-  	def paymentTicket
+  	def payment
 
 		end
 

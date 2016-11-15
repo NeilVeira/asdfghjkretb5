@@ -5,5 +5,17 @@
 	<strong>Tournament: </strong><%= @ticket.tournament.name %><br>
 	<strong>Player name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
 	<strong>Ticket id: </strong><%= @ticket.id %><br>
+  <%=
+    require 'rqrcode'
+    code = str(@ticket.tournament_id) + "-" + str(@ticket.id)
+    qrcode = RQRCode::QrCode.new(code)
+    puts image = qrcode.as_png
+    puts svg = qrcode.as_svg
+    puts html = qrcode.as_html
+    puts string = qrcode.as_ansi
+    puts string = qrcode.to_s
+
+
+  %>
 </p>
 <%= link_to 'Continue to tournament', tournament_path(@ticket.tournament) %>
