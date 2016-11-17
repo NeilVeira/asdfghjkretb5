@@ -27,6 +27,11 @@ GEM
     activejob (5.0.0.1)
       activesupport (= 5.0.0.1)
       globalid (>= 0.3.6)
+    activemerchant (1.61.0)
+      activesupport (>= 3.2.14, < 5.1)
+      builder (>= 2.1.2, < 4.0.0)
+      i18n (>= 0.6.9)
+      nokogiri (~> 1.4)
     activemodel (5.0.0.1)
       activesupport (= 5.0.0.1)
     activerecord (5.0.0.1)
@@ -206,6 +211,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activemerchant
   bootstrap (~> 4.0.0.alpha5)
   byebug
   coffee-rails (~> 4.2)

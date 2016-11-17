@@ -8,7 +8,8 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-				@qrcode = RQRCode::QRCode.new(@ticket.tournament_id.to_s + "-" + @ticket.id.to_s)
+				@code = @ticket.tournament_id.to_s + "-" + @ticket.id.to_s
+				@qrcode = RQRCode::QRCode.new(@code)
     end
     
     def new
@@ -41,9 +42,46 @@ class TicketsController < ApplicationController
 			redirect_to new_ticket_path
 		end
 
-  	def payment
+  	def qrcode
 
 		end
+
+  	def payment
+
+    end
+
+  def paymentProcessing
+    # Send requests to the gateway's test servers
+    ActiveMerchant::Billing::Base.mode = :test
+
+# Create a new credit card object
+    credit_card = ActiveMerchant::Billing::CreditCard.new(
+        :number     => params[:card_number],
+        :month      => params[:month],
+        :year       => params[:year],
+        :first_name => params[:fname],
+        :last_name  => params[:lname],
+        :verification_value  => '123'
+    )
+
+    if credit_card.valid?
+      # Create a gateway object to the TrustCommerce service
+      gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
+          :login    => 'TestMerchant',
+          :password => 'password'
+      )
+
+      # Authorize for $10 dollars (1000 cents)
+      response = gateway.authorize(1000, credit_card)
+
+      if response.success?
+        # Capture the money
+        gateway.capture(1000, response.authorization)
+      else
+        raise StandardError, response.message
+      end
+    end
+  end
 
 	private
 		def ticket_params

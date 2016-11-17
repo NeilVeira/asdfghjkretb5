@@ -69,3 +69,5 @@ gem 'rails-assets-tether', '>= 1.1.0'
 # Qrcode
 gem 'rqrcode'
 
+# payement
+gem 'activemerchant'
