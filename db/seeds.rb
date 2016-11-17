@@ -180,42 +180,42 @@ sponsors_list.each do |person_id, tournament_id|
 end
 
 players_list = [
-	[Person.first.id,Tournament.fifth.id],
-	[Person.first.id,Tournament.second.id],
-	[Person.first.id,Tournament.third.id],
-	[Person.first.id,Tournament.fourth.id],
+	[Person.first.id, Tournament.first.id, 1],	#1
+	[Person.first.id, Tournament.second.id, 3],	#2
+	[Person.first.id, Tournament.third.id, nil],	#3
+	[Person.first.id, Tournament.fourth.id, nil],	#4
 	
-	[Person.second.id,Tournament.first.id],
-	[Person.second.id,Tournament.third.id],
-	[Person.second.id,Tournament.fourth.id],
+	[Person.second.id, Tournament.first.id, 1],	#5
+	[Person.second.id, Tournament.second.id, 3],	#6
+	[Person.second.id, Tournament.fourth.id, nil],	#7
 	
-	[Person.third.id,Tournament.first.id],
-	[Person.third.id,Tournament.fourth.id],
-	[Person.third.id,Tournament.fifth.id],
-	[Person.third.id,6],
+	[Person.third.id, Tournament.first.id, 2],	#8
+	[Person.third.id, Tournament.fourth.id, nil],	#9
+	[Person.third.id, Tournament.fifth.id, nil],	#10
+	[Person.third.id, 6, nil],	#11
 	
-	[Person.fourth.id,Tournament.first.id],
-	[Person.fourth.id,Tournament.third.id],
+	[Person.fourth.id, Tournament.first.id, 2],	#12
+	[Person.fourth.id, Tournament.third.id, nil],	#13
 	
-	[Person.fifth.id,Tournament.first.id],
-	[Person.fifth.id,Tournament.third.id],
-	[Person.fifth.id,Tournament.fourth.id],
+	[Person.fifth.id, Tournament.first.id, 1],	#14
+	[Person.fifth.id, Tournament.third.id, nil],	#15
+	[Person.fifth.id, Tournament.fourth.id, nil],	#16
 	
-	[6,Tournament.first.id],
-	[6,Tournament.second.id],
-	[6,Tournament.fourth.id],
+	[6, Tournament.first.id, 1],	#17
+	[6, Tournament.second.id, nil],	#18
+	[6, Tournament.fourth.id, nil],	#19
 	
-	[7,Tournament.first.id],
-	[7,Tournament.second.id],
-	[7,Tournament.fourth.id],
+	[7, Tournament.first.id, 2],	#20
+	[7, Tournament.second.id, 3],	#21
+	[7, Tournament.fourth.id, nil],	#22
 	
-	[11,Tournament.first.id],
-	[11,Tournament.second.id],
-	[11,Tournament.fourth.id],
+	[11, Tournament.first.id, 2],	#23
+	[11, Tournament.second.id, 3],	#24
+	[11, Tournament.fourth.id, nil],	#25
 ]
 
-players_list.each do |person_id, tournament_id|
-	Player.create(person_id: person_id, tournament_id: tournament_id)
+players_list.each do |person_id, tournament_id, team_id|
+	Player.create(person_id: person_id, tournament_id: tournament_id, team_id: team_id)
 end
 
 #Create a ticket for each player, sponsor, and tournament_organizer 
@@ -255,11 +255,15 @@ tickets_list.each do |tickettype, person_id, tournament_id|
 end
 
 teams_list = [
-	["team1", Tournament.first.id, Player.second.id, 7, Player.fifth.id, 6], 
-	["team2", Tournament.first.id, Player.fourth.id, 11, Player.first.id, Player.third.id], 
-	["team1", Tournament.second.id, Player.first.id, Player.second.id, 11, 7]
+	["team1", Tournament.first.id, 1, 5, 14, 17], 
+	["team2", Tournament.first.id, 20, 23, 12, 8], 
+	["team1", Tournament.second.id, 3, 6, 24, 21]
 ]
 
 teams_list.each do |name, tournamentid, p1, p2, p3, p4|
 	Team.create( name: name, tournament_id: tournamentid, p1_id: p1, p2_id: p2, p3_id: p3, p4_id: p4)
 end
+
+#temp_player = Player.find_by(id: 1)
+#temp_player.team_id = 2
+#temp_player = Player.find_by(id: )
