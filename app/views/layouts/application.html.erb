@@ -13,6 +13,18 @@
       <%= content_tag :div, msg, class: name %>
     <% end -%>
   	<%= render partial: "application/user_header" %>
+
+
+    <div style="max-width:100%;  height: 20%">
+        <img class="mySlides" src="images/default_image.jpg" style="width:100%">
+        <img class="mySlides" src="images/download.jpeg" style="width:100%">
+    </div>
+    <script>
+      var slideIndex = 0;
+      carousel();
+    </script>
+
+
     <%= yield %>
   </body>
   <%= render partial: "application/footer" %>
