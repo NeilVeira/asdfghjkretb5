@@ -22,8 +22,31 @@
 	<strong>City: </strong><%=@person.address.city%><br>
 	<strong>Province: </strong><%=@person.address.province%><br>
 	<strong>Country: </strong><%=@person.address.country%><br>
-	<strong>Postal Code: </strong><%@person.address.postalCode%><br>
+	<strong>Postal Code: </strong><%=@person.address.postalCode%><br>
 </p>
+
+<h3>Linked Services</h3>
+<table>
+	<tr>
+		<th>Service</th>
+		<th>Status</th>
+	</tr>
+
+	<% services = ['Facebook', 'Twitter', 'Google', 'LinkedIn', 'Instragram']%>
+
+	<% for service in services %>
+		<tr>
+			<td><%= service %></td>
+			<% if true #Condition, check if connected already%> 
+				<td>Not linked</td>
+				<td><%= service %>: Link to sign up</td>
+			<% else %>
+				<td>Connected</td>
+			<% end %>
+		<tr>
+	<% end %>
+
+</table>
 
 
 <%=link_to 'Back', controller: "people", action: "portal" %>

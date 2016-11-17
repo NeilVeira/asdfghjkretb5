@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161112003208) do
+ActiveRecord::Schema.define(version: 20161117211553) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressType"
@@ -61,7 +61,9 @@ ActiveRecord::Schema.define(version: 20161112003208) do
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "team_id"
     t.index ["person_id"], name: "index_players_on_person_id"
+    t.index ["team_id"], name: "index_players_on_team_id"
     t.index ["tournament_id"], name: "index_players_on_tournament_id"
   end
 
