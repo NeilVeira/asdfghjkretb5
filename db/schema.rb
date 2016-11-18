@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117211553) do
+ActiveRecord::Schema.define(version: 20161117212039) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressType"
@@ -82,6 +82,9 @@ ActiveRecord::Schema.define(version: 20161117211553) do
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+	t.string   "name"
+    t.string   "website"
+    t.string   "contact_info"
     t.index ["person_id"], name: "index_sponsors_on_person_id"
     t.index ["tournament_id"], name: "index_sponsors_on_tournament_id"
   end

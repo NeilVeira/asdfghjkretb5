@@ -72,18 +72,6 @@ class ApplicationController < ActionController::Base
 		end
 	end
 	
-	def create_sponsor
-		@sponsor = Sponsor.new()
-		@sponsor.person = current_person
-		@sponsor.tournament = Tournament.find(session[:tournament_id])
-		if @sponsor.save
-			logger.debug "Sponsor created successfully"
-			return @sponsor
-		else
-			logger.error "Sponsor was not added to database"
-		end
-	end
-	
 	def create_organizer
 		@organizer = TournamentOrganizer.new()
 		@organizer.person = current_person
@@ -113,8 +101,8 @@ class ApplicationController < ActionController::Base
 					logger.debug "creating player object"
 					@player = create_player()
 				when 2
-					logger.debug "creating sponsor object"
-					@sponsor = create_sponsor()
+					#sponsor will be created later
+					#@sponsor = create_sponsor()
 				when 4
 					logger.debug "creating organizer object"
 					@organizer = create_organizer()

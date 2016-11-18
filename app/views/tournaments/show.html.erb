@@ -30,6 +30,14 @@
 		</section>
 		
 		<section>
+			<br>
+			<h2>Tournament Sponsors</h2>
+			<% Sponsor.where(tournament_id: @tournament.id).find_each do |s| %>
+				<%= render partial: "sponsors/show_brief", locals: {sponsor: s} %> 
+			<% end %>
+		</section>
+		
+		<section>
 			<% status = tournament_status(@tournament) %>
 			<br>
 			<% if not status%>
