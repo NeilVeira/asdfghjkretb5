@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161117212039) do
+ActiveRecord::Schema.define(version: 20161118025844) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressType"
@@ -80,11 +80,15 @@ ActiveRecord::Schema.define(version: 20161117212039) do
   create_table "sponsors", force: :cascade do |t|
     t.integer  "person_id"
     t.integer  "tournament_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-	t.string   "name"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
     t.string   "website"
     t.string   "contact_info"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.index ["person_id"], name: "index_sponsors_on_person_id"
     t.index ["tournament_id"], name: "index_sponsors_on_tournament_id"
   end

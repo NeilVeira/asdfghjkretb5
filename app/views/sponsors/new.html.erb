@@ -2,7 +2,7 @@
 
 <h1>Sponsor tournament <%= @tournament.name %></h1>
 
-<%=form_for :sponsors, url: sponsors_path do |f| %>
+<%=form_for :sponsors, url: sponsors_path, html: { multipart: true } do |f| %>
 
     <p>
       <%= f.label :company_name %><br>
@@ -18,7 +18,10 @@
       <%= f.label :contact_information %><br>
       <%= f.text_field :contact_info %><br>
     </p>
-
+	
+	<p>Company logo:</p>
+	<%= f.file_field :logo %>
+	<br>
     <p>
       <input type="submit" value="Submit">
     </p>

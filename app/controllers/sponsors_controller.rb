@@ -30,7 +30,7 @@ class SponsorsController < ApplicationController
 			redirect_to @ticket
 		else
 			logger.error "Sponsor was not added to database"
-			render action: "new"
+			redirect_to new_sponsor_path
 		end
 	end
 
@@ -46,7 +46,7 @@ class SponsorsController < ApplicationController
 
 	private
 	def sponsor_params
-		params.require(:sponsors).permit(:name, :website, :contact_info)
+		params.require(:sponsors).permit(:name, :website, :contact_info, :logo)
 	end
 
 end
