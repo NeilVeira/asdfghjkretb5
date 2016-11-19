@@ -8,7 +8,7 @@
 	<strong>Last Name:</strong><%=@person.lastname%><br>
 
     <strong>Email: </strong><%=@person.user.email%><br>
-    <strong>Date of birth: </strong><%=@person.dob%><br>
+    <strong>Date of birth: </strong><%=@person.dob.to_formatted_s(:long_ordinal)%><br>
     <strong>Phone Number: </strong><%=@person.phone%><br>
 
 </p>

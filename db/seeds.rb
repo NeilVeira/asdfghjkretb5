@@ -73,21 +73,21 @@ end
 
 #IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
 people_list = [
-	["FirstName1", "LastName1", "01-01-1991", "111-111-1111", Address.first.id, User.first.id],
-    ["FirstName2", "LastName2", "02-02-1992", "222-222-2222", Address.second.id, User.second.id],
-    ["FirstName3", "LastName3", "03-03-1993", "333-333-3333", Address.third.id, User.third.id],
-    ["FN4", "LN4", "04-14-1994", "444-444-4444", Address.fourth.id, User.fourth.id],
-    ["FN5", "LN5", "05-15-1995", "555-555-5555", Address.fifth.id, User.fifth.id],
-    ["FN6", "LN6", "06-26-1996", "666-666-6666", 6, 6],
-    ["FN7", "LN7", "10-30-1950", "777-777-7777", 7, 7],
-    ["Admin1", "XXX", "01-01-2000", "012-345-6789", 8, 8],
-    ["Admin2", "XXX", "01-01-2000", "012-345-6789", 9, 9],
-    ["Admin3", "XXX", "01-01-2000", "012-345-6789", 10, 10],
-	["FN11", "LN11", "03-13-1953", "555-783-1822", 11, 11],
-	["FN12", "LN12", "02-16-1960", "123-321-1232", 19, 12],
-	["FN13", "LN13", "03-30-1980", "416-342-1010", 20, 13],
-	["FN14", "LN14", "12-01-1990", "416-000-1111", 21, 14],
-	["FN15", "LN15", "11-12-1955", "123-340-9432", 12, 15], #extra person which is not registered for any tournaments in any way (for testing)
+	["FirstName1", "LastName1", Date.new(1991,1,1), "111-111-1111", Address.first.id, User.first.id],
+    ["FirstName2", "LastName2", Date.new(1992,2,2), "222-222-2222", Address.second.id, User.second.id],
+    ["FirstName3", "LastName3", Date.new(1993,3,3), "333-333-3333", Address.third.id, User.third.id],
+    ["FN4", "LN4", Date.new(1994,4,14), "444-444-4444", Address.fourth.id, User.fourth.id],
+    ["FN5", "LN5", Date.new(1995,5,15), "555-555-5555", Address.fifth.id, User.fifth.id],
+    ["FN6", "LN6", Date.new(1996,6,26), "666-666-6666", 6, 6],
+    ["FN7", "LN7", Date.new(1950,10,30), "777-777-7777", 7, 7],
+    ["Admin1", "XXX", Date.new(2000,1,1), "012-345-6789", 8, 8],
+    ["Admin2", "XXX", Date.new(2000,1,1), "012-345-6789", 9, 9],
+    ["Admin3", "XXX", Date.new(2000,1,1), "012-345-6789", 10, 10],
+	["FN11", "LN11", Date.new(1953,3,13), "555-783-1822", 11, 11],
+	["FN12", "LN12", Date.new(1960,2,16), "123-321-1232", 19, 12],
+	["FN13", "LN13", Date.new(1980,3,30), "416-342-1010", 20, 13],
+	["FN14", "LN14", Date.new(1990,1,12), "416-000-1111", 21, 14],
+	["FN15", "LN15", Date.new(1955,11,12), "123-340-9432", 12, 15], #extra person which is not registered for any tournaments in any way (for testing)
 ]
 
 people_list.each do |firstname,lastname,dob,phone,address_id,user_id|

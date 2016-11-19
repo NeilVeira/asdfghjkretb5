@@ -27,8 +27,8 @@
   </p>
   
   <p>
-    <%= f.label :Date_of_birth, "Date of Birth (MM-DD-YYYY)"%><br>
-    <%= f.text_field :dob %>
+	<%= f.label :Date_of_birth %><br>
+	<%= f.date_select :dob, order: [:month, :day, :year], start_year: 1930, end_year: 2000, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %>
   </p>
   
   <p>
