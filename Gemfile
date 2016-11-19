@@ -71,3 +71,8 @@ gem 'rqrcode'
 
 # payement
 gem 'activemerchant'
+
+# oauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'certified'
