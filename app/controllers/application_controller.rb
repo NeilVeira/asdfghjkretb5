@@ -41,6 +41,21 @@ class ApplicationController < ActionController::Base
 			return false
 		end
 	end
+	
+	def user_is_organizer?(tournament_id)
+		#check if the current user is an organizer for this tournament
+		if user_signed_in?
+			@person = current_person
+			@organizer = TournamentOrganizer.find_by(tournament_id: tournament_id, person_id: @person.id)
+			if @organizer
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
 
 	def authenticate_admin!
 		unless user_is_admin?

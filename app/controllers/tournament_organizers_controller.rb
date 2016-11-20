@@ -1,4 +1,6 @@
 class TournamentOrganizersController < ApplicationController
+	before_action :authenticate_organizer!, only: [:new, :create, :edit, :update]
+	before_action :authenticate_admin!, only: [:index, :show]
 	
 	def index
 		@tournament_organizers = TournamentOrganizer.all
@@ -96,6 +98,13 @@ class TournamentOrganizersController < ApplicationController
 		def tournament_organizer_params
 			params.require(:tournament_organizer).permit(:person, :tournament, :adminrights)
 		end
+		
+		def authenticate_organizer!
+			#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
+			unless user_is_organizer?(session[:tournament_id])
+				access_denied
+			end
+	end
 	
 end
 
