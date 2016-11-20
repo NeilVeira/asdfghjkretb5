@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20161119172116) do
     t.integer "cvc"
     t.string  "fname"
     t.string  "lname"
+    t.index ["person_id"], name: "index_credit_card_tables_on_person_id"
   end
 
   create_table "golf_course_organizers", force: :cascade do |t|
