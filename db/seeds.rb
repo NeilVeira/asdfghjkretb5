@@ -22,6 +22,9 @@ users_list = [
     ["13@email.com","password"],
     ["14@email.com","password"],
     ["15@email.com","password"],
+    ["16@email.com","password"],
+    ["17@email.com","password"],
+    ["18@email.com","password"],
 ]
 users_list.each do |email, password|
     user = User.new
@@ -52,6 +55,9 @@ address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"]
 				["g", 0, 1904, "rue Garneau", "Quebec", "Quebec", "Canada", "G1V 3V5"],
 				["g", 0, 320, "Front Street West", "Toronto", "Ontario", "Canada", "M5V"],
 				["g", 0, 2861, "Weston rd", "Toronto", "Ontario", "Canada", "M9N 1G4"],
+				["g", 0, 4133, "Port Washington Road", "Granum", "Alberta", "Canada", "T0L 1A0"],
+				["g", 0, 2754, "Velvet Elk Nook", "Vopolo Havoka", "British Columbia", "Canada", "V1M 6D1"],
+				["g", 0, 9260, "Foggy Private", "Starbuck", "Yukon", "Canada", "Y2S 1I8"],
 				]
 
 address_list.each do |addressType, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
@@ -88,6 +94,9 @@ people_list = [
 	["FN13", "LN13", Date.new(1980,3,30), "416-342-1010", 20, 13],
 	["FN14", "LN14", Date.new(1990,1,12), "416-000-1111", 21, 14],
 	["FN15", "LN15", Date.new(1955,11,12), "123-340-9432", 12, 15], #extra person which is not registered for any tournaments in any way (for testing)
+	["FN16", "LN16", Date.new(1932,5,5), "543-123-8497", 22, 16], 
+	["FN17", "LN17", Date.new(1999,5,7), "239-487-1002", 23, 17], 
+	["FN18", "LN18", Date.new(1932,4,16), "019-834-5619", 24, 18], 
 ]
 
 people_list.each do |firstname,lastname,dob,phone,address_id,user_id|
@@ -171,8 +180,8 @@ end
 
 sponsors_list = [
 	[Person.first.id,Tournament.fifth.id, "Rounddex", "rounddex.com", "contactus@roundex.com"],
-	[Person.third.id,Tournament.first.id, "Quadplex", "quadplex.com", "contactus@quadplex.com"],
-	[Person.third.id,Tournament.second.id, "tresplanet", "tresplanet.com", "contactus@tresplanet.com"],
+	[17,Tournament.first.id, "Quadplex", "quadplex.com", "contactus@quadplex.com"],
+	[17,Tournament.second.id, "tresplanet", "tresplanet.com", "contactus@tresplanet.com"],
 	[Person.fourth.id,Tournament.second.id, "tristone", "tristone.com", "contactus@tristone.com"],
 	[Person.fifth.id,Tournament.first.id, "golddrill", "golddrill.com", "contactus@golddrill.com"],
 ]
@@ -181,15 +190,16 @@ sponsors_list.each do |person_id, tournament_id, name, website, contact_info|
 	Sponsor.create(person_id: person_id, tournament_id: tournament_id, name: name, website: website, contact_info: contact_info)
 end
 
-
+#Note: When adding players, make sure that the person is not already registered for the
+#tournament as an organizer, sponsor, etc. 
 players_list = [
-	[Person.first.id, Tournament.first.id, 1],	#1
+	[16, Tournament.first.id, 1],	#1
 	[Person.first.id, Tournament.second.id, 3],	#2
 	[Person.first.id, Tournament.third.id, nil],	#3
 	[Person.first.id, Tournament.fourth.id, nil],	#4
 	
 	[Person.second.id, Tournament.first.id, 1],	#5
-	[Person.second.id, Tournament.second.id, 3],	#6
+	[16, Tournament.second.id, 3],	#6
 	[Person.second.id, Tournament.fourth.id, nil],	#7
 	
 	[Person.third.id, Tournament.first.id, 2],	#8

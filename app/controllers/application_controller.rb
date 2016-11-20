@@ -41,11 +41,25 @@ class ApplicationController < ActionController::Base
 			return false
 		end
 	end
+	
+	def user_is_organizer?(tournament_id)
+		#check if the current user is an organizer for this tournament
+		if user_signed_in?
+			@person = current_person
+			@organizer = TournamentOrganizer.find_by(tournament_id: tournament_id, person_id: @person.id)
+			if @organizer
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
 
 	def authenticate_admin!
 		unless user_is_admin?
-			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
-			redirect_to root_url
+			access_denied
 		end
 	end
 
@@ -115,5 +129,10 @@ class ApplicationController < ActionController::Base
 				logger.error "Ticket: #{ticket_exists.id}"
 			end
 		end
+	end
+	
+	def access_denied
+		flash[:notice] = "Access to the requested page is denied"
+		redirect_to root_url
 	end
 end	
