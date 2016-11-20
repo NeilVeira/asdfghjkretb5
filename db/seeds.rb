@@ -239,7 +239,7 @@ tickets_list = [[3, 12, Tournament.first.id],
 				[3, 7, Tournament.fifth.id],
 				[3, 11, Tournament.fifth.id],
 				[3, 2, 7],
-				[3, 5, 7],
+				[3, 5, 7]
 				]
 players_list.each do |person_id, tournament_id|
 	tickets_list.push([1,person_id,tournament_id])
