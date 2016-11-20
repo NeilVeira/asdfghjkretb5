@@ -76,11 +76,9 @@ gem 'activemerchant'
 gem 'omniauth'
 gem 'omniauth-oauth2', '~> 1.3.1'
 gem 'omniauth-facebook'
-<<<<<<< HEAD
-gem 'certified'
-gem 'flexslider'
-gem 'flexslider-rails'
-=======
 gem 'omniauth-linkedin-oauth2'
 gem 'certified'
->>>>>>> 2e2a1449af42dd6f8ffd87e5fa2f5a9bd19bf7f1
+
+gem 'flexslider'
+gem 'flexslider-rails'
+
