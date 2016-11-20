@@ -1,22 +1,44 @@
 
-        <nav>
-          <ul class="nav navbar-nav navbar-right">
+        <!--<nav class="navbar navbar-default" style="background-color: #FFFFF5">
+        <div class="container-fluid">
+    
+          <ul class="nav navbar-nav navbar-right" >
 			<% if user_signed_in? %>
 	 			Welcome:
 				<strong><%= current_user.email %> !</strong>
-				<li id="head"><%= link_to 'My Account', controller: "people", action: "portal" %></li>
-  				<li id="head"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+				<li id="head"  class="active"><%= link_to 'My Account', controller: "people", action: "portal" %></li>
+  				<li id="head"  class="active"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
 				<%  else %>
-				<li id="head"><%= link_to 'Login', new_user_session_path %></li>
-				<li id="head"><%=link_to 'Sign Up', new_user_registration_path %></li>
+				<li id="head"  class="active"><%= link_to 'Login', new_user_session_path %></li>
+				<li id="head"  class="active"><%=link_to 'Sign Up', new_user_registration_path %></li>
 			<% end %>
-			<li id="head"><%= link_to 'Contact Us', controller: "/contact_us", action: "index" %></li>
-			<li id="head"><%= link_to 'Partners', controller: "/partner", action: "index" %></li>
-			<li id="head"><%= link_to 'Our Story', controller: "/story", action: "index" %></li>
-			<li id="head"><%= link_to 'FAQ', controller: "/faq", action: "index" %></li>
-			<li id="head"><%= link_to 'Features', controller: "/feature", action: "index" %></li>
-			<li id="head"><%= link_to 'Tournaments', tournaments_path%></li>
-			<li id="head"><%= link_to 'Home', controller: "/home_page", action: "index" %> </li>
+			<li id="head" class="active"><span class="label label-default"><%= link_to 'Contact Us', controller: "/contact_us", action: "index" %></span></li>
+			<li id="head"  class="active"><span class="label label-default"><%= link_to 'Partners', controller: "/partner", action: "index" %></span></li>
+			<li id="head"  class="active"><span class="label label-default"><%= link_to 'Our Story', controller: "/story", action: "index" %></span></li>
+			<li id="head"  class="active"><span class="label label-default"><%= link_to 'FAQ', controller: "/faq", action: "index" %></span></li>
+			<li id="head"  class="active"><span class="label label-default"><%= link_to 'Features', controller: "/feature", action: "index" %></span></li>
+			<li id="head" class="active"><span class="label label-default"><%= link_to 'Tournaments', tournaments_path%></span></li>
+			<span class="label label-default"><li id="head"  class="active"><a href="/">Home</a></li></span>
 		  </ul>
-		</nav>
-<br>
+		  </div>
+		</nav>-->
+		<div id="navigation" class="w3-top">
+		<ul class="w3-navbar w3-light-gray nav navbar-nav navbar-right">
+  			<% if user_signed_in? %>
+	 			Welcome:
+				<strong><%= current_user.email %> !</strong>
+				<li id="head"  class="active"><%= link_to 'My Account', controller: "people", action: "portal" %></li>
+  				<li id="head"  class="active"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+				<%  else %>
+				<li id="head"  class="active"><%= link_to 'Login', new_user_session_path %></li>
+				<li id="head"  class="active"><%=link_to 'Sign Up', new_user_registration_path %></li>
+			<% end %>
+			<li id="head" class="active"><%= link_to 'Contact Us', controller: "/contact_us", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to 'Partners', controller: "/partner", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to 'Our Story', controller: "/story", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to 'FAQ', controller: "/faq", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to 'Features', controller: "/feature", action: "index" %></li>
+			<li id="head" class="active"><%= link_to 'Tournaments', tournaments_path%></li>
+			<li id="head"  class="active"><a href="/">Home</a></li>
+		</ul>
+</div>

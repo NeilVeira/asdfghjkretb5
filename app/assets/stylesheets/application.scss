@@ -1,9 +1,12 @@
 @import "bootstrap";
-
+@import 'flexslider';
 li#head{
      display:inline;
      float:right;
+     border-left: 1px solid #c2c2a3
 }
+
+li#head~li#head { border-left: 1px solid #c2c2a3 }
 
 nav#foot{
 	text-align:center;
@@ -12,6 +15,7 @@ nav#foot{
 	position: fixed;
  	bottom: 0;
 }
+
 
 li#footer{
      display: inline;
@@ -24,3 +28,34 @@ li a {
     padding: 16px;
     text-decoration: none;
 }
+
+.flexslider {
+    width: auto;
+    height: 440px;
+}
+
+.flexslider .slides img {
+    height: 400px;
+    width: 100%; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+.flex-caption {
+  width: 96%;
+  padding: 2%;
+  left: 0;
+  bottom: 0;
+  background: rgba(0,0,0,.5);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  font-size: 30px;
+  line-height: 35px;
+  text-align: center;
+}
+.line_break {
+    border: none;  // remove default style
+    border-bottom: 1px solid #c2c2a3;  //apply style
+}
+

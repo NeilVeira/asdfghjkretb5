@@ -80,6 +80,9 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.14)
     ffi (1.9.14-x86-mingw32)
+    flexslider (2.2.0)
+      sass-rails (>= 3.1.0)
+    flexslider-rails (1.0.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     hashie (3.4.6)
@@ -239,6 +242,8 @@ DEPENDENCIES
   certified
   coffee-rails (~> 4.2)
   devise
+  flexslider
+  flexslider-rails
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)

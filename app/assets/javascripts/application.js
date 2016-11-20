@@ -16,3 +16,5 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery.flexslider
+//= require jquery.flexslider-min

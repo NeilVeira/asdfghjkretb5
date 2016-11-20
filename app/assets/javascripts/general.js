@@ -45,3 +45,9 @@ $(document).ready(function(){
         $("#tournamentstatus tr").first().after(html);
     });
 });
+
+$(document).ready(function() {
+  $('.flexslider').flexslider({
+    animation: "animation"
+  });
+});
