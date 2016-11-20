@@ -8,27 +8,32 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-				@code = @ticket.tournament_id.to_s + "-" + @ticket.id.to_s
-				@qrcode = RQRCode::QRCode.new(@code)
+		@code = @ticket.tournament_id.to_s + "-" + @ticket.id.to_s
+		@qrcode = RQRCode::QRCode.new(@code)
     end
     
     def new
-			@ticket = Ticket.new()
-			@tournament = Tournament.find(session[:tournament_id])
+		@ticket = Ticket.new()
+		@tournament = Tournament.find(session[:tournament_id])
     end
     
     def edit
     end
     
     def create
-			@ticket = create_ticket(ticket_params[:tickettype])
-			if @ticket and @ticket.tickettype == 1
-				redirect_to payment_path(@ticket.id)
-			elsif @ticket
-				redirect_to ticket_path(@ticket)
-			else
-				render 'new'
-			end
+		@ticket = create_ticket(ticket_params[:tickettype])
+		if @ticket
+			case @ticket.tickettype 
+				when 1
+					redirect_to payment_path(@ticket.id)
+				when 2
+					redirect_to new_sponsor_path
+				else
+					redirect_to ticket_path(@ticket)
+				end
+		else
+			render 'new'
+		end
     end
     
     def update

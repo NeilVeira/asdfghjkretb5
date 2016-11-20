@@ -9,8 +9,7 @@ class Person < ApplicationRecord
 
 	validates :firstname, presence: true 
 	validates :lastname, presence: true
-	validates :dob, presence: true, format: { with: /\A(0[1-9]|1[0-2])-(0[1-9]|1[0-9]|2[0-9]|3[0-1])-((19[2-9][0-9])|(2000))\z/,
-		message: "Invalid date of birth"}
+	validates :dob, presence: true
 	validates :phone, presence: true, format: { with: /\A\d\d\d-\d\d\d-\d\d\d\d\z/,
 		message: "Invalid phone number"}
 	

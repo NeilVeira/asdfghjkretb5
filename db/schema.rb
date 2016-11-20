@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20161117231006) do
   create_table "people", force: :cascade do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.string   "dob"
+    t.date     "dob"
     t.string   "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -71,7 +71,9 @@ ActiveRecord::Schema.define(version: 20161117231006) do
     t.integer  "tournament_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "team_id"
     t.index ["person_id"], name: "index_players_on_person_id"
+    t.index ["team_id"], name: "index_players_on_team_id"
     t.index ["tournament_id"], name: "index_players_on_tournament_id"
   end
 
@@ -88,8 +90,15 @@ ActiveRecord::Schema.define(version: 20161117231006) do
   create_table "sponsors", force: :cascade do |t|
     t.integer  "person_id"
     t.integer  "tournament_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "name"
+    t.string   "website"
+    t.string   "contact_info"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
     t.index ["person_id"], name: "index_sponsors_on_person_id"
     t.index ["tournament_id"], name: "index_sponsors_on_tournament_id"
   end
@@ -161,6 +170,8 @@ ActiveRecord::Schema.define(version: 20161117231006) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "provider"
+    t.string   "uid"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,6 +1,12 @@
 <br>
 <br>
-<%= link_to 'Terms of Service', controller: "/serviceterm", action: "index" %>
-<%= link_to 'Privacy Info', controller: "/privacy", action: "index" %>
-<%= link_to 'Site Map', controller: "/site_map", action: "index" %>
+<nav id="foot" class="navbar navbar-default container">
+  <div class="container-fluid">
+	<ul class="nav navbar-nav">
+		<li id="footer"><%= link_to 'Terms of Service', controller: "/serviceterm", action: "index" %></li>
+		<li id="footer"><%= link_to 'Privacy Info', controller: "/privacy", action: "index" %></li>
+		<li id="footer"><%= link_to 'Site Map', controller: "/site_map", action: "index" %></li>
+	</ul>
+  </div>
+</nav>
 <br> 

@@ -5,10 +5,12 @@
 		<th>Link</th>
 	</tr>
 
+	<% type = ['Player', 'Sponser', 'Spectator', 'Tournament Organizer'] %>
+
 	<% tickets.each do |t| %>
 		<% tournament = Tournament.find_by(id: t.tournament_id) %>
 		<tr>
-			<th><%= t.tickettype %></th>
+			<th><%= type[t.tickettype - 1] %></th>
 			<th><%= tournament.name %></th>
 			<th><%= link_to "Link", tournament_path(tournament) %></th>
 		</tr>	

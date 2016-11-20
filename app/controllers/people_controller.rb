@@ -10,6 +10,11 @@ class PeopleController < ApplicationController
 	
 	def new
 		@person = Person.new
+		data = session["data"]
+		if data
+			@person.firstname = data[0]
+			@person.lastname = data[1]
+		end
 		@person.build_address
 	end
 	

@@ -65,4 +65,26 @@ module PeopleHelper
   def get_user_tickets (personToFind = current_person)
     return get_all_tickets(current_person)
   end
+
+  def check_Tournaments (tournaments)
+    c_date = Time.now.to_date
+    tournaments_displayed = 0
+
+    tournaments.each do |t|
+      t_date = t.date.to_date
+      days_away = (t_date - c_date).to_i
+    
+      if days_away >= 0 
+        tournaments_displayed += 1
+      end
+
+    end
+
+    if tournaments_displayed >= 1
+      return true
+    else
+      return false
+    end
+
+  end
 end
