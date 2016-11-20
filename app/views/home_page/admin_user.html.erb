@@ -30,9 +30,30 @@
 <br>
 
 
-
+<br>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 <div class="w3-container">
-  <div class="w3-teal">
+  <div class="jumbotron">
+    <p style="text-align: center" class="w3-xlarge">WELCOME TO CSC444 GOLF TOURNAMENT SITE</p>
+    <div class="flexslider">
+        <ul class="slides">
+          <li>
+            <img src="images/default_image.jpg" class="w3-opacity" />
+            <span class="flex-caption">COME AND CHECK OUT OUR FEATURES</span></a>
+          </li>
+          <li>
+            <img src="images/download.jpeg" class="w3-opacity" />
+            <span class="flex-caption">LEARN FROM THE PROFESSIONALS</span></a>
+          </li>
+          <li>
+            <img src="images/newbruns.jpg" class="w3-opacity" />
+            <span class="flex-caption">PLAY IN SOME OF THE MOST BEAUTIFUL GOLF COURSES IN THE WORLD</span></a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <hr class="line_break">
+  <div class="jumbotron">
       <table width=100%> 
           <tr> 
             <td valign="top">
@@ -69,10 +90,8 @@
         </tr>
         </table>
   </div>
-  <br>
-  <br>
-  <br>
-  <div>
+  <hr class="line_break">
+  <div class="jumbotron">
     <h2>Why use our service?</h2>
     <p>
       <ol>
@@ -84,16 +103,16 @@
       For more information: Check out our <%=link_to 'Features', controller: "/feature", action: "index" %>
     </p>
   </div>
-  <br>
-  <div>
+  <hr class="line_break">
+  <div class="jumbotron" style="text-align: center">
      <h2>Pricing </h2>
      <p>Prices are also low as <strong>$29.95/tournament</strong></p>
      <p>For more details, check out specific <%=link_to 'Tournaments', tournaments_path%>
-     <h2>PROMOTION</h2>
+     <h2>Promotion</h2>
      <p>A 3-day trip to Florida for SomeGolfCourse tournament up to 3 people only $500! Register Now!</p>
   </div>
-  <br>
-  <div>
+  <hr class="line_break">
+  <div class="jumbotron">
     <h2>Testimonies</h2>
     <blockquote class="w3-panel w3-leftbar w3-light-grey">
         <p class="w3-large">
@@ -106,8 +125,8 @@
           <p>-Barack Obama</p>
     </blockquote>
   </div>
-  <br>
-  <div>
+  <hr class="line_break">
+  <div class="jumbotron">
     <h2>Main Locations</h2>
     <p>These are some of the popular sponsored locations that we offer.</p>
     <div class="w3-row-padding w3-margin-top">
