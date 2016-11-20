@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   resources :website_admins
   resources :players
   resources :sponsors
+  resources :credit_cards
 
   root 'home_page#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
