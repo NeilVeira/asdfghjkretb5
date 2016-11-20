@@ -84,8 +84,7 @@ class TournamentsController < ApplicationController
 	def authenticate_organizer!
 		#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
 		unless user_is_organizer?
-			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
-			redirect_to root_url
+			access_denied
 		end
 	end
 	

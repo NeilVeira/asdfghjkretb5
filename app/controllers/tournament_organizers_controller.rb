@@ -10,9 +10,13 @@ class TournamentOrganizersController < ApplicationController
     end 
     
     def new #display the for new record
-		@tournament = Tournament.find(session[:tournament_id])
-		@organizer = TournamentOrganizer.find_by(tournament_id: @tournament.id, person_id: current_person.id)
-		logger.debug "@organizer: #{@organizer.person.firstname} #{@organizer.person.lastname} for tournament #{@tournament.name}"
+		if session[:tournament_id]
+			@tournament = Tournament.find(session[:tournament_id])
+			@organizer = TournamentOrganizer.find_by(tournament_id: @tournament.id, person_id: current_person.id)
+			@tournament_organizer = TournamentOrganizer.new()
+		else
+			access_denied
+		end
     end
     
     def create #save new record
@@ -21,29 +25,28 @@ class TournamentOrganizersController < ApplicationController
 		
 		#construct adminrights bitvector
 		adminrights = 0
-		if params[:tournament_organizer][:edit_privilege] == "1"
+		if params[:tournament_organizer_key][:edit_privilege] == "1"
 			adminrights = adminrights | (1<<0)
 		end
-		if params[:tournament_organizer][:tee_sheet_privilege] == "1"
+		if params[:tournament_organizer_key][:tee_sheet_privilege] == "1"
 			adminrights = adminrights | (1<<1)
 		end
-		if params[:tournament_organizer][:create_admin_privilege] == "1"
+		if params[:tournament_organizer_key][:create_admin_privilege] == "1"
 			adminrights = adminrights | (1<<2)
 		end
 		logger.debug "setting adminrights = #{adminrights}"
 		@tournament_organizer.adminrights = adminrights
 		
 		#try to find this person in the database
-		user = User.find_by(email: params[:tournament_organizer][:email])
+		user = User.find_by(email: params[:tournament_organizer_key][:email])
 		if user
 			logger.debug "found user"
 			person = Person.find_by(user_id: user.id)
 			logger.debug "Found person #{person.firstname} #{person.lastname}"
 			@tournament_organizer.person = person
 		else
-			#TODO: set error messages
+			#do nothing - should fail validation
 			logger.debug "No user found"
-			redirect_to new_tournament_organizer_path and return 
 		end
 		
 		@tournament_organizer.tournament = @tournament
@@ -67,7 +70,9 @@ class TournamentOrganizersController < ApplicationController
 			end
     	else
 			logger.debug "tournament_organizer not added to database"
-    		redirect_to new_tournament_organizer_path #go back to new if save not successful
+    		#redirect_to new_tournament_organizer_path #go back to new if save not successful
+			@organizer = TournamentOrganizer.find_by(tournament_id: @tournament.id, person_id: current_person.id)
+			render 'new'
     	end
     end
     

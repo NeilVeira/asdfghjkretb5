@@ -2,8 +2,19 @@
 
 
   
-<%= form_for :tournament_organizer, url: tournament_organizers_path do |f| %>
-	<!TODO: display error messages>
+<%= form_for :tournament_organizer_key, url: tournament_organizers_path do |f| %>
+	<% if @tournament_organizer.errors.any? %>
+		<div id="error_explanation">
+		  <h4>
+			Could not create tournament organizer due to the following <%= pluralize(@tournament_organizer.errors.count, "error") %> :
+		  </h4>
+		  <ul>
+			<% @tournament_organizer.errors.full_messages.each do |msg| %>
+			  <li><%= msg %></li>
+			<% end %>
+		  </ul>
+		</div>
+	<% end %>
   
 	<p>Enter the email address of the user you wish to add</p>
 		<%= f.text_field :email %>

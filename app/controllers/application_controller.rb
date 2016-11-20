@@ -44,8 +44,7 @@ class ApplicationController < ActionController::Base
 
 	def authenticate_admin!
 		unless user_is_admin?
-			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
-			redirect_to root_url
+			access_denied
 		end
 	end
 
@@ -115,5 +114,10 @@ class ApplicationController < ActionController::Base
 				logger.error "Ticket: #{ticket_exists.id}"
 			end
 		end
+	end
+	
+	def access_denied
+		flash[:notice] = "Access to the requested page is denied"
+		redirect_to root_url
 	end
 end	
