@@ -1,5 +1,12 @@
 <h1>Profile</h1>
 <br>
+
+<% if flash[:error] %>
+<h2>1 error prohibited this person from being saved:</h2>
+	<%= flash[:error] %>
+	<br>
+<% end %>
+
 <%= link_to 'Edit', edit_person_path(@person) %>
 <br>
 <h2>Personal Information</h2>
@@ -32,16 +39,20 @@
 		<th>Status</th>
 	</tr>
 
-	<% services = ['facebook', 'twitter', 'google', 'linkedin', 'instagram']%>
+	<% services = ['facebook', 'linkedin']%>
 
 	<% for service in services %>
 		<tr>
 			<td><%= service.capitalize %></td>
-			<% if service.eql?(@person.user.provider)%> 
+			<% if service.eql?(@person.user.in_provider) || service.eql?(@person.user.fb_provider) %> 
 				<td>Connected</td>
 			<% else %>
 				<td>Not linked</td>
-				<td><%= service.capitalize %>: Link to sign up</td>
+				<% if service.eql?('facebook') %>
+					<td><%= link_to "Link to Facebook", user_facebook_omniauth_authorize_path %></td>
+				<% else %>
+					<td><%= link_to "Link to LinkedIn", user_linkedin_omniauth_authorize_path %></td>
+				<% end %>
 			<% end %>
 		<tr>
 	<% end %>

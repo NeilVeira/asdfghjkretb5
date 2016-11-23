@@ -5,8 +5,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :linkedin]
 		 
   def self.from_omniauth(auth)
-	where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-	  user.email = auth.info.email
+	where(email: auth.info.email).first_or_create do |user|
+	  #user.email = auth.info.email
+	  if auth.provider == 'facebook'
+		user.fb_provider = auth.provider
+	  else
+		user.in_provider = auth.provider
+	  end
+	  user.uid = auth.uid
 	  user.password = Devise.friendly_token[0,20]
 	end
   end
