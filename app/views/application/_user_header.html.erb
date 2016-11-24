@@ -1,29 +1,29 @@
-
-        <!--<nav class="navbar navbar-default" style="background-color: #FFFFF5">
-        <div class="container-fluid">
-    
-          <ul class="nav navbar-nav navbar-right" >
-			<% if user_signed_in? %>
-	 			Welcome:
-				<strong><%= current_user.email %> !</strong>
-				<li id="head"  class="active"><%= link_to 'My Account', controller: "people", action: "portal" %></li>
-  				<li id="head"  class="active"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-				<%  else %>
-				<li id="head"  class="active"><%= link_to 'Login', new_user_session_path %></li>
-				<li id="head"  class="active"><%=link_to 'Sign Up', new_user_registration_path %></li>
-			<% end %>
-			<li id="head" class="active"><span class="label label-default"><%= link_to 'Contact Us', controller: "/contact_us", action: "index" %></span></li>
-			<li id="head"  class="active"><span class="label label-default"><%= link_to 'Partners', controller: "/partner", action: "index" %></span></li>
-			<li id="head"  class="active"><span class="label label-default"><%= link_to 'Our Story', controller: "/story", action: "index" %></span></li>
-			<li id="head"  class="active"><span class="label label-default"><%= link_to 'FAQ', controller: "/faq", action: "index" %></span></li>
-			<li id="head"  class="active"><span class="label label-default"><%= link_to 'Features', controller: "/feature", action: "index" %></span></li>
-			<li id="head" class="active"><span class="label label-default"><%= link_to 'Tournaments', tournaments_path%></span></li>
-			<span class="label label-default"><li id="head"  class="active"><a href="/">Home</a></li></span>
-		  </ul>
-		  </div>
-		</nav>-->
-		<div id="navigation" class="w3-top">
+<div id="navigation" class="w3-top">
 		<ul class="w3-navbar w3-light-gray nav navbar-nav navbar-right">
+			<button id="taskBtn" type="button" style="margin-left: 35px; margin-right: 15px" class="btn btn-success">Available Tasks</button>
+			<div id="taskModal" class="modal">
+				 <!-- Modal content -->
+				  <div class="modal-content">
+				    <span class="close">×</span>
+				    <h3> Tasks: </h3>
+				    <%=link_to 'View Tournaments', tournaments_path%><br>
+				    <% if user_signed_in? %>
+				    	<%=link_to 'Register a Golf Course', new_golf_course_path%><br>
+				    	<%=link_to 'Create a Tournament', new_tournament_path%><br>
+				    	<%if user_is_admin? %>
+				    		<%=link_to 'Admin View all users' , people_path%><br>
+  							<%=link_to 'Admin View all Teams', teams_path%><br>
+						    <%=link_to 'Admin Tournament Organizers', tournament_organizers_path%><br>
+						    <%=link_to 'Admin Golf Course Organizers', golf_course_organizers_path%><br>
+						    <%=link_to 'Admin New Team', new_team_path%><br>
+						    <%=link_to 'Admin Website Admins', website_admins_path%><br>
+						    <%=link_to 'Admin Players Page', players_path%><br>
+						    <%=link_to 'Admin Sponsors Page', sponsors_path%>
+				    	<% end %>
+				    <% end %>
+
+				  </div>
+			</div>
   			<% if user_signed_in? %>
 	 			Welcome:
 				<strong><%= current_user.email %> !</strong>
@@ -42,3 +42,31 @@
 			<li id="head"  class="active"><a href="/">Home</a></li>
 		</ul>
 </div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('taskModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("taskBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
