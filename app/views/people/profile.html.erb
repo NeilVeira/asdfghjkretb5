@@ -1,5 +1,7 @@
 <h1>Profile</h1>
 <br>
+<%= image_tag @person.image.url %>
+<br>
 
 <% if flash[:error] %>
 <h2>1 error prohibited this person from being saved:</h2>
@@ -19,8 +21,6 @@
     <strong>Phone Number: </strong><%=@person.phone%><br>
 
 </p>
-
-<%= image_tag @person.image.url %>
 
 <h3>Address</h3>
 <p>
