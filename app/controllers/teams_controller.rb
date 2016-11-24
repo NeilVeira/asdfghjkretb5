@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
-	before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
-	#TODO: require that user is organizer for current tournament
+	#before_action :authenticate_user!, only: [:show]
+	before_action :authenticate_admin!, only: [:index, :new, :create, :edit, :update, :destroy]
 
 	def index
 		@teams = Team.all
@@ -41,4 +41,5 @@ class TeamsController < ApplicationController
 	def team_params
 		params.require(:team).permit(:name, :tournament_id)
 	end 
+
 end

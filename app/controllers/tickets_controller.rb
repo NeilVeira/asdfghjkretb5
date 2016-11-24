@@ -1,5 +1,7 @@
 class TicketsController < ApplicationController
 	before_action :authenticate_user!
+	before_action :authenticate_ticket_owner!, only: [:show]
+	before_action :authenticate_admin!, only: [:index, :edit, :update]
 	require 'rqrcode'
 
     def index
@@ -91,6 +93,15 @@ class TicketsController < ApplicationController
 	private
 		def ticket_params
 			params.require(:ticket).permit(:tickettype)
+		end
+		
+		def authenticate_ticket_owner!
+			#check that current user is the owner of this ticket
+			@ticket = Ticket.find(params[:id])
+			@person = current_person
+			if not user_is_admin! and @person != @ticket.person
+				access_denied
+			end
 		end
 	
 end
