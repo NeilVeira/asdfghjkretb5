@@ -1,7 +1,7 @@
 <% # variable declaration
   c_date = Time.now.to_date
   tournaments_previous = Tournament.where("date<=?",c_date)
-  tournaments_future = Tournament.where("date<=?",c_date)
+  tournaments_future = Tournament.where("date>?",c_date)
 %>
 
 <table>
@@ -14,7 +14,7 @@
     <th colspan="4"></th>
   </tr>
 
-  <% golf_course.each do |gc| %>
+  <% @golf_course.each do |gc| %>
       <tr>
         <td><%= gc.name %></td>
         <td><%= gc.address_id %></td>
