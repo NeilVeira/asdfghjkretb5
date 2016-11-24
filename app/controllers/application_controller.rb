@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?
+	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?
 	
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -57,6 +57,20 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def user_is_golf_course_organizer?(golf_course)
+		if user_signed_in?
+			@person = current_person
+			@organizer = GolfCourseOrganizer.find_by(golf_course: golf_course, person: @person)
+			if @organizer
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
+	
 	def authenticate_admin!
 		unless user_is_admin?
 			access_denied

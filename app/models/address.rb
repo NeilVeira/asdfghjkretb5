@@ -1,5 +1,5 @@
 class Address < ApplicationRecord
-    validates :apartmentNumber, allow_blank: true, numericality: { only_integer: true }
+    #validates :apartmentNumber, allow_blank: true, numericality: { only_integer: true }
     validates :streetNumber, presence: true, numericality: { only_integer: true } 
     validates :streetName, presence: true 
     validates :city, presence: true 
@@ -7,7 +7,11 @@ class Address < ApplicationRecord
     validates :country, presence: true 
     validates :postalCode, presence: true 
 	
-	after_validation :cleanup
+	before_validation :cleanup
+	
+	def self.existance(t_streetNumber, t_streetName, t_city, t_province, t_country, t_postalCode)
+		return Address.find_by streetNumber: t_streetNumber, streetName: t_streetName, city: t_city, province: t_province, country: t_country, postalCode: t_postalCode
+	end
 	
 	protected
 		def cleanup

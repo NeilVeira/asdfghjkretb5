@@ -1,5 +1,5 @@
-<h1>Register a Golf Course</h1>
-<%= form_for @golf_course, url: golf_courses_path do |f| %>
+<h1>Edit a Golf Course</h1>
+<%= form_for @golf_course, url: golf_course_path(@golf_course) do |f| %>
   
   <% if @golf_course.errors.any? %>
     <div id="error_explanation">
