@@ -16,6 +16,11 @@ class Person < ApplicationRecord
 	validates :user, presence: true
 	validates :address, presence: true
 	
+	# Used for uploading images
+	has_attached_file :image, default_url: "/images/default_profile_pic.jpg"
+	validates_attachment :image, 
+		content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] }
+	
 	after_validation :cleanup
 	
 	protected

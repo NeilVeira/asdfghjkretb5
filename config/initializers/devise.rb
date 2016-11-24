@@ -4,6 +4,7 @@ Devise.setup do |config|
   
   # OAuth setup
 	config.omniauth :facebook, "1674698396174231", "782f2d743e159fdbeba4eedc1b106ef5"
+	config.omniauth :linkedin, "78y2vpnb8ufrck", "QCsh6yDu3xJ9dIZq"
   #
   
   # The secret key used by Devise. Devise uses this key to generate

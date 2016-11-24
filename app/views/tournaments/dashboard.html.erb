@@ -5,6 +5,9 @@
 	<% if @organizer.adminrights & 1 != 0 %> <!check privileges to edit info>
 		<%= link_to "Edit tournament info",edit_tournament_path(@tournament) %><br>
 	<% end %>
+	<% if @organizer.adminrights & 4 != 0 %> <!check privileges to add tournament admins>
+		<%= link_to "Add tournament admin", new_tournament_organizer_path %>
+	<% end %>
 	<% if @organizer.adminrights & 2 != 0 %> <!check privileges to manage tee sheets">
 		<p>Manage tee sheets (coming soon)</p><br>
 	<% end %>

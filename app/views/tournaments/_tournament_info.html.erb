@@ -24,6 +24,10 @@
 		<%= @tournament.golf_course.address.postalCode %>
 	</p>
 </section>
+
+<section>
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= @tournament.golf_course.address.streetNumber.to_s+' '+@tournament.golf_course.address.streetName+', '+@tournament.golf_course.address.city+', '+@tournament.golf_course.address.province+', '+@tournament.golf_course.address.country+', '+@tournament.golf_course.address.postalCode %>&key=AIzaSyD8a5v_F5a9FS6gYvC7NYy7vwzaU4_moiw" allowfullscreen></iframe>
+</section>
 	
 <section>
 	<h2>

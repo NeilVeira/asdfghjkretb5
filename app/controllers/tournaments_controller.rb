@@ -54,6 +54,7 @@ class TournamentsController < ApplicationController
 	
 	def dashboard
 		@tournament = Tournament.find(params[:id])
+		session[:tournament_id] = @tournament.id #just in case the user goes to this path without first going through the tournament#show
 		@person = current_person
 		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
 		render 'dashboard'
@@ -65,26 +66,10 @@ class TournamentsController < ApplicationController
 		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
 	end
 	
-	def user_is_organizer?
-		#check if the current user is an organizer for this tournament
-		if user_signed_in?
-			@person = current_person
-			@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
-			if @organizer
-				return true
-			else
-				return false
-			end
-		else
-			return false
-		end
-	end
-	
 	def authenticate_organizer!
 		#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
-		unless user_is_organizer?
-			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
-			redirect_to root_url
+		unless user_is_organizer?(params[:id])
+			access_denied
 		end
 	end
 	

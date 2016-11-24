@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?
+	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?
 	
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -26,7 +26,11 @@ class ApplicationController < ActionController::Base
 
 	def current_website_admin
 		@person = current_person
-		return WebsiteAdmin.find_by person_id: @person.id
+		if @person
+			return WebsiteAdmin.find_by person_id: @person.id
+		else
+			return NIL
+		end
 	end
 
 	def user_is_admin?
@@ -41,11 +45,39 @@ class ApplicationController < ActionController::Base
 			return false
 		end
 	end
+	
+	def user_is_organizer?(tournament_id)
+		#check if the current user is an organizer for this tournament
+		if user_signed_in?
+			@person = current_person
+			@organizer = TournamentOrganizer.find_by(tournament_id: tournament_id, person_id: @person.id)
+			if @organizer
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
 
+	def user_is_golf_course_organizer?(golf_course)
+		if user_signed_in?
+			@person = current_person
+			@organizer = GolfCourseOrganizer.find_by(golf_course: golf_course, person: @person)
+			if @organizer
+				return true
+			else
+				return false
+			end
+		else
+			return false
+		end
+	end
+	
 	def authenticate_admin!
 		unless user_is_admin?
-			flash[:notice] = "Access to the requested page is denied due to invalid user credentials"
-			redirect_to root_url
+			access_denied
 		end
 	end
 
@@ -115,5 +147,10 @@ class ApplicationController < ActionController::Base
 				logger.error "Ticket: #{ticket_exists.id}"
 			end
 		end
+	end
+	
+	def access_denied
+		flash[:notice] = "Access to the requested page is denied"
+		redirect_to root_url
 	end
 end	
