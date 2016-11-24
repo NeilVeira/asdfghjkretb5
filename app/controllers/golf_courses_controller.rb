@@ -1,7 +1,5 @@
 class GolfCoursesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create]
-	
-	attr_reader :golf_course
 
 	def index
 		@golf_course = GolfCourse.all

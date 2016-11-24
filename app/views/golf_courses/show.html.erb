@@ -1,41 +1,48 @@
-<p>
-  <strong>Golf Course Name:</strong>
-  <%= @golf_course.name %>
-</p>
+<html>
+	<body>
+		<h1>
+			<strong><%= @golf_course.name %></strong>
+		</h1>
 
-<p>
-  <strong>Golf Course StreetNumber:</strong>
-  <%= @golf_course.address.streetNumber %>
-</p>
+		<p>
+			<strong>Golf Course StreetNumber:</strong>
+			<%= @golf_course.address.streetNumber %>
+		</p>
 
-<p>
-  <strong>Golf Course StreetName:</strong>
-  <%= @golf_course.address.streetName %>
-</p>
+		<p>
+			<strong>Golf Course StreetName:</strong>
+			<%= @golf_course.address.streetName %>
+		</p>
 
-<p>
-  <strong>Golf Course City:</strong>
-  <%= @golf_course.address.city %>
-</p>
+		<p>
+			<strong>Golf Course City:</strong>
+			<%= @golf_course.address.city %>
+		</p>
 
-<p>
-  <strong>Golf Course Province:</strong>
-  <%= @golf_course.address.province %>
-</p>
+		<p>
+			<strong>Golf Course Province:</strong>
+			<%= @golf_course.address.province %>
+		</p>
 
-<p>
-  <strong>Golf Course Country:</strong>
-  <%= @golf_course.address.country %>
-</p>
+		<p>
+			<strong>Golf Course Country:</strong>
+			<%= @golf_course.address.country %>
+		</p>
 
-<p>
-  <strong>Golf Course PostalCode:</strong>
-  <%= @golf_course.address.postalCode %>
-</p>
+		<p>
+			<strong>Golf Course PostalCode:</strong>
+			<%= @golf_course.address.postalCode %>
+		</p>
 
-<% if user_is_golf_course_organizer?(@golf_course) %>
-	<h3>You are an organizer for this golf course!</h3>
-	<%= link_to 'Edit', edit_golf_course_path(@golf_course) %><br>
-<% end %>
+		<section>
+			<iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= @golf_course.address.streetNumber.to_s+' '+@golf_course.address.streetName+', '+@golf_course.address.city+', '+@golf_course.address.province+', '+@golf_course.address.country+', '+@golf_course.address.postalCode %>&key=AIzaSyD8a5v_F5a9FS6gYvC7NYy7vwzaU4_moiw" allowfullscreen></iframe>
+		</section>
 
-<%= link_to 'Home', controller: 'home_page' %>
+		<% if user_is_golf_course_organizer?(@golf_course) %>
+		<h3>You are an organizer for this golf course!</h3>
+		<%= link_to 'Edit', edit_golf_course_path(@golf_course) %><br>
+		<% end %>
+
+		<%= link_to 'Home', controller: 'home_page' %>
+	</body>
+</html>
