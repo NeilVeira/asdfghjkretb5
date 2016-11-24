@@ -12,7 +12,7 @@
 		<tr>
 			<th><%= type[t.tickettype - 1] %></th>
 			<th><%= tournament.name %></th>
-			<th><%= link_to "Link", tournament_path(tournament) %></th>
+			<th><%= link_to "Link", ticket_path(t) %></th>
 		</tr>	
 	<% end %>
 </table>
