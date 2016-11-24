@@ -26,7 +26,11 @@ class ApplicationController < ActionController::Base
 
 	def current_website_admin
 		@person = current_person
-		return WebsiteAdmin.find_by person_id: @person.id
+		if @person
+			return WebsiteAdmin.find_by person_id: @person.id
+		else
+			return NIL
+		end
 	end
 
 	def user_is_admin?
