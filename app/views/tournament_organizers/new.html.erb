@@ -20,7 +20,7 @@
 		<%= f.text_field :email %>
 	
 	<!Only give the option if the current organizer has this privilege (organizer shouldn't be able to create another organizer with permissions that they themselves don't have)>
-	<% if @organizer.adminrights & 1 != 0 %>
+	<% if user_is_admin? or @organizer.adminrights & 1 != 0 %>
 		<p>
 			<%= f.label :Allow_the_user_to_edit_tournament_info? %><br>
 			<%= f.label :"Yes" %>
@@ -30,7 +30,7 @@
 		</p>
 	<% end %>
 	
-	<% if @organizer.adminrights & 2 != 0 %>
+	<% if user_is_admin? or @organizer.adminrights & 2 != 0 %>
 		<p>
 			<%= f.label :Allow_the_user_to_manage_tee_sheets? %><br>
 			<%= f.label :"Yes" %>
@@ -40,7 +40,7 @@
 		</p>
 	<% end %>
 	
-	<% if @organizer.adminrights & 4 != 0 %>
+	<% if user_is_admin? or @organizer.adminrights & 4 != 0 %>
 		<p>
 			<%= f.label :Allow_the_user_to_add_tournament_admins? %><br>
 			<%= f.label :"Yes" %>

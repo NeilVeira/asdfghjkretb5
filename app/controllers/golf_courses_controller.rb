@@ -1,5 +1,6 @@
 class GolfCoursesController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create]
+	before_action :authenticate_organizer!, only: [:edit, :update, :destroy] 
 
 	def index
 		@golf_course = GolfCourse.all
@@ -48,6 +49,13 @@ class GolfCoursesController < ApplicationController
 	def golf_course_params
 		params.require(:golf_course).permit(:name, :location,
 			address_attributes: [:id, :apartmentNumber, :streetNumber, :streetName, :city, :province, :country, :postalCode])
+	end
+	
+	def authenticate_organizer!
+		#check that current user is organizer for this golf course
+		unless user_is_golf_course_organizer?(params[:id])
+			access_denied
+		end		
 	end
   
 end

@@ -1,6 +1,6 @@
 class GolfCourseOrganizersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :authenticate_admin!, only: [:index, :destroy]
+	before_action :authenticate_admin!, only: [:index, :show, :edit, :update, :destroy]
 
 	def index
 		@golf_course_organizers = GolfCourseOrganizer.all

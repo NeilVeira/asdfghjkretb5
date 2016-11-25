@@ -57,6 +57,7 @@ class TournamentsController < ApplicationController
 		session[:tournament_id] = @tournament.id #just in case the user goes to this path without first going through the tournament#show
 		@person = current_person
 		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
 		render 'dashboard'
 	end
 	

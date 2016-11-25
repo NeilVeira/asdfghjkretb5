@@ -48,7 +48,9 @@ class ApplicationController < ActionController::Base
 	
 	def user_is_organizer?(tournament_id)
 		#check if the current user is an organizer for this tournament
-		if user_signed_in?
+		if user_is_admin?
+			return true
+		elsif user_signed_in?
 			@person = current_person
 			@organizer = TournamentOrganizer.find_by(tournament_id: tournament_id, person_id: @person.id)
 			if @organizer
@@ -62,7 +64,9 @@ class ApplicationController < ActionController::Base
 	end
 
 	def user_is_golf_course_organizer?(golf_course)
-		if user_signed_in?
+		if user_is_admin?
+			return true
+		elsif user_signed_in?
 			@person = current_person
 			@organizer = GolfCourseOrganizer.find_by(golf_course: golf_course, person: @person)
 			if @organizer
