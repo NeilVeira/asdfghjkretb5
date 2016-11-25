@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'tickets/payment/:id', to: 'tickets#payment', as: :payment
 
   # pass in ticket id
-  post 'tickets/paymentProcessing/:id', to: 'tickets#paymentProcessing', as: :paymentProcessing
+  get 'tickets/paymentProcessing/:id/:cc', to: 'tickets#paymentProcessing', as: :paymentProcessing
 
   # setup is used to pass the tournament_id to the tickets#new action when registering
   get 'tickets/setup/:id', to: 'tickets#setup', as: :setup

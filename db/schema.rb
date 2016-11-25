@@ -27,14 +27,14 @@ ActiveRecord::Schema.define(version: 20161124231832) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.integer  "person_id"
-    t.integer  "number"
+    t.integer  "number",     limit: 8
     t.integer  "month"
     t.integer  "year"
     t.integer  "cvc"
     t.string   "fname"
     t.string   "lname"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
     t.index ["person_id"], name: "index_credit_cards_on_person_id"
   end
 

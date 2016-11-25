@@ -82,10 +82,15 @@ class TicketsController < ApplicationController
       if response.success?
         # Capture the money
         gateway.capture(1000, response.authorization)
+        redirect_to ticket_path(params[:id])
       else
+        logger.debug "credit card was not valid"
+        redirect_to ticket_path(params[:id])
         raise StandardError, response.message
       end
     end
+    logger.debug "credit card was not valid"
+    redirect_to ticket_path(params[:id])
   end
 
 	private

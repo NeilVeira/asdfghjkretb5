@@ -1,0 +1,57 @@
+<%
+  # pre-processing
+@creditcard = CreditCard.new
+# form data
+months = [['Jan', 1],['Feb', 2],['Mar', 3],['Apr', 4],['Apr', 5],['Jun', 6],['Jul', 7],['Aug', 8],['Sept', 9],['Oct', 10],['Nov', 11],['Dec', 12]]
+years = [[2016, 2016],[2017, 2017],[2018, 2018],[2019, 2019]]
+
+  unless defined? ticket_id
+    ticket_id = 0
+    direct_page = 0 # ensures doesn't try to return to ticket page
+  end
+%>
+
+<%= form_for @creditcard, url: credit_cards_path(@creditcard, direct: direct_page, ticket_id: ticket_id, return: return_page), method: :post do |f| %>
+    <% # return value is integer set to determine which page to return to after create %>
+
+    <% if @creditcard.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@creditcard.errors.count, "error") %> prohibited
+            this creditcard from being saved:
+          </h2>
+          <ul>
+            <% @creditcard.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+    
+    Credit card information: (can someone make this look nicer ;-; )
+    <br><br>
+    <p>
+      <%= f.label :number %>
+      <%= f.text_field :number %><br>
+      <br>
+      Expiration Date: <br>
+      <%= f.label :month %>
+      <%= f.select :month, months %>
+      <%= f.label :year %>
+      <%= f.select :year, years%>
+
+      <br>
+      <%= f.label :cvc %>
+      <%= f.text_field :cvc %><br>
+      <br>
+      <%= f.label :"first name" %>
+      <%= f.text_field :fname %> <br>
+      <%= f.label :"last name" %>
+      <%= f.text_field :lname %>
+    </p>
+
+    <p>
+      <input type="submit" value="Continue">
+    </p>
+
+<% end %>
