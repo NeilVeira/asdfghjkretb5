@@ -52,7 +52,7 @@ class TicketsController < ApplicationController
 		end
 
   	def payment
-
+      # @CreditCard = CreditCard.new
     end
 
   def paymentProcessing
@@ -61,7 +61,7 @@ class TicketsController < ApplicationController
 
 # Create a new credit card object
     credit_card = ActiveMerchant::Billing::CreditCard.new(
-        :number     => params[:card_number],
+        :number     => params[:number],
         :month      => params[:month],
         :year       => params[:year],
         :first_name => params[:fname],

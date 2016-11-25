@@ -1,10 +1,41 @@
 <%
   @ticket = Ticket.where(id: params[:id]).first
+  unless @ticket
+    render tournaments_path
+  end
+
+  creditcard = CreditCard.new
   price = get_price(@ticket)
-  %>
+  # form data
+  months = [['Jan', 1],['Feb', 2],['Mar', 3],['Apr', 4],['Apr', 5],['Jun', 6],['Jul', 7],['Aug', 8],['Sept', 9],['Oct', 10],['Nov', 11],['Dec', 12]]
+  year = [[2016, 2016],[2016, 2016],[2016, 2016],[2016, 2016]]
+%>
 <h1>Payment for tournament <%= @ticket.tournament.name %></h1>
-    Price: <%= price %>
+
 <br>
+<%= form_for creditcard, url: paymentProcessing_path(@ticket.id) do |f| %>
+
+    <h3>Ticket Type: </h3>
+    <h4>Price: <%= price %> </h4>
+
+    Credit card information:
+    <p>
+      <%= f.label :number %><br>
+      <%= f.text_field :number %><br>
+    </p>
+    <p>
+      Expiration Date:
+      <%= f.label :month %><br>
+      <%= f.select :month, months %><br>
+      <%= f.label :year %><br>
+      <%= f.select :year, months %><br>
+    </p>
+
+    <p>
+      <input type="submit" value="Continue">
+    </p>
+
+<% end %>
 
 <%= link_to 'Continue', ticket_path(@ticket) %> (test) <br>
 

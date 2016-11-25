@@ -1,9 +1,11 @@
+<% @tournament = Tournament.where(id: session[:tournament_id] ).first%>
 <h1>Register for tournament <%= @tournament.name %></h1>
 <h2>Select Ticketing Options</h2>
 
 <%= form_for @ticket, url: tickets_path do |f| %>
- 
- 
+<%= tickets = Ticket.where(person_id: current_person.id, tournament_id: @tournament.id) %>
+<%= tickets.count %>
+    <%= Ticket.last.id%>
  <% if @ticket.errors.any? %>
     <div id="error_explanation">
       <h2>
@@ -17,16 +19,16 @@
       </ul>
     </div>
   <% end %>
-  
+
   <h3>Ticket Type</h3>
   <p>
 	<%= f.select(:tickettype, [['Player', 1], ['Sponsor', 2], ['General Admission', 3]]) %>
   </p>
-  
+
   <p>
 	<input type="submit" value="Continue">
   </p>
-  
+
 <% end %>
 
 <%= link_to 'Back', controller: 'home_page' %>

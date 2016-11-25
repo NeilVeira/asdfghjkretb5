@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161123191424) do
+ActiveRecord::Schema.define(version: 20161124231832) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressType"
@@ -25,15 +25,17 @@ ActiveRecord::Schema.define(version: 20161123191424) do
     t.datetime "updated_at",      null: false
   end
 
-  create_table "credit_card_tables", force: :cascade do |t|
-    t.integer "person_id"
-    t.integer "number"
-    t.integer "month"
-    t.integer "year"
-    t.integer "cvc"
-    t.string  "fname"
-    t.string  "lname"
-    t.index ["person_id"], name: "index_credit_card_tables_on_person_id"
+  create_table "credit_cards", force: :cascade do |t|
+    t.integer  "person_id"
+    t.integer  "number"
+    t.integer  "month"
+    t.integer  "year"
+    t.integer  "cvc"
+    t.string   "fname"
+    t.string   "lname"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_credit_cards_on_person_id"
   end
 
   create_table "golf_course_organizers", force: :cascade do |t|
