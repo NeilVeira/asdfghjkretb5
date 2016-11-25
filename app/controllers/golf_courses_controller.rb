@@ -53,7 +53,7 @@ class GolfCoursesController < ApplicationController
 	
 	def authenticate_organizer!
 		#check that current user is organizer for this golf course
-		if not user_is_golf_course_organizer?(params[:id]) and not user_is_admin?
+		unless user_is_golf_course_organizer?(params[:id])
 			access_denied
 		end		
 	end

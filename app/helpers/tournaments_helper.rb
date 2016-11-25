@@ -42,6 +42,9 @@ module TournamentsHelper
 				ticket = Ticket.find_by_tournament_id_and_person_id(t.id, @p.id)
 				if ticket
 					status[t.id] = ticket.tickettype
+				elsif user_is_admin?
+					#admins are automatically organizers for all tournaments
+					status[t.id] = 4
 				end
 			end
 		end
