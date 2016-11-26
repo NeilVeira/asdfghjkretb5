@@ -52,7 +52,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
   
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'test-rubyonrails-app.herokuapp.com/', port: 3000 }
   
   # mail settings
 	config.action_mailer.raise_delivery_errors = true
