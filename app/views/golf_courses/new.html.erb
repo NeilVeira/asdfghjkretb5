@@ -1,5 +1,5 @@
 <h1>Register a Golf Course</h1>
-<%= form_for @golf_course, url: golf_courses_path do |f| %>
+<%= form_for @golf_course, url: golf_courses_path, html: { multipart: true } do |f| %>
   
   <% if @golf_course.errors.any? %>
     <div id="error_explanation">
@@ -15,10 +15,14 @@
     </div>
   <% end %>
   
-  <p>
-    <%= f.label :Name %>
-    <%= f.text_field :name %>
-  </p>
+	<p>
+		<%= f.label :Name %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :Description %>
+		<%= f.text_field :description %>
+	</p>
  
 	<%= f.fields_for :address do |address| %>
 		
@@ -53,6 +57,10 @@
 		</p>
 		
 	<% end %>
+	
+	<p>Golf course image</p>
+		<%= f.file_field :image %>
+	<br>
  
   <p>
     <%= f.submit %>
