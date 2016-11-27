@@ -64,17 +64,18 @@ address_list.each do |addressType, apartmentNumber, streetNumber, streetName, ci
     Address.create(addressType: addressType, apartmentNumber: apartmentNumber, streetNumber: streetNumber, streetName: streetName, city: city, province: province, country: country, postalCode: postalCode)
 end
 
-golfcourse_list = [ ["Scarlett Woods Golf Course", 6],
-					["Don Valley Golf Course", 7],
-					["Flemingdon Park Golf Club", 8],
-					["Chambers Bay", 9],
-					["Pebble Beach Golf Links", 10],
-					["Bethpage Black Course", 11],
-					["Normandy Shores Golf Course", 12] ]
+golfcourse_list = [ ["Scarlett Woods Golf Course", 6, "public/images/golf_courses/scarlett_woods.jpg", "Scarlett Woods Golf Course is an executive-length par 62 course suitable for beginners and experts alike."],
+					["Don Valley Golf Course", 7, "public/images/golf_courses/don_valley.jpg", "Don Valley features lush vegetation and a rolling landscape. Its offers a traditional variety of holes and has a legendary reputation for its exciting natural setting. Hallelujah Corner includes the signature Par 5 12th hole followed by an outstanding par 3 challenge."],
+					["Flemingdon Park Golf Club", 8, "public/images/golf_courses/flemingdon_park.jpg", "A picturesque 9-hole golf course in the valley of the don just minutes away from downtown Toronto. Established in the early 1960s the course has been home to many of the locals and intermediate players."],
+					["Chambers Bay", 9, "public/images/golf_courses/chambers_bay.jpg", "Chambers Bay brings traditions of Scottish linksland to the Pacific Northwest. Adventure through towering dunes, massive fairways, and breathtaking views."],
+					["Pebble Beach Golf Links", 10, "public/images/golf_courses/pebble_beach.jpg", "The legendary Pebble Beach Resorts, between Monterey and Carmel, CA, features four renowned Monterey golf courses and three acclaimed resorts."],
+					["Bethpage Black Course", 11, "public/images/golf_courses/bethpage_black.jpg", "The Bethpage Black Course is a public golf course on Long Island, New York, the most difficult of the five courses at Bethpage State Park."],
+					["Normandy Shores Golf Course", 12, "public/images/golf_courses/normandy_shores.jpg", "Normandy Shores Golf Club located at the northern end of Miami Beach on a secluded island in Biscayne Bay is enjoyable for both the novice and pro."] ]
 
 
-golfcourse_list.each do |name,address_id|
-	GolfCourse.create(name: name, address_id: address_id)
+golfcourse_list.each do |name,address_id,image, description|
+	#TODO: how to create image parameters?
+	GolfCourse.create(name: name, address_id: address_id, image: File.new(image), description: description)
 end
 
 #IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
@@ -164,11 +165,12 @@ tournament_organizers_list.each do | person_id, tournament_id, adminrights|
 	TournamentOrganizer.create(person_id: person_id, tournament_id: tournament_id, adminrights: adminrights)
 end
 
+#For now, create one golf_course_organizer for each golf_course
 golf_course_organizers_list = [
 	[Person.first.id,GolfCourse.first.id, 0],
-	[Person.second.id,GolfCourse.first.id, 1],
+	[Person.second.id,GolfCourse.second.id, 1],
 	[Person.third.id,GolfCourse.third.id, 1],
-	[Person.fourth.id,GolfCourse.first.id, 0],
+	[Person.fourth.id,GolfCourse.fourth.id, 0],
 	[Person.fifth.id,GolfCourse.fifth.id, 0],
 	[6, 6, 2],
 	[7, 7, 1],
