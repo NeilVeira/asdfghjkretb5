@@ -1,2 +1,81 @@
-<h1>SiteMap#index</h1>
-<p>Find me in app/views/site_map/index.html.erb</p>
+<br><br>
+<div class="container">
+  <h1>CSC444 Site Map</h1>
+  <ul class="w3-navbar nav nav-pills">
+    <li role="presentation"><a href="#sec1">Administration</a></li>
+    <li role="presentation"><a href="#sec2">Tournaments</a></li>
+    <li role="presentation"><a href="#sec3">Golf Courses</a></li>
+  </ul>
+  <section class="sitemap" id="sec1">
+
+    <h2>Administration</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><%= link_to 'Our Story', controller: "/story", action: "index" %></li>
+          <li><%= link_to 'Partners', controller: "/partner", action: "index" %></li>
+          <li><%= link_to 'FAQ', controller: "/faq", action: "index" %></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li><%= link_to 'Features', controller: "/feature", action: "index" %></li>
+          <li><%= link_to 'My Account', controller: "people", action: "portal" %></li>
+          <li><%= link_to 'Login', new_user_session_path %></li>
+          <li><%=link_to 'Sign Up', new_user_registration_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li><%= link_to 'Terms of Service', controller: "/serviceterm", action: "index" %></li>
+          <li><%= link_to 'Privacy Info', controller: "/privacy", action: "index" %></li>
+          <li><%= link_to 'Site Map', controller: "/site_map", action: "index" %></li>
+          <li><%= link_to 'Contact Us', controller: "/contact_us", action: "index" %></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sitemap" id="sec2">
+
+    <h2>Tournaments</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li><%=link_to 'Tournaments', tournaments_path%></li>
+        </ul>
+      </div>
+      <% if user_signed_in? %>
+      <div class="col-md-3">
+        <ul>
+          <li><%= link_to "New Tournaments", new_tournament_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+         <li> <%=link_to 'User Tourney', controller: "people", action: "user_tourney" %></li>
+         <li><%=link_to 'Tournament Tickets', controller: "people", action: "user_ticket" %> </li>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="sitemap" id="sec3">
+
+    <h2>Golf Courses</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li><%=link_to 'Golf Courses', controller: "golf_courses", action: "index" %></li>
+        </ul>
+      </div>
+      <% if user_signed_in? %>
+      <div class="col-md-3">
+        <ul>
+          <li><%=link_to 'Register Golf Course', new_golf_course_path%></li>
+      </div>
+      <% end %>
+  </section>
+ 
+</div>
+<!-- /container -->

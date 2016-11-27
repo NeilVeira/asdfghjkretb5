@@ -44,6 +44,11 @@ $(document).ready(function(){
         }
         $("#tournamentstatus tr").first().after(html);
     });
+
+    $("#message").click(function(){
+        alert("Message sent!")
+    });
+
 });
 
 $(document).ready(function() {
@@ -52,3 +57,5 @@ $(document).ready(function() {
   });
 
 });
+
+

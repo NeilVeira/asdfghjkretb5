@@ -1,3 +1,19 @@
 // Place all the styles related to the site_map controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "bootstrap";
+ *= require main
+ *= require_self
+
+section {
+  border-bottom: 1px solid #ccc;
+  margin-top: 1em;
+}
+
+section .col-md-3 {
+  border-left: 1px solid #ccc;
+}
+
+section .col-md-3:first-child {
+  border: none;
+}
