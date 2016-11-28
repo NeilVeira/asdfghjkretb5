@@ -7,10 +7,10 @@
 <table>
 	<tr>
 		<th><%= sort("name") %> </th>
-		<th>Address</th>
-		<th>Number of hosted tournaments</th>
-		<th>Number of upcoming tournaments</th>
-		<th>Link</th>
+		<th><%=t :Address %></th>
+		<th><%=t :number_hosted_tournaments %></th>
+		<th><%=t :number_upcoming_tournaments %></th>
+		<th><%=t :Link %></th>
 		<th colspan="4"></th>
 	</tr>
 
@@ -20,7 +20,7 @@
 				<td><%= gc.address_id %></td>
 				<td><%= (tournaments_previous.where("golf_course_id == ?", gc.id)).count %></td>
 				<td><%= (tournaments_future.where("golf_course_id == ?", gc.id)).count %></td>
-				<td><%= link_to "Show", golf_course_path(gc) %></td>
+				<td><%= link_to t("Show"), golf_course_path(gc) %></td>
 			</tr>
 		<% end %>
 </table>

@@ -1,46 +1,46 @@
 <div id="navigation" class="w3-top">
 		<ul class="w3-navbar w3-light-gray nav navbar-nav navbar-right">
-			<button id="taskBtn" type="button" style="margin-left: 35px; margin-right: 15px" class="btn btn-success">Available Tasks</button>
+			<button id="taskBtn" type="button" style="margin-left: 5px;" class="btn btn-success"><%=t :available_tasks %></button>
 			<div id="taskModal" class="modal">
 				 <!-- Modal content -->
 				  <div class="modal-content">
 				    <span class="close">×</span>
 				    <h3> Tasks: </h3>
-				    <%=link_to 'View Tournaments', tournaments_path%><br>
+				    <%=link_to t('view_tournament'), tournaments_path%><br>
 				    <% if user_signed_in? %>
-				    	<%=link_to 'Register a Golf Course', new_golf_course_path%><br>
-				    	<%=link_to 'Create a Tournament', new_tournament_path%><br>
+				    	<%=link_to t("register_golf_course"), new_golf_course_path%><br>
+				    	<%=link_to t("create_tournament"), new_tournament_path%><br>
 				    	<%if user_is_admin? %>
-				    		<%=link_to 'Admin View all users' , people_path%><br>
-  							<%=link_to 'Admin View all Teams', teams_path%><br>
-						    <%=link_to 'Admin Tournament Organizers', tournament_organizers_path%><br>
-						    <%=link_to 'Admin Golf Course Organizers', golf_course_organizers_path%><br>
-						    <%=link_to 'Admin New Team', new_team_path%><br>
-						    <%=link_to 'Admin Website Admins', website_admins_path%><br>
-						    <%=link_to 'Admin Players Page', players_path%><br>
-						    <%=link_to 'Admin Sponsors Page', sponsors_path%>
+				    		<%=link_to t("view_all_users") , people_path%><br>
+  							<%=link_to t("view_all_teams"), teams_path%><br>
+						    <%=link_to t('tournament_organizers'), tournament_organizers_path%><br>
+						    <%=link_to t('golf_course_organizers'), golf_course_organizers_path%><br>
+						    <%=link_to t('new_team'), new_team_path%><br>
+						    <%=link_to t('website_admins'), website_admins_path%><br>
+						    <%=link_to t('players_page'), players_path%><br>
+						    <%=link_to t('sponsors_page'), sponsors_path%>
 				    	<% end %>
 				    <% end %>
 
 				  </div>
 			</div>
   			<% if user_signed_in? %>
-	 			Welcome:
+	 			<%=t :welcome %>:
 				<strong><%= current_user.email %> !</strong>
-				<li id="head"  class="active"><%= link_to 'My Account', controller: "people", action: "portal" %></li>
-  				<li id="head"  class="active"><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+				<li id="head"  class="active"><%= link_to t('my_account'), controller: "people", action: "portal" %></li>
+  				<li id="head"  class="active"><%= link_to t('log_out'), destroy_user_session_path, method: :delete %></li>
 				<%  else %>
-				<li id="head"  class="active"><%= link_to 'Login', new_user_session_path %></li>
-				<li id="head"  class="active"><%=link_to 'Sign Up', new_user_registration_path %></li>
+				<li id="head"  class="active"><%= link_to t('Login'), new_user_session_path %></li>
+				<li id="head"  class="active"><%=link_to t('sign_up'), new_user_registration_path %></li>
 			<% end %>
-			<li id="head" class="active"><%= link_to 'Contact Us', controller: "/contact_us", action: "index" %></li>
-			<li id="head"  class="active"><%= link_to 'Partners', controller: "/partner", action: "index" %></li>
-			<li id="head"  class="active"><%= link_to 'Our Story', controller: "/story", action: "index" %></li>
-			<li id="head"  class="active"><%= link_to 'FAQ', controller: "/faq", action: "index" %></li>
-			<li id="head"  class="active"><%= link_to 'Features', controller: "/feature", action: "index" %></li>
-			<li id="head" class="active"><%= link_to 'Tournaments', tournaments_path%></li>
-			<li id="head" class="active"><%= link_to 'Golf Courses', golf_courses_path%></li>
-			<li id="head"  class="active"><a href="/">Home</a></li>
+			<li id="head" class="active"><%= link_to t('contact_us'), controller: "/contact_us", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to t('Partners'), controller: "/partner", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to t('Our_Story'), controller: "/story", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to t('FAQ'), controller: "/faq", action: "index" %></li>
+			<li id="head"  class="active"><%= link_to t('Features'), controller: "/feature", action: "index" %></li>
+			<li id="head" class="active"><%= link_to t('Tournaments'), tournaments_path%></li>
+			<li id="head" class="active"><%= link_to t('golf_courses'), golf_courses_path%></li>
+			<li id="head"  class="active"><a href="/"><%=t :home %></a></li>
 		</ul>
 </div>
 

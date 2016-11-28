@@ -8,7 +8,7 @@
 			<p><h5>Click the links below for more details.</h5></p>
 			<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_course} %>
 			<br>
-			<%= link_to "Register a new golf course", new_golf_course_path %>
+			<%= link_to t("register_golf_course_new"), new_golf_course_path %>
 		</section>
 	</body>
 </html>

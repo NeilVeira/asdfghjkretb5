@@ -1,29 +1,29 @@
 <br>
 <br>
 <div class="w3-container w3-center">
-<h1 style="text-align: center">Contact Us</h1>
+<h1 style="text-align: center"><%=t :contact_us %></h1>
 <br>
 <strong>
-	<p>Our contact information are located in here:</p>
+	<p>Nuestra información de contacto se encuentra aquí:</p>
 </strong>
-	<p> Location: 27 King's College Cir, Toronto, ON M5S </p>
+	<p>Ubicación: 27 King's College Cir, Toronto, ON M5S </p>
 	<section>
     	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d27449.60943606794!2d-79.4223972733734!3d43.68384277447537!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8d1d9bb6765a76f7!2sUniversity+of+Toronto+-+St.+George+Campus!5e0!3m2!1sen!2sca!4v1480203901592" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
 	</section>
-	<p>Telephone: 416-000-1111 </p>
+	<p><%=t :Telephone %>: 416-000-1111 </p>
 	<p>Email: csc444team3@golf.com</p>
 <strong>
-	<p>Please leave us a message or an comments you have regarding our service:</p>
+	<p>Por favor, déjenos un mensaje o comentarios que tenga sobre nuestro servicio:</p>
 
 </strong>
 <div class="w3-col m4 l5 w3-teal w3-border w3-border-red" style="margin-left: 30%" >
     <div class=" w3-padding-64 w3-padding-xlarge w3-center">
-      <h1>Tell Us What You Think</h1>
-      <p class="w3-opacity">GET IN TOUCH</p>
+      <h1>Dinos qué piensas</h1>
+      <p class="w3-opacity">ESTAR EN CONTACTO</p>
       <form class="w3-container w3-card-2 w3-padding-32 w3-white">
         <div class="w3-group">
 
-          <label>Name</label>
+          <label><%=t :Name %></label>
           <input class="w3-input w3-border" style="width:100%;" type="text" required>
         </div>
         <div class="w3-group">
@@ -31,10 +31,10 @@
           <input class="w3-input w3-border" style="width:100%;" type="text" required>
         </div>
         <div class="w3-group">
-          <label>Message</label>
+          <label><%=t :Message %></label>
           <input class="w3-input w3-border w3-padding-64" style="width:100%; " type="text" required>
         </div>
-        <button id="message" type="button w3-border" class="w3-btn">Send</button>
+        <button id="message" type="button w3-border" class="w3-btn"><%=t :Send %></button>
       </form>
     </div>
   </div>

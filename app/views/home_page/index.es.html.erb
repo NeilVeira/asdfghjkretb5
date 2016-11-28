@@ -1,0 +1,127 @@
+<br>
+<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+<div class="w3-container">
+	<div class="jumbotron">
+		<p style="text-align: center" class="w3-xlarge">BIENVENIDO AL SITIO DEL TORNEO DE GOLF CSC444</p>
+		<div class="flexslider">
+			  <ul class="slides">
+			    <li>
+			      <img src="/images/default_image.jpg" class="w3-hover-opacity" />
+			      <span class="flex-caption">VEN Y REVISE NUESTRAS CARACTERÍSTICAS</span></a>
+			    </li>
+			    <li>
+			      <img src="/images/download.jpeg" class="w3-hover-opacity" />
+			      <span class="flex-caption">APRENDA DE LOS PROFESIONALES</span></a>
+			    </li>
+			    <li>
+			      <img src="/images/newbruns.jpg" class="w3-hover-opacity" />
+			      <span class="flex-caption">JUEGA EN ALGUNOS DE LOS MÁS HERMOSOS CURSOS DE GOLF EN EL MUNDO</span></a>
+			    </li>
+			  </ul>
+		</div>
+	</div>
+	<hr class="line_break">
+	<div class="jumbotron">
+			<table width=100%> 
+  				<tr> 
+    				<td valign="top">
+    				<h3 style="padding-bottom: 40px; padding-left: 50px">Torneos activos en vivo</h3>
+						 <table id="livetournaments" class="w3-table-all w3-card-4 w3-bordered">
+			    			<tr class="w3-hover-red">
+			      				<th><%=t :Name %></th>
+			      				<th><%=t :Location %></th>
+			    			</tr>
+			    			<tr class="w3-hover-text-green">
+			      				<td id="TName">Augusta</td>
+			      				<td>USA</td>
+			    			</tr>
+			    			<tr class="w3-hover-text-green">
+			      				<td id="TName">Loren Place</td>
+			      				<td>Toronto</td>
+			    			</tr>
+			    			<tr class="w3-hover-text-green">
+			      				<td id="TName">CME Group Tour</td>
+			      				<td>Hamilton</td>
+			    			</tr>
+			  			</table>
+  					</td>
+  				<td valign="top">
+  						<div style="text-align: center;"><h3>Actualizaciones de torneos</h3> <p id="style" style="padding-left: 10px">Haz clic en uno de los torneos en vivo para ver su estado</p></div>
+			  			<table id="tournamentstatus" class="w3-table-all w3-card-4 w3-bordered">
+			    			<tr>
+			      				<th><%=t :Player %></th>
+			      				<th>Puntuación</th>
+			      				<th>Agujero</th>
+			    			</tr>
+			  			</table>
+  				</td>
+  			</tr>
+  			</table>
+	</div>
+	<hr class="line_break">
+	<div class="jumbotron">
+		<h2>Por qué utilizar nuestro servicio?</h2>
+		<p>
+			<ol>
+				<li>Mejores torneos de golf organizados en América del Norte</li>
+				<li>Torneos más asequibles</li>
+				<li>Entrenamiento de calidad superior</li>
+				<li>Patrocinadores de Fortune 500</li>
+			</ol>
+			Para obtener más información: <%=link_to t('Features'), controller: "/feature", action: "index" %>
+		</p>
+	</div>
+	<hr class="line_break">
+	<div class="jumbotron" style="text-align: center">
+		 <h2>Precios </h2>
+		 <p>Los precios también son bajos como <strong>$29.95/torneo</strong></p>
+		 <p> Para obtener más detalles, consulte los <%=link_to t('Tournaments'), tournaments_path%>
+		 <h2>Promoción</h2>
+		 <p>Un viaje de 3 días a Florida para el torneo de SomeGolfCourse hasta 3 personas sólo $ 500! Regístrese ahora!</p>
+	</div>
+	<hr class="line_break">
+	<div class="jumbotron">
+		<h2>Testimonios</h2>
+		<blockquote class="w3-panel w3-leftbar w3-light-grey">
+  			<p class="w3-large">
+  				<i>"Mejor lugar para organizar torneos para aficionados y profesionales"</i></p>
+  				<p>-Tiger Woods</p>
+		</blockquote>
+		<blockquote class="w3-panel w3-leftbar w3-light-grey">
+  			<p class="w3-large">
+  				<i>"Recomendado para todos los amantes del golf por todas partes!"</i></p>
+  				<p>-Barack Obama</p>
+		</blockquote>
+	</div>
+	<hr class="line_break">
+	<div class="jumbotron">
+		<h2>Ubicaciones principales</h2>
+		<p>Estos son algunos de los lugares patrocinados populares que ofrecemos.</p>
+		<div class="w3-row-padding w3-margin-top">
+			<div class="w3-third">
+  				<div class="w3-card-2">
+						<img src="/images/the-golf-courses-of-palmetto.jpg" class="w3-circle" alt="Palmetto" style="width:100%">
+						<div class="w3-container w3-margin-left w3-margin-top" >
+      						<h4>Palmetto, Hilton Head Is.</h4>
+    					</div>
+  				</div>
+			</div>
+			<div class="w3-third">
+  				<div class="w3-card-2">
+						<img src="/images/Lake-of-Isles-640.jpg" class="w3-circle" alt="Pebble" style="width:100%">
+						<div class="w3-container w3-margin-left w3-margin-top" >
+      						<h4>Lago de las islas, N. Stonington, Connecticut</h4>
+    					</div>
+  				</div>
+			</div>
+			<div class="w3-third">
+  				<div class="w3-card-2">
+						<img src="/images/newbruns.jpg" class="w3-circle" alt="fundy" style="width:100%">
+						<div class="w3-container w3-margin-left w3-margin-top" >
+      						<h4>Parque Nacional Fundy, Nuevo Brunswick, Canadá</h4>
+    					</div>
+  				</div>
+			</div>
+		</div>
+	</div>
+</div>	

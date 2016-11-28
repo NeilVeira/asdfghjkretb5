@@ -3,20 +3,19 @@
 		<h1>
 			<strong><%= @golf_course.name %></strong>
 		</h1>
-		<br>
 		<p><%= @golf_course.description %></p>
 		<br>
 		<%= image_tag @golf_course.image.url %>
-		<br><br>		
+		<br>	
 		
-		<h3>Address</h3>
+		<h3><%=t :Address %></h3>
 		<p>
-			<strong>StreetNumber:</strong><%= @golf_course.address.streetNumber %><br>
-			<strong>StreetName:</strong><%= @golf_course.address.streetName %><br>
-			<strong>City:</strong><%= @golf_course.address.city %><br>
-			<strong>Province:</strong><%= @golf_course.address.province %><br>
-			<strong>Country:</strong><%= @golf_course.address.country %><br>
-			<strong>PostalCode:</strong><%= @golf_course.address.postalCode %><br>
+			<strong><%=t :StreetNumber %>:</strong><%= @golf_course.address.streetNumber %><br>
+			<strong><%=t :StreetName %>:</strong><%= @golf_course.address.streetName %><br>
+			<strong><%=t :City %>:</strong><%= @golf_course.address.city %><br>
+			<strong><%=t :Province %>:</strong><%= @golf_course.address.province %><br>
+			<strong><%=t :Country %>:</strong><%= @golf_course.address.country %><br>
+			<strong><%=t :PostalCode %>:</strong><%= @golf_course.address.postalCode %><br>
 		</p>
 
 		<section>
@@ -26,15 +25,17 @@
 
 		<br>
 		<% if user_is_golf_course_organizer?(@golf_course) %>
-			<p>You are an organizer for this golf course!</p>
-			<%= link_to 'Edit', edit_golf_course_path(@golf_course) %><br>
+			<p><%=t :you_are_organizer %>!</p>
+			<%= link_to t('Edit'), edit_golf_course_path(@golf_course) %><br>
 		<% else %>
 			<p>
-				<strong>Golf course organizer: </strong><%= @organizer.person.firstname %> <%= @organizer.person.lastname %>
+				<strong><%=t :golf_course_org %>: </strong><%= @organizer.person.firstname %> <%= @organizer.person.lastname %>
 				<!TODO: should we display contact information (email)?>
 			</p>
 		<% end %>
 
-		<%= link_to 'Home', controller: 'home_page' %>
+		<%= link_to t('home'), controller: 'home_page' %>
 	</body>
+	<br>
+	<br>
 </html>

@@ -1,0 +1,14 @@
+<html>
+	<body>
+		<section>
+			<h1>
+				Campos de golf en el registro
+			</h1>
+			<p><h5>Organice su torneo en uno de nuestros muchos hermosos campos de golf.</h5></p>
+			<p><h5>Haga clic en los enlaces a continuación para obtener más detalles.</h5></p>
+			<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_course} %>
+			<br>
+			<%= link_to t("register_golf_course_new"), new_golf_course_path %>
+		</section>
+	</body>
+</html>
