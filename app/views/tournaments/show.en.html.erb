@@ -40,11 +40,13 @@
 		<section>
 			<% status = tournament_status(@tournament) %>
 			<br>
-			<% if not status%>
+			<!Admin is allowed to register and manage tournament>
+			<% if not status or (user_is_admin? and status == 4) %>
 				<p><%= link_to "Sponsor/Register for this tournament", new_ticket_path %></p>
-			<% else %>
+			<% end %>
+			<% if status %>
 				<p>You are currently registered for this tournament as <%= get_tickettype_name(status) %></p>
-				<% if status == 4 %> <!tournament organizer>
+				<% if status == 4 or user_is_admin? %> <!tournament organizer>
 					<%= link_to "Manage tournament", controller: "tournaments", action: "dashboard" %> 
 				<% end %>
 			<% end %>

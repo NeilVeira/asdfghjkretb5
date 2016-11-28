@@ -1,10 +1,9 @@
-<h1><%=t :Registered_Users %></h1>
-<br>
-<br>
+<h1>Registered Users</h1>
+
 <table>
 	<tr>
-		<th><%=t :first_name %></th>
-		<th><%=t :last_name %></th>
+		<th>First name</th>
+		<th>Last name</th>
 		<th>Email</th>
 	</tr>
 	
@@ -12,12 +11,7 @@
 		<tr>
 			<td><%= person.firstname %></td>
 			<td><%= person.lastname %></td>
-            <!-- this shouldn't be necessary once we update the db to add users to all people -->
-			<% if person.user %>
-                <td><%= person.user.email %></td> 
-            <% else %>
-                <td><%= t("invalid_user") %></td>
-            <% end %>
+			<td><%= person.user.email %></td>
 			<td><%= link_to t('Profile'), person_path(person) %></td>
 			<td><%= link_to t('Delete'), person_path(person),
 							method: :delete,
@@ -25,5 +19,3 @@
 		</tr>
 	<%end%>
 </table>
-<br>
-<%= link_to t('home'), controller: 'home_page' %>

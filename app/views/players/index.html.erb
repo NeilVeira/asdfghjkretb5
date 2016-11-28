@@ -1,30 +1,23 @@
 <html>
-<br>
-<br>
-	<%= link_to t('home'), controller: 'home_page' %>
-	
+
+	<h1>Players on Record</h1>
 	<table>
 		<tr>
-			<th>id</th>
-			<th><%=t :Person %>_id</th>
-			<th><%=t :Tournament %>_id</th>
-			<th><%=t :Team %>_id</th>
+			<th>User</th>
+			<th>Tournament</th>
+			<th>Team</th>
 		</tr>
 
 		<% @players.each do |player| %>
 			<tr>
-				<td><%= player.id %></td>
-				<td><%= player.person_id %></td>
-				<td><%= player.tournament_id %></td>
-				<td><%= player.team_id %></td>
-				<td><%= link_to t("Player")+" "+t("Profile"), player_path(player) %></td>
-				<td><%= link_to t("Person")+" "+t("Profile"), person_path(player.person_id) %></td>
-				<td><%= link_to t("Delete"), player_path(player), method: :delete, data: {confirm: t("Are_you_sure")} %></td>
+				<td><%= player.person.firstname %> <% player.person.lastname %> (<%= link_to player.person.user.email, person_path(player.person) %>)</td>
+				<td><%= link_to player.tournament.name, tournament_path(player.tournament) %></td>
+				<!-- TODO: Add link to show team -->
+				<td>No team</td>
+				<!-- Why do we need player/show view? -->
+				<!-- <td><%= link_to "Player Profile", player_path(player) %></td> -->
+				<td><%= link_to "Delete", player_path(player), method: :delete, data: {confirm: "Are you sure?"} %></td>
 			</tr>
 		<%end%>
 	</table>
-	
-	<%= link_to t("Create")+" "+t("Player"), new_player_path %>
-	<br>
-	<br>
 </html>

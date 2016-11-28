@@ -19,19 +19,23 @@ class PeopleController < ApplicationController
 	end
 	
 	def create
-    @user = current_user
-    @person = Person.new(person_params)
-    @person.user = @user
-    if @person.save
-        redirect_to '/people/profile'
-    else
-        render 'new'
-    end
+		@user = current_user
+		@person = Person.new(person_params)
+		@person.user = @user
+		if @person.save
+			redirect_to '/people/profile'
+		else
+			render 'new'
+		end
 	end
 	
 	def show
-    #shows the profile for person with the given id
+		#shows the profile for person with the given id
 		@person = Person.find(params[:id])
+		@golf_courses = []
+        GolfCourseOrganizer.where(person: @person).find_each do |p|
+			@golf_courses << p.golf_course
+        end		
 	end
 
 	def portal

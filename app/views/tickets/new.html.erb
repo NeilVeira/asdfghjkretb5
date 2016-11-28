@@ -3,9 +3,9 @@
 <h2>Select Ticketing Options</h2>
 
 <%= form_for @ticket, url: tickets_path do |f| %>
-<%= tickets = Ticket.where(person_id: current_person.id, tournament_id: @tournament.id) %>
-<%= tickets.count %>
-    <%= Ticket.last.id%>
+<!<% tickets = Ticket.where(person_id: current_person.id, tournament_id: @tournament.id) %>
+<!<%= tickets.count %>
+    <!<%= Ticket.last.id%>
  <% if @ticket.errors.any? %>
     <div id="error_explanation">
       <h2>

@@ -1,10 +1,10 @@
-<%= link_to t('home'), controller: 'home_page' %>
-
-<h1>Profile for <%=@person.firstname%> <%=@person.lastname%></h1>
+<h1>User Information for <%=@person.user.email%></h1>
+<h2>(Admin view)</h2>
 <br>
 <h2>Personal Information</h2>
 <p>
-    <strong>Email: </strong><%=@person.user.email%><br>
+    <strong>First name: </strong><%=@person.firstname%><br>
+    <strong>Last name: </strong><%=@person.lastname%><br>
     <strong>Date of birth: </strong><%=@person.dob.to_formatted_s(:long_ordinal)%><br>
     <strong>Phone Number: </strong><%=@person.phone%><br>
 </p>
@@ -38,77 +38,56 @@
   <%= @person.address.postalCode %>
 </p>
 
-<p>
-  <b> Tournaments (player) </b>
-  <%=
-    if user_is_admin?
-      players = @person.players.all
+	<p>
+	<b><h5> Tournaments (as player) </h5></b>
+	<%=
+	players = @person.players.all
 
-      unless players.blank?
-        tournaments = []
+	unless players.blank?
+	tournaments = []
 
-        players.each do |p|
-          tournaments << p.tournament
-        end
+	players.each do |p|
+		tournaments << p.tournament
+	end
 
-        render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
-      end
-    end
-  %>
+	render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
+	end
+	%>
 
-  <br>
-  <b> Tournaments (sponsor) </b>
-  <%=
-    if user_is_admin?
-      sponsors = @person.sponsors.all
+	<br>
+	<b><h5> Tournaments (as sponsor) </h5></b>
+	<%=
+	sponsors = @person.sponsors.all
 
-      unless sponsors.blank?
-        tournaments = []
+	unless sponsors.blank?
+	tournaments = []
 
-        sponsors.each do |p|
-          tournaments << p.tournament
-        end
+	sponsors.each do |p|
+		tournaments << p.tournament
+	end
 
-        render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
-      end
-    end
-  %>
+	render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
+	end
+	%>
 
-  <br>
-  <b> Tournaments (organizer) </b>
-  <%=
-    if user_is_admin?
-      organizers = @person.tournament_organizers.all
+	<br>
+	<b><h5> Tournaments (as organizer) </h5></b>
+	<%=
+	organizers = @person.tournament_organizers.all
 
-      unless organizers.blank?
-        tournaments = []
+	unless organizers.blank?
+	tournaments = []
 
-        organizers.each do |p|
-          tournaments << p.tournament
-        end
+	organizers.each do |p|
+		tournaments << p.tournament
+	end
 
-        render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
-      end
-    end
-  %>
+	render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
+	end
+	%>
 
-  <br>
-  <b> Golf Courses (admin) </b>
-  <%=
-    if user_is_admin?
-      organizers = @person.golf_course_organizers.all
-
-      unless organizers.blank?
-        golf_courses = []
-
-        organizers.each do |p|
-          golf_courses << p.golf_course
-
-          render partial: "golf_courses/golf_course_table", locals: {golf_course: golf_courses}
-        end
-
-      end
-    end
-  %>
+	<br>
+	<b><h5> Golf Courses (as organizer) </h5></b>	
+	<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_courses} %>
 </p>
 

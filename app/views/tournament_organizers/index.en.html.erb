@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/views/tournament_organizers/index.en.html.erb
 <% @tournament_organizers.each do |tournament_organizer| %>
 	<p>
 		person id: <%=tournament_organizer.person%><br/>
@@ -6,3 +7,25 @@
 	</p>
 <%end%>
 <%= link_to t('home'), controller: 'home_page' %>
+=======
+<h1>Tournament Organizers on Record</h1>
+
+<table>
+	<tr>
+		<th>User</th>
+		<th>Tournament</th>
+		<th>Admin rights</th>
+	</tr>
+
+	<% @tournament_organizers.each do |to| %>
+		<tr>
+			<td><%= to.person.firstname %> <% to.person.lastname %> (<%= link_to to.person.user.email, person_path(to.person) %>)</td>
+			<td><%= link_to to.tournament.name, tournament_path(to.tournament) %></td>
+			<td><%= to.adminrights %></td>
+			<td><%= link_to 'Delete', tournament_organizer_path(to),
+					method: :delete,
+					data: {confirm: 'Are you sure?'} %></td>
+		</tr>
+	<%end%>
+</table>
+>>>>>>> e40ef2d689cfd4508d547b892769955fd93b101a:app/views/tournament_organizers/index.html.erb
