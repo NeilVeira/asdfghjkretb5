@@ -1,4 +1,6 @@
-<h1>Create a Tournament</h1>
+<h1>Créer un tournoi</h1>
+<br>
+<br>
 <%= form_for @tournament, url: tournaments_path, html: { multipart: true } do |f| %>
 
     <% if @tournament.errors.any? %>
@@ -16,38 +18,38 @@
     <% end %>
 
     <p>
-      <%= f.label :Name %><br>
+      <%= f.label t("Name") %><br>
       <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= f.label :Description %><br>
+      <%= f.label t("Description") %><br>
       <%= f.text_area :description %>
     </p>
 
     <p>
-      <%= f.label :Is_it_a_public_tournament? %><br>
+      <%= f.label :Est_ce_un_tournoi_public? %><br>
 
-      <%= f.label :"True" %>
+      <%= f.label :"Vrai" %>
       <%= f.radio_button :ispublic, "1", checked: @tournament.ispublic? %>
 
-      <%= f.label :"False" %>
+      <%= f.label :"Faux" %>
       <%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
     </p>
 
-	<p>Golf Course:</p>
+	<p><%=t :golf_courses %>:</p>
 	<%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
 	
-	<p>Date:</p>
+	<p><%=t :Date %>:</p>
 	<%= f.datetime_select(:date, start_year: 2018) %>
 	
-	<p>Tournament Picture:</p>
+	<p>Image du tournoi:</p>
 	<%= f.file_field :image %>
 	
 	<br>
 	
     <p>
-      <%= f.label :Extra_Features %><br>
+      <%= f.label :Fonctionnalités_supplémentaires %><br>
       <%= f.text_area :extrafeatures %>
     </p>
 
@@ -55,4 +57,4 @@
       <%= f.submit %>
     </p>
 <% end %>
-<%= link_to 'Back', controller: 'home_page' %>
+<%= link_to t('Back'), controller: 'home_page' %>

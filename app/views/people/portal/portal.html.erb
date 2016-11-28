@@ -1,7 +1,9 @@
-<p>Welcome Back: <%=@person.firstname%> <%=@person.lastname%></p>
+<br>
+<br>
+<p><%=t :welcome %> <%=t :Back %>: <%=@person.firstname%> <%=@person.lastname%></p>
 
-<%=link_to 'Profile', controller: "people", action: "profile" %>
+<%=link_to t('Profile'), controller: "people", action: "profile" %>
 <br>
-<%=link_to 'Tournaments', controller: "people", action: "user_tourney" %>
+<%=link_to t('Tournaments'), controller: "people", action: "user_tourney" %>
 <br>
-<%=link_to 'Tickets', controller: "people", action: "user_ticket" %>
+<%=link_to t('Tickets'), controller: "people", action: "user_ticket" %>

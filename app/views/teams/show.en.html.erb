@@ -1,11 +1,13 @@
 <html>
+<br>
+<br>
 	<table>
 		<tr>
-			<th>Team Name</th>
-			<th>Player 1</th>
-			<th>Player 2</th>
-			<th>Player 3</th>
-			<th>Player 4</th>
+			<th>Team <%=t :Name %></th>
+			<th><%=t :Player %> 1</th>
+			<th><%=t :Player %> 2</th>
+			<th><%=t :Player %> 3</th>
+			<th><%=t :Player %> 4</th>
 			<th colspan="5"></th>
 		</tr>
 		
@@ -20,5 +22,5 @@
 
 	<%= link_to "Back to Teams", teams_path %>
 	</br>
-	<%= link_to "Edit", edit_team_path(@team) %>
+	<%= link_to t("Edit"), edit_team_path(@team) %>
 </html>

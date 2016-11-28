@@ -2,18 +2,18 @@
 	<body>
 	<br>
 	<br>
-		<%= link_to "New", new_tournament_path %>
+		<%= link_to t("New"), new_tournament_path %>
 	
 		<section>
 			<h1>
-				Today's Tournaments
+				Tournois d'aujourd'hui
 			</h1>
 			<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments, include_cond: "days_away == 0 && (t.ispublic == true)"} %>
 		</section> 
 
 		<section>
 			<h1>
-				Upcoming Tournaments
+				Tournois à venir
 			</h1>			
 			<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments, include_cond: "days_away > 0 && (t.ispublic == true)"} %>
 		</section>	

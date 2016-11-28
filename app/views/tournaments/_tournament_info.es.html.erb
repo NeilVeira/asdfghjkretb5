@@ -1,0 +1,60 @@
+<section>
+	<h1>
+		<%= @tournament.name %>
+	</h1>
+	<p>
+		<%= @tournament.description %>
+	</p>
+</section>
+
+<%= image_tag @tournament.image.url %>
+
+<section>
+	<h2>
+		<strong>Dónde?</strong>
+	</h2>
+	<p>
+		<%= @tournament.golf_course.name %>
+	</p>
+	<p>
+		<%= @tournament.golf_course.address.streetNumber %> <%= @tournament.golf_course.address.streetName %>
+		</br>
+		<%= @tournament.golf_course.address.city %>, <%= @tournament.golf_course.address.province %>, <%= @tournament.golf_course.address.country %>
+		</br>
+		<%= @tournament.golf_course.address.postalCode %>
+	</p>
+</section>
+
+<section>
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= @tournament.golf_course.address.streetNumber.to_s+' '+@tournament.golf_course.address.streetName+', '+@tournament.golf_course.address.city+', '+@tournament.golf_course.address.province+', '+@tournament.golf_course.address.country+', '+@tournament.golf_course.address.postalCode %>&key=AIzaSyD8a5v_F5a9FS6gYvC7NYy7vwzaU4_moiw" allowfullscreen></iframe>
+</section>
+	
+<section>
+	<h2>
+		<strong>Cuando?</strong>
+	</h2>
+	<p>
+		<%= t_date = @tournament.date.to_date %>
+	</p>
+	<p>
+		<% c_date = Time.now.to_date %>
+		<% days_away = (t_date - c_date).to_i %>
+		
+		<% if (days_away > 0) %>
+			Eso es en <%= days_away %> días!
+		<% elsif (days_away == 0) %>
+			Eso es hoy!
+		<% else %>
+			Este torneo ha terminado.
+		<% end %>
+	</p>
+</section>
+
+<section>
+	<h2>
+		<strong>Características adicionales</strong>
+	</h2>
+	<p>
+		<%= @tournament.extrafeatures %>
+	</p>
+</section>

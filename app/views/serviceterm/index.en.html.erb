@@ -1,8 +1,8 @@
 <br>
 <br>
-<h1>Terms of Service (&quot;Terms&quot;)</h1>
+<h1><%=t :term_of_service %> (&quot;Terms&quot;)</h1>
 <p>Last updated: November 27, 2016</p>
-<p>Please read these Terms of Service (&quot;Terms&quot;, &quot;Terms of Service&quot;) carefully before using the <a href="https://test-rubyonrails-app.herokuapp.com/">https://test-rubyonrails-app.herokuapp.com/</a> website (the &quot;Service&quot;) operated by CSC444Golf APP (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).</p>
+<p>Please read these <%=t :term_of_service %> (&quot;Terms&quot;, &quot;<%=t :term_of_service %>&quot;) carefully before using the <a href="https://test-rubyonrails-app.herokuapp.com/">https://test-rubyonrails-app.herokuapp.com/</a> website (the &quot;Service&quot;) operated by CSC444Golf APP (&quot;us&quot;, &quot;we&quot;, or &quot;our&quot;).</p>
 <p>Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.</p>
 <p>By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service. </p>
 <p><strong>Accounts</strong></p>
@@ -25,8 +25,8 @@
 <p><strong>Changes</strong></p>
 <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
 <p>By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.</p>
-<p><strong>Contact Us</strong></p>
-<p>If you have any questions about these Terms, please <%= link_to 'Contact Us', controller: "/contact_us", action: "index" %>.</p>
+<p><strong><%=t :Contact_Us %></strong></p>
+<p>If you have any questions about these Terms, please <%= link_to t('contact_us'), controller: "/contact_us", action: "index" %>.</p>
 <br>
 <br>
 

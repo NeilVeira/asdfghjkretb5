@@ -1,6 +1,6 @@
 <br>
 <br>
-<h2>Privacy Policy</h2>
+<h2><%=t :privacy_info %></h2>
 <p>
 Last updated: November 26, 2016
 <br>
@@ -57,10 +57,6 @@ Changes To This Privacy Policy
 We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.
 
 You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.
-</p><strong>
-Contact Us
-</strong><p>
-If you have any questions about this Privacy Policy, please <%= link_to 'Contact Us', controller: "/contact_us", action: "index" %>.
-</p>
+</p><strong><%=t :Contact_Us %></strong><p>If you have any questions about these Terms, please <%= link_to t('contact_us'), controller: "/contact_us", action: "index" %>.</p>
 <br>
 <br>

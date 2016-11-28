@@ -1,0 +1,26 @@
+<html>
+<br>
+<br>
+	<h1>Équipes enregistrées</h1>
+
+	<section>
+		<table>
+			<th>Tournoi</th>
+			<th>Equipo <%=t :Name %></th>
+			<th><%=t :Show %></th>
+			<th><%=t :Delete %> Equipo</th>
+			<th colspan="4"></th>
+			
+			<% @teams.each do |team| %>
+				<tr>
+					<td><%= team.tournament.name %></td>
+					<td><%= team.name %></td>
+					<td><%= link_to t("Show"), team_path(team) %></td>
+					<td><%= link_to t("Delete"), team_path(team), method: :delete, data: {confirm: "Supprimer l'équipe?"} %></td>
+				</tr>
+			<% end %>
+		</table>		
+	</section>
+	<br>
+	<%= link_to t("home"), controller:"home_page"%>
+</html>

@@ -7,14 +7,14 @@
 
 		<section>
 			<h2>
-				<strong>Current Teams</strong>
+				<strong>Equipos actuales</strong>
 			</h2>
 			<table>
-				<th>Team Name</th>
-				<th>Player 1</th>
-				<th>Player 2</th>
-				<th>Player 3</th>
-				<th>Player 4</th>
+				<th>Nombre del equipo</th>
+				<th><%=t ("Player")%> 1</th>
+				<th><%=t ("Player")%> 2</th>
+				<th><%=t ("Player")%> 3</th>
+				<th><%=t ("Player")%> 4</th>
 				<th colspan="5"></th>
 				
 				<% @tournament.teams.each do |team| %>
@@ -31,7 +31,7 @@
 		
 		<section>
 			<br>
-			<h2>Tournament Sponsors</h2>
+			<h2>Patrocinadores del Torneo</h2>
 			<% Sponsor.where(tournament_id: @tournament.id).find_each do |s| %>
 				<%= render partial: "sponsors/show_brief", locals: {sponsor: s} %> 
 			<% end %>
@@ -41,18 +41,18 @@
 			<% status = tournament_status(@tournament) %>
 			<br>
 			<% if not status%>
-				<p><%= link_to "Sponsor/Register for this tournament", new_ticket_path %></p>
+				<p><%= link_to "Patrocinador / Regístrese para este torneo", new_ticket_path %></p>
 			<% else %>
-				<p>You are currently registered for this tournament as <%= get_tickettype_name(status) %></p>
+				<p>Actualmente estás registrado para este torneo como <%= get_tickettype_name(status) %></p>
 				<% if status == 4 %> <!tournament organizer>
-					<%= link_to "Manage tournament", controller: "tournaments", action: "dashboard" %> 
+					<%= link_to "Administrar torneo", controller: "tournaments", action: "dashboard" %> 
 				<% end %>
 			<% end %>
 		</section>
 		
 		<section>
 			<p>
-				<td><%= link_to "Back to all Tournaments", tournaments_path %></td>
+				<td><%= link_to "Volver a todos los torneos", tournaments_path %></td>
 			</p>
 		</section>
 	</body>

@@ -1,12 +1,13 @@
-<%= link_to 'Home', controller: 'home_page' %>
+<%= link_to t('home'), controller: 'home_page' %>
+<br>
+<br>
+<h1><%=t :Sponsor %> | <%=t :Person %>_id: <%=@sponsor.person.id%> <%=t :Tournament %>_id: <%=@sponsor.tournament.id%></h1>
 
-<h1>Sponsor | person_id: <%=@sponsor.person.id%> tournament_id: <%=@sponsor.tournament.id%></h1>
 
-
-<h2>Tournament Details</h2>
+<h2><%=t :tournament_details %></h2>
 <section>
 			<h2>
-				<strong>Where?</strong>
+				<strong><%=t :Where %>?</strong>
 			</h2>
 			<p>
 				<%= @sponsor.tournament.golf_course.name %>

@@ -1,0 +1,59 @@
+<h3>Ajouter admin pour le tournoi <%= @tournament.name %></h3>
+
+<br>
+<br>
+  
+<%= form_for :tournament_organizer_key, url: tournament_organizers_path do |f| %>
+	<% if @tournament_organizer.errors.any? %>
+		<div id="error_explanation">
+		  <h4>
+			Impossible de créer l'organisateur du tournoi en raison des éléments suivants <%= pluralize(@tournament_organizer.errors.count, "error") %> :
+		  </h4>
+		  <ul>
+			<% @tournament_organizer.errors.full_messages.each do |msg| %>
+			  <li><%= msg %></li>
+			<% end %>
+		  </ul>
+		</div>
+	<% end %>
+  
+	<p>Entrez l'adresse e-mail de l'utilisateur que vous souhaitez ajouter</p>
+		<%= f.text_field :email %>
+	
+	<!Only give the option if the current organizer has this privilege (organizer shouldn't be able to create another organizer with permissions that they themselves don't have)>
+	<% if user_is_admin? or @organizer.adminrights & 1 != 0 %>
+		<p>
+			<%= f.label :Permettre_à_le_utilisateur_de_modifier_les_informations_sur_les_tournois? %><br>
+			<%= f.label :"Oui" %>
+			<%= f.radio_button :edit_privilege, "1" %>
+			<%= f.label :"Non" %>
+			<%= f.radio_button :edit_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<% if user_is_admin? or @organizer.adminrights & 2 != 0 %>
+		<p>
+			<%= f.label :Permettre_à_le_utilisateur_de_gérer_les_feuilles_de_départ? %><br>
+			<%= f.label :"Oui" %>
+			<%= f.radio_button :tee_sheet_privilege, "1" %>
+			<%= f.label :"Non" %>
+			<%= f.radio_button :tee_sheet_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<% if user_is_admin? or @organizer.adminrights & 4 != 0 %>
+		<p>
+			<%= f.label :Autoriser_le_utilisateur_à_ajouter_des_administrateurs_de_tournois? %><br>
+			<%= f.label :"Oui" %>
+			<%= f.radio_button :create_admin_privilege, "1" %>
+			<%= f.label :"Non" %>
+			<%= f.radio_button :create_admin_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to "Retour au tableau de bord", "/tournaments/#{@tournament.id}/dashboard" %>

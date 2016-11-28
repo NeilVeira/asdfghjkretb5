@@ -1,0 +1,59 @@
+<h3>Add admin for tournament <%= @tournament.name %></h3>
+
+<br>
+<br>
+  
+<%= form_for :tournament_organizer_key, url: tournament_organizers_path do |f| %>
+	<% if @tournament_organizer.errors.any? %>
+		<div id="error_explanation">
+		  <h4>
+			Could not create tournament organizer due to the following <%= pluralize(@tournament_organizer.errors.count, "error") %> :
+		  </h4>
+		  <ul>
+			<% @tournament_organizer.errors.full_messages.each do |msg| %>
+			  <li><%= msg %></li>
+			<% end %>
+		  </ul>
+		</div>
+	<% end %>
+  
+	<p>Enter the email address of the user you wish to add</p>
+		<%= f.text_field :email %>
+	
+	<!Only give the option if the current organizer has this privilege (organizer shouldn't be able to create another organizer with permissions that they themselves don't have)>
+	<% if user_is_admin? or @organizer.adminrights & 1 != 0 %>
+		<p>
+			<%= f.label :Allow_the_user_to_edit_tournament_info? %><br>
+			<%= f.label :"Yes" %>
+			<%= f.radio_button :edit_privilege, "1" %>
+			<%= f.label :"No" %>
+			<%= f.radio_button :edit_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<% if user_is_admin? or @organizer.adminrights & 2 != 0 %>
+		<p>
+			<%= f.label :Allow_the_user_to_manage_tee_sheets? %><br>
+			<%= f.label :"Yes" %>
+			<%= f.radio_button :tee_sheet_privilege, "1" %>
+			<%= f.label :"No" %>
+			<%= f.radio_button :tee_sheet_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<% if user_is_admin? or @organizer.adminrights & 4 != 0 %>
+		<p>
+			<%= f.label :Allow_the_user_to_add_tournament_admins? %><br>
+			<%= f.label :"Yes" %>
+			<%= f.radio_button :create_admin_privilege, "1" %>
+			<%= f.label :"No" %>
+			<%= f.radio_button :create_admin_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to "Back to dashboard", "/tournaments/#{@tournament.id}/dashboard" %>

@@ -1,0 +1,61 @@
+<br>
+<br>
+<h1>Editar este torneo</h1>
+
+<%= form_for :tournament, url: tournament_path(@tournament), html: { multipart: true }, method: :patch do |f| %>
+  
+  <% if @tournament.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@tournament.errors.count, "error") %> prohibited
+        this tournament from being saved:
+      </h2>
+      <ul>
+        <% @tournament.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= f.label t("Name") %><br>
+    <%= f.text_field :name %>
+  </p>
+ 
+  <p>
+    <%= f.label t("Description") %><br>
+    <%= f.text_area :description %>
+  </p>
+  
+  <p>
+    <%= f.label :Es_un_torneo_público? %><br>
+    
+	<%= f.label :"Cierto" %>
+	<%= f.radio_button :ispublic, "1", checked: @tournament.ispublic? %>
+	
+	<%= f.label :"Falso" %>
+	<%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
+  </p>
+  
+  <p><%=t :golf_courses %>: </p>
+  <%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
+  
+  <p><%=t :Date %>:</p>
+	<%= f.datetime_select(:date, start_year: 2018) %>
+  
+  <p>Imagen del Torneo:</p>
+	<%= f.file_field :image %>
+	
+	<br>
+  
+  <p>
+    <%= f.label :Características_adicionales %><br>
+    <%= f.text_area :extrafeatures %>
+  </p>
+ 
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+<%= link_to t('Back'), controller: "tournaments", action: "dashboard" %>

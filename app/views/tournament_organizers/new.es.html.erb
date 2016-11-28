@@ -1,0 +1,59 @@
+<h3>Añadir administrador para el torneo <%= @tournament.name %></h3>
+
+<br>
+<br>
+  
+<%= form_for :tournament_organizer_key, url: tournament_organizers_path do |f| %>
+	<% if @tournament_organizer.errors.any? %>
+		<div id="error_explanation">
+		  <h4>
+			No se pudo crear el organizador del torneo debido a lo siguiente <%= pluralize(@tournament_organizer.errors.count, "error") %> :
+		  </h4>
+		  <ul>
+			<% @tournament_organizer.errors.full_messages.each do |msg| %>
+			  <li><%= msg %></li>
+			<% end %>
+		  </ul>
+		</div>
+	<% end %>
+  
+	<p>Introduzca la dirección de correo electrónico del usuario que desea agregar</p>
+		<%= f.text_field :email %>
+	
+	<!Only give the option if the current organizer has this privilege (organizer shouldn't be able to create another organizer with permissions that they themselves don't have)>
+	<% if user_is_admin? or @organizer.adminrights & 1 != 0 %>
+		<p>
+			<%= f.label :Permitir_al_usuario_editar_información_del_torneo? %><br>
+			<%= f.label :"Sí" %>
+			<%= f.radio_button :edit_privilege, "1" %>
+			<%= f.label :"No" %>
+			<%= f.radio_button :edit_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<% if user_is_admin? or @organizer.adminrights & 2 != 0 %>
+		<p>
+			<%= f.label :Permite_al_usuario_gestionar_las_hojas_de_salida? %><br>
+			<%= f.label :"Sí" %>
+			<%= f.radio_button :tee_sheet_privilege, "1" %>
+			<%= f.label :"No" %>
+			<%= f.radio_button :tee_sheet_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<% if user_is_admin? or @organizer.adminrights & 4 != 0 %>
+		<p>
+			<%= f.label :Permitir_que_el_usuario_agregue_administradores_de_torneos? %><br>
+			<%= f.label :"Sí" %>
+			<%= f.radio_button :create_admin_privilege, "1" %>
+			<%= f.label :"No" %>
+			<%= f.radio_button :create_admin_privilege, "0" %>
+		</p>
+	<% end %>
+	
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>
+
+<%= link_to "Volver al tablero de instrumentos", "/tournaments/#{@tournament.id}/dashboard" %>

@@ -1,12 +1,14 @@
 <html>
-	<%= link_to 'Home', controller: 'home_page' %>
+<br>
+<br>
+	<%= link_to t('home'), controller: 'home_page' %>
 	
 	<table>
 		<tr>
 			<th>id</th>
-			<th>person_id</th>
-			<th>tournament_id</th>
-			<th>team_id</th>
+			<th><%=t :Person %>_id</th>
+			<th><%=t :Tournament %>_id</th>
+			<th><%=t :Team %>_id</th>
 		</tr>
 
 		<% @players.each do |player| %>
@@ -15,13 +17,14 @@
 				<td><%= player.person_id %></td>
 				<td><%= player.tournament_id %></td>
 				<td><%= player.team_id %></td>
-				<td><%= link_to "Player Profile", player_path(player) %></td>
-				<td><%= link_to "Person Profile", person_path(player.person_id) %></td>
-				<td><%= link_to "Delete", player_path(player), method: :delete, data: {confirm: "Are you sure?"} %></td>
+				<td><%= link_to t("Player")+" "+t("Profile"), player_path(player) %></td>
+				<td><%= link_to t("Person")+" "+t("Profile"), person_path(player.person_id) %></td>
+				<td><%= link_to t("Delete"), player_path(player), method: :delete, data: {confirm: t("Are_you_sure")} %></td>
 			</tr>
 		<%end%>
 	</table>
 	
-	<%= link_to "Create Player", new_player_path %>
-	
+	<%= link_to t("Create")+" "+t("Player"), new_player_path %>
+	<br>
+	<br>
 </html>
