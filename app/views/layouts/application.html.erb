@@ -11,7 +11,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <!<%= render partial: "application/user_header" %>
+  <%= render partial: "application/user_header" %>
   <body style="background-color: #e3e4e5" >
 	<% flash.each do |name, msg| -%>
       <%= content_tag :div, msg, class: name %>
@@ -19,5 +19,5 @@
   	
     <%= yield %>
   </body>
-  <!<%= render partial: "application/footer" %>
+  <%= render partial: "application/footer" %>
 </html>
