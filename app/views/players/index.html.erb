@@ -1,27 +1,22 @@
 <html>
-	<%= link_to 'Home', controller: 'home_page' %>
-	
+	<h1>Players on Record</h1>
 	<table>
 		<tr>
-			<th>id</th>
-			<th>person_id</th>
-			<th>tournament_id</th>
-			<th>team_id</th>
+			<th>User</th>
+			<th>Tournament</th>
+			<th>Team</th>
 		</tr>
 
 		<% @players.each do |player| %>
 			<tr>
-				<td><%= player.id %></td>
-				<td><%= player.person_id %></td>
-				<td><%= player.tournament_id %></td>
-				<td><%= player.team_id %></td>
-				<td><%= link_to "Player Profile", player_path(player) %></td>
-				<td><%= link_to "Person Profile", person_path(player.person_id) %></td>
+				<td><%= player.person.firstname %> <% player.person.lastname %> (<%= link_to player.person.user.email, person_path(player.person) %>)</td>
+				<td><%= link_to player.tournament.name, tournament_path(player.tournament) %></td>
+				<!-- TODO: Add link to show team -->
+				<td>No team</td>
+				<!-- Why do we need player/show view? -->
+				<!-- <td><%= link_to "Player Profile", player_path(player) %></td> -->
 				<td><%= link_to "Delete", player_path(player), method: :delete, data: {confirm: "Are you sure?"} %></td>
 			</tr>
 		<%end%>
 	</table>
-	
-	<%= link_to "Create Player", new_player_path %>
-	
 </html>

@@ -1,8 +1,20 @@
-<% @golf_course_organizers.each do |golf_course_organizer| %>
-	<p>
-		person id: <%=golf_course_organizer.person%><br/>
-		golf course id: <%=golf_course_organizer.golf_course%><br/>
-		admin rights: <%=golf_course_organizer.adminrights%>
-	</p>
-<%end%>
-<%= link_to 'Home', controller: 'home_page' %>
+<h1>Golf Course Organizers on Record</h1>
+
+<table>
+	<tr>
+		<th>User</th>
+		<th>Golf Course</th>
+		<th>Admin Rights</th>
+	</tr>
+	
+	<% @golf_course_organizers.each do |gco| %>
+		<tr>
+		<td><%= gco.person.firstname %> <% gco.person.lastname %> (<%= link_to gco.person.user.email, person_path(gco.person) %>)</td>
+		<td><%= link_to gco.golf_course.name, golf_course_path(gco.golf_course) %></td>
+		<td><%= gco.adminrights %></td>
+			<td><%= link_to 'Delete', golf_course_organizer_path(gco),
+					method: :delete,
+					data: {confirm: 'Are you sure?'} %></td>
+		</tr>
+	<% end %>
+</table>

@@ -7,18 +7,18 @@
 				    <span class="close">×</span>
 				    <h3> Tasks: </h3>
 				    <%=link_to t('view_tournament'), tournaments_path%><br>
+				    <%=link_to t('view_golf_course'), golf_courses_path%><br>
 				    <% if user_signed_in? %>
 				    	<%=link_to t("register_golf_course"), new_golf_course_path%><br>
 				    	<%=link_to t("create_tournament"), new_tournament_path%><br>
 				    	<%if user_is_admin? %>
-				    		<%=link_to t("view_all_users") , people_path%><br>
-  							<%=link_to t("view_all_teams"), teams_path%><br>
-						    <%=link_to t('tournament_organizers'), tournament_organizers_path%><br>
-						    <%=link_to t('golf_course_organizers'), golf_course_organizers_path%><br>
-						    <%=link_to t('new_team'), new_team_path%><br>
-						    <%=link_to t('website_admins'), website_admins_path%><br>
-						    <%=link_to t('players_page'), players_path%><br>
-						    <%=link_to t('sponsors_page'), sponsors_path%>
+				    		<%=link_to t("manage_users") , people_path%><br>
+  							<%=link_to t("manage_teams"), teams_path%><br>
+						    <%=link_to t("manage_tournament_organizers"), tournament_organizers_path%><br>
+						    <%=link_to t("manage_golf_course_organizers"), golf_course_organizers_path%><br>
+						    <%=link_to t("manage_website_admins"), website_admins_path%><br>
+						    <%=link_to t("manage_players"), players_path%><br>
+						    <%=link_to t("manage_sponsors_page"), sponsors_path%>
 				    	<% end %>
 				    <% end %>
 
