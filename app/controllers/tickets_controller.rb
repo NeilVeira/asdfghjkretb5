@@ -49,7 +49,7 @@ class TicketsController < ApplicationController
 			redirect_to new_ticket_path
 		end
 
-  	def qrcode
+  	def check_in
 
 		end
 
@@ -67,7 +67,7 @@ class TicketsController < ApplicationController
 			#check that current user is the owner of this ticket
 			@ticket = Ticket.find(params[:id])
 			@person = current_person
-			if not user_is_admin! and @person != @ticket.person
+			if not user_is_admin? and @person != @ticket.person
 				access_denied
 			end
 		end

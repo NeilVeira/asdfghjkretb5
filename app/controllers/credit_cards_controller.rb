@@ -30,8 +30,8 @@ class CreditCardsController < ApplicationController
 
   def paymentProcessing
 
-    CC = CreditCard.where(id: params[:cc]).first
-    unless CC
+    @CC = CreditCard.where(id: params[:cc]).first
+    unless @CC
       redirect_to payment_path
     end
     # Send requests to the gateway's test servers
@@ -39,11 +39,11 @@ class CreditCardsController < ApplicationController
 
     # Create a new credit card object
     credit_card = ActiveMerchant::Billing::CreditCard.new(
-        :number     => CC.number ,
-        :month      => CC.month ,
-        :year       => CC.year ,
-        :first_name => CC.fname ,
-        :last_name  => CC.lname ,
+        :number     => @CC.number ,
+        :month      => @CC.month ,
+        :year       => @CC.year ,
+        :first_name => @CC.fname ,
+        :last_name  => @CC.lname ,
         :verification_value  => '123'
     )
 
