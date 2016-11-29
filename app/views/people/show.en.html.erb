@@ -1,0 +1,93 @@
+<h1>User Information for <%=@person.user.email%></h1>
+<h2>(Admin view)</h2>
+<br>
+<h2>Personal Information</h2>
+<p>
+    <strong>First name: </strong><%=@person.firstname%><br>
+    <strong>Last name: </strong><%=@person.lastname%><br>
+    <strong>Date of birth: </strong><%=@person.dob.to_formatted_s(:long_ordinal)%><br>
+    <strong>Phone Number: </strong><%=@person.phone%><br>
+</p>
+
+<p>
+  <strong>Person ApartmentNumber:</strong>
+  <%= @person.address.apartmentNumber %>
+  <br>
+
+  <strong>Person StreetNumber:</strong>
+  <%= @person.address.streetNumber %>
+  <br>
+
+  <strong>Person StreetName:</strong>
+  <%= @person.address.streetName %>
+  <br>
+
+  <strong>Person City:</strong>
+  <%= @person.address.city %>
+  <br>
+
+  <strong>Person Province:</strong>
+  <%= @person.address.province %>
+  <br>
+
+  <strong>Person Country:</strong>
+  <%= @person.address.country %>
+  <br>
+
+  <strong>Person PostalCode:</strong>
+  <%= @person.address.postalCode %>
+</p>
+
+	<p>
+	<b><h5> Tournaments (as player) </h5></b>
+	<%=
+	players = @person.players.all
+
+	unless players.blank?
+	tournaments = []
+
+	players.each do |p|
+		tournaments << p.tournament
+	end
+
+	render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
+	end
+	%>
+
+	<br>
+	<b><h5> Tournaments (as sponsor) </h5></b>
+	<%=
+	sponsors = @person.sponsors.all
+
+	unless sponsors.blank?
+	tournaments = []
+
+	sponsors.each do |p|
+		tournaments << p.tournament
+	end
+
+	render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
+	end
+	%>
+
+	<br>
+	<b><h5> Tournaments (as organizer) </h5></b>
+	<%=
+	organizers = @person.tournament_organizers.all
+
+	unless organizers.blank?
+	tournaments = []
+
+	organizers.each do |p|
+		tournaments << p.tournament
+	end
+
+	render partial: "tournaments/tournament_table", locals: {tournaments: tournaments, include_cond: "true == true"}
+	end
+	%>
+
+	<br>
+	<b><h5> Golf Courses (as organizer) </h5></b>	
+	<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_courses} %>
+</p>
+

@@ -1,2 +1,81 @@
-<h1>SiteMap#index</h1>
-<p>Find me in app/views/site_map/index.html.erb</p>
+<br><br>
+<div class="container">
+  <h1>CSC444 <%=t :site_map %></h1>
+  <ul class="w3-navbar nav nav-pills">
+    <li role="presentation"><a href="#sec1">Administration</a></li>
+    <li role="presentation"><a href="#sec2"><%=t :Tournaments %></a></li>
+    <li role="presentation"><a href="#sec3"><%=t :golf_courses %></a></li>
+  </ul>
+  <section class="sitemap" id="sec1">
+
+    <h2>Administration</h2>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li><a href="/"><%=t :home %></a></li>
+          <li><%= link_to t('Our_Story'), controller: "/story", action: "index" %></li>
+          <li><%= link_to t('Partners'), controller: "/partner", action: "index" %></li>
+          <li><%= link_to t('FAQ'), controller: "/faq", action: "index" %></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li><%= link_to t('Features'), controller: "/feature", action: "index" %></li>
+          <li><%= link_to t('my_account'), controller: "people", action: "portal" %></li>
+          <li><%= link_to t('Login'), new_user_session_path %></li>
+          <li><%=link_to t('sign_up'), new_user_registration_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+          <li><%= link_to t('term_of_service'), controller: "/serviceterm", action: "index" %></li>
+          <li><%= link_to t('privacy_info'), controller: "/privacy", action: "index" %></li>
+          <li><%= link_to t('site_map'), controller: "/site_map", action: "index" %></li>
+          <li><%= link_to t('contact_us'), controller: "/contact_us", action: "index" %></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="sitemap" id="sec2">
+
+    <h2><%=t :Tournaments %></h2>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li><%=link_to t('Tournaments'), tournaments_path%></li>
+        </ul>
+      </div>
+      <% if user_signed_in? %>
+      <div class="col-md-3">
+        <ul>
+          <li><%= link_to t("New")+" "+t("Tournaments"), new_tournament_path %></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <ul>
+         <li> <%=link_to t('User_Tourney'), controller: "people", action: "user_tourney" %></li>
+         <li><%=link_to t('Tournament_Tickets'), controller: "people", action: "user_ticket" %> </li>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="sitemap" id="sec3">
+
+    <h2><%=t :golf_courses %></h2>
+    <div class="row">
+      <div class="col-md-3">
+        <ul>
+          <li><%=link_to t('golf_courses'), controller: "golf_courses", action: "index" %></li>
+        </ul>
+      </div>
+      <% if user_signed_in? %>
+      <div class="col-md-3">
+        <ul>
+          <li><%=link_to t('register_golf_course'), new_golf_course_path%></li>
+      </div>
+      <% end %>
+  </section>
+ 
+</div>
+<!-- /container -->

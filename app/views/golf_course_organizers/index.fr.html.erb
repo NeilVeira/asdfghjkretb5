@@ -1,0 +1,8 @@
+<% @golf_course_organizers.each do |golf_course_organizer| %>
+	<p>
+		personne id: <%=golf_course_organizer.person%><br/>
+		terrain de golf id: <%=golf_course_organizer.golf_course%><br/>
+		droits administratifs: <%=golf_course_organizer.adminrights%>
+	</p>
+<%end%>
+<%= link_to t('home'), controller: 'home_page' %>

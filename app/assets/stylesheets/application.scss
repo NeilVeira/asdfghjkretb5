@@ -25,7 +25,7 @@ li a {
     display: inline-block;
     color: blue;
     text-align: center;
-    padding: 16px;
+    padding: 10px;
     text-decoration: none;
 }
 
@@ -59,3 +59,15 @@ li a {
     border-bottom: 1px solid #c2c2a3;  //apply style
 }
 
+section{
+  border-bottom: 1px solid #ccc;
+  margin-top: 1em;
+}
+
+section .col-md-3 {
+  border-left: 1px solid #ccc;
+}
+
+section .col-md-3:first-child {
+  border: none;
+}

@@ -1,9 +1,16 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?
-	
+	before_action :set_locale
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
+
+	def set_locale
+		 locale = params[:locale].to_s.strip.to_sym
+    	 I18n.locale = I18n.available_locales.include?(locale) ?
+        		locale :
+        		I18n.default_locale
+	end
 	
 	def user_exists?			
 		@user = current_user
@@ -157,4 +164,6 @@ class ApplicationController < ActionController::Base
 		flash[:notice] = "Access to the requested page is denied"
 		redirect_to root_url
 	end
+
+
 end	

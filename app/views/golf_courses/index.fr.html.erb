@@ -1,0 +1,14 @@
+<html>
+	<body>
+		<section>
+			<h1>
+				Parcours de golf enregistrés
+			</h1>
+			<p><h5>Organisez votre tournoi dans l'un de nos nombreux terrains de golf.</h5></p>
+			<p><h5>Cliquez sur les liens ci-dessous pour plus de détails.</h5></p>
+			<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_course} %>
+			<br>
+			<%= link_to t("register_golf_course_new"), new_golf_course_path %>
+		</section>
+	</body>
+</html>

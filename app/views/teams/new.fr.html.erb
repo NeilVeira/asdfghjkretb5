@@ -1,0 +1,19 @@
+<h1>Ajouter des informations sur l'équipe</h1>
+<br>
+<%=form_for :team, url: teams_path do |f| %>
+   <p>
+      <%= f.label t(:Name) %><br>
+      <%= f.text_field :name %><br>
+   </p>
+   
+   <p>
+      <%= f.label :Tournoi %><br>
+      <%= f.text_field :tournament_id %><br>
+   </p>
+
+   <p>
+      <%= f.submit %>
+   </p>
+<% end %>
+
+<%= link_to t('Back'), controller: 'home_page' %>

@@ -1,12 +1,12 @@
 <html>
-	<h1>Tournament Organizer Dashboard </h1>
+	<h1><%=t :dashboard %> </h1>
 	<%= render partial: "tournaments/tournament_info" %>
 	
 	<% if @is_admin or @organizer.adminrights & 1 != 0 %> <!check privileges to edit info>
-		<%= link_to "Edit tournament info",edit_tournament_path(@tournament) %><br>
+		<%= link_to t("Edit_tournament_info"),edit_tournament_path(@tournament) %><br>
 	<% end %>
 	<% if @is_admin or @organizer.adminrights & 4 != 0 %> <!check privileges to add tournament admins>
-		<%= link_to "Add tournament admin", new_tournament_organizer_path %>
+		<%= link_to t("Add_tournament_admin"), new_tournament_organizer_path %>
 	<% end %>
 	<% if @is_admin or @organizer.adminrights & 2 != 0 %> <!check privileges to manage tee sheets">
 		<p>Manage tee sheets (coming soon)</p><br>

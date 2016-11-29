@@ -1,0 +1,14 @@
+<html>
+	<body>
+		<section>
+			<h1>
+				Golf Courses on Record
+			</h1>
+			<p><h5>Host your tournament at one of our many beautiful golf courses.</h5></p>
+			<p><h5>Click the links below for more details.</h5></p>
+			<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_course} %>
+			<br>
+			<%= link_to t("register_golf_course_new"), new_golf_course_path %>
+		</section>
+	</body>
+</html>

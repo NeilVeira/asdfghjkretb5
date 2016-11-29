@@ -27,7 +27,8 @@ class GolfCoursesController < ApplicationController
 	end
 
 	def show
-		@golf_course = GolfCourse.find(params[:id])	 
+		@golf_course = GolfCourse.find(params[:id])	
+		@organizer = GolfCourseOrganizer.find_by(golf_course: @golf_course)
 	end
   
 	def edit
@@ -47,7 +48,7 @@ class GolfCoursesController < ApplicationController
   
   private
 	def golf_course_params
-		params.require(:golf_course).permit(:name, :location,
+		params.require(:golf_course).permit(:name, :location, :image, :description,
 			address_attributes: [:id, :apartmentNumber, :streetNumber, :streetName, :city, :province, :country, :postalCode])
 	end
 	

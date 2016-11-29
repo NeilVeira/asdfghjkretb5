@@ -82,3 +82,4 @@ gem 'certified'
 gem 'flexslider'
 gem 'flexslider-rails'
 
+gem 'rails-i18n'

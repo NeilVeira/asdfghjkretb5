@@ -2,30 +2,28 @@
   c_date = Time.now.to_date
   status = tournaments_status(tournaments)
 %>
-
+<p><%=t :already_registered %></p>
 <table>
 	<tr>
-		<th><%= sort("name") %> </th>
-		<th>Description</th>
-		<th><%= sort("date") %></th>
-		<th>Link</th>
-		<th>Register Status</th>
+		<th><%= sort(t("Name")) %> </th>
+		<th><%=t :Description %></th>
+		<th><%= sort(t("Date")) %></th>
+		<th><%=t :Link %></th>
+		<th><%=t :register_stat %></th>
 	</tr>
-
 	<% tournaments.each do |t| %>
 		<% t_date = t.date.to_date %>
 		<% days_away = (t_date - c_date).to_i %>
-		
 		<% if eval(include_cond) %>
 			<tr>
 				<td><%= t.name %></td>
 				<td><%= t.description %></td>
 				<td><%= t_date %></td>
-				<td><%= link_to "Show", tournament_path(t) %></td>
+				<td><%= link_to t("Show"), tournament_path(t) %></td>
 				<% if status[t.id] %>
-					<td>Already Registered</td>
+					<td><%= t("already_registered") %></td>
 				<% else %>				
-					<td><%= link_to "Register", setup_path(t.id) %></td>
+					<td><%= link_to t("Register"), setup_path(t.id) %></td>
 				<% end %>
 			</tr>
 		<% end %>

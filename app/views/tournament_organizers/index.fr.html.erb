@@ -1,0 +1,8 @@
+<% @tournament_organizers.each do |tournament_organizer| %>
+	<p>
+		personne id: <%=tournament_organizer.person%><br/>
+		tournoi id: <%=tournament_organizer.tournament%><br/>
+		droits administratifs: <%=tournament_organizer.adminrights%>
+	</p>
+<%end%>
+<%= link_to t('home'), controller: 'home_page' %>

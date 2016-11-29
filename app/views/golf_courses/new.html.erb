@@ -1,5 +1,5 @@
-<h1>Register a Golf Course</h1>
-<%= form_for @golf_course, url: golf_courses_path do |f| %>
+<h1><%=t :register_golf_course_new %></h1>
+<%= form_for @golf_course, url: golf_courses_path, html: { multipart: true } do |f| %>
   
   <% if @golf_course.errors.any? %>
     <div id="error_explanation">
@@ -15,47 +15,55 @@
     </div>
   <% end %>
   
-  <p>
-    <%= f.label :Name %>
-    <%= f.text_field :name %>
-  </p>
+	<p>
+		<%= f.label t("Name") %>
+		<%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label t("Description") %>
+		<%= f.text_area :description %>
+	</p>
  
 	<%= f.fields_for :address do |address| %>
 		
 		<p>
-		<%= address.label :streetNumber %>
+		<%= address.label t("StreetNumber") %>
 		<%= address.text_field :streetNumber %>
 		</p>
 		
 		<p>
-		<%= address.label :streetName %>
+		<%= address.label t("StreetName") %>
 		<%= address.text_field :streetName %>
 		</p>
 		
 		<p>
-		<%= address.label :city %>
+		<%= address.label t("City") %>
 		<%= address.text_field :city %>
 		</p>
 		
 		<p>
-		<%= address.label :province %>
+		<%= address.label t("Province") %>
 		<%= address.text_field :province %>
 		</p>
 		
 		<p>
-		<%= address.label :country %>
+		<%= address.label t("Country") %>
 		<%= address.text_field :country %>
 		</p>
 		
 		<p>
-		<%= address.label :postalCode %>
+		<%= address.label t("PostalCode") %>
 		<%= address.text_field :postalCode %>
 		</p>
 		
 	<% end %>
+	
+	<p><%=t :golf_course_image %></p>
+		<%= f.file_field :image %>
+	<br>
  
   <p>
     <%= f.submit %>
   </p>
 <% end %>
-<%= link_to 'Back', controller: 'home_page' %>
+<%= link_to t('Back'), controller: 'home_page' %>
