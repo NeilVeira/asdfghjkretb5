@@ -57,43 +57,6 @@ class TicketsController < ApplicationController
       # @CreditCard = CreditCard.new
     end
 
-  def paymentProcessing
-    # Send requests to the gateway's test servers
-    ActiveMerchant::Billing::Base.mode = :test
-
-# Create a new credit card object
-    credit_card = ActiveMerchant::Billing::CreditCard.new(
-        :number     => params[:number],
-        :month      => params[:month],
-        :year       => params[:year],
-        :first_name => params[:fname],
-        :last_name  => params[:lname],
-        :verification_value  => '123'
-    )
-
-    if credit_card.valid?
-      # Create a gateway object to the TrustCommerce service
-      gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
-          :login    => 'TestMerchant',
-          :password => 'password'
-      )
-
-      # Authorize for $10 dollars (1000 cents)
-      response = gateway.authorize(1000, credit_card)
-
-      if response.success?
-        # Capture the money
-        gateway.capture(1000, response.authorization)
-        redirect_to ticket_path(params[:id])
-      else
-        logger.debug "credit card was not valid"
-        redirect_to ticket_path(params[:id])
-        raise StandardError, response.message
-      end
-    end
-    logger.debug "credit card was not valid"
-    redirect_to ticket_path(params[:id])
-  end
 
 	private
 		def ticket_params
