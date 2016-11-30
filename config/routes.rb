@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   get 'tickets/payment/:id', to: 'tickets#payment', as: :payment
 
+  get 'tickets/check_in/:id', to: 'tickets#check_in', as: :checkIn
+
   # pass in ticket id
   get 'credit_cards/paymentProcessing/:id/:cc', to: 'credit_cards#paymentProcessing', as: :paymentProcessing
 

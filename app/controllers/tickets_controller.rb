@@ -2,7 +2,6 @@ class TicketsController < ApplicationController
 	before_action :authenticate_user!
 	before_action :authenticate_ticket_owner!, only: [:show]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
-	require 'rqrcode'
 
     def index
 		
@@ -10,8 +9,7 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-		@code = @ticket.tournament_id.to_s + "-" + @ticket.id.to_s
-		@qrcode = RQRCode::QRCode.new(@code)
+				show_qrcode
     end
     
     def new
@@ -50,13 +48,16 @@ class TicketsController < ApplicationController
 		end
 
   	def check_in
-
+			@ticket = Ticket.find(params[:id])
+			if is_current_tournament_organizer? @ticket.tournament.id
+				@ticket.checked_in = true
+			else
+				render 'ticket_error'
 		end
 
   	def payment
       # @CreditCard = CreditCard.new
     end
-
 
 	private
 		def ticket_params
@@ -71,5 +72,10 @@ class TicketsController < ApplicationController
 				access_denied
 			end
 		end
-	
+
+		def show_qrcode
+			@code = checkIn_url.to_s + @ticket.id.to_s
+			@qrcode = RQRCode::QRCode.new(@code)
+		end
+
 end
