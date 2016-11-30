@@ -38,7 +38,7 @@
   <%= @person.address.postalCode %>
 </p>
 
-	<p>
+<p>
 	<b><h5> Tournaments (as player) </h5></b>
 	<%=
 	players = @person.players.all
@@ -90,4 +90,3 @@
 	<b><h5> Golf Courses (as organizer) </h5></b>	
 	<%= render partial: "golf_courses/golf_course_table", locals: {golf_course: @golf_courses} %>
 </p>
-

@@ -1,6 +1,7 @@
 class PeopleController < ApplicationController
 	before_action :authenticate_user!, only: [:profile, :edit, :update, :user_tourney, :user_ticket]
-	before_action :authenticate_admin!, only: [:index, :show, :destroy]
+	before_action :authenticate_admin!, only: [:index, :show]
+	#before_action :authenticate_deletion!, only: [:destroy]
 	
 	helper_method :sort_column, :sort_direction
 
@@ -79,10 +80,33 @@ class PeopleController < ApplicationController
 	end
 	
 	def destroy
+	
 		@person = Person.find(params[:id])
-        @person.user.destroy
+		
+		TournamentOrganizer.where(person_id: @person.id).delete_all
+		Ticket.where(person_id: @person.id).delete_all
+		Team.where(p1_id: @person.id).delete_all
+		Team.where(p2_id: @person.id).delete_all
+		Team.where(p3_id: @person.id).delete_all
+		Team.where(p4_id: @person.id).delete_all
+		Sponsor.where(person_id: @person.id).delete_all
+		Player.where(person_id: @person.id).delete_all
+		GolfCourseOrganizer.where(person_id: @person.id).delete_all
+		CreditCard.where(person_id: @person.id).delete_all
+		
+		@user = current_user
+		@address = @person.address
+		
+		
 		@person.destroy
-		redirect_to people_path
+		@address.destroy
+		@user.destroy
+		
+        #@person.user.destroy
+		#@person.destroy
+		#redirect_to people_path
+		
+		redirect_to '/'
 	end
 	
 	private

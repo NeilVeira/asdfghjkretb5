@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?
+	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
 	before_action :set_locale
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -92,6 +92,27 @@ class ApplicationController < ActionController::Base
 		end
 	end
 
+	def user_matches_param?
+		@person = current_person
+		logger.info "params id: #{params[:id]}"
+		logger.info "current_person id:#{@person.id}"
+		
+		if (@person.id == params[:id])
+			return true
+		else
+			return false
+		end
+	end
+	
+	def authenticate_deletion!
+		unless user_is_admin?
+			unless user_matches_param?
+				logger.info "The current person did not match the params; also not an admin"
+				access_denied
+			end
+		end
+	end
+	
 	def sort_column
 		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
 	end
