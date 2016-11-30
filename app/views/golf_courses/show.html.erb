@@ -27,6 +27,10 @@
 		<% if user_is_golf_course_organizer?(@golf_course) %>
 			<p><%=t :you_are_organizer %>!</p>
 			<%= link_to t('Edit'), edit_golf_course_path(@golf_course) %><br>
+			<%= link_to t("Delete golf course"), golf_course_path(@golf_course),
+				method: :delete,
+				data: {confirm: 'Are you sure? Deleting this golf course will also delete all tournaments associated with it.'} %></td>
+			<br>
 		<% else %>
 			<p>
 				<strong><%=t :golf_course_org %>: </strong><%= @organizer.person.firstname %> <%= @organizer.person.lastname %>

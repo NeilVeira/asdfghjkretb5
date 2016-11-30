@@ -45,6 +45,19 @@ class GolfCoursesController < ApplicationController
 			render 'edit'
 		end
 	end
+	
+	def destroy
+		@golf_course = GolfCourse.find(params[:id])
+		#delete all golf_course_organizers and tournaments associated with this golf_course
+		GolfCourseOrganizer.where(golf_course: @golf_course).find_each do |x|
+			x.destroy
+		end
+		Tournament.where(golf_course: @golf_course).find_each do |x|
+			delete_tournament(x)
+		end
+		@golf_course.destroy
+		redirect_to golf_courses_path
+	end
   
   private
 	def golf_course_params

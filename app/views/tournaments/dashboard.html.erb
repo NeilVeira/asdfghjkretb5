@@ -11,4 +11,10 @@
 	<% if @is_admin or @organizer.adminrights & 2 != 0 %> <!check privileges to manage tee sheets">
 		<p>Manage tee sheets (coming soon)</p><br>
 	<% end %>
+	<% if @is_admin or @organizer.adminrights & 8 != 0 %> <!check privileges to delete tournament">
+		<%= link_to t("Delete tournament"), tournament_path(@tournament),
+				method: :delete,
+				data: {confirm: 'Are you sure? Deleting this tournament will also delete all players, teams, sponsors, tournament organizers, and tickets associated with it.'} %></td>
+		<br>
+	<% end %>
 </html>

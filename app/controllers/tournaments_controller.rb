@@ -48,7 +48,7 @@ class TournamentsController < ApplicationController
 	
 	def destroy
 		@tournament = Tournament.find(params[:id])
-		@tournament.destroy
+		delete_tournament(@tournament)		
 		redirect_to tournaments_path
 	end
 	

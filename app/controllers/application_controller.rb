@@ -166,4 +166,27 @@ class ApplicationController < ActionController::Base
 	end
 
 
+	private
+	
+	def delete_tournament(tournament)
+		#delete tournament and all tournament_organizers, players, teams, sponsors, and tickets associated with it
+		Player.where(tournament: tournament).find_each do |x|
+			x.destroy
+		end
+		Sponsor.where(tournament: tournament).find_each do |x|
+			x.destroy
+		end
+		TournamentOrganizer.where(tournament: tournament).find_each do |x|
+			x.destroy
+		end
+		Team.where(tournament: tournament).find_each do |x|
+			x.destroy
+		end
+		Ticket.where(tournament: tournament).find_each do |x|
+			x.destroy
+		end
+		
+		tournament.destroy
+	end
+
 end	
