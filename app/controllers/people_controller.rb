@@ -1,7 +1,7 @@
 class PeopleController < ApplicationController
 	before_action :authenticate_user!, only: [:profile, :edit, :update, :user_tourney, :user_ticket]
 	before_action :authenticate_admin!, only: [:index, :show]
-	#before_action :authenticate_deletion!, only: [:destroy]
+	before_action :authenticate_admin_or_current_user!, only: [:destroy]
 	
 	helper_method :sort_column, :sort_direction
 
@@ -94,7 +94,7 @@ class PeopleController < ApplicationController
 		GolfCourseOrganizer.where(person_id: @person.id).delete_all
 		CreditCard.where(person_id: @person.id).delete_all
 		
-		@user = current_user
+		@user = @person.user
 		@address = @person.address
 		
 		

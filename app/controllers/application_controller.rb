@@ -91,25 +91,10 @@ class ApplicationController < ActionController::Base
 			access_denied
 		end
 	end
-
-	def user_matches_param?
-		@person = current_person
-		logger.info "params id: #{params[:id]}"
-		logger.info "current_person id:#{@person.id}"
-		
-		if (@person.id == params[:id])
-			return true
-		else
-			return false
-		end
-	end
 	
-	def authenticate_deletion!
-		unless user_is_admin?
-			unless user_matches_param?
-				logger.info "The current person did not match the params; also not an admin"
-				access_denied
-			end
+	def authenticate_admin_or_current_user!
+		unless current_person.id == params[:id].to_i
+			authenticate_admin!
 		end
 	end
 	

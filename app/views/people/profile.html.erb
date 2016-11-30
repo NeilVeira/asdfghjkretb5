@@ -65,7 +65,7 @@
 </table>
 
 <% if user_is_admin? == false %>
-<%=link_to 'Delete my account', person_path(@person), method: :delete, data: { confirm: 'Are you sure?' } %>
+<%=link_to 'Delete my account', person_path(@person), method: :delete, data: { confirm: 'Are you sure?' } %><br>
 <% end %>
 
 <%=link_to 'Back', controller: "people", action: "portal" %>
