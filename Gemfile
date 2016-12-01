@@ -42,7 +42,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   # mailer
-  gem 'mailcatcher'
+  # gem 'mailcatcher'
 end
 
 # ====== Heroku specific ======
