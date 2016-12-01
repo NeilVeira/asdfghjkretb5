@@ -69,7 +69,7 @@ gem 'rails-assets-tether', '>= 1.1.0'
 # Qrcode
 gem 'rqrcode'
 
-# payement
+# payment
 gem 'activemerchant'
 
 # oauth
@@ -83,3 +83,6 @@ gem 'flexslider'
 gem 'flexslider-rails'
 
 gem 'rails-i18n'
+
+# mailer
+gem 'mailcatcher'
