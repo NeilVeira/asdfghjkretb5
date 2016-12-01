@@ -18,8 +18,8 @@
 			<tr>
 				<td><%= gc.name %></td>
 				<td><%= gc.address_id %></td>
-				<td><%= (tournaments_previous.where("golf_course_id == ?", gc.id)).count %></td>
-				<td><%= (tournaments_future.where("golf_course_id == ?", gc.id)).count %></td>
+				<td><%= tournaments_previous.where(golf_course: gc).count %></td>
+				<td><%= tournaments_future.where(golf_course: gc).count %></td>
 				<td><%= link_to t("Show"), golf_course_path(gc) %></td>
 			</tr>
 		<% end %>
