@@ -85,7 +85,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
   
   config.action_mailer.default_url_options = { host: 'test-rubyonrails-app.herokuapp.com' }
-  
+
   # mail settings
 	config.action_mailer.raise_delivery_errors = true
 
@@ -97,7 +97,7 @@ Rails.application.configure do
 	domain: ENV["GMAIL_DOMAIN"],
 	authentication: "plain",
 	enable_starttls_auto: true,
-	user_name: "testGolfTourney@gmail.com",
-	password: '12345678golf'
+	user_name: ENV["GMAIL_USERNAME"],
+	password: ENV["GMAIL_PASSWORD"]
 	}
 end

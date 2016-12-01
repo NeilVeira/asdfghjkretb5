@@ -6,6 +6,8 @@ class Team < ApplicationRecord
 	belongs_to :p3, :class_name => "Player" #, inverse_of: :team
 	belongs_to :p4, :class_name => "Player" #, inverse_of: :team
 
+	has_many :player
+
 	validates :tournament_id, presence: true
 	validates :name, presence: true
 end
