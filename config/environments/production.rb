@@ -98,9 +98,9 @@ Rails.application.configure do
       port: 587,
       domain: ENV["GMAIL_DOMAIN"],
       authentication: "plain",
-      enable_starttls_auto: false,
+      enable_starttls_auto: true,
       user_name: ENV["GMAIL_USERNAME"],
       password: ENV["GMAIL_PASSWORD"],
-      :openssl_verify_mode => 'none'
+      #:openssl_verify_mode => 'none'
   }
 end
