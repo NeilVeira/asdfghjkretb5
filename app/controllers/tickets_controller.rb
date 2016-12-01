@@ -3,13 +3,14 @@ class TicketsController < ApplicationController
 	before_action :authenticate_ticket_owner!, only: [:show]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
 
+
     def index
 		
     end
     
     def show
         @ticket = Ticket.find(params[:id])
-				show_qrcode
+				get_qrcode (@ticket.id)
     end
     
     def new
@@ -58,7 +59,7 @@ class TicketsController < ApplicationController
 
   	def payment
       # @CreditCard = CreditCard.new
-    end
+		end
 
 	private
 		def ticket_params
@@ -80,11 +81,6 @@ class TicketsController < ApplicationController
 			if not user_is_admin? and @person != @ticket.person
 				access_denied
 			end
-		end
-
-		def show_qrcode
-			@code = checkIn_url.to_s
-			@qrcode = RQRCode::QRCode.new(@code)
 		end
 
 end
