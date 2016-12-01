@@ -1,9 +1,11 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable, :omniauth_providers => [:facebook, :linkedin]
-		 
+
+  after_create :send_admin_mail
+
   def self.from_omniauth(auth)
 	where(email: auth.info.email).first_or_create do |user|
 	  #user.email = auth.info.email
@@ -24,5 +26,9 @@ class User < ApplicationRecord
       end
     end
   end
-  
+
+  def send_admin_mail
+    UserMailer.send_new_user_message(self).deliver
+  end
+
 end
