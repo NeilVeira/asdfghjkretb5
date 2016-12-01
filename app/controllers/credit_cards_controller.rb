@@ -29,6 +29,8 @@ class CreditCardsController < ApplicationController
   end
 
   def paymentProcessing
+    ticket = Ticket.find(params[:id])
+    price = get_price(ticket)
 
     @CC = CreditCard.where(id: params[:cc]).first
     unless @CC
@@ -55,19 +57,23 @@ class CreditCardsController < ApplicationController
       )
 
       # Authorize for $10 dollars (1000 cents)
-      response = gateway.authorize(1000, credit_card)
+      response = gateway.authorize(price, credit_card)
 
       if response.success?
         # Capture the money
-        gateway.capture(1000, response.authorization)
+        gateway.capture(price, response.authorization)
+        send_ticket ticket
         redirect_to ticket_path(params[:id])
       else
-        logger.debug "credit card was not valid"
+        logger.debug "credit card was not proccessed"
+        send_ticket ticket
         redirect_to ticket_path(params[:id])
         raise StandardError, response.message
       end
+
     end
     logger.debug "credit card was not valid"
+    send_ticket ticket
     redirect_to ticket_path(params[:id])
   end
 end

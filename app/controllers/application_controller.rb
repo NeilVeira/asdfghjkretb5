@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
+	helper_method :current_person, :get_price, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
 	before_action :set_locale
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -193,6 +193,42 @@ class ApplicationController < ActionController::Base
 		end
 		
 		tournament.destroy
+	end
+
+	def get_price(ticket)
+		case ticket.tickettype
+			when 1
+				return Tournament.where(id: ticket.tournament_id).first.pricePlayer
+			when 2
+				return Tournament.where(id: ticket.tournament_id).first.priceSpectator
+			else
+				return -5 #test
+		end
+	end
+
+	def send_ticket(ticket)
+
+		get_qrcode ticket
+		person = current_person
+
+		tries = 0
+		max = 3
+		# begin
+			TicketMailer.ticket_mailer(person, @qrcode).deliver
+		# rescue Errono::ECONNRESET => e
+		# 	tries = tries + 1
+		# 	if tries > max
+		# 		retry
+		# 	else
+		# 		logger.debug "sending failed after #{max} tries"
+		# 	end
+		# end
+
+	end
+
+	def get_qrcode (ticket)
+		@code = checkIn_url(id:ticket.id).to_s
+		@qrcode = RQRCode::QRCode.new(@code)
 	end
 
 end	

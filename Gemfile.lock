@@ -80,6 +80,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     ffi (1.9.14)
     ffi (1.9.14-x86-mingw32)
+    figaro (1.1.1)
+      thor (~> 0.14)
     flexslider (2.2.0)
       sass-rails (>= 3.1.0)
     flexslider-rails (1.0.0)
@@ -247,6 +249,7 @@ DEPENDENCIES
   certified
   coffee-rails (~> 4.2)
   devise
+  figaro
   flexslider
   flexslider-rails
   jbuilder (~> 2.5)

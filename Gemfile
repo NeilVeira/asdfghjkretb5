@@ -85,3 +85,6 @@ gem 'flexslider'
 gem 'flexslider-rails'
 
 gem 'rails-i18n'
+
+#environment varriables
+gem 'figaro'
