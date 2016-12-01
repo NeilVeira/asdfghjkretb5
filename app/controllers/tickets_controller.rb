@@ -49,10 +49,11 @@ class TicketsController < ApplicationController
 
   	def check_in
 			@ticket = Ticket.find(params[:id])
-			if is_current_tournament_organizer? @ticket.tournament.id
+			if (is_current_tournament_organizer @ticket.tournament.id)
 				@ticket.checked_in = true
 			else
 				render 'ticket_error'
+			end
 		end
 
   	def payment
@@ -63,7 +64,15 @@ class TicketsController < ApplicationController
 		def ticket_params
 			params.require(:ticket).permit(:tickettype)
 		end
-		
+
+		def is_current_tournament_organizer (t_id = session[:tournament_id])
+			if TournamentOrganizer.where(tournament_id: t_id, person_id: current_person.id).any?
+				true
+			else
+				false
+			end
+		end
+
 		def authenticate_ticket_owner!
 			#check that current user is the owner of this ticket
 			@ticket = Ticket.find(params[:id])
@@ -74,7 +83,7 @@ class TicketsController < ApplicationController
 		end
 
 		def show_qrcode
-			@code = checkIn_url.to_s + @ticket.id.to_s
+			@code = checkIn_url.to_s
 			@qrcode = RQRCode::QRCode.new(@code)
 		end
 
