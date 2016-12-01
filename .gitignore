@@ -13,4 +13,5 @@ rerun.txt
 pickle-email-*.html
 .byebug_history
 .idea/*
+.bundle/*
 

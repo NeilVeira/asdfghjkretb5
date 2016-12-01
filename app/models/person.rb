@@ -5,6 +5,7 @@ class Person < ApplicationRecord
   has_many :sponsors
   has_many :tournament_organizers
 	has_many :golf_course_organizers
+	has_many :credit_cards
 	accepts_nested_attributes_for :address
 
 	validates :firstname, presence: true 

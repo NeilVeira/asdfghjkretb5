@@ -3,7 +3,7 @@ class CreatePeople < ActiveRecord::Migration[5.0]
     create_table :people do |t|
       t.string :firstname
       t.string :lastname
-      t.string :dob
+      t.date :dob
       t.string :address
       t.string :phone
       t.string :email

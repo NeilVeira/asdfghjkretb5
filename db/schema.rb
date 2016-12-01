@@ -118,12 +118,12 @@ ActiveRecord::Schema.define(version: 20161129064121) do
   create_table "teams", force: :cascade do |t|
     t.string   "name"
     t.integer  "tournament_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
     t.integer  "p1_id"
     t.integer  "p2_id"
     t.integer  "p3_id"
     t.integer  "p4_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.index ["p1_id"], name: "index_teams_on_p1_id"
     t.index ["p2_id"], name: "index_teams_on_p2_id"
     t.index ["p3_id"], name: "index_teams_on_p3_id"
@@ -182,6 +182,10 @@ ActiveRecord::Schema.define(version: 20161129064121) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "fb_provider"
