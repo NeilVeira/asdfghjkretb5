@@ -13,7 +13,11 @@
 				<td><%= player.person.firstname %> <% player.person.lastname %> (<%= link_to player.person.user.email, person_path(player.person) %>)</td>
 				<td><%= link_to player.tournament.name, tournament_path(player.tournament) %></td>
 				<!-- TODO: Add link to show team -->
-				<td>No team</td>
+				<% if player.team %>
+					<td><%= link_to player.team.name, team_path(player.team) %></td>
+				<% else %>
+					<td>No Team</td>
+				<% end %>
 				<!-- Why do we need player/show view? -->
 				<!-- <td><%= link_to "Player Profile", player_path(player) %></td> -->
 				<td><%= link_to "Delete", player_path(player), method: :delete, data: {confirm: "Are you sure?"} %></td>
