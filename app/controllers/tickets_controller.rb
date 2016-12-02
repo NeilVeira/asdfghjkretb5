@@ -10,12 +10,13 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-				get_qrcode (@ticket.id)
+				get_qrcode @ticket
     end
     
     def new
 		@ticket = Ticket.new()
 		@tournament = Tournament.find(session[:tournament_id])
+
     end
     
     def edit
