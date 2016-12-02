@@ -169,8 +169,9 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def access_denied
-		flash[:notice] = "Access to the requested page is denied"
-		redirect_to root_url
+		#flash[:notice] = "Access to the requested page is denied"
+		#redirect_to root_url
+		render 'auth_admin'
 	end
 
 
