@@ -39,5 +39,7 @@ feature "signup" do
 		save_and_open_page
 		
 		expect(page).to have_current_path(people_profile_path, only_path: true)
+		
+		expect(page).to have_content("Profile")
 	end
 end
