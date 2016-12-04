@@ -16,8 +16,8 @@
 # users commonly want.
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
-Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
-
+#Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+Dir[File.join(File.dirname(__FILE__), "support", "*.rb")].each {|f| require f}
 RSpec.configure do |config|
 	config.include LoginHelper
 
