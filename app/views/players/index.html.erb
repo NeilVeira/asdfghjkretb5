@@ -14,7 +14,7 @@
 				<td><%= link_to player.tournament.name, tournament_path(player.tournament) %></td>
 				<!-- TODO: Add link to show team -->
 				<% if player.team %>
-					<td><%= link_to player.team.name, team_path(player.team) %></td>
+					<td><%= link_to player.team.team_num, team_path(player.team) %></td>
 				<% else %>
 					<td>No Team</td>
 				<% end %>

@@ -8,6 +8,5 @@ class Team < ApplicationRecord
 
 	has_many :player
 
-	validates :tournament_id, presence: true
-	validates :name, presence: true
+	#validates :tournament_id, presence: true
 end

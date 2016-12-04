@@ -58,7 +58,80 @@ class TournamentsController < ApplicationController
 		@person = current_person
 		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
 		@is_admin = user_is_admin?
+		
+		@full_teams = Team.select{|t| t.p1 and t.p2 and t.p3 and t.p4 and t.tournament_id == @tournament.id}.count
+		
 		render 'dashboard'
+	end
+	
+	def create_new_teams_for_tournament
+		@tournament = Tournament.find(params[:id])
+		teams_needed = (@tournament.players.select{|p| p.team_id == nil }.length / 4.to_f).ceil
+		full_teams = Team.select{|t| t.p1 and t.p2 and t.p3 and t.p4 and t.tournament_id == @tournament.id}.count
+		t_s_input = params.require(:teams_selected).permit!.values.collect{ |i| i.to_i}
+		t_s_player_id = params.require(:teams_selected).permit!.to_a.collect{ |k, v| k.to_i}
+		
+		for i in full_teams+1..full_teams+teams_needed
+			@team_i = Team.where(:team_num => i, :tournament_id => params[:id]).first
+			
+			if (@team_i.blank? and t_s_input.count(i) > 4 )
+				redirect_to "/tournaments/#{@tournament.id}/dashboard", :flash => { :error => 'Too many players to add.'}
+				return
+			elsif ( @team_i.blank? == false and (4 - @team_i.player.size) < t_s_input.count(i) )
+				debug
+				redirect_to "/tournaments/#{@tournament.id}/dashboard", :flash => { :error => 'Too many players to add.'}
+				return
+			end
+		end
+		
+		for i in full_teams+1..full_teams+teams_needed
+			@team_i = Team.where(:team_num => i, :tournament_id => params[:id]).first
+			indexes_needed = t_s_input.each_index.select{|j| t_s_input[j] == i}
+			
+			if(@team_i.blank?)
+				@team = Team.new(:tournament_id => @tournament.id, :team_num => i)
+				@team.save(validate: false)
+				
+				if (indexes_needed.count == 4)
+					Player.find(t_s_player_id[indexes_needed[3]]).update(team_id: @team.id)
+					@team.p4_id = t_s_player_id[indexes_needed[3]]
+				end
+				if(indexes_needed.count >= 3)
+					Player.find(t_s_player_id[indexes_needed[2]]).update(team_id: @team.id)
+					@team.p3_id = t_s_player_id[indexes_needed[2]]
+				end
+				if(indexes_needed.count >= 2)
+					Player.find(t_s_player_id[indexes_needed[1]]).update(team_id: @team.id)
+					@team.p2_id = t_s_player_id[indexes_needed[1]]
+				end
+				Player.find(t_s_player_id[indexes_needed[0]]).update(team_id: @team.id)
+				@team.p1_id = t_s_player_id[indexes_needed[0]]
+				
+				@team.save(validate: false)
+			else
+				if(@team_i.p1_id == nil)
+					@team_i.p1_id = t_s_player_id[indexes_needed[0]]
+					Player.find(t_s_player_id[indexes_needed[0]]).update(team_id: @team_i.id)
+				end
+				if(@team_i.p2_id == nil)
+					@team_i.p1_id = t_s_player_id[indexes_needed[1]]
+					Player.find(t_s_player_id[indexes_needed[1]]).update(team_id: @team_i.id)
+				end
+				if(@team_i.p3_id == nil)
+					@team_i.p1_id = t_s_player_id[indexes_needed[2]]
+					Player.find(t_s_player_id[indexes_needed[2]]).update(team_id: @team_i.id)
+				end
+				if(@team_i.p4_id == nil)
+					@team_i.p1_id = t_s_player_id[indexes_needed[3]]
+					Player.find(t_s_player_id[indexes_needed[3]]).update(team_id: @team_i.id)
+				end
+				
+				@team_i.save(validate: false)
+			end
+		end
+		
+		redirect_to "/tournaments/#{@tournament.id}/dashboard"
+		return
 	end
 	
 	private
