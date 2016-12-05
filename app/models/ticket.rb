@@ -10,14 +10,14 @@ class Ticket < ApplicationRecord
 	validates :tournament_id, presence: true, uniqueness: { scope: :person_id,
 											messsage: "You are already registered" }
 											
-	 def paypal_url(return_url, t_id)
+	 def paypal_url(return_url, t_id, t_price)
     values = {
       business: 'castiel.x.zhu-merchant@gmail.com',
       cmd: '_xclick',
       upload: 1,
       return: return_url,
       invoice: id,
-      amount: 80.to_s,
+      amount: t_price.to_s,
       #amount: get_price(@ticket).to_s,
       item_name: 'golf_ticket, id:' +t_id.to_s,
       item_number: '1',

@@ -9,7 +9,7 @@
 <%= link_to "Pay with new credit card", payment_path(@ticket.id) %>
 <br>
 <br>
-<%= link_to "Pay with paypal", @ticket.paypal_url(tournaments_path, @ticket.id)%>
+<%= link_to "Pay with paypal", @ticket.paypal_url(tournaments_path, @ticket.id, @ticket.tournament.pricePlayer)%>
 <br>
 <br>
 <%= link_to 'Back', controller: 'home_page' %>
