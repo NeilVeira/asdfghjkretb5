@@ -62,7 +62,12 @@ class PeopleController < ApplicationController
     	@person = current_person
     	render 'people/portal/user_ticket'
     end
-	
+
+    def address
+    	@person = current_person
+    	render 'people/address'
+	end
+
 	def edit
 		#@person = Person.find(params[:id])
         @user = current_user

@@ -1,40 +1,42 @@
+<body>
+<% @person = current_person %>
+<!--until credit card create redirects to a better page (maybe show all cards) I don't know where to put that-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<% @person = current_person
-# until credit card create redirects to a better page (maybe show all cards) I don't know where to put that
-%>
-<h1>Profile</h1>
-<br>
-<%= image_tag @person.image.url %>
-<br>
+<ul class="nav nav-tabs">
+	<li role="presentation" class="active" ><%=link_to t('Personal Information'), controller: "people", action: "profile" %></li>
+	<li role="presentation" ><%=link_to t('Address'), controller: "people", action: "address" %></li>
+	<li role="presentation" ><a href="#" class="col-12">Linked Services</a></li>
+	<li role="presentation" ><%= link_to 'Edit Profile', edit_person_path(@person) %></li>
+</ul>
+
+</div>
+
+<div>
+	<div class="col-md-12"><h3>Personal Information</h3></div>
+	<div class="col-md-12"><%= image_tag @person.image.url %></div>
+	<div class="col-md-12"><a></div>
+	<div class="col-md-3">
+		<tr>First Name:</tr>
+		<tr><%=@person.lastname%></tr>
+	</div>
+	<div class="col-md-9"><p><%=@person.firstname%></p></div>
+</div>
 
 <% if flash[:error] %>
-<h2>1 error prohibited this person from being saved:</h2>
+	<h2>1 error prohibited this person from being saved:</h2>
 	<%= flash[:error] %>
 	<br>
 <% end %>
 
-<%= link_to 'Edit', edit_person_path(@person) %>
-<br>
-<h2>Personal Information</h2>
 <p>
-	<strong>First Name:</strong><%=@person.firstname%><br>
-	<strong>Last Name:</strong><%=@person.lastname%><br>
+	<strong>First Name:</strong>br>
+	<strong>Last Name:</strong><br>
 
     <strong>Email: </strong><%=@person.user.email%><br>
     <strong>Date of birth: </strong><%=@person.dob.to_formatted_s(:long_ordinal)%><br>
     <strong>Phone Number: </strong><%=@person.phone%><br>
 
-</p>
-
-<h3>Address</h3>
-<p>
-	<strong>Apartment Number: </strong><%=@person.address.apartmentNumber%><br>
-	<strong>Street Number: </strong><%=@person.address.streetNumber%><br>
-	<strong>Street Name: </strong><%=@person.address.streetName%><br>
-	<strong>City: </strong><%=@person.address.city%><br>
-	<strong>Province: </strong><%=@person.address.province%><br>
-	<strong>Country: </strong><%=@person.address.country%><br>
-	<strong>Postal Code: </strong><%=@person.address.postalCode%><br>
 </p>
 
 <h3>Linked Services</h3>
@@ -59,7 +61,7 @@
 					<td><%= link_to "Link to LinkedIn", user_linkedin_omniauth_authorize_path %></td>
 				<% end %>
 			<% end %>
-		<tr>
+		</tr>
 	<% end %>
 
 </table>
@@ -69,5 +71,5 @@
 <% end %>
 
 <%=link_to 'Back', controller: "people", action: "portal" %>
-
+</body>
 
