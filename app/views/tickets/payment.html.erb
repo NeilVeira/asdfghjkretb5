@@ -1,6 +1,7 @@
 <%
   @ticket = Ticket.where(id: params[:id]).first
   unless @ticket
+	<%-# commented: I'm not sure but this is probably wrong, because we can't render a non-partial view inside a view -%>
     render tournaments_path
   end
 
