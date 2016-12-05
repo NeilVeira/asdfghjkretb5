@@ -5,7 +5,9 @@
     <th>Last Name</th>
   </tr>
 
-  <% credit_cards.each do |cc| %>
+  <%
+    credit_cards = CreditCard.where(person_id: person_id)
+    credit_cards.each do |cc| %>
           <tr>
             <td><%= cc.number%></td>
             <td><%= cc.fname%></td>

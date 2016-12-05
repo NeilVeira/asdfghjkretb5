@@ -1,3 +1,7 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
+
 <h1>Edit your information</h1>
 <strong>Email (cannot be changed): </strong><%= @person.user.email %>
 <%= form_for @person, url: person_path(@person), method: :patch do |f| %>
