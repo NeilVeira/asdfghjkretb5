@@ -1,6 +1,7 @@
 <%
   @ticket = Ticket.where(id: params[:id]).first
   unless @ticket
+	<%-# commented: I'm not sure but this is probably wrong, because we can't render a non-partial view inside a view -%>
     render tournaments_path
   end
 
@@ -8,12 +9,16 @@
   %>
 <h1>Payment for tournament <%= @ticket.tournament.name %></h1>
 
-  <%= render partial: "credit_cards/credit_cards_table", locals: {credit_cards: cc} %>
-
-  <%= render partial: "credit_cards/new", locals: {ticket_id: @ticket.id, direct_page: 1, return_page: 2} %>
+<%=
+  if cc.any?
+    render partial: "credit_cards/credit_cards_table_pay", locals: {ticket: @ticket, credit_cards: cc}
+  else %>
+<i> No credit cards saved. </i>
+<% end %>
 <br>
-
-<%= link_to 'Continue', ticket_path(@ticket) %> (test) <br>
-
+<br>
+<%= link_to "Pay with new credit card", new_credit_card_path(ticket_id: @ticket.id, direct_page: 1, return_page: 2) %>
+<br>
+<br>
 
 <%= link_to 'Back', controller: 'home_page' %>

@@ -1,3 +1,4 @@
+
 Rails.application.routes.draw do
 
   get 'contact_us/index'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
   get 'serviceterm/index'
 
   get 'tickets/payment/:id', to: 'tickets#payment', as: :payment
+  get 'tickets/payment_select/:id', to: 'tickets#payment_select', as: :payment_select
 
   get 'tickets/check_in/:id', to: 'tickets#check_in', as: :checkIn
 
@@ -23,12 +25,15 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'
+
   get 'people/profile', to: 'people#profile'
   get 'people/portal', to: 'people#portal'
   get 'people/user_tourney', to: 'people#user_tourney'
   get 'people/user_ticket', to: 'people#user_ticket'
   get 'people/address', to: 'people#address'
   get 'people/linked_services', to: 'people#linked_services'
+  get 'people/payment_information', to: 'people#payment_information'
+
   get 'tournaments/:id/dashboard', to: 'tournaments#dashboard'
 
   resources :people

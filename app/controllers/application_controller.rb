@@ -229,8 +229,8 @@ class ApplicationController < ActionController::Base
 
 	end
 
-	def get_qrcode (ticket)
-		@code = checkIn_url(id:ticket.id).to_s
+	def get_qrcode (ticket_id)
+		@code = checkIn_url(id:ticket_id).to_s
 		@qrcode = RQRCode::QRCode.new(@code)
 	end
 

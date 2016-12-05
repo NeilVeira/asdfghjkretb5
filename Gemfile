@@ -73,6 +73,7 @@ gem 'rqrcode'
 
 # payment
 gem 'activemerchant'
+gem 'strip'
 
 # oauth
 gem 'omniauth'
@@ -86,9 +87,8 @@ gem 'flexslider-rails'
 
 gem 'rails-i18n'
 
-#environment varriables
+#environment variables
 gem 'figaro'
-
 
 # testing
 gem 'rspec-rails'

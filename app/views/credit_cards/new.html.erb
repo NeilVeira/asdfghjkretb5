@@ -1,17 +1,20 @@
 <%
-  # pre-processing
-@creditcard = CreditCard.new
-# form data
-months = [['Jan', 1],['Feb', 2],['Mar', 3],['Apr', 4],['Apr', 5],['Jun', 6],['Jul', 7],['Aug', 8],['Sept', 9],['Oct', 10],['Nov', 11],['Dec', 12]]
-years = [[2016, 2016],[2017, 2017],[2018, 2018],[2019, 2019]]
+  # form data
+  years = []
+  year_today = Date.today.strftime("%y").to_i
+  year_today.upto(year_today+10).each do |y|
+    years << y.to_s
+  end
 
-  unless defined? ticket_id
-    ticket_id = 0
-    direct_page = 0 # ensures doesn't try to return to ticket page
+  months = [['Jan', 1],['Feb', 2],['Mar', 3],['Apr', 4],['Apr', 5],['Jun', 6],['Jul', 7],['Aug', 8],['Sept', 9],['Oct', 10],['Nov', 11],['Dec', 12]]
+
+  unless defined? params[:ticket_id]
+    params[:ticket_id] = 0
+    params[:direct_page] = 0 # ensures doesn't try to return to ticket page
   end
 %>
-
-<%= form_for @creditcard, url: credit_cards_path(@creditcard, direct: direct_page, ticket_id: ticket_id, return: return_page), method: :post do |f| %>
+<b>Add a new Credit Card</b>
+<%= form_for @creditcard, url: credit_cards_path(@creditcard, direct: params[:direct_page], ticket_id: params[:ticket_id], return: params[:return_page]), method: :post do |f| %>
     <% # return value is integer set to determine which page to return to after create %>
 
     <% if @creditcard.errors.any? %>
@@ -27,8 +30,7 @@ years = [[2016, 2016],[2017, 2017],[2018, 2018],[2019, 2019]]
           </ul>
         </div>
     <% end %>
-    
-    Credit card information: (can someone make this look nicer ;-; )
+
     <br><br>
     <p>
       <%= f.label :number %>

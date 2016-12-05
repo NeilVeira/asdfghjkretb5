@@ -45,32 +45,37 @@ class PeopleController < ApplicationController
 		render 'people/portal/portal'
 	end 
     
-    def profile
-    #shows the profile for the current user
+	def profile
+	#shows the profile for the current user
+	@person = current_person
+
+	render 'profile'
+	end
+
+	def user_tourney
+	#Show tournaments that the user is participating in
 		@person = current_person
+		render 'people/portal/user_tourney'
+	end
 
-		render 'profile'
-    end
+	def user_ticket
+		@person = current_person
+		render 'people/portal/user_ticket'
+	end
 
-    def user_tourney
-    #Show tournaments that the user is participating in
-    	@person = current_person
-    	render 'people/portal/user_tourney'
-    end
-
-    def user_ticket
-    	@person = current_person
-    	render 'people/portal/user_ticket'
-    end
-
-    def address
-    	@person = current_person
+	def address
+		@person = current_person
     	render 'people/address'
 	end
 
 	def linked_services
 		@person = current_person
 		render 'people/linked_services'
+	end
+
+	def payment_information
+		@person = current_person
+		render 'people/payment_information'
 	end
 
 	def edit

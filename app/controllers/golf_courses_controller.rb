@@ -13,16 +13,15 @@ class GolfCoursesController < ApplicationController
 
 	def create
 	  @golf_course = GolfCourse.new(golf_course_params)
-	  
-	  result = Address.existance(@golf_course.address.streetNumber, @golf_course.address.streetName, @golf_course.address.city, @golf_course.address.province, @golf_course.address.country, @golf_course.address.postalCode)
-	  if result != nil
-		@golf_course.errors[:base] << "This address already exists!"
-		render 'new'
+
+	  if Address.existance(@golf_course.address.streetNumber, @golf_course.address.streetName, @golf_course.address.city, @golf_course.address.province, @golf_course.address.country, @golf_course.address.postalCode)
+			@golf_course.errors[:base] << "This address already exists!"
+			render 'new'
 	  elsif @golf_course.save # Also make this person a golf_course_organizer
-		GolfCourseOrganizer.create!(person: current_person, adminrights: 1, golf_course: @golf_course)
-		redirect_to @golf_course
+			GolfCourseOrganizer.create!(person: current_person, adminrights: 1, golf_course: @golf_course)
+			redirect_to @golf_course
 	  else
-		render 'new'
+			render 'new'
 	  end
 	end
 

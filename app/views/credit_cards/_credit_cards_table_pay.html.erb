@@ -1,0 +1,19 @@
+
+<table>
+  <tr>
+    <th>Number </th>
+    <th>First Name </th>
+    <th>Last Name </th>
+    <th>Choose Credit Card </th>
+  </tr>
+
+  <% credit_cards.each do |cc| %>
+          <tr>
+            <td><%= mask_credit_card cc.number%></td>
+            <td><%= cc.fname%></td>
+            <td><%= cc.lname%></td>
+            <td><%= link_to 'Use', paymentProcessing_path(ticket.id, cc)%></td>
+          </tr>
+  <% end %>
+
+</table>
