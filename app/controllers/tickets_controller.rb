@@ -27,7 +27,8 @@ class TicketsController < ApplicationController
 		if @ticket
 			case @ticket.tickettype 
 				when 1
-					redirect_to payment_path(@ticket.id)
+					#redirect_to payment_path(@ticket.id)
+					redirect_to payment_select_path(@ticket.id)
 				when 2
 					redirect_to new_sponsor_path
 				else
@@ -62,6 +63,10 @@ class TicketsController < ApplicationController
   	def payment
 
 		end
+		
+		def payment_select
+
+    end
 
 	private
 		def ticket_params

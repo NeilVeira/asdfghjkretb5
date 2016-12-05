@@ -1,0 +1,15 @@
+<%
+  @ticket = Ticket.where(id: params[:id]).first
+  unless @ticket
+    render tournaments_path
+  end
+%>
+<br>
+<br>
+<%= link_to "Pay with new credit card", payment_path(@ticket.id) %>
+<br>
+<br>
+<%= link_to "Pay with paypal", @ticket.paypal_url(tournaments_path, @ticket.id)%>
+<br>
+<br>
+<%= link_to 'Back', controller: 'home_page' %>

@@ -9,4 +9,21 @@ class Ticket < ApplicationRecord
 											messsage: "Already registered" }
 	validates :tournament_id, presence: true, uniqueness: { scope: :person_id,
 											messsage: "You are already registered" }
+											
+	 def paypal_url(return_url, t_id)
+    values = {
+      business: 'castiel.x.zhu-merchant@gmail.com',
+      cmd: '_xclick',
+      upload: 1,
+      return: return_url,
+      invoice: id,
+      amount: 80.to_s,
+      #amount: get_price(@ticket).to_s,
+      item_name: 'golf_ticket, id:' +t_id.to_s,
+      item_number: '1',
+      quantity: '1'
+    }
+    "https://www.sandbox.paypal.com/cig-bin/webscr?"+ values.to_query
+  end   
+  
 end
