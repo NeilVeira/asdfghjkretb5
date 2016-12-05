@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   # setup is used to pass the tournament_id to the tickets#new action when registering
   get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
+  
+  post 'tournaments/:id/create_new_teams_for_tournament', to: 'tournaments#create_new_teams_for_tournament'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'

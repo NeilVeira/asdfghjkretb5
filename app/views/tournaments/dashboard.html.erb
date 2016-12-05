@@ -9,7 +9,28 @@
 		<%= link_to t("Add_tournament_admin"), new_tournament_organizer_path %>
 	<% end %>
 	<% if @is_admin or @organizer.adminrights & 2 != 0 %> <!check privileges to manage tee sheets">
-		<p>Manage tee sheets (coming soon)</p><br>
+		<h2>
+			Current Teamless Players
+		</h2>
+		<% teamless_players = @tournament.players.select{|p| p.team_id == nil } %>
+		<% teams_needed = (teamless_players.length / 4.to_f).ceil + @full_teams %>
+		
+		<%= form_tag ("/tournaments/#{@tournament.id}/create_new_teams_for_tournament") do %>
+			<table>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Add to Team Number:</th>
+				<th colspan="3"></th>
+				<% teamless_players.each do |tp|%>
+					<tr>
+						<td><%= tp.person.firstname %></td>
+						<td><%= tp.person.lastname %></td>
+						<td><%= number_field_tag "teams_selected[#{tp.id}]", nil, min: @full_teams+1, max: teams_needed, step: 1 %></td>
+					</tr>
+				<% end %>
+			</table>
+			<%= submit_tag "Add to Team" %>
+		<% end %>
 	<% end %>
 	<% if @is_admin or @organizer.adminrights & 8 != 0 %> <!check privileges to delete tournament">
 		<%= link_to t("Delete tournament"), tournament_path(@tournament),
