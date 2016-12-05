@@ -59,8 +59,7 @@ class ApplicationController < ActionController::Base
 			true
 		elsif user_signed_in?
 			@person = current_person
-			@organizer = TournamentOrganizer.find_by(tournament_id: tournament_id, person_id: @person.id)
-			if @organizer
+			if TournamentOrganizer.where(tournament_id: tournament_id, person_id: @person.id).any?
 				return true
 			else
 				return false
@@ -75,8 +74,7 @@ class ApplicationController < ActionController::Base
 			true
 		elsif user_signed_in?
 			@person = current_person
-			@organizer = GolfCourseOrganizer.find_by(golf_course: golf_course, person: @person)
-			if @organizer
+			if GolfCourseOrganizer.where(golf_course_id: golf_course, person_id: @person.id).any?
 				return true
 			else
 				return false
@@ -140,6 +138,8 @@ class ApplicationController < ActionController::Base
 		tournament = Tournament.find(session[:tournament_id])
 		ticket.tournament = tournament
 		ticket.tickettype = tickettype
+		ticket.has_paid = false
+		ticket.checked_in = false
 		logger.debug "ticket.tickettype = #{ticket.tickettype}"
 		
 		if ticket.save

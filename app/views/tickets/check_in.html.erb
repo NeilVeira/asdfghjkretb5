@@ -1,0 +1,16 @@
+<br>
+
+<br>
+
+
+Successfully checked-in to <%=@ticket.tournament.name%>
+<p>
+  <%=
+    render partial: "people/display_person_info", locals: {person: @ticket.person}
+  %>
+  <br>
+  <br>
+  <%=
+    render partial: "tickets/checked_in_table", locals: {person: @ticket.person}
+  %>
+</p>

@@ -15,28 +15,7 @@
 
 <%= link_to 'Edit', edit_person_path(@person) %>
 <br>
-<h2>Personal Information</h2>
-<p>
-	<strong>First Name:</strong><%=@person.firstname%><br>
-	<strong>Last Name:</strong><%=@person.lastname%><br>
-
-    <strong>Email: </strong><%=@person.user.email%><br>
-    <strong>Date of birth: </strong><%=@person.dob.to_formatted_s(:long_ordinal)%><br>
-    <strong>Phone Number: </strong><%=@person.phone%><br>
-
-</p>
-
-<h3>Address</h3>
-<p>
-	<strong>Apartment Number: </strong><%=@person.address.apartmentNumber%><br>
-	<strong>Street Number: </strong><%=@person.address.streetNumber%><br>
-	<strong>Street Name: </strong><%=@person.address.streetName%><br>
-	<strong>City: </strong><%=@person.address.city%><br>
-	<strong>Province: </strong><%=@person.address.province%><br>
-	<strong>Country: </strong><%=@person.address.country%><br>
-	<strong>Postal Code: </strong><%=@person.address.postalCode%><br>
-</p>
-
+<%= render partial: "people/display_person_info", locals: {person: @person} %>
 <h3>Linked Services</h3>
 <table>
 	<tr>

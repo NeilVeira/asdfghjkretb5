@@ -1,0 +1,31 @@
+Checked-in
+<%= tickets = Ticket.where(tournament_id: tournamentId, checked_in: true)%>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+
+  <% tickets.each do |t| %>
+      <tr>
+        <th><%=  t.person.firstname %></th>
+        <th><%=  t.person.lastname %></th>
+      </tr>
+  <% end %>
+</table>
+
+To Be Checked-in
+<%= tickets = Ticket.where(tournament_id: tournamentId, checked_in: false)%>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+
+  <% tickets.each do |t| %>
+      <tr>
+        <th><%=  t.person.firstname %></th>
+        <th><%=  t.person.lastname %></th>
+      </tr>
+  <% end %>
+</table>

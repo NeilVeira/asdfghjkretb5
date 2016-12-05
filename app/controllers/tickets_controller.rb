@@ -3,7 +3,6 @@ class TicketsController < ApplicationController
 	before_action :authenticate_ticket_owner!, only: [:show]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
 
-
     def index
 		
     end
@@ -59,7 +58,7 @@ class TicketsController < ApplicationController
 		end
 
   	def payment
-      # @CreditCard = CreditCard.new
+
 		end
 
 	private
