@@ -7,18 +7,21 @@
     <link rel="stylesheet" href="/css/w3.css">
     <script src="/javascript/jquery-3.1.1.min.js"></script>
     
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 
     <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/javascript/bootstrap.js"></script>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
-    
+    <script src="/javascript/bootstrap.js">
+          <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>  
+    </script>
 
   </head>
 
   <%= render partial: "application/user_header" %>
   <body style="background-color: #e3e4e5" >
+
+
   	<% flash.each do |name, msg| -%>
         <%= content_tag :div, msg, class: name %>
     <% end -%>
