@@ -1,14 +1,15 @@
 <table>
   <tr>
     <th>Number</th>
-    <th></th>
+    <th>First Name</th>
+    <th>Last Name</th>
   </tr>
 
   <% credit_cards.each do |cc| %>
-
           <tr>
             <td><%= cc.number%></td>
-            <td><%= link_to 'Use', paymentProcessing_path(@ticket, cc)%></td>
+            <td><%= cc.fname%></td>
+            <td><%= cc.lname%></td>
           </tr>
   <% end %>
 

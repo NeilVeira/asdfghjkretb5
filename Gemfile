@@ -86,9 +86,8 @@ gem 'flexslider-rails'
 
 gem 'rails-i18n'
 
-#environment varriables
+#environment variables
 gem 'figaro'
-
 
 # testing
 gem 'rspec-rails'

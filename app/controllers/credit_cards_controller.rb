@@ -8,16 +8,28 @@ class CreditCardsController < ApplicationController
   def create
     @credit_card = CreditCard.new(params.require(:credit_card).permit(:number, :cvc, :month, :year, :fname, :lname))
     @credit_card.person = current_person
-    if @credit_card.save
 
-      if params[:direct] == "1"
-        redirect_to paymentProcessing_path(params[:ticket_id],cc: @credit_card.id)
-      else
-        render people_profile_path
+    if CreditCard.existance(@credit_card.number, @credit_card.person.id)
+      @credit_card.errors[:base] << "This card already exists!"
+      render 'credit_cards/new'
+    elsif @credit_card.save
+
+      case params[:direct]
+        when "1"
+          redirect_to paymentProcessing_path(params[:ticket_id],cc: @credit_card.id)
+        when "3"
+          redirect_to people_profile_path
+        else
+          redirect_to people_profile_path
       end
     else
-      if params[:return] == "2"
-        redirect_to payment_path(params[:ticket_id])
+      case params[:return]
+        when "2"
+          redirect_to payment_path(params[:ticket_id])
+        when "3"
+          render people_profile_path
+        else
+          render 'new'
       end
 
       logger.debug "#{@credit_card.errors.count}"
@@ -36,6 +48,7 @@ class CreditCardsController < ApplicationController
     unless @CC
       redirect_to payment_path
     end
+
     # Send requests to the gateway's test servers
     ActiveMerchant::Billing::Base.mode = :test
 
@@ -46,7 +59,7 @@ class CreditCardsController < ApplicationController
         :year       => @CC.year ,
         :first_name => @CC.fname ,
         :last_name  => @CC.lname ,
-        :verification_value  => '123'
+        :verification_value  => @CC.cvc
     )
 
     if credit_card.valid?
@@ -76,4 +89,6 @@ class CreditCardsController < ApplicationController
     send_ticket ticket
     redirect_to ticket_path(params[:id])
   end
+
+
 end
