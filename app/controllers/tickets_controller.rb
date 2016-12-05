@@ -9,7 +9,8 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-				get_qrcode @ticket
+				@code = checkIn_url(id:@ticket.id).to_s
+				@qrcode = RQRCode::QRCode.new(@code)
     end
     
     def new
