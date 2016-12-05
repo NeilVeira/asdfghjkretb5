@@ -31,7 +31,6 @@ users_list.each do |email, password|
     user.email = email
     user.password = password
     user.password_confirmation = password
-		user.skip_confirmation!
     user.save!
 end
 

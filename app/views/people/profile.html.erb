@@ -3,24 +3,35 @@
 <!--until credit card create redirects to a better page (maybe show all cards) I don't know where to put that-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<ul class="nav nav-tabs">
-	<li role="presentation" class="active" ><%=link_to t('Personal Information'), controller: "people", action: "profile" %></li>
-	<li role="presentation" ><%=link_to t('Address'), controller: "people", action: "address" %></li>
-	<li role="presentation" ><a href="#" class="col-12">Linked Services</a></li>
-	<li role="presentation" ><%= link_to 'Edit Profile', edit_person_path(@person) %></li>
-</ul>
-
-</div>
+<%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
 
 <div>
-	<div class="col-md-12"><h3>Personal Information</h3></div>
-	<div class="col-md-12"><%= image_tag @person.image.url %></div>
-	<div class="col-md-12"><a></div>
-	<div class="col-md-3">
-		<tr>First Name:</tr>
-		<tr><%=@person.lastname%></tr>
+	<div class="col-md-6">
+		<h3>Personal Information</h3>
+		<div>
+			<div class="col-md-4"><strong>First Name:</strong></div>
+			<div class="col-md-8"><%=@person.firstname%></div>
+
+			<div class="col-md-4"><strong>Last Name:</strong></div>
+			<div class="col-md-8"><%=@person.lastname%></div>
+
+			<div class="col-md-4"><strong>Email:</strong></div>
+			<div class="col-md-8"><%=@person.user.email%></div>
+
+			<div class="col-md-4"><strong>Date of birth:</strong></div>
+			<div class="col-md-8"><%=@person.dob.to_formatted_s(:long_ordinal)%></div>
+
+			<div class="col-md-4"><strong>Phone Number: </strong></div>
+			<div class="col-md-8"><%=@person.phone%></div>
+		</div>
 	</div>
-	<div class="col-md-9"><p><%=@person.firstname%></p></div>
+	<div class="col-md-6">
+		<%= image_tag @person.image.url %>
+	</div>
+
+
+
+
 </div>
 
 <% if flash[:error] %>
@@ -29,47 +40,12 @@
 	<br>
 <% end %>
 
-<p>
-	<strong>First Name:</strong>br>
-	<strong>Last Name:</strong><br>
 
-    <strong>Email: </strong><%=@person.user.email%><br>
-    <strong>Date of birth: </strong><%=@person.dob.to_formatted_s(:long_ordinal)%><br>
-    <strong>Phone Number: </strong><%=@person.phone%><br>
-
-</p>
-
-<h3>Linked Services</h3>
-<table>
-	<tr>
-		<th>Service</th>
-		<th>Status</th>
-	</tr>
-
-	<% services = ['facebook', 'linkedin']%>
-
-	<% for service in services %>
-		<tr>
-			<td><%= service.capitalize %></td>
-			<% if service.eql?(@person.user.in_provider) || service.eql?(@person.user.fb_provider) %> 
-				<td>Connected</td>
-			<% else %>
-				<td>Not linked</td>
-				<% if service.eql?('facebook') %>
-					<td><%= link_to "Link to Facebook", user_facebook_omniauth_authorize_path %></td>
-				<% else %>
-					<td><%= link_to "Link to LinkedIn", user_linkedin_omniauth_authorize_path %></td>
-				<% end %>
-			<% end %>
-		</tr>
-	<% end %>
-
-</table>
-
-<% if user_is_admin? == false %>
-<%=link_to 'Delete my account', person_path(@person), method: :delete, data: { confirm: 'Are you sure?' } %><br>
-<% end %>
-
+<!--
+<%= link_to 'Edit', edit_person_path(@person) %>
+<br>
+<%= render partial: "people/display_person_info", locals: {person: @person} %>
 <%=link_to 'Back', controller: "people", action: "portal" %>
+-->
 </body>
 

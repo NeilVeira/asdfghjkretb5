@@ -1,0 +1,35 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
+
+<h3>Linked Services</h3>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th class="col-md-1" >Service</th>
+			<th class="col-md-1">Status</th>
+		</tr>
+	</thead>
+
+	<% services = ['facebook', 'linkedin']%>
+
+	<tbody>
+	<% for service in services %>
+		<tr>
+			<td class="col-md-1"><%= service.capitalize %></td>
+			<% if service.eql?(@person.user.in_provider) || service.eql?(@person.user.fb_provider) %> 
+				<td >Connected</td>
+			<% else %>
+				<td >Not linked</td>
+				<% if service.eql?('facebook') %>
+					<td ><%= link_to "Link to Facebook", user_facebook_omniauth_authorize_path %></td>
+				<% else %>
+					<td ><%= link_to "Link to LinkedIn", user_linkedin_omniauth_authorize_path %></td>
+				<% end %>
+			<% end %>
+		</tr>
+	<% end %>
+	</tbody>
+
+</table>

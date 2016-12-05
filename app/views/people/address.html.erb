@@ -1,0 +1,41 @@
+<% @person = current_person %>
+<!--until credit card create redirects to a better page (maybe show all cards) I don't know where to put that-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
+
+<div>
+	<div class="col-md-12"><h3>Address</h3></div>
+
+	<div class="col-md-4"><a><strong>Apartment Number: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.apartmentNumber%></div>
+	
+	<div class="col-md-4"><a><strong>Street Number: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.streetNumber%></div>
+
+	<div class="col-md-4"><a><strong>Street Name: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.streetName%></div>
+
+	<div class="col-md-4"><a><strong>City: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.city%></div>
+
+	<div class="col-md-4"><a><strong>Province: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.province%></div>
+
+	<div class="col-md-4"><a><strong>Country: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.country%></div>	
+
+	<div class="col-md-4"><a><strong>Postal Code: </strong></a></div>
+	<div class="col-md-8"><%=@person.address.postalCode%></div>	
+
+
+</div>
+
+<% if flash[:error] %>
+	<h2>1 error prohibited this person from being saved:</h2>
+	<%= flash[:error] %>
+	<br>
+<% end %>
+
+<br>
+

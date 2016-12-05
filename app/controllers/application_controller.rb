@@ -15,28 +15,28 @@ class ApplicationController < ActionController::Base
 	def user_exists?			
 		@user = current_user
 		if (Person.exists?(user_id: @user))
-			return true
+			true
 		else
 			@user.destroy
-			return false
+			false
 		end
 	end
 	
 	def current_person
 		if user_signed_in?
 			@user = current_user
-			return Person.find_by user_id: @user.id
+			Person.find_by user_id: @user.id
 		else
-			return NIL
+			NIL
 		end
 	end
 
 	def current_website_admin
 		@person = current_person
 		if @person
-			return WebsiteAdmin.find_by person_id: @person.id
+			 WebsiteAdmin.find_by person_id: @person.id
 		else
-			return NIL
+			NIL
 		end
 	end
 
@@ -49,40 +49,38 @@ class ApplicationController < ActionController::Base
 				return false
 			end
 		else
-			return false
+			false
 		end
 	end
 	
 	def user_is_organizer?(tournament_id)
 		#check if the current user is an organizer for this tournament
 		if user_is_admin?
-			return true
+			true
 		elsif user_signed_in?
 			@person = current_person
-			@organizer = TournamentOrganizer.find_by(tournament_id: tournament_id, person_id: @person.id)
-			if @organizer
+			if TournamentOrganizer.where(tournament_id: tournament_id, person_id: @person.id).any?
 				return true
 			else
 				return false
 			end
 		else
-			return false
+			false
 		end
 	end
 
 	def user_is_golf_course_organizer?(golf_course)
 		if user_is_admin?
-			return true
+			true
 		elsif user_signed_in?
 			@person = current_person
-			@organizer = GolfCourseOrganizer.find_by(golf_course: golf_course, person: @person)
-			if @organizer
+			if GolfCourseOrganizer.where(golf_course_id: golf_course, person_id: @person.id).any?
 				return true
 			else
 				return false
 			end
 		else
-			return false
+			false
 		end
 	end
 	
@@ -115,7 +113,7 @@ class ApplicationController < ActionController::Base
 		@player.tournament = Tournament.find(session[:tournament_id])
 		if @player.save
 			logger.debug "Player created successfully"
-			return @player
+			@player
 		else
 			logger.error "Player was not added to database"
 		end
@@ -128,7 +126,7 @@ class ApplicationController < ActionController::Base
 		@organizer.adminrights = 1023 #represents full privileges
 		if @organizer.save
 			logger.debug "Organizer created successfully"
-			return @organizer
+			@organizer
 		else
 			logger.error "Organizer was not added to database"
 		end
@@ -140,6 +138,8 @@ class ApplicationController < ActionController::Base
 		tournament = Tournament.find(session[:tournament_id])
 		ticket.tournament = tournament
 		ticket.tickettype = tickettype
+		ticket.has_paid = false
+		ticket.checked_in = false
 		logger.debug "ticket.tickettype = #{ticket.tickettype}"
 		
 		if ticket.save
@@ -155,8 +155,10 @@ class ApplicationController < ActionController::Base
 				when 4
 					logger.debug "creating organizer object"
 					@organizer = create_organizer()
+				else
+
 			end
-			return ticket
+			ticket
 		else
 			ticket_exists = Ticket.where(person_id: current_person.id, tournament_id: tournament.id)
 			logger.error "Ticket was not added to database"
@@ -167,8 +169,9 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def access_denied
-		flash[:notice] = "Access to the requested page is denied"
-		redirect_to root_url
+		#flash[:notice] = "Access to the requested page is denied"
+		#redirect_to root_url
+		render 'auth_admin'
 	end
 
 
@@ -208,7 +211,7 @@ class ApplicationController < ActionController::Base
 
 	def send_ticket(ticket)
 
-		get_qrcode ticket
+		get_qrcode ticket.id
 		person = current_person
 
 		tries = 0

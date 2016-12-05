@@ -88,3 +88,10 @@ gem 'rails-i18n'
 
 #environment varriables
 gem 'figaro'
+
+
+# testing
+gem 'rspec-rails'
+gem 'factory_girl_rails'
+gem 'capybara'
+

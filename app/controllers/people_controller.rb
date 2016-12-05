@@ -68,6 +68,11 @@ class PeopleController < ApplicationController
     	render 'people/address'
 	end
 
+	def linked_services
+		@person = current_person
+		render 'people/linked_services'
+	end
+
 	def edit
 		#@person = Person.find(params[:id])
         @user = current_user

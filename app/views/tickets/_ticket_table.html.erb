@@ -8,11 +8,14 @@
 	<% type = ['Player', 'Sponser', 'Spectator', 'Tournament Organizer'] %>
 
 	<% tickets.each do |t| %>
-		<% tournament = Tournament.find_by(id: t.tournament_id) %>
+		<% tournament = Tournament.find_by(id: t.tournament_id)
+
+     unless ((t.tickettype - 1) == 3)%>
 		<tr>
 			<th><%= type[t.tickettype - 1] %></th>
 			<th><%= tournament.name %></th>
 			<th><%= link_to "Link", ticket_path(t) %></th>
 		</tr>	
-	<% end %>
+	<% end
+   end %>
 </table>
