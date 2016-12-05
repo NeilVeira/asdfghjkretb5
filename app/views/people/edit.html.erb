@@ -1,5 +1,8 @@
-<h1>Edit your information</h1>
-<strong>Email (cannot be changed): </strong><%= @person.user.email %>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
+
+<h3>Edit your information</h3>
 <%= form_for @person, url: person_path(@person), method: :patch do |f| %>
 
   <% if @person.errors.any? %>
@@ -15,72 +18,69 @@
 		  </ul>
 		</div>
 	<% end %>
-  
-  <p>
-    <%= f.label :First_Name %><br>
-    <%= f.text_field :firstname %>
-  </p>
- 
-  <p>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :lastname %>
-  </p>
-  
-  <p>
-	<%= f.label :Date_of_birth %><br>
-	<%= f.date_select :dob, order: [:month, :day, :year], start_year: 1930, end_year: 2000, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %>
-  </p>
-  
-  <p>
-    <%= f.label :phone_number, "Phone Number (XXX-XXX-XXXX)"%><br>
-    <%= f.text_field :phone %>
-  </p>
- 
+  <div class="col-md-3">
+  	  <h5>Email (cannot be changed): </h5>
+  	  <%= @person.user.email %>
+	  
+	  <h5>
+	    <%= f.label :First_Name %><br>
+	    <%= f.text_field :firstname %>
+	  </h5>
+	 
+	  <h5>
+	    <%= f.label :last_name %><br>
+	    <%= f.text_field :lastname %>
+	  </h5>
+	  
+	  <h5>
+		<%= f.label :Date_of_birth %><br>
+		<%= f.date_select :dob, order: [:month, :day, :year], start_year: 1930, end_year: 2000, prompt: {day: 'Choose day', month: 'Choose month', year: 'Choose year'} %>
+	  </h5>
+	  
+	  <h5>
+	    <%= f.label :phone_number, "Phone Number (XXX-XXX-XXXX)"%><br>
+	    <%= f.text_field :phone %>
+	  </h5>
+ </div>
+
+
 	<%= f.fields_for :address do |address| %>
-		
-		<p>
-		<%= address.label :apartmentNumber %>
-		<%= address.text_field :apartmentNumber %>
-		</p>
-		
-		<p>
-		<%= address.label :streetNumber %>
-		<%= address.text_field :streetNumber %>
-		</p>
-		
-		<p>
-		<%= address.label :streetName %>
-		<%= address.text_field :streetName %>
-		</p>
-		
-		<p>
-		<%= address.label :city %>
-		<%= address.text_field :city %>
-		</p>
-		
-		<p>
-		<%= address.label :province %>
-		<%= address.text_field :province %>
-		</p>
-		
-		<p>
-		<%= address.label :country %>
-		<%= address.text_field :country %>
-		</p>
-		
-		<p>
-		<%= address.label :postalCode %>
-		<%= address.text_field :postalCode %>
-		</p>
-		
+		<div class="col-md-3">
+			<h5>Apartment Number:</h5>
+			<%= address.text_field :apartmentNumber %>
+			
+			<h5>Street Number:</h5>
+			<%= address.text_field :streetNumber %>
+
+			<h5>Street Name:</h5>
+			<%= address.text_field :streetName %>
+
+			<h5>City:</h5>
+			<%= address.text_field :city %>
+		 </div>
+
+		  <div class="col-md-3">
+		 	<h5>Province:</h5>
+			<%= address.text_field :province %>
+
+			<h5>Country:</h5>
+			<%= address.text_field :country %>
+
+			<h5>Postal Code:</h5>
+			<%= address.text_field :postalCode %>
+		 </div>
+
 	<% end %>
- 
-  <p>Profile Picture:</p>
+
+ <div class="col-md-3">
+  <h5>Profile Picture:</h5>
 	<%= f.file_field :image %>
-	
+ </div>
+
+ <div class="col-md-12">
+ <br>
   <p>
     <%= f.submit %>
   </p>
+ </div>
 <% end %>
-
-<%= link_to 'Back', controller: "people", action: "profile" %> 
