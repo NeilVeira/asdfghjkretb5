@@ -2,7 +2,8 @@ class CreditCardsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-
+    @creditcard = CreditCard.new
+    render 'new'
   end
 
   def create
@@ -11,7 +12,7 @@ class CreditCardsController < ApplicationController
 
     if CreditCard.existance(@credit_card.number, @credit_card.person.id)
       @credit_card.errors[:base] << "This card already exists!"
-      render 'credit_cards/new'
+      render 'new'
     elsif @credit_card.save
 
       case params[:direct]
@@ -41,6 +42,8 @@ class CreditCardsController < ApplicationController
   end
 
   def paymentProcessing
+    # require 'stripe'
+
     ticket = Ticket.find(params[:id])
     price = get_price(ticket)
 
@@ -64,7 +67,7 @@ class CreditCardsController < ApplicationController
 
     if credit_card.valid?
       # Create a gateway object to the TrustCommerce service
-      gateway = ActiveMerchant::Billing::TrustCommerceGateway.new(
+      gateway = ActiveMerchant::Billing::StripeGateway.new(
           :login    => 'TestMerchant',
           :password => 'password'
       )
@@ -75,18 +78,18 @@ class CreditCardsController < ApplicationController
       if response.success?
         # Capture the money
         gateway.capture(price, response.authorization)
-        send_ticket ticket
+        # send_ticket ticket
         redirect_to ticket_path(params[:id])
       else
         logger.debug "credit card was not proccessed"
-        send_ticket ticket
+        # send_ticket ticket
         redirect_to ticket_path(params[:id])
         raise StandardError, response.message
       end
 
     end
     logger.debug "credit card was not valid"
-    send_ticket ticket
+    # send_ticket ticket
     redirect_to ticket_path(params[:id])
   end
 

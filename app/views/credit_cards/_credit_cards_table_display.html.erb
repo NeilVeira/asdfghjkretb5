@@ -9,7 +9,7 @@
     credit_cards = CreditCard.where(person_id: person_id)
     credit_cards.each do |cc| %>
           <tr>
-            <td><%= cc.number%></td>
+            <td><%= mask_credit_card cc.number%></td>
             <td><%= cc.fname%></td>
             <td><%= cc.lname%></td>
           </tr>

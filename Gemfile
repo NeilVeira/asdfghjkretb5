@@ -73,6 +73,7 @@ gem 'rqrcode'
 
 # payment
 gem 'activemerchant'
+gem 'strip'
 
 # oauth
 gem 'omniauth'
