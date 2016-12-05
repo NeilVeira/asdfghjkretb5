@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
         		I18n.default_locale
 	end
 	
-	
 	def user_exists?			
 		@user = current_user
 		if (Person.exists?(user_id: @user))
