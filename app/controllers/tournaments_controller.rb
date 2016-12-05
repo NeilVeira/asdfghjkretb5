@@ -30,6 +30,10 @@ class TournamentsController < ApplicationController
 	def show
 		@tournament = Tournament.find(params[:id])
 		session[:tournament_id] = @tournament.id
+		
+		@person = current_person
+		@player = user_is_player?(@tournament.id)
+		@to = user_is_organizer?(@tournament.id)
 	end
 	
 	def edit
@@ -50,6 +54,31 @@ class TournamentsController < ApplicationController
 		@tournament = Tournament.find(params[:id])
 		delete_tournament(@tournament)		
 		redirect_to tournaments_path
+	end
+	
+	def add_self_to_team
+		@tournament = Tournament.find(params[:id])
+		@t = Team.find(params[:team])
+		@p = Player.find(params[:player])
+		
+		if(@t.p1.nil?)
+			@t.p1 = @p
+		elsif(@t.p2.nil?)
+			@t.p2 = @p
+		elsif(@t.p3.nil?)
+			@t.p3 = @p
+		elsif(@t.p4.nil?)
+			@t.p4 = @p
+		else
+			redirect_to "/tournaments/#{@tournament.id}", :flash => { :error => 'Attempting to join full team'}
+			return
+		end
+		@t.save(validate: false)
+		
+		@p.team_id = @t.id
+		@p.save
+		
+		redirect_to "/tournaments/#{@tournament.id}"
 	end
 	
 	def dashboard

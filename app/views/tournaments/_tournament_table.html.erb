@@ -2,10 +2,8 @@
   c_date = Time.now.to_date
   status = tournaments_status(tournaments)
 %>
-<!--
 <p><%=t :already_registered %></p>
--->
-<table class="table">
+<table>
 	<tr>
 		<th><%= sort(t("Name")) %> </th>
 		<th><%=t :Description %></th>
