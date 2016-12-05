@@ -52,6 +52,7 @@ class TicketsController < ApplicationController
 			@ticket = Ticket.find(params[:id])
 			if (is_current_tournament_organizer @ticket.tournament.id)
 				@ticket.checked_in = true
+				render 'check_in'
 			else
 				render 'ticket_error'
 			end
