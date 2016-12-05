@@ -1,11 +1,3 @@
-<%
-  person = current_person
-  exists_ticket = Ticket.where(tournament_id: session[:tournament_id], person_id: person.id).first
-  if exists_ticket
-    render ticket_path(exists_ticket.id)
-  end
-  @tournament = Tournament.where(id: session[:tournament_id] ).first
-%>
 <h1>Register for tournament <%= @tournament.name %></h1>
 <h2>Select Ticketing Options</h2>
 

@@ -16,7 +16,11 @@ class TicketsController < ApplicationController
     def new
 		@ticket = Ticket.new()
 		@tournament = Tournament.find(session[:tournament_id])
-
+		person = current_person
+		exists_ticket = Ticket.where(tournament_id: session[:tournament_id], person: person).first
+		if exists_ticket
+			redirect_to ticket_path(exists_ticket)
+		end
     end
     
     def edit
