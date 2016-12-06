@@ -15,6 +15,11 @@
 
 
 		<li role="presentation" ><%=link_to 'Back to Tournaments', tournaments_path %></li>
+
+    <% id = get_ticket_id @tournament.id
+      if id != nil %>
+         <li role="presentation" ><%=link_to 'View Ticket', ticket_path(id) %></li>s
+    <% end %>
 	</ul>
 
 

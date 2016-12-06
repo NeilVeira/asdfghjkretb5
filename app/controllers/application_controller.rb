@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :get_price, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
+	helper_method :current_person, :get_price, :get_ticket_id,:sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
 	before_action :set_locale
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -112,7 +112,11 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def sort_column
-		Tournament.column_names.include?(params[:sort].downcase) ? params[:sort].downcase : "id"
+		if params[:sort]
+			Tournament.column_names.include?(params[:sort].downcase) ? params[:sort].downcase : "id"
+		else
+			"id"
+		end
 	end
 
 	def sort_direction
@@ -249,4 +253,12 @@ class ApplicationController < ActionController::Base
 		@qrcode = RQRCode::QRCode.new(@code)
 	end
 
+	def get_ticket_id (t_id, p_id = current_person)
+		ticket = Ticket.where(tournament_id: t_id, person_id: p_id).first
+		if ticket != nil
+			ticket.id
+		else
+			nil
+		end
+	end
 end	
