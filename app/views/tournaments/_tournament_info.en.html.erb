@@ -1,0 +1,127 @@
+<section>
+	<h1>
+		<%= @tournament.name %>
+	</h1>
+	<p>
+		<%= @tournament.description %>
+	</p>
+</section>
+
+<%= image_tag @tournament.image.url %>
+
+<section>
+	<h2>
+		<strong>Where?</strong>
+	</h2>
+	<p>
+		<%= @tournament.golf_course.name %>
+	</p>
+	<p>
+		<%= @tournament.golf_course.address.streetNumber %> <%= @tournament.golf_course.address.streetName %>
+		</br>
+		<%= @tournament.golf_course.address.city %>, <%= @tournament.golf_course.address.province %>, <%= @tournament.golf_course.address.country %>
+		</br>
+		<%= @tournament.golf_course.address.postalCode %>
+	</p>
+</section>
+
+<section>
+        <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/search?q=<%= @tournament.golf_course.address.streetNumber.to_s+' '+@tournament.golf_course.address.streetName+', '+@tournament.golf_course.address.city+', '+@tournament.golf_course.address.province+', '+@tournament.golf_course.address.country+', '+@tournament.golf_course.address.postalCode %>&key=AIzaSyD8a5v_F5a9FS6gYvC7NYy7vwzaU4_moiw" allowfullscreen></iframe>
+</section>
+	
+<section>
+	<h2>
+		<strong>When?</strong>
+	</h2>
+	<p>
+		<%= t_date = @tournament.date.to_date %>
+	</p>
+	<p>
+		<% c_date = Time.now.to_date %>
+		<% days_away = (t_date - c_date).to_i %>
+		
+		<% if (days_away > 0) %>
+			That's in <%= days_away %> days!
+		<% elsif (days_away == 0) %>
+			That's today!
+		<% else %>
+			This tournament is over.
+		<% end %>
+	</p>
+</section>
+
+<section>
+	<h2>
+		<strong>Extra Features</strong>
+	</h2>
+	<p>
+		<%= @tournament.extrafeatures %>
+	</p>
+</section>
+
+<section>
+	<h2>
+		<strong>Current Teams</strong>
+	</h2>
+	<%@teams = @tournament.teams%>
+	<%if (@teams==nil)%>
+		 The tournament does not have a team
+	<%else%>
+		<table>
+			<th>Team Name</th>
+			<th><%=t ("Player")%> 1</th>
+			<th><%=t ("Player")%> 2</th>
+			<th><%=t ("Player")%> 3</th>
+			<th><%=t ("Player")%> 4</th>
+			<% if(@to == false) %> <th>Join</th> <% end %>
+			<th colspan="6"></th>
+			
+			<% @teams.each do |team| %>
+				<tr>
+					<td><%= team.team_num.to_s %></td>
+					<td>
+						<% if(team.p1.nil?) %>
+							<%= "Nil" %> 
+						<% else %>
+							<%= team.p1.person.firstname + "," + team.p1.person.lastname %>
+						<% end %>
+					</td>
+					<td>
+						<% if(team.p2.nil?) %>
+							<%= "Nil" %> 
+						<% else %>
+							<%= team.p2.person.firstname + "," + team.p2.person.lastname %>
+						<% end %>
+					</td>
+					<td>
+						<% if(team.p3.nil?) %>
+							<%= "Nil" %> 
+						<% else %>
+							<%= team.p3.person.firstname + "," + team.p3.person.lastname %>
+						<% end %>
+					</td>
+					<td>
+						<% if(team.p4.nil?) %>
+							<%= "Nil" %> 
+						<% else %>
+							<%= team.p4.person.firstname + "," + team.p4.person.lastname %>
+						<% end %>
+					</td>
+					<td>
+						<% if(@to == false) %>
+							<% if(team.p1.nil? or team.p2.nil? or team.p3.nil? or team.p4.nil?) %>
+								<% if(@player) %>
+									<%= button_to "Join Team", action: "add_self_to_team", :team => team, :player => @player %>
+								<% else %>
+									<%= link_to "Sign In", ("/users/sign_in") %>
+								<% end %>
+							<% else %>
+								<%= "Team is full" %> 
+							<% end %>
+						<% end %>
+					</td>
+				</tr>
+			<% end %>
+		</table>
+	<% end %>
+</section>
