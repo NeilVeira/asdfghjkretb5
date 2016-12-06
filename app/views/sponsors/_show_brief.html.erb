@@ -1,5 +1,11 @@
-<html> 
-	<h4><%= sponsor.name %></h4><%= image_tag sponsor.logo.url %>
-	<p><strong>Website: </strong><%= sponsor.website %></p>
-	<p><strong>Contact information: </strong><%= sponsor.contact_info %></p>
-</html>
+<div class="container-fluid">
+	<div class="col-md-6">
+		<h4><%= sponsor.name %></h4>
+		<p><strong>Website: </strong><%= sponsor.website %></p>
+		<p><strong>Contact information: </strong><%= sponsor.contact_info %></p>
+	</div>
+	<div class="col-md-6">
+		<%= image_tag sponsor.logo.url %>
+	</div>
+
+</div>

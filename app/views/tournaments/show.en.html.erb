@@ -13,7 +13,7 @@
 			<% end %>
 		</section>
 		
-		<section>
+		<div>
 			<% status = tournament_status(@tournament) %>
 			<br>
 			<!Admin is allowed to register and manage tournament>
@@ -26,12 +26,11 @@
 					<%= link_to "Manage tournament", controller: "tournaments", action: "dashboard" %> 
 				<% end %>
 			<% end %>
-		</section>
-		
-		<section>
+		</div>
+		<div>
 			<p>
 				<td><%= link_to "Back to all Tournaments", tournaments_path %></td>
 			</p>
-		</section>
+		</div>
 	</body>
 </html>
