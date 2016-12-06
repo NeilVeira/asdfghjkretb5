@@ -11,6 +11,7 @@ class SponsorsController < ApplicationController
 	end
 
 	def new
+		@sponsor = Sponsor.new()
 		@tournament = Tournament.find(session[:tournament_id])
 		#@sponsor.tournament = Tournament.find(session[:tournament_id])
 	end
@@ -22,7 +23,8 @@ class SponsorsController < ApplicationController
 	def create
 		@sponsor = Sponsor.new(sponsor_params)
 		@sponsor.person = current_person
-		@sponsor.tournament = Tournament.find(session[:tournament_id])
+		@tournament = Tournament.find(session[:tournament_id])
+		@sponsor.tournament = @tournament
 		if @sponsor.save
 			logger.debug "Sponsor created successfully"
 			#find the ticket which should have previously been created for this sponsor
@@ -30,7 +32,7 @@ class SponsorsController < ApplicationController
 			redirect_to @ticket
 		else
 			logger.error "Sponsor was not added to database"
-			redirect_to new_sponsor_path
+			render 'new'
 		end
 	end
 
