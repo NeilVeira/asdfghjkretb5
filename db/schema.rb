@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161201154658) do
+ActiveRecord::Schema.define(version: 20161206100758) do
 
   create_table "addresses", force: :cascade do |t|
     t.string   "addressType"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20161201154658) do
     t.datetime "image_updated_at"
     t.string   "description"
     t.index ["address_id"], name: "index_golf_courses_on_address_id"
+  end
+
+  create_table "paypal_notifications", force: :cascade do |t|
+    t.text     "params"
+    t.integer  "cart_id"
+    t.string   "status"
+    t.string   "transaction_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "people", force: :cascade do |t|

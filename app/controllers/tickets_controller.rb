@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :check_in]
+	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :paypal_pay, :check_in]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
 
     def index
@@ -31,8 +31,11 @@ class TicketsController < ApplicationController
 		if @ticket
 			case @ticket.tickettype 
 				when 1
-					#redirect_to payment_path(@ticket.id)
-					redirect_to payment_select_path(@ticket.id)
+          if (@ticket.tournament.pricePlayer != nil && @ticket.tournament.pricePlayer > 0) 
+            redirect_to payment_select_path(@ticket.id)
+          else 
+            redirect_to ticket_path(@ticket.id)
+          end
 				when 2
 					redirect_to new_sponsor_path
 				else
@@ -65,11 +68,15 @@ class TicketsController < ApplicationController
 		end
 
   	def payment
-		@cc = CreditCard.where(person_id: current_person.id)
-	end
-		
-	def payment_select
-
+		  @cc = CreditCard.where(person_id: current_person.id)
+  	end
+  		
+  	def payment_select
+      
+    end
+    
+    def paypal_pay
+      @paypal_noftication = PaypalNotification.create!
     end
 
 	private

@@ -1,15 +1,23 @@
 <%
-  @ticket = Ticket.where(id: params[:id]).first
+ @ticket = Ticket.where(id: params[:id]).first
   unless @ticket
     render tournaments_path
   end
 %>
+
+<%
+ @_price = 0
+  if (@ticket.tournament.pricePlayer != nil)
+    then
+    @_price = @ticket.tournament.pricePlayer
+  end
+%>
+<strong><h3><%= "Ticket price is :"  + @_price.to_s %></h3></strong>
+
 <br>
-<br>
-<%= link_to "Pay with credit card", payment_path(@ticket.id, @person.id) %>
-<br>
-<br>
-<%= link_to "Pay with paypal", @ticket.paypal_url(tournaments_path, @ticket.id, @ticket.tournament.pricePlayer)%>
+<%= link_to "Proceed with credit card", payment_path(@ticket.id, @person.id)%>
+<strong><%= "  |  "%></strong>
+<%= link_to "Proceed with PayPal",  @ticket.paypal_url(tournaments_path, @ticket.id, @ticket.tournament.pricePlayer), target: '_blank'%>
 <br>
 <br>
 <%= link_to 'Back', controller: 'home_page' %>

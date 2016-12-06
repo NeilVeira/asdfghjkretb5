@@ -21,7 +21,9 @@ class Ticket < ApplicationRecord
       #amount: get_price(@ticket).to_s,
       item_name: 'golf_ticket, id:' +t_id.to_s,
       item_number: '1',
-      quantity: '1'
+      quantity: '1',
+      #{Rails.application.secrets.app_host}
+      notify_url: "http://b519b63b.ngrok.io/paypal_pay"
     }
     "https://www.sandbox.paypal.com/cig-bin/webscr?"+ values.to_query
   end   

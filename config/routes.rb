@@ -21,10 +21,12 @@ Rails.application.routes.draw do
   # setup is used to pass the tournament_id to the tickets#new action when registering
   get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
   
+  post 'paypal_pay', to: "paypal_notifications#create"
+  
   post 'tournaments/:id/create_new_teams_for_tournament', to: 'tournaments#create_new_teams_for_tournament'
   
   post 'tournaments/:id/add_self_to_team', to: 'tournaments#add_self_to_team'
-
+  
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'
 
@@ -51,6 +53,7 @@ Rails.application.routes.draw do
   resources :players
   resources :sponsors
   resources :credit_cards
+  resources :paypal_notifications
 
   root 'home_page#index'
   
