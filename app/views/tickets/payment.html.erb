@@ -1,18 +1,8 @@
-<%
-  @ticket = Ticket.where(id: params[:id]).first
-  unless @ticket
-	<%-# commented: I'm not sure but this is probably wrong, because we can't render a non-partial view inside a view -%>
-    render tournaments_path
-  end
-
-  cc = CreditCard.where(person_id: current_person.id)
-  %>
 <h1>Payment for tournament <%= @ticket.tournament.name %></h1>
 
-<%=
-  if cc.any?
-    render partial: "credit_cards/credit_cards_table_pay", locals: {ticket: @ticket, credit_cards: cc}
-  else %>
+<% if @cc.any? %>
+    <%= render partial: "credit_cards/credit_cards_table_pay", locals: {ticket: @ticket, credit_cards: @cc} %>
+<% else %>
 <i> No credit cards saved. </i>
 <% end %>
 <br>
