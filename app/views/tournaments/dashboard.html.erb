@@ -20,8 +20,6 @@
 	</div>
 
 	<%= render partial: "tournaments/tournament_info" %>
-	
-
 
 	<% if @is_admin or @organizer.adminrights & 2 != 0 %> <!--check privileges to manage tee sheets-->
 	<div class="container-fluid">
@@ -45,7 +43,9 @@
 					</tr>
 				<% end %>
 			</table>
-			<%= submit_tag "Add to Team" %>
+			<% if(teamless_players.empty? == false)%>
+				<%= submit_tag "Add to Team" %>
+			<% end %>
 		<% end %>
 	<% end %>
 	</div>

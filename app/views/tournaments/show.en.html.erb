@@ -22,7 +22,16 @@
 		<title> <%= @tournament.name %> </title>
 	</head>
 	<body>
+		
 		<%= render partial: "tournaments/tournament_info" %>
+		
+		<section>
+			<% if(@full_teams == @partial_teams) %>
+				<p>
+					<%= button_to "Create a new Team", action: "create_new_team", :player => @player %> 
+				</p>
+			<% end %>
+		</section>
 		
 		<section>
 			<br>

@@ -117,9 +117,9 @@
 						<td>
 							<% if(@to == false) %>
 								<% if(team.p1.nil? or team.p2.nil? or team.p3.nil? or team.p4.nil?) %>
-									<% if(@player) %>
+									<% if(@player and (team.p1 != @player and team.p2 != @player and team.p3 != @player and team.p4 != @player) ) %>
 										<%= button_to "Join Team", action: "add_self_to_team", :team => team, :player => @player %>
-									<% else %>
+									<% elsif(@player == false) %>
 										<%= link_to "Sign In", ("/users/sign_in") %>
 									<% end %>
 								<% else %>

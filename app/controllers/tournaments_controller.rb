@@ -34,6 +34,8 @@ class TournamentsController < ApplicationController
 	def show
 		@tournament = Tournament.find(params[:id])
 		session[:tournament_id] = @tournament.id
+		@full_teams = Team.select{|t| t.p1 and t.p2 and t.p3 and t.p4 and t.tournament_id == @tournament.id}.count
+		@partial_teams = Team.select{|t| (t.p1 or t.p2 or t.p3 or t.p4) and t.tournament_id == @tournament.id}.count
 		
 		@person = current_person
 		@player = user_is_player?(@tournament.id)
@@ -77,6 +79,22 @@ class TournamentsController < ApplicationController
 			redirect_to "/tournaments/#{@tournament.id}", :flash => { :error => 'Attempting to join full team'}
 			return
 		end
+		@t.save(validate: false)
+		
+		@p.team_id = @t.id
+		@p.save
+		
+		redirect_to "/tournaments/#{@tournament.id}"
+	end
+	
+	def create_new_team
+		@tournament = Tournament.find(params[:id])
+		@p = Player.find(params[:player])
+		@current_teams = @tournament.teams
+		
+		new_team_num = @current_teams.last.team_num + 1
+		@t = Team.new(:tournament_id => @tournament.id, :team_num => new_team_num)
+		@t.p1 = @p
 		@t.save(validate: false)
 		
 		@p.team_id = @t.id
