@@ -97,7 +97,7 @@ class TournamentsController < ApplicationController
 			@p = Player.find(params[:player])
 			@current_teams = @tournament.teams
 			
-			if(@current_teams == nil)
+			if(@current_teams.empty?)
 				new_team_num = 1
 			else
 				new_team_num = @current_teams.last.team_num + 1
