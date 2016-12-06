@@ -84,6 +84,21 @@ class ApplicationController < ActionController::Base
 		end
 	end
 	
+	def user_is_player?(tournament_id)
+		#check if the current user is an player in this tournament
+		if user_signed_in?
+			@person = current_person
+			@player = Player.find_by(tournament_id: tournament_id, person_id: @person.id)
+			if @player
+				return @player
+			else
+				return false
+			end
+		else
+			false
+		end
+	end
+	
 	def authenticate_admin!
 		unless user_is_admin?
 			access_denied

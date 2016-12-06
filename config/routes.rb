@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
   
   post 'tournaments/:id/create_new_teams_for_tournament', to: 'tournaments#create_new_teams_for_tournament'
+  
+  post 'tournaments/:id/add_self_to_team', to: 'tournaments#add_self_to_team'
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'
