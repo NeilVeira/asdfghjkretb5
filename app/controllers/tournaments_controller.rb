@@ -97,7 +97,13 @@ class TournamentsController < ApplicationController
 			@p = Player.find(params[:player])
 			@current_teams = @tournament.teams
 			
-			new_team_num = @current_teams.last.team_num + 1
+			if(@current_teams == nil)
+				new_team_num = 1
+			else
+				new_team_num = @current_teams.last.team_num + 1
+			end
+			
+			
 			@t = Team.new(:tournament => @tournament, :team_num => new_team_num)
 			@t.p1 = @p
 			@t.save(validate: false)

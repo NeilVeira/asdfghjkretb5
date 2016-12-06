@@ -13,8 +13,13 @@
 				<td><%= player.person.firstname %> <% player.person.lastname %> (<%= link_to player.person.user.email, person_path(player.person) %>)</td>
 				<td><%= link_to player.tournament.name, tournament_path(player.tournament) %></td>
 				<!-- TODO: Add link to show team -->
-				<% if player.team %>
-					<td><%= link_to player.team.team_num, team_path(player.team) %></td>
+				<% if player.team_id %>
+					<% if (@teams[player.team_id]) %>
+						<% @player_team = @teams[player.team_id] %>
+						<td><%= link_to @player_team.team_num, team_path(@player_team) %></td>
+					<% else %>
+						<td>No Team</td>
+					<% end %>
 				<% else %>
 					<td>No Team</td>
 				<% end %>
