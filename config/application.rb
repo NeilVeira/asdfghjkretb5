@@ -6,6 +6,7 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+
 module Xxx
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -13,5 +14,6 @@ module Xxx
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.available_locales = [:en, :ru, :fr, :es]
 	config.i18n.default_locale = :en
+	config.server_static_assets = true
   end
 end
