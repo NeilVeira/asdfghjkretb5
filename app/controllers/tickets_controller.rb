@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :authenticate_ticket_owner!, only: [:show]
+	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :check_in]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
 
     def index
@@ -9,8 +9,8 @@ class TicketsController < ApplicationController
     
     def show
         @ticket = Ticket.find(params[:id])
-				@code = checkIn_url(id:@ticket.id).to_s
-				@qrcode = RQRCode::QRCode.new(@code)
+		@code = checkIn_url(id:@ticket.id).to_s
+		@qrcode = RQRCode::QRCode.new(@code)
     end
     
     def new
@@ -49,10 +49,10 @@ class TicketsController < ApplicationController
     def destroy
     end
 	
-		def setup
-			session[:tournament_id] = params[:id]
-			redirect_to new_ticket_path
-		end
+	def setup
+		session[:tournament_id] = params[:id]
+		redirect_to new_ticket_path
+	end
 
   	def check_in
 			@ticket = Ticket.find(params[:id])
@@ -65,10 +65,10 @@ class TicketsController < ApplicationController
 		end
 
   	def payment
-
-		end
+		@cc = CreditCard.where(person_id: current_person.id)
+	end
 		
-		def payment_select
+	def payment_select
 
     end
 
