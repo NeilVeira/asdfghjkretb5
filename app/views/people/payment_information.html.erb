@@ -1,4 +1,6 @@
 <%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
 
+<h3>Payment Information</h3>
+
 <%= render partial: 'credit_cards/credit_cards_table_display', locals: {person_id: @person.id} %>
 

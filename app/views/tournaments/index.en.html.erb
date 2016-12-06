@@ -1,3 +1,7 @@
+<% # variable declarations
+  c_date = Time.now.to_date
+%>
+
 <html>
 	<body>
 	<br>
@@ -8,7 +12,17 @@
 			<h1>
 				Today's Tournaments
 			</h1>
-			<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments, include_cond: "days_away == 0 && (t.ispublic == true)"} %>
+			<% @tournaments.each do |t| %>
+				<% t_date = t.date.to_date %>
+				<% days_away = (t_date - c_date).to_i %>
+				<% if eval("days_away == 0 && (t.ispublic == true)") %>
+					<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments, include_cond: "days_away == 0 && (t.ispublic == true)"} %>
+				<% 		break %>
+				<% else %>
+					<p> No tournaments happening today! </p>
+					<% break %>
+				<% end %>
+			<% end %>
 		</section> 
 
 		<section>

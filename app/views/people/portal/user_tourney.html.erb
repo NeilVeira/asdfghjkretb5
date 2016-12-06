@@ -1,44 +1,13 @@
-<% tournamentsSponsorIn = get_all_tournaments_as "sponsor" %>
+
 <% tournamentsPlayerIn = get_all_tournaments_as "player" %>
-<% tournamentsOrganizerIn = get_all_tournaments_as "organizer" %>
 
-<br> 
-<p>----------------------------------</p>
+<%= render partial: "people/portal/profile_tournament_tabs", locals: {person: @person} %>
 
-<%=link_to 'Create a Tournament', controller: "tournaments", action: "new" %>
-
-<br> 
-<p>----------------------------------</p>
-
-<h2>Tournaments Registered (as player)</h2>
+<div class="container-fluid">
+<h3>Tournaments Registered (as player)</h3>
 <% if check_Tournaments(tournamentsPlayerIn) %>
 	<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsPlayerIn, include_cond: "days_away >= 0"} %>
 <% else %> 
 	<p>No tournaments found</p>
 <% end %>
-
-<br> 
-<p>--------------------------------</p>
-<h2>Tournaments Organized</h2>
-<% if check_Tournaments(tournamentsOrganizerIn) %>
-	<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsOrganizerIn, include_cond: "days_away >= 0"} %>
-<% else %>
-	<p>No tournaments found</p>
-<% end %>
-
-<br> 
-<p>--------------------------------</p>
-<h2>Tournaments Sponsored</h2>
-<% if check_Tournaments(tournamentsSponsorIn) %>
-	<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsSponsorIn, include_cond: "days_away >= 0"} %>
-<% else %>
-		<p>No tournaments found</p>
-<% end %>
-
-<br> 
-<p>--------------------------------</p>
-
-
-<br>
-
-<%=link_to 'Back', controller: "people", action: "portal" %>
+</div>

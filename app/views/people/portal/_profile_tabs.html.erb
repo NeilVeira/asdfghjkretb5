@@ -2,7 +2,9 @@
 	<li role="presentation" ><%=link_to t('Personal Information'), controller: "people", action: "profile" %></li>
 	<li role="presentation" ><%=link_to t('Address'), controller: "people", action: "address" %></li>
 	<li role="presentation" ><%=link_to t('Linked Services'), controller: "people", action: "linked_services" %></li>
+	<!--
 	<li role="presentation" ><%=link_to t('Payment Information'), controller: "people", action: "payment_information" %></li>
+	-->
 	<li role="presentation" ><%= link_to 'Edit Profile', edit_person_path(@person) %></li>
 	<li role="presentation" >
 		<% if user_is_admin? == false %>
