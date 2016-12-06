@@ -112,7 +112,8 @@ tournaments_list = [
 	["tourname5","description5", false, "extrafeatures5",GolfCourse.second.id,  DateTime.new(2019,1,1), "0.00", "0.00"],
 	["tourname6","desc6", true, "extraf6",GolfCourse.first.id,  DateTime.new(2019,1,1), "0.00", "5.00"],
 	["tourname7","desc7", true, "extraf7",GolfCourse.fourth.id,  DateTime.new(2016,11,30), "0.00", "6.00"],
-	["tourname8","desc8", true, "extraf8",GolfCourse.fourth.id,  DateTime.new(2016,11,29), "0.00", "6.00"]
+	["tourname8","desc8", true, "extraf8",GolfCourse.fourth.id,  DateTime.new(2016,11,29), "0.00", "6.00"],
+	["Feature Tournament1", "Testing the Tourney on Homepage", true, "extrafeatures", GolfCourse.fourth.id, DateTime.now, "0.00", "4.00"]
 ]
 
 tournaments_list.each do |name, description, ispublic, extrafeatures, golfid, date, pricePlayer, priceSpectator|
@@ -268,11 +269,13 @@ tickets_list.push([3])
 tickets_list.each do |tickettype, person_id, tournament_id|
 	Ticket.create(tickettype: tickettype, person_id: person_id, tournament_id: tournament_id)
 end
-
+"""
 teams_list = [
 	["team1", Tournament.first.id, 1, 5, 14, 17], 
 	["team2", Tournament.first.id, 20, 23, 12, 8], 
-	["team1", Tournament.second.id, 3, 6, 24, 21]
+	["team1", Tournament.second.id, 3, 6, 24, 21],
+	["team1", Tournament.offset(5).fourth.id, 3, 6, 24, 21],
+	["team2", Tournament.offset(5).fourth.id, 1, 5, 22, 20]
 ]
 
 teams_list.each do |name, tournamentid, p1, p2, p3, p4|
