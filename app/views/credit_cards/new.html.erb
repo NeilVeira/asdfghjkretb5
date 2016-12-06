@@ -14,17 +14,17 @@
   end
 %>
 <b>Add a new Credit Card</b>
-<%= form_for @creditcard, url: credit_cards_path(@creditcard, direct: params[:direct_page], ticket_id: params[:ticket_id], return: params[:return_page]), method: :post do |f| %>
+<%= form_for @credit_card, url: credit_cards_path(@credit_card, direct: params[:direct_page], ticket_id: params[:ticket_id], return: params[:return_page]), method: :post do |f| %>
     <% # return value is integer set to determine which page to return to after create %>
 
-    <% if @creditcard.errors.any? %>
+    <% if @credit_card.errors.any? %>
         <div id="error_explanation">
           <h2>
-            <%= pluralize(@creditcard.errors.count, "error") %> prohibited
-            this creditcard from being saved:
+            <%= pluralize(@credit_card.errors.count, "error") %> prohibited
+            this credit_card from being saved:
           </h2>
           <ul>
-            <% @creditcard.errors.full_messages.each do |msg| %>
+            <% @credit_card.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
             <% end %>
           </ul>
