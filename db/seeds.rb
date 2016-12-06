@@ -240,34 +240,36 @@ end
 #2 - Sponsor
 #3 - Spectator
 #4 - Tournament organizer
-tickets_list = [[3, 12, Tournament.first.id],
-                [3, 13, Tournament.first.id],
-				[3, 12, Tournament.second.id],
-				[3, 13, Tournament.second.id],
-				[3, 6, Tournament.third.id],
-				[3, 7, Tournament.third.id],
-				[3, 12, Tournament.third.id],
-				[3, 13, Tournament.third.id],
-				[3, 6, Tournament.fifth.id],
-				[3, 7, Tournament.fifth.id],
-				[3, 11, Tournament.fifth.id],
-				[3, 2, 7],
-				[3, 5, 7]
+tickets_list = [[3, 12, Tournament.first.id, true],
+                [3, 13, Tournament.first.id], true,
+				[3, 12, Tournament.second.id, true],
+				[3, 13, Tournament.second.id, true],
+				[3, 6, Tournament.third.id, true],
+				[3, 7, Tournament.third.id, true],
+				[3, 12, Tournament.third.id, true],
+				[3, 13, Tournament.third.id, true],
+				[3, 6, Tournament.fifth.id, true],
+				[3, 7, Tournament.fifth.id, true],
+				[3, 11, Tournament.fifth.id, true],
+				[3, 2, 7, true],
+				[3, 5, 7, true]
 				]
 players_list.each do |person_id, tournament_id|
-	tickets_list.push([1,person_id,tournament_id])
+	tickets_list.push([1,person_id,tournament_id, true])
 end
+
 sponsors_list.each do |person_id, tournament_id|
-	tickets_list.push([2,person_id,tournament_id])
+	tickets_list.push([2,person_id,tournament_id, true])
 end
+
 tournament_organizers_list.each do |person_id, tournament_id|
-	tickets_list.push([4,person_id,tournament_id])
+	tickets_list.push([4,person_id,tournament_id, true])
 end
 #spectators
 tickets_list.push([3])
 
-tickets_list.each do |tickettype, person_id, tournament_id|
-	Ticket.create(tickettype: tickettype, person_id: person_id, tournament_id: tournament_id)
+tickets_list.each do |tickettype, person_id, tournament_id, paid|
+	Ticket.create(tickettype: tickettype, person_id: person_id, tournament_id: tournament_id, has_paid: paid)
 end
 
 teams_list = [

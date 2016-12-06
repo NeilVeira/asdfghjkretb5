@@ -1,12 +1,17 @@
 
   <div class="col-md-6">
-    <h1>Transaction Successful</h1>
     <h3>Here is your ticket</h3>
 
   	<strong>Ticket type: </strong><%= get_tickettype_name(@ticket.tickettype) %><br>
   	<strong>Tournament: </strong><%= @ticket.tournament.name %><br>
-  	<strong>Player name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
+  	<strong>Person name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
   	<strong>Ticket id: </strong><%= @ticket.id %><br>
+
+    <strong>Payment: </strong>
+    <% if @ticket.has_paid %><b>Paid</b>
+    <% else %><b>Pending</b>
+    <% end %>
+    <br> <br>
     <%= link_to 'Continue to tournament', tournament_path(@ticket.tournament) %>
   </div>
 

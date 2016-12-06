@@ -33,10 +33,9 @@ class CreditCardsController < ApplicationController
   end
 
   def paymentProcessing
-    # require 'stripe'
 
     ticket = Ticket.find(params[:id])
-    price = get_price(ticket)
+    price = (get_price(ticket) * 100)
 
     @CC = CreditCard.where(id: params[:cc]).first
     unless @CC
@@ -63,7 +62,7 @@ class CreditCardsController < ApplicationController
           :password => 'password'
       )
 
-      # Authorize for $10 dollars (1000 cents)
+      # Authorize in cents
       response = gateway.authorize(price, credit_card)
 
       if response.success?
