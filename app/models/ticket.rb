@@ -16,7 +16,7 @@ class Ticket < ApplicationRecord
       cmd: '_xclick',
       upload: 1,
       return: return_url,
-      invoice: id,
+      invoice: (Time.now.to_f*1000).to_i,
       amount: t_price.to_s,
       #amount: get_price(@ticket).to_s,
       item_name: 'golf_ticket, id:' +t_id.to_s,
