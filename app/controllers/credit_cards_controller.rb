@@ -82,6 +82,12 @@ class CreditCardsController < ApplicationController
     # send_ticket ticket
     redirect_to ticket_path(params[:id])
   end
+  
+	def destroy
+		@credit_card = CreditCard.find(params[:id])
+		@credit_card.destroy
+		redirect_to people_payment_information_path
+	end
 
 
 end
