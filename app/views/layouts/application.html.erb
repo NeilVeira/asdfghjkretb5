@@ -8,10 +8,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
+	<script src="/javascript/jquery-3.1.1.min.js"></script>
     <link rel="stylesheet" href="/css/w3.css">
     
     
+	
 	 <!-- Bootstrap -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
 	<script src="/javascript/bootstrap.js"></script>
@@ -22,6 +23,7 @@
   </head>
 
   <%= render partial: "application/user_header" %>
+  
   <body style="background-color: #e3e4e5" >
 
 
@@ -32,5 +34,5 @@
     <%= yield %>
   </body>
   <%= render partial: "application/footer" %>
-  <script src="/javascript/jquery-3.1.1.min.js"></script>
+  
 </html>
