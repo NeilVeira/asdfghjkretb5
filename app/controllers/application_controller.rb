@@ -112,7 +112,7 @@ class ApplicationController < ActionController::Base
 	end
 	
 	def sort_column
-		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
+		Tournament.column_names.include?(params[:sort].downcase) ? params[:sort].downcase : "id"
 	end
 
 	def sort_direction
