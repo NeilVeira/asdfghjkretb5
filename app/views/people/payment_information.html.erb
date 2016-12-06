@@ -1,4 +1,7 @@
 <%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
 
+<h3>Payment Information</h3>
+<%=link_to 'New Credit Card', controller: "credit_cards", action: "new" %>
+<%=link_to 'Test', controller: "credit_cards", action: "index" %>
 <%= render partial: 'credit_cards/credit_cards_table_display', locals: {person_id: @person.id} %>
 

@@ -1,6 +1,5 @@
 <% my_tickets = get_user_tickets %>
 
 <h2>Tickets Owned</h2>
-<%= render partial: "tickets/ticket_table", locals: {tickets: my_tickets} %>
 
-<%= link_to 'Back', controller: "people", action: "portal" %>
+<%= render partial: "tickets/ticket_table", locals: {tickets: my_tickets} %>
