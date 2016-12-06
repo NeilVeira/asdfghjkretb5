@@ -269,17 +269,17 @@ tickets_list.push([3])
 tickets_list.each do |tickettype, person_id, tournament_id|
 	Ticket.create(tickettype: tickettype, person_id: person_id, tournament_id: tournament_id)
 end
-"""
+
 teams_list = [
-	["team1", Tournament.first.id, 1, 5, 14, 17], 
-	["team2", Tournament.first.id, 20, 23, 12, 8], 
-	["team1", Tournament.second.id, 3, 6, 24, 21],
-	["team1", Tournament.offset(5).fourth.id, 3, 6, 24, 21],
-	["team2", Tournament.offset(5).fourth.id, 1, 5, 22, 20]
+	[1, Tournament.first.id, 1, 5, 14, 17], 
+	[2, Tournament.first.id, 20, 23, 12, 8], 
+	[1, Tournament.second.id, 3, 6, 24, 21],
+	[1, Tournament.offset(5).fourth.id, 3, 6, 24, 21],
+	[2, Tournament.offset(5).fourth.id, 1, 5, 22, 20]
 ]
 
-teams_list.each do |name, tournamentid, p1, p2, p3, p4|
-	Team.create( name: name, tournament_id: tournamentid, p1_id: p1, p2_id: p2, p3_id: p3, p4_id: p4)
+teams_list.each do |team_num, tournamentid, p1, p2, p3, p4|
+	Team.create( team_num: team_num, tournament_id: tournamentid, p1_id: p1, p2_id: p2, p3_id: p3, p4_id: p4)
 end
 
 #temp_player = Player.find_by(id: 1)
