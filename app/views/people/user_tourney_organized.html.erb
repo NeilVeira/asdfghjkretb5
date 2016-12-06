@@ -1,0 +1,12 @@
+<% tournamentsOrganizerIn = get_all_tournaments_as "organizer" %>
+
+<%= render partial: "people/portal/profile_tournament_tabs", locals: {person: @person} %>
+
+<div class="container-fluid">
+<h3>Tournaments Organized</h3>
+<% if check_Tournaments(tournamentsOrganizerIn) %>
+	<%= render partial: "tournaments/tournament_table", locals: {tournaments: tournamentsOrganizerIn, include_cond: "days_away >= 0"} %>
+<% else %>
+	<p>No tournaments found</p>
+<% end %>
+</div>
