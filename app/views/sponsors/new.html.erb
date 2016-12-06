@@ -1,8 +1,20 @@
-<%= link_to 'Home', controller: 'home_page' %>
-
 <h1>Sponsor tournament <%= @tournament.name %></h1>
 
 <%=form_for :sponsors, url: sponsors_path, html: { multipart: true } do |f| %>
+
+	<% if @sponsor.errors.any? %>
+        <div id="error_explanation">
+          <h2>
+            <%= pluralize(@sponsor.errors.count, "error") %> prohibited
+            this sponsor from being saved:
+          </h2>
+          <ul>
+            <% @sponsor.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
 
     <p>
       <%= f.label :company_name %><br>
