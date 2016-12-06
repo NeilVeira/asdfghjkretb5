@@ -3,6 +3,10 @@ class TournamentsController < ApplicationController
 	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard]
 
 	def index
+		logger.debug "sort_column = #{sort_column}"
+		logger.debug "sort_direction = #{sort_direction}"
+		logger.debug "params[:sort] = #{params[:sort]}"
+		logger.debug "Tournament.column_names = #{Tournament.column_names}"
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
 	end
   
@@ -164,10 +168,6 @@ class TournamentsController < ApplicationController
 	end
 	
 	private
-	
-	def sort_column
-		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
-	end
 	
 	def authenticate_organizer!
 		#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
