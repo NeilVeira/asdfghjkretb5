@@ -55,7 +55,7 @@
 		<strong>Équipes actuelles</strong>
 	</h2>
 	<%@teams = @tournament.teams%>
-	<%if (@teams !=nil)%>
+	<%if (@teams==nil)%>
 		 Le tournoi n'a pas d'équipe
 	<%else%>
 		<table>
