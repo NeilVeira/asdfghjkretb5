@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -17,10 +18,11 @@
       <%= f.label :remember_me %>
     </div>
   <% end -%>
-
+  <br>
   <div class="actions">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+</div>
+<br>
 <%= render "users/shared/links" %>

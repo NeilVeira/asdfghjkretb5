@@ -1,46 +1,51 @@
-<h1>Transaction Successful</h1>
-<h3>Here is your ticket</h3>
-<p>
-	<strong>Ticket type: </strong><%= get_tickettype_name(@ticket.tickettype) %><br>
-	<strong>Tournament: </strong><%= @ticket.tournament.name %><br>
-	<strong>Player name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
-	<strong>Ticket id: </strong><%= @ticket.id %><br>
 
-  <style type="text/css">
-    table {
-      border-width: 0;
-      border-style: none;
-      border-color: #0000ff;
-      border-collapse: collapse;
-    }
-    td {
-      border-width: 0;
-      border-style: none;
-      border-color: #0000ff;
-      border-collapse: collapse;
-      padding: 0;
-      margin: 0;
-      width: 10px;
-      height: 10px;
-    }
-    td.black { background-color: #000; }
-    td.white { background-color: #fff; }
-  </style>
+  <div class="col-md-6">
+    <h1>Transaction Successful</h1>
+    <h3>Here is your ticket</h3>
 
-  <table>
-    <% @qrcode.modules.each_index do |x| -%>
-        <tr>
-          <% @qrcode.modules.each_index do |y| -%>
-              <% if @qrcode.dark?(x,y) -%>
-                  <td class="black"/>
-              <% else -%>
-                  <td class="white"/>
-              <% end -%>
-          <% end -%>
-        </tr>
-    <% end -%>
-  </table>
+  	<strong>Ticket type: </strong><%= get_tickettype_name(@ticket.tickettype) %><br>
+  	<strong>Tournament: </strong><%= @ticket.tournament.name %><br>
+  	<strong>Player name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
+  	<strong>Ticket id: </strong><%= @ticket.id %><br>
+    <%= link_to 'Continue to tournament', tournament_path(@ticket.tournament) %>
+  </div>
 
-</p>
+  <div class="col-md-6">
+    <style type="text/css">
+      table {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+      }
+      td {
+        border-width: 0;
+        border-style: none;
+        border-color: #0000ff;
+        border-collapse: collapse;
+        padding: 0;
+        margin: 0;
+        width: 10px;
+        height: 10px;
+      }
+      td.black { background-color: #000; }
+      td.white { background-color: #fff; }
+    </style>
+    <br>
+    <table>
+      <% @qrcode.modules.each_index do |x| -%>
+          <tr>
+            <% @qrcode.modules.each_index do |y| -%>
+                <% if @qrcode.dark?(x,y) -%>
+                    <td class="black"/>
+                <% else -%>
+                    <td class="white"/>
+                <% end -%>
+            <% end -%>
+          </tr>
+      <% end -%>
+    </table>
+  </div>
+
 <!-- <b> <%=@code%> </b> -->
-<%= link_to 'Continue to tournament', tournament_path(@ticket.tournament) %>
+
