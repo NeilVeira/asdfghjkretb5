@@ -1,3 +1,7 @@
+<% # variable declarations
+  c_date = Time.now.to_date
+%>
+
 <html>
 	<body>
 	<br>
@@ -8,7 +12,11 @@
 			<h1>
 				Today's Tournaments
 			</h1>
+			<% if @tournaments %>
 			<%= render partial: "tournaments/tournament_table", locals: {tournaments: @tournaments, include_cond: "days_away == 0 && (t.ispublic == true)"} %>
+			<% else %>
+				<p> No tournaments happening today! </p>
+			<% end %>
 		</section> 
 
 		<section>

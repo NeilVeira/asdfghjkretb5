@@ -58,6 +58,16 @@ class PeopleController < ApplicationController
 		render 'people/portal/user_tourney'
 	end
 
+	def organized
+		@person = current_person
+		render 'people/user_tourney_organized'
+	end
+
+	def sponsored
+		@person = current_person
+		render 'people/user_tourney_sponsored'
+	end
+
 	def user_ticket
 		@person = current_person
 		render 'people/portal/user_ticket'

@@ -31,6 +31,8 @@ Rails.application.routes.draw do
   get 'people/profile', to: 'people#profile'
   get 'people/portal', to: 'people#portal'
   get 'people/user_tourney', to: 'people#user_tourney'
+  get 'people/sponsored', to: 'people#sponsored'
+  get 'people/organized', to: 'people#organized'
   get 'people/user_ticket', to: 'people#user_ticket'
   get 'people/address', to: 'people#address'
   get 'people/linked_services', to: 'people#linked_services'

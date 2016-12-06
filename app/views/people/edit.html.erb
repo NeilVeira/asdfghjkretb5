@@ -2,6 +2,7 @@
 
 <%= render partial: "people/portal/profile_tabs", locals: {person: @person} %>
 
+<div class="container-fluid">
 <h3>Edit your information</h3>
 
 <%= form_for @person, url: person_path(@person), method: :patch do |f| %>
@@ -85,3 +86,4 @@
   </p>
  </div>
 <% end %>
+</div>

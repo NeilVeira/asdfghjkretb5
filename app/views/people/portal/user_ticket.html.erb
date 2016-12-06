@@ -1,5 +1,6 @@
 <% my_tickets = get_user_tickets %>
-
+<div class="container-fluid">
 <h2>Tickets Owned</h2>
 
 <%= render partial: "tickets/ticket_table", locals: {tickets: my_tickets} %>
+</div>

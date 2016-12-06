@@ -1,14 +1,15 @@
-<h1>Create a Tournament</h1>
+
+<h3>Create a Tournament</h3>
 <br>
-<br>
+
 <%= form_for @tournament, url: tournaments_path, html: { multipart: true } do |f| %>
 
     <% if @tournament.errors.any? %>
         <div id="error_explanation">
-          <h2>
+          <h5>
             <%= pluralize(@tournament.errors.count, "error") %> prohibited
             this tournament from being saved:
-          </h2>
+          </h5>
           <ul>
             <% @tournament.errors.full_messages.each do |msg| %>
                 <li><%= msg %></li>
@@ -17,15 +18,19 @@
         </div>
     <% end %>
 
+<div class="container-fluid" id="create_info">
+<div class="col-md-4">
     <p>
       <%= f.label t("Name") %><br>
       <%= f.text_field :name %>
     </p>
 
-    <p>
-      <%= f.label t("Description") %><br>
-      <%= f.text_area :description %>
-    </p>
+    <p>Golf Course:</p>
+    <%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
+
+    <br>
+    <p>Date:</p>
+    <%= f.datetime_select(:date, start_year: 2018) %>
 
     <p>
       <%= f.label :Is_it_a_public_tournament? %><br>
@@ -36,25 +41,34 @@
       <%= f.label :"False" %>
       <%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
     </p>
+</div>
 
-	<p>Golf Course:</p>
-	<%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
-	
-	<p>Date:</p>
-	<%= f.datetime_select(:date, start_year: 2018) %>
-	
-	<p>Tournament Picture:</p>
-	<%= f.file_field :image %>
-	
-	<br>
+<div class="col-md-3">
+
+  <p>
+    <%= f.label t("Description") %><br>
+    <%= f.text_area :description %>
+  </p>
 	
     <p>
       <%= f.label :Extra_Features %><br>
       <%= f.text_area :extrafeatures %>
     </p>
+</div>
 
+<div class="col-md-3">
+  <p>Tournament Picture:</p>
+  <%= f.file_field :image %>
+</div>
+
+<div class="col-md-6">
+</div>
+</div>
+
+<div class="container-fluid" id="create_info">
+    <br>
     <p>
       <%= f.submit %>
     </p>
+</div>
 <% end %>
-<%= link_to t('Back'), controller: 'home_page' %>
