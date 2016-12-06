@@ -33,7 +33,9 @@
 		<section>
 			<% if(@full_teams == @partial_teams) %>
 				<p>
-					<%= button_to "Create a new Team", action: "create_new_team", :player => @player %> 
+					<% if(@player) %>
+						<%= button_to "Create a new Team", action: "create_new_team", :player => @player %> 
+					<% end %>
 				</p>
 			<% end %>
 		</section>

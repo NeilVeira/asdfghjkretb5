@@ -90,16 +90,21 @@ class TournamentsController < ApplicationController
 	
 	def create_new_team
 		@tournament = Tournament.find(params[:id])
-		@p = Player.find(params[:player])
-		@current_teams = @tournament.teams
-		
-		new_team_num = @current_teams.last.team_num + 1
-		@t = Team.new(:tournament_id => @tournament.id, :team_num => new_team_num)
-		@t.p1 = @p
-		@t.save(validate: false)
-		
-		@p.team_id = @t.id
-		@p.save
+		if(params[:player] == false)
+			redirect_to "/tournaments/#{@tournament.id}", :flash => { :error => 'You were not found to be a player.'}
+			return
+		else
+			@p = Player.find(params[:player])
+			@current_teams = @tournament.teams
+			
+			new_team_num = @current_teams.last.team_num + 1
+			@t = Team.new(:tournament_id => @tournament.id, :team_num => new_team_num)
+			@t.p1 = @p
+			@t.save(validate: false)
+			
+			@p.team_id = @t.id
+			@p.save
+		end
 		
 		redirect_to "/tournaments/#{@tournament.id}"
 	end
