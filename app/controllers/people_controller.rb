@@ -1,5 +1,5 @@
 class PeopleController < ApplicationController
-	before_action :authenticate_user!, only: [:profile, :edit, :update, :user_tourney, :user_tourney_organized, :user_tourney_sponsored :user_ticket]
+	before_action :authenticate_user!, only: [:profile, :edit, :update, :user_tourney, :user_tourney_organized, :user_tourney_sponsored, :user_ticket]
 	before_action :authenticate_admin!, only: [:index, :show]
 	before_action :authenticate_admin_or_current_user!, only: [:destroy]
 	
