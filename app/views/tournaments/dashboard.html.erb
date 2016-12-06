@@ -1,14 +1,30 @@
 <html>
-	<h1><%=t :dashboard %> </h1>
+	<div class="container-fluid">
+		<h1><%=t :dashboard %> </h1>
+
+		<ul class="nav nav-tabs">
+			<% if @is_admin or @organizer.adminrights & 1 != 0 %> <!--check privileges to edit info-->
+				<li role="presentation"><%= link_to t("Edit_tournament_info"),edit_tournament_path(@tournament) %></li>
+			<% end %>
+
+			<% if @is_admin or @organizer.adminrights & 4 != 0 %> <!--check privileges to add tournament admins-->
+				<li role="presentaiton"><%= link_to t("Add_tournament_admin"), new_tournament_organizer_path %></li>
+			<% end %>
+	
+			<% if @is_admin or @organizer.adminrights & 8 != 0 %> <!--check privileges to delete tournament-->
+				<li role="presentation"><%= link_to t("Delete tournament"), tournament_path(@tournament),
+				method: :delete,
+				data: {confirm: 'Are you sure? Deleting this tournament will also delete all players, teams, sponsors, tournament organizers, and tickets associated with it.'} %></li>
+			<% end %>
+		</ul>
+	</div>
+
 	<%= render partial: "tournaments/tournament_info" %>
 	
-	<% if @is_admin or @organizer.adminrights & 1 != 0 %> <!check privileges to edit info>
-		<%= link_to t("Edit_tournament_info"),edit_tournament_path(@tournament) %><br>
-	<% end %>
-	<% if @is_admin or @organizer.adminrights & 4 != 0 %> <!check privileges to add tournament admins>
-		<%= link_to t("Add_tournament_admin"), new_tournament_organizer_path %>
-	<% end %>
-	<% if @is_admin or @organizer.adminrights & 2 != 0 %> <!check privileges to manage tee sheets">
+
+
+	<% if @is_admin or @organizer.adminrights & 2 != 0 %> <!--check privileges to manage tee sheets-->
+	<div class="container-fluid">
 		<h2>
 			Current Teamless Players
 		</h2>
@@ -16,7 +32,7 @@
 		<% teams_needed = (teamless_players.length / 4.to_f).ceil + @full_teams %>
 		
 		<%= form_tag ("/tournaments/#{@tournament.id}/create_new_teams_for_tournament") do %>
-			<table>
+			<table class="table">
 				<th>First Name</th>
 				<th>Last Name</th>
 				<th>Add to Team Number:</th>
@@ -32,10 +48,6 @@
 			<%= submit_tag "Add to Team" %>
 		<% end %>
 	<% end %>
-	<% if @is_admin or @organizer.adminrights & 8 != 0 %> <!check privileges to delete tournament">
-		<%= link_to t("Delete tournament"), tournament_path(@tournament),
-				method: :delete,
-				data: {confirm: 'Are you sure? Deleting this tournament will also delete all players, teams, sponsors, tournament organizers, and tickets associated with it.'} %></td>
-		<br>
-	<% end %>
+	</div>
+
 </html>
