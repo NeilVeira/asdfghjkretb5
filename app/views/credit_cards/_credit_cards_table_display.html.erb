@@ -12,6 +12,7 @@
             <td><%= mask_credit_card cc.number%></td>
             <td><%= cc.fname%></td>
             <td><%= cc.lname%></td>
+			<td><%= link_to "Delete", credit_card_path(cc), method: :delete, data: {confirm: "Are you sure?"} %></td>
           </tr>
   <% end %>
 

@@ -12,7 +12,7 @@
     @_price = @ticket.tournament.pricePlayer
   end
 %>
-<strong><h3><%= "Ticket price is :"  + @_price.to_s %></h3></strong>
+<strong><h3><%= "Ticket price is: $"  + @_price.to_s %></h3></strong>
 
 <br>
 <%= link_to "Proceed with credit card", payment_path(@ticket.id, @person.id)%>
