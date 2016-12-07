@@ -1,6 +1,6 @@
 class TournamentsController < ApplicationController
 	before_action :authenticate_user!, only: [:new, :create]
-	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard]
+	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard, :view_players, :view_sponsors, :view_tournament_organizers, :remove_person_from_tournament]
 
 	def index
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
@@ -315,7 +315,6 @@ class TournamentsController < ApplicationController
 							logger.info "#{@team.errors.full_messages}"
 						else
 							logger.info "Player was not in a team"
-							logger.info "#{@team.errors.full_messages}"
 						end
 					end
 				end
