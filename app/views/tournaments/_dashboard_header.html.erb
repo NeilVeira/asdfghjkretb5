@@ -2,7 +2,9 @@
   <h1><%=t :dashboard %> </h1>
 
   <ul class="nav nav-tabs">
+    <li role="presentation" ><%= link_to "Tournament View", controller: "tournaments", action: "dashboard" %></li>
     <% if is_admin or organizer.adminrights & 1 != 0 %> <!--check privileges to edit info-->
+
         <li role="presentation"><%= link_to "Edit",edit_tournament_path(@tournament) %></li>
     <% end %>
 
