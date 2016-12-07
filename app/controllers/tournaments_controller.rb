@@ -170,23 +170,22 @@ class TournamentsController < ApplicationController
 				
 				@team.save(validate: false)
 			else
-				if(@team_i.p1_id == nil)
-					@team_i.p1_id = t_s_player_id[indexes_needed[0]]
-					Player.find(t_s_player_id[indexes_needed[0]]).update(team_id: @team_i.id)
+				for j in 0..(indexes_needed.count-1)
+					if(@team_i.p1_id == nil)
+						@team_i.p1_id = t_s_player_id[indexes_needed[j]]
+						Player.find(t_s_player_id[indexes_needed[j]]).update(team_id: @team_i.id)
+					elsif(@team_i.p2_id == nil)
+						@team_i.p2_id = t_s_player_id[indexes_needed[j]]
+						Player.find(t_s_player_id[indexes_needed[j]]).update(team_id: @team_i.id)
+					elsif(@team_i.p3_id == nil)
+						@team_i.p3_id = t_s_player_id[indexes_needed[j]]
+						Player.find(t_s_player_id[indexes_needed[j]]).update(team_id: @team_i.id)
+					elsif(@team_i.p4_id == nil)
+						@team_i.p4_id = t_s_player_id[indexes_needed[j]]
+						Player.find(t_s_player_id[indexes_needed[j]]).update(team_id: @team_i.id)
+					end
 				end
-				if(@team_i.p2_id == nil)
-					@team_i.p1_id = t_s_player_id[indexes_needed[1]]
-					Player.find(t_s_player_id[indexes_needed[1]]).update(team_id: @team_i.id)
-				end
-				if(@team_i.p3_id == nil)
-					@team_i.p1_id = t_s_player_id[indexes_needed[2]]
-					Player.find(t_s_player_id[indexes_needed[2]]).update(team_id: @team_i.id)
-				end
-				if(@team_i.p4_id == nil)
-					@team_i.p1_id = t_s_player_id[indexes_needed[3]]
-					Player.find(t_s_player_id[indexes_needed[3]]).update(team_id: @team_i.id)
-				end
-				
+					
 				@team_i.save(validate: false)
 			end
 		end
