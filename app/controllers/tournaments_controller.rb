@@ -260,6 +260,13 @@ class TournamentsController < ApplicationController
 			@people.push(@temp)
 		end
 	end
+
+	def view_reports
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+		@tournament = Tournament.find(params[:id])
+	end
 	
 	private
 		def authenticate_organizer!
