@@ -30,7 +30,7 @@ class SponsorsController < ApplicationController
 			#find the ticket which should have previously been created for this sponsor
 			@ticket = Ticket.find_by(tournament_id: @sponsor.tournament.id, person_id: @sponsor.person.id)
 			if @tournament.priceSponsor != NIL and @tournament.priceSponsor > 0
-				redirect_to payment_select_path(@ticket)
+				redirect_to payment_path(@ticket)
 			else
 				redirect_to @ticket
 			end

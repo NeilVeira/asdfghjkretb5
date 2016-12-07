@@ -11,7 +11,6 @@ Rails.application.routes.draw do
   get 'serviceterm/index'
 
   get 'tickets/payment/:id', to: 'tickets#payment', as: :payment
-  get 'tickets/payment_select/:id', to: 'tickets#payment_select', as: :payment_select
 
   get 'tickets/check_in/:id', to: 'tickets#check_in', as: :checkIn
 
