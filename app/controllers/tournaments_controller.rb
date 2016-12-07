@@ -197,6 +197,45 @@ class TournamentsController < ApplicationController
 		return
 	end
 	
+		def view_players
+		players_in_tourney = Player.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{@players_in_tourney}"
+		
+		@tournament = params[:id]
+		
+		@players = Array.new();
+		players_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@players.push(@temp)
+		end
+	end
+	
+	def view_sponsors
+		sponsors_in_tourney = Sponsor.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{@players_in_tourney}"
+		
+		@tournament = params[:id]
+		
+		@sponsors = Array.new();
+		sponsors_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@sponsors.push(@temp)
+		end
+	end
+	
+	def view_tournament_organizers
+		tos_in_tourney = TournamentOrganizer.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{@players_in_tourney}"
+		
+		@tournament = params[:id]
+		
+		@tos = Array.new();
+		tos_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@tos.push(@temp)
+		end
+	end
+	
 	private
 	
 	def authenticate_organizer!
