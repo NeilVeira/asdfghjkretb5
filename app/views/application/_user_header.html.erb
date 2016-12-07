@@ -20,6 +20,17 @@
       <ul class="nav navbar-nav">
         <li><%= link_to t('Tournaments'), tournaments_path%></li>
         <li><%= link_to t('golf_courses'), golf_courses_path%></li>
+		<% if user_is_admin? %>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administrator Tasks</a>
+				<ul class="dropdown-menu">
+					<li><%= link_to t('Manage users'), people_path %></li>
+					<li><%= link_to t('Manage players'), players_path %></li>
+					<li><%= link_to t('Manage sponsors'), sponsors_path %></li>
+					<li><%= link_to t('Manage tournament organizers'), tournament_organizers_path %></li>
+				</ul>
+			</li>
+		<% end %>
       </ul>
 
 
