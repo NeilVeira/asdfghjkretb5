@@ -222,9 +222,11 @@ class ApplicationController < ActionController::Base
 			when 1
 				return Tournament.where(id: ticket.tournament_id).first.pricePlayer
 			when 2
+				return Tournament.where(id: ticket.tournament_id).first.priceSponsor
+			when 3
 				return Tournament.where(id: ticket.tournament_id).first.priceSpectator
 			else
-				return -5 #test
+				return 0
 		end
 	end
 
