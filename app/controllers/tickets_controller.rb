@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :paypal_pay, :check_in]
+	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :paypal_pay]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
 
     def index
@@ -29,18 +29,21 @@ class TicketsController < ApplicationController
     def create
 		@ticket = create_ticket(ticket_params[:tickettype])
 		if @ticket
+			price = NIL
 			case @ticket.tickettype 
 				when 1
-          if (@ticket.tournament.pricePlayer != nil && @ticket.tournament.pricePlayer > 0) 
-            redirect_to payment_select_path(@ticket.id)
-          else 
-            redirect_to ticket_path(@ticket.id)
-          end
+					price = @ticket.tournament.pricePlayer
 				when 2
-					redirect_to new_sponsor_path
-				else
-					redirect_to ticket_path(@ticket)
-				end
+					price = @ticket.tournament.priceSponsor
+					redirect_to new_sponsor_path and return
+				when 3
+					price = @ticket.tournament.priceSpectator
+			end
+			if price != NIL and price > 0
+				redirect_to payment_select_path(@ticket)
+			else		
+				redirect_to ticket_path(@ticket)
+			end
 		else
 			render 'new'
 		end
@@ -72,7 +75,7 @@ class TicketsController < ApplicationController
   	end
   		
   	def payment_select
-      
+		
     end
     
     def paypal_pay

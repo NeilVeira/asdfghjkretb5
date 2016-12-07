@@ -7,12 +7,19 @@
 
 <%
  @_price = 0
-  if (@ticket.tournament.pricePlayer != nil)
-    then
-    @_price = @ticket.tournament.pricePlayer
+ case @ticket.tickettype
+	when 1
+		@_price = @ticket.tournament.pricePlayer
+	when 2
+		@_price = @ticket.tournament.priceSponsor
+	when 3
+		@_price = @ticket.tournament.priceSpectator
+  end
+  if not @_price
+	@_price = 0
   end
 %>
-<strong><h3><%= "Ticket price is :"  + @_price.to_s %></h3></strong>
+<strong><h3><%= "Ticket price is: $"  + @_price.to_s %></h3></strong>
 
 <br>
 <%= link_to "Proceed with credit card", payment_path(@ticket.id, @person.id)%>

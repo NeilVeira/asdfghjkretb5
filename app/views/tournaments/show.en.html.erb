@@ -1,9 +1,51 @@
 <html>
+
+	 <ul class="nav nav-tabs">
+
+		<% status = tournament_status(@tournament) %>
+		<!--Admin is allowed to register and manage tournament -->
+		<% if not status or (user_is_admin? and status == 4) %>
+			<li role="presentation" ><%= link_to "Sponsor/Register for this tournament", new_ticket_path %></li>
+		<% end %>
+		<% if status %>
+			<% if status == 4 or user_is_admin? %> <!--tournament organizer-->
+				<li role="presentation" ><%= link_to "Manage tournament", controller: "tournaments", action: "dashboard" %></li>
+			<% end %>
+		<% end %>
+
+
+		<li role="presentation" ><%=link_to 'Back to Tournaments', tournaments_path %></li>
+
+    <% id = get_ticket_id @tournament.id
+      if id != nil %>
+         <li role="presentation" ><%=link_to 'View Ticket', ticket_path(id) %></li>s
+    <% end %>
+	</ul>
+
+
 	<head>
 		<title> <%= @tournament.name %> </title>
 	</head>
 	<body>
+		
 		<%= render partial: "tournaments/tournament_info" %>
+		
+		<section>
+			<% if(@full_teams == @partial_teams) %>
+				<p>
+					<% if(@player) %>
+						<%= button_to "Create a new Team", action: "create_new_team", :player => @player %> 
+					<% end %>
+				</p>
+			<% end %>
+		</section>
+		
+		<section>
+		<h3>Pricing</h3>
+		<strong>Player: $</strong><%= @tournament.pricePlayer ? @tournament.pricePlayer : 0 %><br>
+		<strong>Sponsor: $</strong><%= @tournament.priceSponsor ? @tournament.priceSponsor : 0 %><br>
+		<strong>Spectator: $</strong><%= @tournament.priceSpectator ? @tournament.priceSpectator : 0 %><br>
+		</section>
 		
 		<section>
 			<br>
@@ -13,20 +55,6 @@
 			<% end %>
 		</section>
 		
-		<div>
-			<% status = tournament_status(@tournament) %>
-			<br>
-			<!Admin is allowed to register and manage tournament>
-			<% if not status or (user_is_admin? and status == 4) %>
-				<p><%= link_to "Sponsor/Register for this tournament", new_ticket_path %></p>
-			<% end %>
-			<% if status %>
-				<p>You are currently registered for this tournament as <%= get_tickettype_name(status) %></p>
-				<% if status == 4 or user_is_admin? %> <!tournament organizer>
-					<%= link_to "Manage tournament", controller: "tournaments", action: "dashboard" %> 
-				<% end %>
-			<% end %>
-		</div>
 		<div>
 			<p>
 				<td><%= link_to "Back to all Tournaments", tournaments_path %></td>

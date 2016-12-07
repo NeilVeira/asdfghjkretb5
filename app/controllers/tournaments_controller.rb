@@ -3,6 +3,10 @@ class TournamentsController < ApplicationController
 	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard]
 
 	def index
+		logger.debug "sort_column = #{sort_column}"
+		logger.debug "sort_direction = #{sort_direction}"
+		logger.debug "params[:sort] = #{params[:sort]}"
+		logger.debug "Tournament.column_names = #{Tournament.column_names}"
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
 	end
   
@@ -18,7 +22,8 @@ class TournamentsController < ApplicationController
 			#create ticket for current user as organizer
 			@ticket = create_ticket(4)
 			if @ticket
-				redirect_to ticket_path(@ticket)
+				#redirect_to ticket_path(@ticket)
+				redirect_to tournament_path(@tournament)
 			else
 				render 'new'
 			end
@@ -30,6 +35,8 @@ class TournamentsController < ApplicationController
 	def show
 		@tournament = Tournament.find(params[:id])
 		session[:tournament_id] = @tournament.id
+		@full_teams = Team.select{|t| t.p1 and t.p2 and t.p3 and t.p4 and t.tournament_id == @tournament.id}.count
+		@partial_teams = Team.select{|t| (t.p1 or t.p2 or t.p3 or t.p4) and t.tournament_id == @tournament.id}.count
 		
 		@person = current_person
 		@player = user_is_player?(@tournament.id)
@@ -77,6 +84,33 @@ class TournamentsController < ApplicationController
 		
 		@p.team_id = @t.id
 		@p.save
+		
+		redirect_to "/tournaments/#{@tournament.id}"
+	end
+	
+	def create_new_team
+		@tournament = Tournament.find(params[:id])
+		if(params[:player] == false)
+			redirect_to "/tournaments/#{@tournament.id}", :flash => { :error => 'You were not found to be a player.'}
+			return
+		else
+			@p = Player.find(params[:player])
+			@current_teams = @tournament.teams
+			
+			if(@current_teams.empty?)
+				new_team_num = 1
+			else
+				new_team_num = @current_teams.last.team_num + 1
+			end
+			
+			
+			@t = Team.new(:tournament => @tournament, :team_num => new_team_num)
+			@t.p1 = @p
+			@t.save(validate: false)
+			
+			@p.team = @t
+			@p.save
+		end
 		
 		redirect_to "/tournaments/#{@tournament.id}"
 	end
@@ -164,10 +198,6 @@ class TournamentsController < ApplicationController
 	end
 	
 	private
-	
-	def sort_column
-		Tournament.column_names.include?(params[:sort]) ? params[:sort] : "id"
-	end
 	
 	def authenticate_organizer!
 		#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home

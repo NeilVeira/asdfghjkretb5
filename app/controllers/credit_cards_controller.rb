@@ -14,41 +14,28 @@ class CreditCardsController < ApplicationController
       @credit_card.errors[:base] << "This card already exists!"
       render 'new'
     elsif @credit_card.save
-		redirect_to paymentProcessing_path(params[:ticket_id],cc: @credit_card.id)
-		#why would we want to redirect to profile?
-		#case params[:direct]
-		#  when "1"
-		#    redirect_to paymentProcessing_path(params[:ticket_id],cc: @credit_card.id)
-		#  when "3"
-		#    redirect_to people_profile_path
-		#  else
-		#    redirect_to people_profile_path
-		#end
+      case params[:direct]
+       when "1"
+         redirect_to paymentProcessing_path(params[:ticket_id],cc: @credit_card.id)
+       when "2"
+         redirect_to people_payment_information_path # this page should have link to add new card
+       else
+         redirect_to people_payment_information_path # this page should have link to add new card
+      end
     else
-		render 'new'
-		#why would we want to redirect to profile?
-		#case params[:return]
-		#  when "2"
-		#    redirect_to payment_path(params[:ticket_id])
-		#  when "3"
-		#    redirect_to people_profile_path
-		#  else
-		#    render 'new'
-		#end
-
       logger.debug "#{@credit_card.errors.count}"
       @credit_card.errors.full_messages.each do |msg|
         logger.debug "#{msg}"
       end
+      render 'new'
     end
 
   end
 
   def paymentProcessing
-    # require 'stripe'
 
     ticket = Ticket.find(params[:id])
-    price = get_price(ticket)
+    price = (get_price(ticket) * 100)
 
     @CC = CreditCard.where(id: params[:cc]).first
     unless @CC
@@ -75,7 +62,7 @@ class CreditCardsController < ApplicationController
           :password => 'password'
       )
 
-      # Authorize for $10 dollars (1000 cents)
+      # Authorize in cents
       response = gateway.authorize(price, credit_card)
 
       if response.success?
@@ -95,6 +82,12 @@ class CreditCardsController < ApplicationController
     # send_ticket ticket
     redirect_to ticket_path(params[:id])
   end
+  
+	def destroy
+		@credit_card = CreditCard.find(params[:id])
+		@credit_card.destroy
+		redirect_to people_payment_information_path
+	end
 
 
 end
