@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   # pass in ticket id
   get 'credit_cards/paymentProcessing/:id/:cc', to: 'credit_cards#paymentProcessing', as: :paymentProcessing
   
-  post 'paypal_pay', to: "paypal_notifications#create"
+  get 'tickets/paypal_pay/:id', to 'tickets#paypal_pay', as: :paypal_pay
+  post 'paypal_paid', to: "paypal_notifications#create"
 
   # for teams
   post 'tournaments/:id/create_new_teams_for_tournament', to: 'tournaments#create_new_teams_for_tournament'
