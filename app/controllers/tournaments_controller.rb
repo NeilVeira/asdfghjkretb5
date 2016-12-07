@@ -252,11 +252,20 @@ class TournamentsController < ApplicationController
 		people_in_tourney = Ticket.where(tournament: params[:id]).pluck(:person_id)
 		logger.info "#{people_in_tourney}"
 
+		@tournament = params[:id]
+		
 		@people = Array.new()
 		people_in_tourney.each do |p|
 			@temp = Person.find(p)
 			@people.push(@temp)
 		end
+	end
+
+	def view_reports
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+		@tournament = Tournament.find(params[:id])
 	end
 	
 	private

@@ -33,7 +33,7 @@
 <%= link_to "Pay with new credit card", new_credit_card_path(ticket_id: @ticket.id, direct_page: 1) %>
 <br>
 <br>
-<%= link_to "Pay with PayPal",  @ticket.paypal_url(tournaments_path, @ticket.id, @ticket.tournament.pricePlayer), target: '_blank'%>
+<%= link_to "Pay with PayPal",  @ticket.paypal_url(tournaments_path, @ticket.id, @_price), target: '_blank'%>
 <br>
 <br>
 
