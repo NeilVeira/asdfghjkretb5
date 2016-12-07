@@ -284,6 +284,27 @@ teams_list.each do |team_num, tournamentid, p1, p2, p3, p4|
 	Team.create( team_num: team_num, tournament_id: tournamentid, p1_id: p1, p2_id: p2, p3_id: p3, p4_id: p4)
 end
 
+
+scores_list = [
+	["K.Lowry","Red","Augusta","Tourney","USA",0,0,DateTime.now],
+	["J.Sullinger","Red","Augusta","Tourney","USA",0,0,DateTime.now],
+	["D.Carroll","Red","Augusta","Tourney","USA",0,0,DateTime.now],
+	["C.Joseph","White","Augusta","Tourney","USA",0,0,DateTime.now],
+	["N.Powell","White","Augusta","Tourney","USA",0,0,DateTime.now],
+	["L.James","Gold","Loren Place","Tourna","Toronto",0,0,DateTime.now],
+	["K.Irving","Gold","Loren Place","Tourna","Toronto",0,0,DateTime.now],
+	["J.Smith","Wine","Loren Place","Tourna","Toronto",0,0,DateTime.now],
+	["K.Love","Wine","Loren Place","Tourna","Toronto",0,0,DateTime.now],
+	["S.Curry","Yellow","CME Group Tour","Tours","Hamilton",0,0,DateTime.now],
+	["K.Durant","Blue","CME Group Tour","Tours","Hamilton",0,0,DateTime.now],
+	["K.Thompson","Yellow","CME Group Tour","Tours","Hamilton",0,0,DateTime.now],
+	["D.Green","Blue","CME Group Tour","Tours","Hamilton",0,0,DateTime.now]
+]
+
+scores_list.each do |name, team, golfcourse, tournament, location, score, hole,date|
+	Score.create(name: name, team: team, golfcourse: golfcourse, tournament: tournament,location: location, score: score, hole: hole,date: date)
+end
+
 #temp_player = Player.find_by(id: 1)
 #temp_player.team_id = 2
 #temp_player = Player.find_by(id: )

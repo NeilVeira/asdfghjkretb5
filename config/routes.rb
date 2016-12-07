@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'
-
+  post 'home_page/index', to: 'home_page#index'
   get 'people/profile', to: 'people#profile'
   get 'people/portal', to: 'people#portal'
   get 'people/user_tourney', to: 'people#user_tourney'
@@ -41,7 +41,13 @@ Rails.application.routes.draw do
   get 'people/linked_services', to: 'people#linked_services'
   get 'people/payment_information', to: 'people#payment_information'
 
-  get 'tournaments/:id/dashboard', to: 'tournaments#dashboard'
+  get 'tournaments/:id/dashboard', to: 'tournaments#dashboard', as: 'dashboard'
+  
+  get 'tournaments/:id/players', to: 'tournaments#view_players', as: 'view_players'
+  
+  get 'tournaments/:id/sponsors', to: 'tournaments#view_sponsors', as: 'view_sponsors'
+  
+  get 'tournaments/:id/tournament_organizers', to: 'tournaments#view_tournament_organizers', as: 'view_tournament_organizers'
 
   resources :people
   resources :tournaments

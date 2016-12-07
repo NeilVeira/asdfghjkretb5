@@ -10,7 +10,7 @@ function carousel() {
     setTimeout(carousel, 2000); // Change image every 2 seconds
 }
 
-
+var tour
 var scores = {a: '0',b: '0',c: '0',d: '0',e: '0',f: '0',g: '0',h: '0',i: '0',j: '0', k: '0', l: '0', n: '0'}
 var holes = {a: '1',b: '1',c: '1',d: '1',e: '1',f: '1',g: '1',h: '1',i: '1',j: '1', k: '1', l: '1', n: '1'}
 

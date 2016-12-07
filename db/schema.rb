@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 20161206230254) do
     t.string   "transaction_id"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
-    t.string   "item_name"
   end
 
   create_table "people", force: :cascade do |t|
@@ -107,6 +106,19 @@ ActiveRecord::Schema.define(version: 20161206230254) do
     t.datetime "updated_at",    null: false
     t.index ["person_id"], name: "index_registered_teams_on_person_id"
     t.index ["tournament_id"], name: "index_registered_teams_on_tournament_id"
+  end
+
+  create_table "scores", force: :cascade do |t|
+    t.string   "name"
+    t.string   "team"
+    t.string   "golfcourse"
+    t.string   "tournament"
+    t.string   "location"
+    t.integer  "score"
+    t.integer  "hole"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "date"
   end
 
   create_table "sponsors", force: :cascade do |t|
