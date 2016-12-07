@@ -1,0 +1,23 @@
+<table class="table">
+
+	<tr>
+		<th><%= sort(t("first_name")) %> </th>
+		<th><%= sort(t("last_name")) %></th>
+		<th><%= sort(t("Telephone")) %></th>
+	</tr>
+	
+	<% if @sponsors.empty? %>
+		<p>There are no sponsors for this tournament</p>
+	<% end %>
+	
+	<% @sponsors.each do |p| %>
+		<tr>
+			<td><%= p.firstname %></td>
+			<td><%= p.lastname %></td>
+			<td><%= p.phone %></td>
+		</tr>
+	<% end %>
+
+</table>
+
+<%= link_to "Back to Tournament Dashboard", dashboard_path(@tournament) %>

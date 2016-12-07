@@ -16,6 +16,18 @@
 				method: :delete,
 				data: {confirm: 'Are you sure? Deleting this tournament will also delete all players, teams, sponsors, tournament organizers, and tickets associated with it.'} %></li>
 			<% end %>
+			
+			<% if @is_admin or @organizer.adminrights & 1 != 0 %>
+				<li role="presentation"><%= link_to t("View Players"), view_players_path(@tournament) %></li>
+			<% end %>
+			
+			<% if @is_admin or @organizer.adminrights & 1 != 0 %>
+				<li role="presentation"><%= link_to t("View Sponsors"), view_sponsors_path(@tournament) %></li>
+			<% end %>
+			
+			<% if @is_admin or @organizer.adminrights & 1 != 0 %>
+				<li role="presentation"><%= link_to t("View Tournament Organizers"), view_tournament_organizers_path(@tournament) %></li>
+			<% end %>
 		</ul>
 	</div>
 

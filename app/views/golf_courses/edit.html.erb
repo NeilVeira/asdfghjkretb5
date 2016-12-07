@@ -17,10 +17,14 @@
     </div>
   <% end %>
   
-  <p>
-    <%= f.label t("Name") %>
-    <%= f.text_field :name %>
-  </p>
+	<p>
+		<%= f.label t("Name") %>
+		<%= f.text_field :name %>
+	</p>
+  	<p>
+		<%= f.label t("Description") %>
+		<%= f.text_area :description %>
+	</p>
  
 	<%= f.fields_for :address do |address| %>
 		
@@ -55,6 +59,10 @@
 		</p>
 		
 	<% end %>
+	
+	<p><%=t :golf_course_image %></p>
+		<%= f.file_field :image %>
+	<br>
  
   <p>
     <%= f.submit %>

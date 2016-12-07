@@ -3,10 +3,6 @@ class TournamentsController < ApplicationController
 	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard]
 
 	def index
-		logger.debug "sort_column = #{sort_column}"
-		logger.debug "sort_direction = #{sort_direction}"
-		logger.debug "params[:sort] = #{params[:sort]}"
-		logger.debug "Tournament.column_names = #{Tournament.column_names}"
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
 	end
   
@@ -195,6 +191,45 @@ class TournamentsController < ApplicationController
 		
 		redirect_to "/tournaments/#{@tournament.id}/dashboard"
 		return
+	end
+	
+		def view_players
+		players_in_tourney = Player.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{@players_in_tourney}"
+		
+		@tournament = params[:id]
+		
+		@players = Array.new();
+		players_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@players.push(@temp)
+		end
+	end
+	
+	def view_sponsors
+		sponsors_in_tourney = Sponsor.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{@players_in_tourney}"
+		
+		@tournament = params[:id]
+		
+		@sponsors = Array.new();
+		sponsors_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@sponsors.push(@temp)
+		end
+	end
+	
+	def view_tournament_organizers
+		tos_in_tourney = TournamentOrganizer.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{@players_in_tourney}"
+		
+		@tournament = params[:id]
+		
+		@tos = Array.new();
+		tos_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@tos.push(@temp)
+		end
 	end
 	
 	private

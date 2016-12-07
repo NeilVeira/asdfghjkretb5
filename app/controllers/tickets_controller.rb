@@ -40,7 +40,7 @@ class TicketsController < ApplicationController
 					price = @ticket.tournament.priceSpectator
 			end
 			if price != NIL and price > 0
-				redirect_to payment_select_path(@ticket)
+				redirect_to payment_path(@ticket)
 			else		
 				redirect_to ticket_path(@ticket)
 			end

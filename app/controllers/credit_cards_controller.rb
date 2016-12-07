@@ -69,10 +69,12 @@ class CreditCardsController < ApplicationController
         # Capture the money
         gateway.capture(price, response.authorization)
         # send_ticket ticket
+        ticket.has_paid = true
         redirect_to ticket_path(params[:id])
       else
         logger.debug "credit card was not proccessed"
         # send_ticket ticket
+        ticket.has_paid = true
         redirect_to ticket_path(params[:id])
         raise StandardError, response.message
       end
@@ -80,6 +82,7 @@ class CreditCardsController < ApplicationController
     end
     logger.debug "credit card was not valid"
     # send_ticket ticket
+    ticket.has_paid = true
     redirect_to ticket_path(params[:id])
   end
   
