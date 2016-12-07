@@ -21,7 +21,7 @@
 %>
 <h1>Payment for tournament <%= @ticket.tournament.name %></h1>
 
-<strong><h3><%= "Ticket price is: $"  + @_price.to_s %></h3></strong>
+<strong><h3><%= "Ticket price is: "  + number_to_currency(@_price) %></h3></strong>
 
 <% if @cc.any? %>
     <%= render partial: "credit_cards/credit_cards_table_pay", locals: {ticket: @ticket, credit_cards: @cc} %>
