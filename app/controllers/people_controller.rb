@@ -113,28 +113,28 @@ class PeopleController < ApplicationController
 		
 		@player = Player.find_by(person_id: @person.id)
 		if @player.present?
-			@team = Team.find_by(tournament_id: @tournament.id, p1_id: @player.id)
+			@team = Team.find_by(p1_id: @player.id)
 			if @team.present?
 				@team.p1_id = nil
 				@team.save(validate: false)
 				logger.info "Player was p1 in team"
 				logger.info "#{@team.errors.full_messages}"
 			else
-				@team = Team.find_by(tournament_id: @tournament.id, p2_id: @player.id)
+				@team = Team.find_by(p2_id: @player.id)
 				if @team.present?
 					@team.p2_id = nil
 					@team.save(validate: false)
 					logger.info "Player was p2 in team"
 					logger.info "#{@team.errors.full_messages}"
 				else
-					@team = Team.find_by(tournament_id: @tournament.id, p3_id: @player.id)
+					@team = Team.find_by(p3_id: @player.id)
 					if @team.present?
 						@team.p3_id = nil
 						@team.save(validate: false)
 						logger.info "Player was p3 in team"
 						logger.info "#{@team.errors.full_messages}"
 					else
-						@team = Team.find_by(tournament_id: @tournament.id, p4_id: @player.id)
+						@team = Team.find_by(p4_id: @player.id)
 						if @team.present?
 							@team.p4_id = nil
 							@team.save(validate: false)
@@ -142,7 +142,6 @@ class PeopleController < ApplicationController
 							logger.info "#{@team.errors.full_messages}"
 						else
 							logger.info "Player was not in a team"
-							logger.info "#{@team.errors.full_messages}"
 						end
 					end
 				end
