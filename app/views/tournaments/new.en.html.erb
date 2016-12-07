@@ -47,6 +47,8 @@
 <div class="col-md-3">
 
   <p><strong>Pricing</strong></p>
+  <%= f.label "Currency" %><br>
+  <%= f.select(:currency, [['USD', 'USD'], ['CAN', 'CAN'], ['EUR', 'EUR'], ['GBP', 'GBP'], ['AUD','AUD'] , ['JPY','JPY'] , ['CNY','CNY']]) %><br>
   <%= f.label "Player price" %><br>
   <%= f.text_field :pricePlayer %><br>
   <%= f.label "Spectator price" %><br>
@@ -55,20 +57,22 @@
   <%= f.text_field :priceSponsor %><br>
 
   <br>
-  <p>
-    <%= f.label t("Description") %><br>
-    <%= f.text_area :description %>
-  </p>
-	
-    <p>
-      <%= f.label :Extra_Features %><br>
-      <%= f.text_area :extrafeatures %>
-    </p>
+
 
 
 </div>
 
 <div class="col-md-3">
+  <p>
+    <%= f.label t("Description") %><br>
+    <%= f.text_area :description %>
+  </p>
+  
+    <p>
+      <%= f.label :Extra_Features %><br>
+      <%= f.text_area :extrafeatures %>
+    </p>
+    <br>
   <p>Tournament Picture:</p>
   <%= f.file_field :image %>
 </div>

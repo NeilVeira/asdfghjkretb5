@@ -4,10 +4,8 @@ class HomePageController < ApplicationController
 	
 	def index
 		@scores = Score.all
-		@tours = Score.select(:tournament).distinct
+		@tours = Score.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day).or( Score.where(date: DateTime.new(1999,9,9))).select(:tournament).distinct
 		@tour = params[:tour]
-		#@total = Team.joins(:tournament, :player)
-		#puts @total
 	end
 
 
