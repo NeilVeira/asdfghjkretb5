@@ -124,14 +124,12 @@
   			<table id="livetours" class="table">
 				<tr>
 					<th>Tournament</th>
-					<th>Location</th>
 					<th colspan="4"></th>
 				</tr>
 
 				<% @tours.each do |t| %>
 						<tr>
 							<td id="Tame"><%= t.tournament %></td>
-							<td><%= t.location %></td>
 						</tr>
 				<% end %>
 			</table>
@@ -147,7 +145,6 @@
 				<% @scores.select  {|s|  @tour ==s.tournament}.each do |s| %>
 					<tr>
 						<td><%= s.name %></td>
-						<td><%= s.team %> </td>
 						<td><%= s.score %></td>
 						<td><%= s.hole %></td>
 					</tr>

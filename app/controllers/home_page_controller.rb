@@ -4,7 +4,7 @@ class HomePageController < ApplicationController
 	
 	def index
 		@scores = Score.all
-		@tours = Score.select(:tournament, :location).distinct
+		@tours = Score.select(:tournament).distinct
 		@tour = params[:tour]
 		#@total = Team.joins(:tournament, :player)
 		#puts @total
