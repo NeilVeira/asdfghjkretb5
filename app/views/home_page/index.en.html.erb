@@ -165,14 +165,32 @@
 			For more information: Check out our <%=link_to t('Features'), controller: "/feature", action: "index" %>
 		</p>
 	</div>
+
 	<hr class="line_break">
-	<div class="jumbotron" style="text-align: center">
-		 <h2>Pricing </h2>
-		 <p>Prices are also low as <strong>$29.95/tournament</strong></p>
-		 <p>For more details, check out specific <%=link_to t('Tournaments'), tournaments_path%>
-		 <h2>Promotion</h2>
-		 <p>A 3-day trip to Florida for SomeGolfCourse tournament up to 3 people only $500! Register Now!</p>
+	<div class="contrainer-fluid">
+		<div class="jumbotron" style="text-align: center" >
+			 <div class="row">
+				 <h2>Pricing</h2>
+				 <p>Create a Tournament for <strong>FREE</strong> today!</p>
+
+				 <div class="col-md-6">
+				 	<strong>Organizers</strong>
+				 	<p>A fee of $2.50 is applied for each registered player.</p>
+				 	<p>A 4% charge will be applied to credit card purchases.</p>
+				 </div>
+
+				<div class="col-md-6">
+				 	<strong>Players / Sponsors</strong>
+				 	<p>Prices vary by tournament, please check out specific <%=link_to t('Tournaments'), tournaments_path%></p>
+				</div>
+			</div>
+			<div class="row">
+				<h2><strong>Special Promotion!!!</strong></h2>
+				<p>A 3-day trip to Florida for SomeGolfCourse tournament up to 3 people only $500! Register Now!</p>
+			</div>
+		</div>
 	</div>
+	
 	<hr class="line_break">
 	<div class="jumbotron">
 		<h2>Testimonies</h2>
