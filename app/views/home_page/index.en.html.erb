@@ -91,8 +91,8 @@
     				<h3 style="padding-bottom: 40px; padding-left: 50px">Live Active Tournaments</h3>
 						 <table id="livetournaments" class="w3-table-all w3-card-4 w3-bordered">
 			    			<tr class="w3-hover-red">
-			      				<th><%=t :Name %></th>
-			      				<th><%=t :Location %></th>
+			      				<th>Name</th>
+			      				<th>Location</th>
 			    			</tr>
 			    			<tr class="w3-hover-text-green">
 			      				<td id="TName">Augusta</td>
@@ -112,7 +112,7 @@
   						<div style="text-align: center;"><h3>Tournament Updates</h3> <p id="style" style="padding-left: 10px"> Click on one of the Live Tournaments for it's status</p></div>
 			  			<table id="tournamentstatus" class="w3-table-all w3-card-4 w3-bordered">
 			    			<tr>
-			      				<th><%=t :Player %></th>
+			      				<th>Player</th>
 			      				<th>Score</th>
 			      				<th>Hole</th>
 			    			</tr>
@@ -120,6 +120,7 @@
   				</td>
   			</tr>
   			</table>-->
+  			<!--<%= debug @total %>-->
   			<table id="livetours" class="table">
 				<tr>
 					<th>Tournament</th>
@@ -210,7 +211,5 @@
     	});
 
 */
-     
-
     });	
 </script>

@@ -4,7 +4,7 @@ ENV['TZ'] = 'America/New_York'
 scheduler = Rufus::Scheduler::singleton
 
 
-scheduler.every '1m' do
+scheduler.every '8m' do
   # do stuff
   Score.all.each do |s| 
 			if s.hole < 18
