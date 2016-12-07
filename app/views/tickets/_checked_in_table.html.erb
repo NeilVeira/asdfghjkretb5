@@ -1,19 +1,20 @@
 <b>Checked-in</b>
 <br>
-<% tickets = Ticket.where(tournament_id: id, checked_in: true)
-   # if tickets.any?
-  if true
+<%
+  if list1.any?
 %>
   <table class="table">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
+      <th>Ticket Type</th>
     </tr>
 
-    <% list.each do |t| %>
+    <% list1.each do |t| %>
         <tr>
           <td><%=  t.firstname %></td>
           <td><%=  t.lastname %></td>
+          <td><%=  get_tickettype_name (Ticket.where(tournament_id: id, person_id: t.id).first.tickettype)  %></td>
         </tr>
     <% end %>
   </table>
@@ -25,18 +26,21 @@
 <br>
 
 <b>To Be Checked-in</b> <br>
-<% tickets = Ticket.where(tournament_id: id, checked_in: false)
-    if tickets.any?%>
+<%
+    if list2.any?
+%>
   <table class="table">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
+      <th>Ticket Type</th>
     </tr>
 
-    <% tickets.each do |t| %>
+    <% list2.each do |t| %>
         <tr>
-          <td><%=  t.person.firstname %></td>
-          <td><%=  t.person.lastname %></td>
+          <td><%=  t.firstname %></td>
+          <td><%=  t.lastname %></td>
+          <td><%=  get_tickettype_name (Ticket.where(tournament_id: id, person_id: t.id).first.tickettype)  %></td>
         </tr>
     <% end %>
   </table>

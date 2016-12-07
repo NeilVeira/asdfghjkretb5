@@ -4,7 +4,7 @@
 <strong> Total Spectators Registered: </strong> <%= Ticket.where(tournament_id: params[:id], tickettype: 3).count %>
 <br>
 <br>
-<%= render partial: "tickets/checked_in_table", locals: {id: params[:id], list: @people}  %>
+<%= render partial: "tickets/checked_in_table", locals: {id: params[:id], list1: @people1, list2: @people2}  %>
 
 <br>
 <br>

@@ -1,19 +1,22 @@
+<% credit_cards = CreditCard.where(person_id: person_id)
+  if credit_cards.any?
+%>
 <table>
   <tr>
-    <th>Number</th>
-    <th>First Name</th>
-    <th>Last Name</th>
+    <th>Number   </th>
+    <th>First Name   </th>
+    <th>Last Name   </th>
   </tr>
 
   <%
-    credit_cards = CreditCard.where(person_id: person_id)
     credit_cards.each do |cc| %>
           <tr>
             <td><%= mask_credit_card cc.number%></td>
             <td><%= cc.fname%></td>
             <td><%= cc.lname%></td>
-			<td><%= link_to "Delete", credit_card_path(cc), method: :delete, data: {confirm: "Are you sure?"} %></td>
+			      <td><%= link_to "Delete", credit_card_path(cc), method: :delete, data: {confirm: "Are you sure?"} %></td>
           </tr>
   <% end %>
 
 </table>
+<% end %>
