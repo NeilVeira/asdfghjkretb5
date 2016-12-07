@@ -97,7 +97,7 @@ class TicketsController < ApplicationController
         else
           @ticket.has_paid = false
           @ticket.save
-          redirect_to @ticket.paypal_url(tournaments_path, @ticket.id, _price)
+          redirect_to @ticket.paypal_url(tournaments_path, @ticket.id, _price, request.base_url)
         end
       end
     end

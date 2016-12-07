@@ -25,7 +25,7 @@ class Ticket < ApplicationRecord
     return price
   end
                       
-  def paypal_url(return_url, t_id, t_price)
+  def paypal_url(return_url, t_id, t_price, host_addr)
     values = {
       business: 'castiel.x.zhu-merchant@gmail.com',
       cmd: '_xclick',
@@ -38,7 +38,7 @@ class Ticket < ApplicationRecord
       item_number: '1',
       quantity: '1',
       #{Rails.application.secrets.app_host}
-      notify_url: request.base_url+"/paypal_paid"
+      notify_url: host_addr+"/paypal_paid"
     }
     "https://www.sandbox.paypal.com/cig-bin/webscr?"+ values.to_query
   end   
