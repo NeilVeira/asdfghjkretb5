@@ -41,7 +41,8 @@ class TicketsController < ApplicationController
 			end
 			if price != NIL and price > 0
 				redirect_to payment_path(@ticket)
-			else		
+			else
+				@ticket.has_paid = true
 				redirect_to ticket_path(@ticket)
 			end
 		else

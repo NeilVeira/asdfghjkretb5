@@ -22,9 +22,13 @@
 				<td><%= t.description %></td>
 				<td><%= t_date %></td>
 				<td><%= link_to t("Show"), tournament_path(t) %></td>
-				<% if status[t.id] %>
-					<td><%= t("already_registered") %></td>
-				<% else %>				
+				<% if status[t.id]
+               if (get_ticket (t.id)).has_paid %>
+					<td><%= t("Already registered") %></td>
+            <% else %>
+          <td><%= link_to t("Payment Pending"), payment_path(t.id) %></td>
+        <%     end
+          else %>
 					<td><%= link_to t("Register"), setup_path(t.id) %></td>
 				<% end %>
 			</tr>

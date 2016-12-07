@@ -33,32 +33,31 @@ users_list.each do |email, password|
     user.password_confirmation = password
     user.save!
 end
-
-address_list = [["p",1,40,"Yonge Street","Ontario","Canada","M6K 4L2"],
-				["p",5,435,"Bloor Street","Ontario","Canada","M3H 2V6"],
-				["p",7,6342,"Lawrence Avenue","Calgary","Alberta","Canada","H5J 7B2"],
-				["p",0,1234,"Lawrence Avenue East","Ontario","Canada","M1P 2L9"],
-				["p",0,10,"Hogarth Ave","Ontario","Canada","M4K 2P3"],
-				["p",0,1000,"Jane Street","York","Ontario","Canada","M6N 4E2"],
-				["p",0,4200,"Yonge Street","North York","Ontario","Canada","M2P 1N9"], 
-				["p",0,155,"St Dennis Dr","North York","Ontario","Canada","M3C 2S2"],
-				["g",0,6320,"Grandview Dr W","University Place","Washington State","98467"],
-				["g",0,1700,"17-Mile Drive","Pebble Beach","California","93953"],
-				["g",0,99,"Quaker Meeting House Rd","Farmingdale","New York","11735"],
-				["g", 0, 2401, "Biarritz Dr", "Miami Beach", "Florida",  "33141"],
-				["g", 0, 4200, "Yonge Street",  "Ontario", "Canada", "M2P 1N9"],
-				["g", 0, 155, "Saint Dennis Drive",  "Ontario", "Canada", "M3C 2S2"],
-				["g", 0, 6320, "Grandview Drive West", "University Place", "Washington",  "98467"],
-				["g", 0, 1700, "17-Mile Drive", "Pebble Beach", "California",  "93953"],
-				["g", 0, 99, "Quaker Meeting House Road", "Farmingdale", "New York",  "11735"],
-				["g", 0, 2401, "Biarritz Drive", "Miami Beach", "Florida",  "33141"],
-				["g", 0, 1904, "rue Garneau", "Quebec", "Quebec", "Canada", "G1V 3V5"],
-				["g", 0, 320, "Front Street West",  "Ontario", "Canada", "M5V"],
-				["g", 0, 2861, "Weston rd",  "Ontario", "Canada", "M9N 1G4"],
-				["g", 0, 4133, "Port Washington Road", "Granum", "Alberta", "Canada", "T0L 1A0"],
-				["g", 0, 2754, "Velvet Elk Nook", "Vopolo Havoka", "British Columbia", "Canada", "V1M 6D1"],
-				["g", 0, 9260, "Foggy Private", "Starbuck", "Yukon", "Canada", "Y2S 1I8"]
-				]
+address_list = [["p",1,40,"Yonge Street","Toronto","Ontario","Canada","M6K 4L2"],
+ 				["p",5,435,"Bloor Street","Toronto","Ontario","Canada","M3H 2V6"],
+  				["p",7,6342,"Lawrence Avenue","Calgary","Alberta","Canada","H5J 7B2"],
+ 				["p",0,1234,"Lawrence Avenue East","Toronto","Ontario","Canada","M1P 2L9"],
+ 				["p",0,10,"Hogarth Ave","Toronto","Ontario","Canada","M4K 2P3"],
+  				["p",0,1000,"Jane Street","York","Ontario","Canada","M6N 4E2"],
+  				["p",0,4200,"Yonge Street","North York","Ontario","Canada","M2P 1N9"], 
+  				["p",0,155,"St Dennis Dr","North York","Ontario","Canada","M3C 2S2"],
+ 				["g",0,6320,"Grandview Dr W","University Place","Washington State","USA","98467"],
+ 				["g",0,1700,"17-Mile Drive","Pebble Beach","California","USA","93953"],
+ 				["g",0,99,"Quaker Meeting House Rd","Farmingdale","New York","USA","11735"],
+ 				["g", 0, 2401, "Biarritz Dr", "Miami Beach", "Florida", "USA", "33141"],
+ 				["g", 0, 4200, "Yonge Street", "Toronto", "Ontario", "Canada", "M2P 1N9"],
+ 				["g", 0, 155, "Saint Dennis Drive", "Toronto", "Ontario", "Canada", "M3C 2S2"],
+ 				["g", 0, 6320, "Grandview Drive West", "University Place", "Washington", "USA", "98467"],
+ 				["g", 0, 1700, "17-Mile Drive", "Pebble Beach", "California", "USA", "93953"],
+ 				["g", 0, 99, "Quaker Meeting House Road", "Farmingdale", "New York", "USA", "11735"],
+ 				["g", 0, 2401, "Biarritz Drive", "Miami Beach", "Florida", "USA", "33141"],
+  				["g", 0, 1904, "rue Garneau", "Quebec", "Quebec", "Canada", "G1V 3V5"],
+ 				["g", 0, 320, "Front Street West", "Toronto", "Ontario", "Canada", "M5V"],
+ 				["g", 0, 2861, "Weston rd", "Toronto", "Ontario", "Canada", "M9N 1G4"],
+  				["g", 0, 4133, "Port Washington Road", "Granum", "Alberta", "Canada", "T0L 1A0"],
+  				["g", 0, 2754, "Velvet Elk Nook", "Vopolo Havoka", "British Columbia", "Canada", "V1M 6D1"],
+ 				["g", 0, 9260, "Foggy Private", "Starbuck", "Yukon", "Canada", "Y2S 1I8"],
+  				]
 
 address_list.each do |addressType, apartmentNumber, streetNumber, streetName, city, province, country, postalCode|
     Address.create(addressType: addressType, apartmentNumber: apartmentNumber, streetNumber: streetNumber, streetName: streetName, city: city, province: province, country: country, postalCode: postalCode)
