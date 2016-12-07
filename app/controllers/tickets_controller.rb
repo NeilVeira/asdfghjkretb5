@@ -46,7 +46,7 @@ class TicketsController < ApplicationController
         else
           @ticket.has_paid = true
           @ticket.save
-          redirect_to ticket_path(exists_ticket)
+          redirect_to ticket_path(@ticket)
         end
 
       else
