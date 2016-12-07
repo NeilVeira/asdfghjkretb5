@@ -85,7 +85,7 @@
 	<hr class="line_break">
 	<div class="jumbotron">
 			<script src="/javascript/jquery-3.1.1.min.js"></script>
-			<table width=100%> 
+			<!--<table width=100%> 
   				<tr> 
     				<td valign="top">
     				<h3 style="padding-bottom: 40px; padding-left: 50px">Live Active Tournaments</h3>
@@ -119,7 +119,40 @@
 			  			</table>
   				</td>
   			</tr>
-  			</table>
+  			</table>-->
+  			<table id="livetours" class="table">
+				<tr>
+					<th>Tournament</th>
+					<th>Location</th>
+					<th colspan="4"></th>
+				</tr>
+
+				<% @tours.each do |t| %>
+						<tr>
+							<td id="Tame"><%= t.tournament %></td>
+							<td><%= t.location %></td>
+						</tr>
+				<% end %>
+			</table>
+			<section id="tablesdiv">
+			<table id="tablediv" class="table">
+				<tr>
+					<th>Player</th>
+					<th>Team</th>
+					<th>Score</th>
+					<th>Hole</th>
+					<th colspan="4"></th>
+				</tr>
+				<% @scores.select  {|s|  @tour ==s.tournament}.each do |s| %>
+					<tr>
+						<td><%= s.name %></td>
+						<td><%= s.team %> </td>
+						<td><%= s.score %></td>
+						<td><%= s.hole %></td>
+					</tr>
+				<% end %>
+			</table>
+			</section>
 	</div>
 	<hr class="line_break">
 	<div class="jumbotron">
@@ -158,3 +191,26 @@
 	</div>
 	<hr class="line_break">
 </div>	
+<script type="text/javascript">
+	$("#livetours tr").click(function(){
+        var tour = $(this).children("td#Tame").text();
+        $("#tablediv").show()
+        //window.open("/home_page/index?tour="+tour,"_self")
+        window.open("/home_page/index?tour="+tour+"#tablesdiv","_self")/*
+        $.ajax({
+        	url : "home_page/index?tour="+tour,
+        	type : "post",
+        	data : tour,
+        	success: function(s){
+        		
+        	},
+            error: function(e){
+            	console.log(e)
+            }
+    	});
+
+*/
+     
+
+    });	
+</script>
