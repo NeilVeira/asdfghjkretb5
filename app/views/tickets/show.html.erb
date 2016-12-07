@@ -7,7 +7,7 @@
   	<strong>Person name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
   	<strong>Ticket id: </strong><%= @ticket.id %><br>
     <br>
-    <strong>Price: </strong> <b>$</b><%= get_price(@ticket) %> <br>
+    <strong>Price: </strong><%= number_to_currency(get_price(@ticket)) %> <br>
     <strong>Payment: </strong>
     <% if (@ticket.has_paid) %> Paid
     <% else %><b>
