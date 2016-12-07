@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
 	before_action :authenticate_user!
-	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :paypal_pay, :check_in]
+	before_action :authenticate_ticket_owner!, only: [:show, :destroy, :payment, :payment_select, :paypal_pay]
 	before_action :authenticate_admin!, only: [:index, :edit, :update]
 
     def index
