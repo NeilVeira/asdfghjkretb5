@@ -18,6 +18,8 @@ class TournamentsController < ApplicationController
 			#create ticket for current user as organizer
 			@ticket = create_ticket(4)
 			if @ticket
+				@ticket.has_paid = true
+				@ticket.save
 				#redirect_to ticket_path(@ticket)
 				redirect_to tournament_path(@tournament)
 			else
