@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
   get 'home_page/index'
-
+  post 'home_page/index', to: 'home_page#index'
   get 'people/profile', to: 'people#profile'
   get 'people/portal', to: 'people#portal'
   get 'people/user_tourney', to: 'people#user_tourney'
