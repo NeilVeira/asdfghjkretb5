@@ -20,6 +20,8 @@
         <li role="presentation"><%= link_to t("Checked In Attendees"), view_checked_in_path(@tournament) %></li>
 
         <li role="presentation"><%= link_to t("Reports"), view_reports_path(@tournament) %></li>
+
+        <li role="presentation"><%= link_to t('Tee Sheets'), tee_sheets_path(@tournament) %></li>
     <% end %>
 
     <% if is_admin or organizer.adminrights & 8 != 0 %> <!--check privileges to delete tournament-->

@@ -35,7 +35,15 @@
 	<strong>When?</strong>
 	</h2>
 	<p>
-		<%= t_date = @tournament.date.to_date %>
+		
+		<%= t_date = @tournament.date.to_date %><br>
+		At: <%= @tournament.date.hour %> :
+		 <% if @tournament.date.min < 10%>
+		 	0<%=@tournament.date.min %>
+		 <% else %>
+		 	<%=@tournament.date.min%>
+		 <% end %>
+
 	</p>
 	<p>
 		<% c_date = Time.now.to_date %>
@@ -72,13 +80,13 @@
 		<%= @tournament.extrafeatures %>
 	</p>
 
-	<section>
+
 		<h2>
 			<strong>Current Teams</strong>
 		</h2>
 		<%@teams = @tournament.teams%>
-		<%if (@teams==nil)%>
-			 The tournament does not have a team
+		<%if (@teams.empty?)%>
+			 The tournament does not have a team.
 		<%else%>
 			<table class="table">
 				<th>Team Name</th>
@@ -137,5 +145,5 @@
 				<% end %>
 			</table>
 		<% end %>
-	</section>
+
 </div>

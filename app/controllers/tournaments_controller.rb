@@ -267,7 +267,14 @@ class TournamentsController < ApplicationController
 		@is_admin = user_is_admin?
 		@tournament = Tournament.find(params[:id])
 	end
-	
+
+	def tee_sheets
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+		@tournament = Tournament.find(params[:id])
+	end
+
 	def remove_person_from_tournament
 		@tournament = Tournament.find(params[:id])
 		logger.info "#{@tournament}"
