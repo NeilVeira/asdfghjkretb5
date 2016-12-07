@@ -12,7 +12,7 @@ class TournamentsController < ApplicationController
 	end
   
 	def create
-		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :price_player, :price_spectator, :image))
+		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :pricePlayer, :priceSpectator, :priceSponsor, :image))
 		if @tournament.save
 			session[:tournament_id] = @tournament.id
 			#create ticket for current user as organizer
@@ -45,7 +45,7 @@ class TournamentsController < ApplicationController
   
 	def update
 		@tournament = Tournament.find(params[:id])		
-		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :image))		
+		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :pricePlayer, :priceSpectator, :priceSponsor, :image))		
 			#redirect_to @tournament
 			redirect_to "/tournaments/#{@tournament.id}/dashboard"
 		else
@@ -193,9 +193,13 @@ class TournamentsController < ApplicationController
 		return
 	end
 	
-		def view_players
+	def view_players
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+
 		players_in_tourney = Player.where(tournament: params[:id]).pluck(:person_id)
-		logger.info "#{@players_in_tourney}"
+		logger.info "#{players_in_tourney}"
 		
 		@tournament = params[:id]
 		
@@ -207,12 +211,16 @@ class TournamentsController < ApplicationController
 	end
 	
 	def view_sponsors
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+
 		sponsors_in_tourney = Sponsor.where(tournament: params[:id]).pluck(:person_id)
-		logger.info "#{@players_in_tourney}"
+		logger.info "#{sponsors_in_tourney}"
 		
 		@tournament = params[:id]
 		
-		@sponsors = Array.new();
+		@sponsors = Array.new()
 		sponsors_in_tourney.each do |p|
 			@temp = Person.find(p)
 			@sponsors.push(@temp)
@@ -220,25 +228,43 @@ class TournamentsController < ApplicationController
 	end
 	
 	def view_tournament_organizers
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+
 		tos_in_tourney = TournamentOrganizer.where(tournament: params[:id]).pluck(:person_id)
-		logger.info "#{@players_in_tourney}"
+		logger.info "#{tos_in_tourney}"
 		
 		@tournament = params[:id]
 		
-		@tos = Array.new();
+		@tos = Array.new()
 		tos_in_tourney.each do |p|
 			@temp = Person.find(p)
 			@tos.push(@temp)
 		end
 	end
-	
-	private
-	
-	def authenticate_organizer!
-		#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
-		unless user_is_organizer?(params[:id])
-			access_denied
+
+	def view_checked_in
+		@person = current_person
+		@organizer = TournamentOrganizer.find_by(tournament_id: params[:id], person_id: @person.id)
+		@is_admin = user_is_admin?
+
+		people_in_tourney = Ticket.where(tournament: params[:id]).pluck(:person_id)
+		logger.info "#{people_in_tourney}"
+
+		@people = Array.new()
+		people_in_tourney.each do |p|
+			@temp = Person.find(p)
+			@people.push(@temp)
 		end
 	end
+	
+	private
+		def authenticate_organizer!
+			#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home
+			unless user_is_organizer?(params[:id])
+				access_denied
+			end
+		end
 	
 end

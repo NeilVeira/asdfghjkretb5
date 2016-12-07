@@ -14,39 +14,44 @@ class TicketsController < ApplicationController
     end
     
     def new
-		@ticket = Ticket.new()
-		@tournament = Tournament.find(session[:tournament_id])
-		person = current_person
-		exists_ticket = Ticket.where(tournament_id: session[:tournament_id], person: person).first
-		if exists_ticket
-			redirect_to ticket_path(exists_ticket)
-		end
+			@ticket = Ticket.new()
+			@tournament = Tournament.find(session[:tournament_id])
+			person = current_person
+			exists_ticket = Ticket.where(tournament_id: session[:tournament_id], person: person).first
+			if exists_ticket
+				redirect_to ticket_path(exists_ticket)
+			end
     end
     
     def edit
     end
     
     def create
-		@ticket = create_ticket(ticket_params[:tickettype])
-		if @ticket
-			price = NIL
-			case @ticket.tickettype 
-				when 1
-					price = @ticket.tournament.pricePlayer
-				when 2
-					price = @ticket.tournament.priceSponsor
-					redirect_to new_sponsor_path and return
-				when 3
-					price = @ticket.tournament.priceSpectator
+			@ticket = create_ticket(ticket_params[:tickettype])
+
+			if @ticket # successfully created
+				price = nil
+				case @ticket.tickettype
+					when 1
+						price = @ticket.tournament.pricePlayer
+					when 2
+						price = @ticket.tournament.priceSponsor
+						redirect_to new_sponsor_path
+					when 3
+						price = @ticket.tournament.priceSpectator
+				end
+
+				if price != nil and price > 0
+					redirect_to payment_path(@ticket)
+				else
+					@ticket.has_paid = true
+					@ticket.save
+					redirect_to ticket_path(@ticket)
+				end
+
+			else
+				render 'new'
 			end
-			if price != NIL and price > 0
-				redirect_to payment_path(@ticket)
-			else		
-				redirect_to ticket_path(@ticket)
-			end
-		else
-			render 'new'
-		end
     end
     
     def update
@@ -64,6 +69,7 @@ class TicketsController < ApplicationController
 			@ticket = Ticket.find(params[:id])
 			if (is_current_tournament_organizer @ticket.tournament.id)
 				@ticket.checked_in = true
+				@ticket.save
 				render 'check_in'
 			else
 				render 'ticket_error'
@@ -73,10 +79,6 @@ class TicketsController < ApplicationController
   	def payment
 		  @cc = CreditCard.where(person_id: current_person.id)
   	end
-  		
-  	def payment_select
-		
-    end
     
     def paypal_pay
       @paypal_noftication = PaypalNotification.create!

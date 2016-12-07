@@ -41,19 +41,20 @@
       <%= f.label :"False" %>
       <%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
     </p>
-	
-	<p>Pricing (optional)</p>
-	<%= f.label "Player price" %><br>
-	<%= f.text_field :pricePlayer %><br>
-	<%= f.label "Spectator price" %><br>
-	<%= f.text_field :priceSpectator %><br>
-	<%= f.label "Sponsor price" %><br>
-	<%= f.text_field :priceSponsor %><br>
-	
+		
 </div>
 
 <div class="col-md-3">
 
+  <p><strong>Pricing</strong></p>
+  <%= f.label "Player price" %><br>
+  <%= f.text_field :pricePlayer %><br>
+  <%= f.label "Spectator price" %><br>
+  <%= f.text_field :priceSpectator %><br>
+  <%= f.label "Sponsor price" %><br>
+  <%= f.text_field :priceSponsor %><br>
+
+  <br>
   <p>
     <%= f.label t("Description") %><br>
     <%= f.text_area :description %>
@@ -63,6 +64,8 @@
       <%= f.label :Extra_Features %><br>
       <%= f.text_area :extrafeatures %>
     </p>
+
+
 </div>
 
 <div class="col-md-3">

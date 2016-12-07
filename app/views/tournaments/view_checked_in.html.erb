@@ -1,0 +1,10 @@
+<%= render partial: "tournaments/dashboard_header", locals: {is_admin: @is_admin, organizer: @organizer, tournament: params[:id]} %>
+
+<strong> Total Players Registered: </strong> <%= Player.where(tournament_id: params[:id]).count %> <br>
+<strong> Total Spectators Registered: </strong> <%= Ticket.where(tournament_id: params[:id], tickettype: 3).count %>
+<br>
+<br>
+<%= render partial: "tickets/checked_in_table", locals: {id: params[:id], list: @people}  %>
+
+<br>
+<br>

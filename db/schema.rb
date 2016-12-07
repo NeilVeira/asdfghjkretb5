@@ -153,11 +153,11 @@ ActiveRecord::Schema.define(version: 20161207042249) do
   create_table "tickets", force: :cascade do |t|
     t.integer  "tickettype"
     t.integer  "person_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.integer  "tournament_id"
-    t.boolean  "checked_in"
-    t.boolean  "has_paid"
+    t.boolean  "checked_in",    default: false
+    t.boolean  "has_paid",      default: false
     t.index ["person_id"], name: "index_tickets_on_person_id"
     t.index ["tournament_id"], name: "index_tickets_on_tournament_id"
   end
@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20161207042249) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.decimal  "priceSponsor",       precision: 6, scale: 2
+    t.string   "currency"
     t.index ["golf_course_id"], name: "index_tournaments_on_golf_course_id"
   end
 

@@ -17,8 +17,8 @@
 		<li role="presentation" ><%=link_to 'Back to Tournaments', tournaments_path %></li>
 
     <% id = get_ticket_id @tournament.id
-      if id != nil %>
-         <li role="presentation" ><%=link_to 'View Tickets', ticket_path(id) %></li>
+      if id != nil and !(user_is_tournament_organizer? @tournament) %>
+         <li role="presentation" ><%=link_to 'View Ticket', ticket_path(id) %></li>
     <% end %>
 	</ul>
 
@@ -39,13 +39,7 @@
 				</p>
 			<% end %>
 		</section>
-		
-		<section>
-		<h3>Pricing</h3>
-		<strong>Player: $</strong><%= @tournament.pricePlayer ? @tournament.pricePlayer : 0 %><br>
-		<strong>Sponsor: $</strong><%= @tournament.priceSponsor ? @tournament.priceSponsor : 0 %><br>
-		<strong>Spectator: $</strong><%= @tournament.priceSpectator ? @tournament.priceSpectator : 0 %><br>
-		</section>
+	
 		
 		<section>
 			<br>

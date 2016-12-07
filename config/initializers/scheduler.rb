@@ -25,3 +25,11 @@ scheduler.every '8m' do
 			end
 		end
 end
+
+scheduler.every '7h' do
+	Score.all.each do |s|
+		s.hole = 0
+		s.score = 0
+		s.save
+	end
+end

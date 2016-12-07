@@ -11,21 +11,18 @@ Rails.application.routes.draw do
   get 'serviceterm/index'
 
   get 'tickets/payment/:id', to: 'tickets#payment', as: :payment
-
   get 'tickets/check_in/:id', to: 'tickets#check_in', as: :checkIn
+  # setup is used to pass the tournament_id to the tickets#new action when registering
+  get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
 
   # pass in ticket id
   get 'credit_cards/paymentProcessing/:id/:cc', to: 'credit_cards#paymentProcessing', as: :paymentProcessing
-
-  # setup is used to pass the tournament_id to the tickets#new action when registering
-  get 'tickets/setup/:id', to: 'tickets#setup', as: :setup
   
   post 'paypal_pay', to: "paypal_notifications#create"
-  
+
+  # for teams
   post 'tournaments/:id/create_new_teams_for_tournament', to: 'tournaments#create_new_teams_for_tournament'
-  
   post 'tournaments/:id/add_self_to_team', to: 'tournaments#add_self_to_team'
-  
   post 'tournaments/:id/create_new_team', to: 'tournaments#create_new_team'
   
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', sessions: 'users/sessions', registrations: 'users/registrations', sign_out: 'users/sign_out'}
@@ -42,12 +39,10 @@ Rails.application.routes.draw do
   get 'people/payment_information', to: 'people#payment_information'
 
   get 'tournaments/:id/dashboard', to: 'tournaments#dashboard', as: 'dashboard'
-  
   get 'tournaments/:id/players', to: 'tournaments#view_players', as: 'view_players'
-  
   get 'tournaments/:id/sponsors', to: 'tournaments#view_sponsors', as: 'view_sponsors'
-  
   get 'tournaments/:id/tournament_organizers', to: 'tournaments#view_tournament_organizers', as: 'view_tournament_organizers'
+  get 'tournaments/:id/check_in', to: 'tournaments#view_checked_in', as: :view_checked_in
 
   resources :people
   resources :tournaments
@@ -66,5 +61,4 @@ Rails.application.routes.draw do
   
   get '*path' => redirect('/')
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-	
 end

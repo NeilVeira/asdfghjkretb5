@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
-	helper_method :current_person, :get_price, :get_ticket_id,:sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
+	helper_method :current_person, :get_price, :get_ticket_id, :get_ticket, :sort_column, :sort_direction, :user_is_admin?, :user_is_golf_course_organizer?, :user_matches_param?
 	before_action :set_locale
 	#Helper methods to get current person or admin objects.
 	#They can only be used if the user is signed in
@@ -260,5 +260,9 @@ class ApplicationController < ActionController::Base
 		else
 			nil
 		end
+	end
+
+	def get_ticket (t_id, p_id = current_person)
+		ticket = Ticket.where(tournament_id: t_id, person_id: p_id).first
 	end
 end	
