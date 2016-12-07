@@ -12,7 +12,7 @@
 
 	<% @sponsors.each do |sponsor| %>
 		<tr>
-			<td><%= sponsor.person.firstname %> <% sponsor.person.lastname %> (<%= link_to sponsor.person.user.email, person_path(sponsor.person) %>)</td>
+			<td><%= sponsor.person.firstname %> <%= sponsor.person.lastname %> (<%= link_to sponsor.person.user.email, person_path(sponsor.person) %>)</td>
 			<td><%= sponsor.name %></td>
 			<td><%= sponsor.website %></td>
 			<td><%= sponsor.contact_info %></td>

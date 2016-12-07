@@ -9,7 +9,7 @@
 
 	<% @tournament_organizers.each do |to| %>
 		<tr>
-			<td><%= to.person.firstname %> <% to.person.lastname %> (<%= link_to to.person.user.email, person_path(to.person) %>)</td>
+			<td><%= to.person.firstname %> <%= to.person.lastname %> (<%= link_to to.person.user.email, person_path(to.person) %>)</td>
 			<td><%= link_to to.tournament.name, tournament_path(to.tournament) %></td>
 			<td><%= to.adminrights %></td>
 			<td><%= link_to 'Delete', tournament_organizer_path(to),

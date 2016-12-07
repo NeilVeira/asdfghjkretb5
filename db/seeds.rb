@@ -79,24 +79,24 @@ end
 
 #IMPORTANT: people 8-10 are website admins. To keep data valid, do not use them in other objects (tournaments, players, etc.) 
 people_list = [
-	["FirstName1", "LastName1", Date.new(1991,1,1), "111-111-1111", Address.first.id, User.first.id],
-    ["FirstName2", "LastName2", Date.new(1992,2,2), "222-222-2222", Address.second.id, User.second.id],
-    ["FirstName3", "LastName3", Date.new(1993,3,3), "333-333-3333", Address.third.id, User.third.id],
-    ["FN4", "LN4", Date.new(1994,4,14), "444-444-4444", Address.fourth.id, User.fourth.id],
-    ["FN5", "LN5", Date.new(1995,5,15), "555-555-5555", Address.fifth.id, User.fifth.id],
-    ["FN6", "LN6", Date.new(1996,6,26), "666-666-6666", 6, 6],
-    ["FN7", "LN7", Date.new(1950,10,30), "777-777-7777", 7, 7],
-    ["Admin1", "XXX", Date.new(2000,1,1), "012-345-6789", 8, 8],
-    ["Admin2", "XXX", Date.new(2000,1,1), "012-345-6789", 9, 9],
-    ["Admin3", "XXX", Date.new(2000,1,1), "012-345-6789", 10, 10],
-	["FN11", "LN11", Date.new(1953,3,13), "555-783-1822", 11, 11],
-	["FN12", "LN12", Date.new(1960,2,16), "123-321-1232", 19, 12],
-	["FN13", "LN13", Date.new(1980,3,30), "416-342-1010", 20, 13],
-	["FN14", "LN14", Date.new(1990,1,12), "416-000-1111", 21, 14],
-	["FN15", "LN15", Date.new(1955,11,12), "123-340-9432", 12, 15], #extra person which is not registered for any tournaments in any way (for testing)
-	["FN16", "LN16", Date.new(1932,5,5), "543-123-8497", 22, 16], 
-	["FN17", "LN17", Date.new(1999,5,7), "239-487-1002", 23, 17], 
-	["FN18", "LN18", Date.new(1932,4,16), "019-834-5619", 24, 18], 
+	["Luke", "Wheeler", Date.new(1991,1,1), "111-111-1111", Address.first.id, User.first.id],
+    ["Rita", "Harrison", Date.new(1992,2,2), "222-222-2222", Address.second.id, User.second.id],
+    ["Jared", "Newman", Date.new(1993,3,3), "333-333-3333", Address.third.id, User.third.id],
+    ["Kim", "Weber", Date.new(1994,4,14), "444-444-4444", Address.fourth.id, User.fourth.id],
+    ["Moses", "Maldonado", Date.new(1995,5,15), "555-555-5555", Address.fifth.id, User.fifth.id],
+    ["Earl", "Alvarado", Date.new(1996,6,26), "666-666-6666", 6, 6],
+    ["Clifton", "Phelps", Date.new(1950,10,30), "777-777-7777", 7, 7],
+    ["Lillian", "Ward", Date.new(2000,1,1), "012-345-6789", 8, 8],
+    ["Russell", "Mendoza", Date.new(2000,1,1), "012-345-6789", 9, 9],
+    ["Becky", "Bishop", Date.new(2000,1,1), "012-345-6789", 10, 10],
+	["Megan", "Bryan", Date.new(1953,3,13), "555-783-1822", 11, 11],
+	["Kelley", "Greene", Date.new(1960,2,16), "123-321-1232", 19, 12],
+	["Jared", "Carter", Date.new(1980,3,30), "416-342-1010", 20, 13],
+	["Beth", "Powell", Date.new(1990,1,12), "416-000-1111", 21, 14],
+	["Tracy", "Frank", Date.new(1955,11,12), "123-340-9432", 12, 15], #extra person which is not registered for any tournaments in any way (for testing)
+	["Dustin", "Mcquire", Date.new(1932,5,5), "543-123-8497", 22, 16], 
+	["Casey", "Luna", Date.new(1999,5,7), "239-487-1002", 23, 17], 
+	["Salvatore", "Fields", Date.new(1932,4,16), "019-834-5619", 24, 18], 
 ]
 
 people_list.each do |firstname,lastname,dob,phone,address_id,user_id|

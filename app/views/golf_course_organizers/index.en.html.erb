@@ -9,7 +9,7 @@
 	
 	<% @golf_course_organizers.each do |gco| %>
 		<tr>
-		<td><%= gco.person.firstname %> <% gco.person.lastname %> (<%= link_to gco.person.user.email, person_path(gco.person) %>)</td>
+		<td><%= gco.person.firstname %> <%= gco.person.lastname %> (<%= link_to gco.person.user.email, person_path(gco.person) %>)</td>
 		<td><%= link_to gco.golf_course.name, golf_course_path(gco.golf_course) %></td>
 		<td><%= gco.adminrights %></td>
 			<td><%= link_to 'Delete', golf_course_organizer_path(gco),

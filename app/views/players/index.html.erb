@@ -10,7 +10,7 @@
 
 		<% @players.each do |player| %>
 			<tr>
-				<td><%= player.person.firstname %> <% player.person.lastname %> (<%= link_to player.person.user.email, person_path(player.person) %>)</td>
+				<td><%= player.person.firstname %> <%= player.person.lastname %> (<%= link_to player.person.user.email, person_path(player.person) %>)</td>
 				<td><%= link_to player.tournament.name, tournament_path(player.tournament) %></td>
 				<!-- TODO: Add link to show team -->
 				<% if player.team_id %>
