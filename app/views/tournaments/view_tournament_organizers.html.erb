@@ -1,4 +1,4 @@
-<%= render partial: "tournaments/dashboard_header" %>
+<%= render partial: "tournaments/dashboard_header", locals: {is_admin: @is_admin, organizer: @organizer, tournament: params[:id]} %>
 
 <table class="table">
 

@@ -1,6 +1,6 @@
 <html>
 
-  <%= render partial: "tournaments/dashboard_header" %>
+<%= render partial: "tournaments/dashboard_header", locals: {is_admin: @is_admin, organizer: @organizer} %>
 
 	<%= render partial: "tournaments/tournament_info" %>
 
