@@ -14,7 +14,7 @@
 
 
 <div class="col-md-4">
-	<br>
+
 	<h2>
 		<strong>Where?</strong>
 	</h2>
@@ -29,7 +29,7 @@
 		<%= @tournament.golf_course.address.postalCode %>
 	</p>
 
-	<br>
+
 
 	<h2>
 	<strong>When?</strong>
@@ -49,6 +49,11 @@
 			This tournament is over.
 		<% end %>
 	</p>
+
+	<h2><strong>Pricing</strong></h2>
+	<strong>Player: $</strong><%= @tournament.pricePlayer ? @tournament.pricePlayer : 0 %><br>
+	<strong>Sponsor: $</strong><%= @tournament.priceSponsor ? @tournament.priceSponsor : 0 %><br>
+	<strong>Spectator: $</strong><%= @tournament.priceSpectator ? @tournament.priceSpectator : 0 %>
 </div>
 
 <div class="col-md-8">

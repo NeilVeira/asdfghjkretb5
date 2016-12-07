@@ -18,44 +18,73 @@
     </div>
   <% end %>
   
-  <p>
-    <%= f.label t("Name") %><br>
-    <%= f.text_field :name %>
-  </p>
- 
+<div class="container-fluid" id="create_info">
+<div class="col-md-4">
+    <p>
+      <%= f.label t("Name") %><br>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>Golf Course:</p>
+    <%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
+
+    <br>
+    <p>Date:</p>
+    <%= f.datetime_select(:date, start_year: 2018) %>
+
+    <p>
+      <%= f.label :Is_it_a_public_tournament? %><br>
+
+      <%= f.label :"True" %>
+      <%= f.radio_button :ispublic, "1", checked: @tournament.ispublic? %>
+
+      <%= f.label :"False" %>
+      <%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
+    </p>
+    
+</div>
+
+<div class="col-md-3">
+
+  <p><strong>Pricing</strong></p>
+  <%= f.label "Player price" %><br>
+  <%= f.text_field :pricePlayer %><br>
+  <%= f.label "Spectator price" %><br>
+  <%= f.text_field :priceSpectator %><br>
+  <%= f.label "Sponsor price" %><br>
+  <%= f.text_field :priceSponsor %><br>
+
+  <br>
   <p>
     <%= f.label t("Description") %><br>
     <%= f.text_area :description %>
   </p>
   
-  <p>
-    <%= f.label :Is_it_a_public_tournament? %><br>
-    
-	<%= f.label :"True" %>
-	<%= f.radio_button :ispublic, "1", checked: @tournament.ispublic? %>
-	
-	<%= f.label :"False" %>
-	<%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
-  </p>
-  
-  <p><%=t :golf_courses %>: </p>
-  <%= f.collection_select(:golf_course_id, GolfCourse.all, :id, :name) %>
-  
-  <p><%=t :Date %>:</p>
-	<%= f.datetime_select(:date, start_year: 2018) %>
-  
+    <p>
+      <%= f.label :Extra_Features %><br>
+      <%= f.text_area :extrafeatures %>
+    </p>
+
+
+</div>
+
+<div class="col-md-3">
   <p>Tournament Picture:</p>
-	<%= f.file_field :image %>
-	
-	<br>
-  
-  <p>
-    <%= f.label :Extra_Features %><br>
-    <%= f.text_area :extrafeatures %>
-  </p>
- 
-  <p>
-    <%= f.submit %>
-  </p>
+  <%= f.file_field :image %>
+</div>
+
+<div class="col-md-6">
+</div>
+</div>
+
+<div class="container-fluid" id="create_info">
+    <br>
+    <p>
+      <%= f.submit %>
+    </p>
+</div>
 <% end %>
-<%= link_to t('Back'), controller: "tournaments", action: "dashboard" %>
+
+<div class="container-fluid">
+<button><%= link_to t('Back'), controller: "tournaments", action: "dashboard" %></button>
+</div>

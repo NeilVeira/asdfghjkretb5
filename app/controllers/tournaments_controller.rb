@@ -12,7 +12,7 @@ class TournamentsController < ApplicationController
 	end
   
 	def create
-		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :price_player, :price_spectator, :image))
+		@tournament = Tournament.new(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :pricePlayer, :priceSpectator, :priceSponsor, :image))
 		if @tournament.save
 			session[:tournament_id] = @tournament.id
 			#create ticket for current user as organizer
@@ -45,7 +45,7 @@ class TournamentsController < ApplicationController
   
 	def update
 		@tournament = Tournament.find(params[:id])		
-		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :image))		
+		if @tournament.update(params.require(:tournament).permit(:name, :description, :ispublic, :extrafeatures, :date, :golf_course_id, :pricePlayer, :priceSpectator, :priceSponsor, :image))		
 			#redirect_to @tournament
 			redirect_to "/tournaments/#{@tournament.id}/dashboard"
 		else
