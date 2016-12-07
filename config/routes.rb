@@ -44,6 +44,8 @@ Rails.application.routes.draw do
   get 'tournaments/:id/tournament_organizers', to: 'tournaments#view_tournament_organizers', as: 'view_tournament_organizers'
   get 'tournaments/:id/check_in', to: 'tournaments#view_checked_in', as: :view_checked_in
 
+  delete 'tournaments/:id/:ph_id', to: 'tournaments#remove_person_from_tournament', as: 'remove_person_from_tournament'
+  
   resources :people
   resources :tournaments
   resources :golf_courses

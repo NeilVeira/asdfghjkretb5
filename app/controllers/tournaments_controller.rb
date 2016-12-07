@@ -261,6 +261,59 @@ class TournamentsController < ApplicationController
 		end
 	end
 	
+	def remove_person_from_tournament
+		@tournament = Tournament.find(params[:id])
+		logger.info "#{@tournament}"
+		
+		@person = Person.find(params[:ph_id])
+		logger.info "#{@person}"
+		
+		Ticket.where(tournament_id: @tournament.id, person_id: @person.id).delete_all
+		
+		@player = Player.find_by(tournament_id: @tournament.id, person_id: @person.id)
+		if @player.present?
+			@team = Team.find_by(tournament_id: @tournament.id, p1_id: @player.id)
+			if @team.present?
+				@team.p1_id = nil
+				@team.save(validate: false)
+				logger.info "Player was p1 in team"
+				logger.info "#{@team.errors.full_messages}"
+			else
+				@team = Team.find_by(tournament_id: @tournament.id, p2_id: @player.id)
+				if @team.present?
+					@team.p2_id = nil
+					@team.save(validate: false)
+					logger.info "Player was p2 in team"
+					logger.info "#{@team.errors.full_messages}"
+				else
+					@team = Team.find_by(tournament_id: @tournament.id, p3_id: @player.id)
+					if @team.present?
+						@team.p3_id = nil
+						@team.save(validate: false)
+						logger.info "Player was p3 in team"
+						logger.info "#{@team.errors.full_messages}"
+					else
+						@team = Team.find_by(tournament_id: @tournament.id, p4_id: @player.id)
+						if @team.present?
+							@team.p4_id = nil
+							@team.save(validate: false)
+							logger.info "Player was p4 in team"
+							logger.info "#{@team.errors.full_messages}"
+						else
+							logger.info "Player was not in a team"
+							logger.info "#{@team.errors.full_messages}"
+						end
+					end
+				end
+			end
+		end
+		
+		Sponsor.where(tournament_id: @tournament.id, person_id: @person.id).delete_all
+		Player.where(tournament_id: @tournament.id, person_id: @person.id).delete_all
+		
+		redirect_back(fallback_location: root_path)
+	end
+	
 	private
 		def authenticate_organizer!
 			#make sure the current user is an organizer for this tournament. If not, display an access denied message and redirect to home

@@ -110,10 +110,45 @@ class PeopleController < ApplicationController
 		
 		TournamentOrganizer.where(person_id: @person.id).delete_all
 		Ticket.where(person_id: @person.id).delete_all
-		Team.where(p1_id: @person.id).delete_all
-		Team.where(p2_id: @person.id).delete_all
-		Team.where(p3_id: @person.id).delete_all
-		Team.where(p4_id: @person.id).delete_all
+		
+		@player = Player.find_by(person_id: @person.id)
+		if @player.present?
+			@team = Team.find_by(tournament_id: @tournament.id, p1_id: @player.id)
+			if @team.present?
+				@team.p1_id = nil
+				@team.save(validate: false)
+				logger.info "Player was p1 in team"
+				logger.info "#{@team.errors.full_messages}"
+			else
+				@team = Team.find_by(tournament_id: @tournament.id, p2_id: @player.id)
+				if @team.present?
+					@team.p2_id = nil
+					@team.save(validate: false)
+					logger.info "Player was p2 in team"
+					logger.info "#{@team.errors.full_messages}"
+				else
+					@team = Team.find_by(tournament_id: @tournament.id, p3_id: @player.id)
+					if @team.present?
+						@team.p3_id = nil
+						@team.save(validate: false)
+						logger.info "Player was p3 in team"
+						logger.info "#{@team.errors.full_messages}"
+					else
+						@team = Team.find_by(tournament_id: @tournament.id, p4_id: @player.id)
+						if @team.present?
+							@team.p4_id = nil
+							@team.save(validate: false)
+							logger.info "Player was p4 in team"
+							logger.info "#{@team.errors.full_messages}"
+						else
+							logger.info "Player was not in a team"
+							logger.info "#{@team.errors.full_messages}"
+						end
+					end
+				end
+			end
+		end
+		
 		Sponsor.where(person_id: @person.id).delete_all
 		Player.where(person_id: @person.id).delete_all
 		GolfCourseOrganizer.where(person_id: @person.id).delete_all

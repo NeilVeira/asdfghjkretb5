@@ -1,25 +1,28 @@
 <%= render partial: "tournaments/dashboard_header", locals: {is_admin: @is_admin, organizer: @organizer, tournament: params[:id]} %>
 
-<table class="table">
+<% if @players.empty? %>
+	<p>There are no players for this tournament</p>
+<% else %>
+	<table class="table">
 
-	<tr>
-		<th><%= sort(t("first_name")) %> </th>
-		<th><%= sort(t("last_name")) %></th>
-		<th><%= sort(t("Telephone")) %></th>
-	</tr>
-	
-	<% if @players.empty? %>
-		<p>There are no players for this tournament</p>
-	<% end %>
-	
-	<% @players.each do |p| %>
 		<tr>
-			<td><%= p.firstname %></td>
-			<td><%= p.lastname %></td>
-			<td><%= p.phone %></td>
+			<th><%= sort(t("first_name")) %> </th>
+			<th><%= sort(t("last_name")) %></th>
+			<th><%= sort(t("Telephone")) %></th>
 		</tr>
-	<% end %>
 
-</table>
+		<% @players.each do |p| %>
+			<tr>
+				<td><%= p.firstname %></td>
+				<td><%= p.lastname %></td>
+				<td><%= p.phone %></td>
+				<td><%= link_to t("Delete"), remove_person_from_tournament_path(@tournament, p),
+						method: :delete,
+						data: { confirm: 'Are you sure you want to remove this person from the tournament?' } %></td>
+			</tr>
+		<% end %>
+
+	</table>
+<% end %>
 
 <%= link_to "Back to Tournament Dashboard", dashboard_path(@tournament) %>
