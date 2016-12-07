@@ -3,27 +3,27 @@
 
   <ul class="nav nav-tabs">
     <% if is_admin or organizer.adminrights & 1 != 0 %> <!--check privileges to edit info-->
-        <li role="presentation"><%= link_to "Edit",edit_tournament_path(tournament) %></li>
+        <li role="presentation"><%= link_to "Edit",edit_tournament_path(@tournament) %></li>
     <% end %>
 
     <% if is_admin or organizer.adminrights & 4 != 0 %> <!--check privileges to add tournament admins-->
-        <li role="presentaiton"><%= link_to t("Add Admin"), new_tournament_organizer_path %></li>
+        <li role="presentation"><%= link_to t("Add Admin"), new_tournament_organizer_path %></li>
     <% end %>
 
     <% if is_admin or organizer.adminrights & 8 != 0 %> <!--check privileges to delete tournament-->
-        <li role="presentation"><%= link_to t("Delete"), tournament_path(tournament),
+        <li role="presentation"><%= link_to t("Delete"), tournament_path(@tournament),
                                             method: :delete,
                                             data: {confirm: 'Are you sure? Deleting this tournament will also delete all players, teams, sponsors, tournament organizers, and tickets associated with it.'} %></li>
     <% end %>
 
     <% if is_admin or organizer.adminrights & 1 != 0 %>
-        <li role="presentation"><%= link_to t("View Players"), view_players_path(tournament) %></li>
+        <li role="presentation"><%= link_to t("View Players"), view_players_path(@tournament) %></li>
 
-        <li role="presentation"><%= link_to t("View Sponsors"), view_sponsors_path(tournament) %></li>
+        <li role="presentation"><%= link_to t("View Sponsors"), view_sponsors_path(@tournament) %></li>
 
-        <li role="presentation"><%= link_to t("Checked In Attendees"), view_checked_in_path(tournament) %></li>
+        <li role="presentation"><%= link_to t("Checked In Attendees"), view_checked_in_path(@tournament) %></li>
 
-        <li role="presentation"><%= link_to t("View Admins"), view_tournament_organizers_path(tournament) %></li>
+        <li role="presentation"><%= link_to t("View Admins"), view_tournament_organizers_path(@tournament) %></li>
 
   <% end %>
   </ul>
