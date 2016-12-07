@@ -10,6 +10,7 @@ class Tournament < ApplicationRecord
 	validates :description, presence: true
 	validates :pricePlayer, allow_blank: true, numericality: true
 	validates :priceSpectator, allow_blank: true, numericality: true
+	validates :priceSponsor, allow_blank: true, numericality: true
 	
 	validates_inclusion_of :ispublic, :in => [true, false]
 	

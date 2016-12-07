@@ -41,6 +41,15 @@
       <%= f.label :"False" %>
       <%= f.radio_button :ispublic, "0", checked: !@tournament.ispublic %>
     </p>
+	
+	<p>Pricing (optional)</p>
+	<%= f.label "Player price" %><br>
+	<%= f.text_field :pricePlayer %><br>
+	<%= f.label "Spectator price" %><br>
+	<%= f.text_field :priceSpectator %><br>
+	<%= f.label "Sponsor price" %><br>
+	<%= f.text_field :priceSponsor %><br>
+	
 </div>
 
 <div class="col-md-3">

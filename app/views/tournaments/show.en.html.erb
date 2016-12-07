@@ -41,6 +41,13 @@
 		</section>
 		
 		<section>
+		<h3>Pricing</h3>
+		<strong>Player: $</strong><%= @tournament.pricePlayer ? @tournament.pricePlayer : 0 %><br>
+		<strong>Sponsor: $</strong><%= @tournament.priceSponsor ? @tournament.priceSponsor : 0 %><br>
+		<strong>Spectator: $</strong><%= @tournament.priceSpectator ? @tournament.priceSpectator : 0 %><br>
+		</section>
+		
+		<section>
 			<br>
 			<h2>Tournament Sponsors</h2>
 			<% Sponsor.where(tournament_id: @tournament.id).find_each do |s| %>

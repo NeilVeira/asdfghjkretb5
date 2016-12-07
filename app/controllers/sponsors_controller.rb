@@ -29,7 +29,11 @@ class SponsorsController < ApplicationController
 			logger.debug "Sponsor created successfully"
 			#find the ticket which should have previously been created for this sponsor
 			@ticket = Ticket.find_by(tournament_id: @sponsor.tournament.id, person_id: @sponsor.person.id)
-			redirect_to @ticket
+			if @tournament.priceSponsor != NIL and @tournament.priceSponsor > 0
+				redirect_to payment_select_path(@ticket)
+			else
+				redirect_to @ticket
+			end
 		else
 			logger.error "Sponsor was not added to database"
 			render 'new'
