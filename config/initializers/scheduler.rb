@@ -6,7 +6,7 @@ scheduler = Rufus::Scheduler::singleton
 
 scheduler.every '8m' do
   # do stuff
-  Score.all.each do |s| 
+  Score.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day).or( Score.where(date: DateTime.new(1999,9,9))).each do |s| 
 			if s.hole < 18
 				if rand < 0.3
 					s.hole +=1
@@ -31,5 +31,23 @@ scheduler.every '7h' do
 		s.hole = 0
 		s.score = 0
 		s.save
+	end
+end
+
+scheduler.every '2h' do
+	@players = Array.new()
+	@todaytours = Tournament.where(date: DateTime.now.beginning_of_day..DateTime.now.end_of_day)
+	@todaytours.each do |t|
+		to= t.name
+		date = t.date
+		@pid= Player.where(tournament: t.id).pluck(:person_id)
+		@pid.each do |pi|
+			first = Person.find(pi).firstname
+			second = Person.find(pi).lastname
+			@players.push(([first+"."+second,to,0,0,date]))
+		end
+	end
+	@players.each do |name,  tournament, score, hole,date|
+		Score.create(name: name,  tournament: tournament, score: score, hole: hole,date: date)
 	end
 end

@@ -1,0 +1,23 @@
+<%= render partial: "tournaments/dashboard_header", locals: {is_admin: @is_admin, organizer: @organizer, tournament: params[:id]} %>
+
+<div class="container-fluid">
+<h2>Registered People</h2>
+<strong> Players: </strong> <%= Player.where(tournament_id: params[:id]).count %> <br>
+<strong> Sponsors: </strong> <%= Sponsor.where(tournament_id: params[:id]).count %> <br>
+<strong> Admins: </strong> <%= TournamentOrganizer.where(tournament_id: params[:id]).count %> <br>
+<strong> Viewers: </strong> <%= Ticket.where(tournament_id: params[:id], tickettype: 3).count %> <br>
+
+<br>
+<h2> Current Revenue (By ticket sales)</h2>
+<strong> Players: </strong> $<%= Ticket.where(tournament_id: params[:id], tickettype: 1).count * @tournament.pricePlayer %><br>
+<strong> Sponsors: </strong> $<%= Ticket.where(tournament_id: params[:id], tickettype: 2).count * @tournament.priceSponsor%> <br>
+<strong> Viewers: </strong> $<%= Ticket.where(tournament_id: params[:id], tickettype: 3).count * @tournament.priceSpectator %> <br>
+
+
+<h2> Current Charges </h2>
+<strong>Player charge: </strong>$ <%= Ticket.where(tournament_id: params[:id], tickettype: 1).count * 2.5 %>
+<br>
+<strong>Usage fees: </strong>$ 
+	<%= (Ticket.where(tournament_id: params[:id], tickettype: 1).count * @tournament.pricePlayer +
+		Ticket.where(tournament_id: params[:id], tickettype: 2).count * @tournament.priceSponsor +
+		Ticket.where(tournament_id: params[:id], tickettype: 3).count * @tournament.priceSpectator) * 0.04 %>
