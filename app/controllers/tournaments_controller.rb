@@ -3,10 +3,6 @@ class TournamentsController < ApplicationController
 	before_action :authenticate_organizer!, only: [:edit, :update, :destroy, :dashboard]
 
 	def index
-		logger.debug "sort_column = #{sort_column}"
-		logger.debug "sort_direction = #{sort_direction}"
-		logger.debug "params[:sort] = #{params[:sort]}"
-		logger.debug "Tournament.column_names = #{Tournament.column_names}"
 		@tournaments = Tournament.order(sort_column + " " + sort_direction)
 	end
   
