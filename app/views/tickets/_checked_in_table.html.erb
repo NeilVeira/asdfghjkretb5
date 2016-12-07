@@ -4,7 +4,7 @@
    # if tickets.any?
   if true
 %>
-  <table>
+  <table class="table">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -12,8 +12,8 @@
 
     <% list.each do |t| %>
         <tr>
-          <th><%=  t.firstname %></th>
-          <th><%=  t.lastname %></th>
+          <td><%=  t.firstname %></td>
+          <td><%=  t.lastname %></td>
         </tr>
     <% end %>
   </table>
@@ -27,7 +27,7 @@
 <b>To Be Checked-in</b> <br>
 <% tickets = Ticket.where(tournament_id: id, checked_in: false)
     if tickets.any?%>
-  <table>
+  <table class="table">
     <tr>
       <th>First Name</th>
       <th>Last Name</th>
@@ -35,8 +35,8 @@
 
     <% tickets.each do |t| %>
         <tr>
-          <th><%=  t.person.firstname %></th>
-          <th><%=  t.person.lastname %></th>
+          <td><%=  t.person.firstname %></td>
+          <td><%=  t.person.lastname %></td>
         </tr>
     <% end %>
   </table>

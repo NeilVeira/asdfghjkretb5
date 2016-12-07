@@ -252,6 +252,8 @@ class TournamentsController < ApplicationController
 		people_in_tourney = Ticket.where(tournament: params[:id]).pluck(:person_id)
 		logger.info "#{people_in_tourney}"
 
+		@tournament = params[:id]
+		
 		@people = Array.new()
 		people_in_tourney.each do |p|
 			@temp = Person.find(p)
