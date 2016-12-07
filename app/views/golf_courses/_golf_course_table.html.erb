@@ -8,7 +8,7 @@
 	<tr>
 		<th><%= sort("name") %> </th>
 		<th><%=t :Address %></th>
-		<th><%=t :number_hosted_tournaments %></th>
+		<th><%=t 'number of hosted tournaments (finished)' %></th>
 		<th><%=t :number_upcoming_tournaments %></th>
 		<th><%=t :Link %></th>
 		<th colspan="4"></th>
@@ -17,7 +17,7 @@
 	<% golf_course.each do |gc| %>
 			<tr>
 				<td><%= gc.name %></td>
-				<td><%= gc.address_id %></td>
+				<td><%= gc.address.streetNumber %> <%= gc.address.streetName %>, <%= gc.address.city %>, <%= gc.address.country %></td>
 				<td><%= tournaments_previous.where(golf_course: gc).count %></td>
 				<td><%= tournaments_future.where(golf_course: gc).count %></td>
 				<td><%= link_to t("Show"), golf_course_path(gc) %></td>
