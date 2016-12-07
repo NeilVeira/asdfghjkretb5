@@ -26,7 +26,7 @@
                if (get_ticket (t.id)).has_paid %>
 					<td><%= t("Already registered") %></td>
             <% else %>
-          <td><%= link_to t("Payment Pending"), payment_path(t.id) %></td>
+          <td><%= link_to t("Payment Pending"), payment_path((get_ticket_id(t.id))) %></td>
         <%     end
           else %>
 					<td><%= link_to t("Register"), setup_path(t.id) %></td>

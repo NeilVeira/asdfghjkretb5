@@ -188,6 +188,7 @@ ActiveRecord::Schema.define(version: 20161207042249) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.decimal  "priceSponsor",       precision: 6, scale: 2
+    t.string   "currency"
     t.index ["golf_course_id"], name: "index_tournaments_on_golf_course_id"
   end
 

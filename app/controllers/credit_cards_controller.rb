@@ -33,9 +33,12 @@ class CreditCardsController < ApplicationController
   end
 
   def paymentProcessing
+    require "active_merchant/billing/rails"
 
-    ticket = Ticket.find(params[:id])
+    @ticket = Ticket.find(params[:id])
     price = (get_price(ticket) * 100)
+
+    logger.debug "paid: #{ticket.has_paid}"
 
     @CC = CreditCard.where(id: params[:cc]).first
     unless @CC
@@ -68,21 +71,24 @@ class CreditCardsController < ApplicationController
       if response.success?
         # Capture the money
         gateway.capture(price, response.authorization)
-        # send_ticket ticket
-        ticket.has_paid = true
+
+        ticket.has_paid=true
+        ticket.save
         redirect_to ticket_path(params[:id])
       else
         logger.debug "credit card was not proccessed"
-        # send_ticket ticket
-        ticket.has_paid = true
+
+        ticket.has_paid=true
+        ticket.save
         redirect_to ticket_path(params[:id])
         raise StandardError, response.message
       end
 
     end
     logger.debug "credit card was not valid"
-    # send_ticket ticket
-    ticket.has_paid = true
+    ticket.has_paid=true
+    ticket.save
+    logger.debug "paid: #{ticket.has_paid}"
     redirect_to ticket_path(params[:id])
   end
   

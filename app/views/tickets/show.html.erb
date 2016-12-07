@@ -6,9 +6,9 @@
   	<strong>Tournament: </strong><%= @ticket.tournament.name %><br>
   	<strong>Person name: </strong><%= @ticket.person.firstname %> <%= @ticket.person.lastname %><br>
   	<strong>Ticket id: </strong><%= @ticket.id %><br>
-    <strong>Price: </strong> <%= get_price(@ticket) %>
+    <strong>Price: </strong> <%= get_price(@ticket) %> <br>
     <strong>Payment: </strong>
-    <% if @ticket.has_paid %><b>Paid</b>
+    <% if (@ticket.has_paid) %><b>Paid</b>
     <% else %><b>
     <%= link_to 'Pending', payment_path(@ticket.id) %></b>
     <% end %>
