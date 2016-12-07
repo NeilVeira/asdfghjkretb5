@@ -139,7 +139,6 @@ class TournamentsController < ApplicationController
 				redirect_to "/tournaments/#{@tournament.id}/dashboard", :flash => { :error => 'Too many players to add.'}
 				return
 			elsif ( @team_i.blank? == false and (4 - @team_i.player.size) < t_s_input.count(i) )
-				debug
 				redirect_to "/tournaments/#{@tournament.id}/dashboard", :flash => { :error => 'Too many players to add.'}
 				return
 			end
