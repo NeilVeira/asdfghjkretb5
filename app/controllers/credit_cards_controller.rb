@@ -35,7 +35,7 @@ class CreditCardsController < ApplicationController
   def paymentProcessing
     require "active_merchant/billing/rails"
 
-    @ticket = Ticket.find(params[:id])
+    ticket = Ticket.find(params[:id])
     price = (get_price(ticket) * 100)
 
     logger.debug "paid: #{ticket.has_paid}"

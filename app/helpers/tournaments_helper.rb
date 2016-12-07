@@ -14,7 +14,7 @@ module TournamentsHelper
 	def user_is_sponsor?(tournament)
 		person = current_person
 		sponsor = Sponsor.where(person_id: person.id, tournament_id: tournament.id)
-		if sponsor
+		if sponsor.any?
 			true
 		else
 			false
@@ -24,7 +24,7 @@ module TournamentsHelper
 	def user_is_tournament_organizer?(tournament)
 		person = current_person
 		tournament_organizer = TournamentOrganizer.where(person_id: person.id, tournament_id: tournament.id)
-		if tournament_organizer
+		if tournament_organizer.any?
 			true
 		else
 			false
