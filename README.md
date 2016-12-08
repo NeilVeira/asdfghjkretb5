@@ -37,3 +37,23 @@ but it might be better if you test your changes too .__.
 * Deployment instructions
 
 * ...
+
+###Features
+
+1. Live Tournament Scoring: Located on the Home Page at Live Active Tournaments: click on one of the tournaments in the Tournaments table to see Player scores. It is updated every 8 minutes or by the user.
+
+2. Multiple Language Support: The Google Translate in the Footer allows you to translate from English to a desired language listed.
+
+3. Oauth Authetication: Facebook, LinkedIn available under the Sign In page
+
+4. Payments:  Credit Card or Paypal
+
+5. Administrator Controls -  Administrator has access to modify every Model table in the database
+
+6. Tournaments - Team Functionality and Create team
+
+7. Can register your own Golf course
+
+8. QR code for tickets
+
+9. Mobile, Tablet support
